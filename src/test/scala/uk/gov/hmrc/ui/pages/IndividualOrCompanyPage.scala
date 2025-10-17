@@ -16,11 +16,11 @@
 
 package uk.gov.hmrc.ui.pages
 
-object InitialPage extends BasePage {
+object IndividualOrCompanyPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing"
+  override def pageUrl: String = "stamp-duty-land-tax-filing/purchaser/surname-or-company-name"
 
   override def pageTitle: String =
-    "returnTaskList - sdlt-filing-frontend - GOV.UK"
+    "Purchaser (1) surname or company name - sdlt-filing-frontend - GOV.UK"
 
 }

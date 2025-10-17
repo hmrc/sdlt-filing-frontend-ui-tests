@@ -19,6 +19,7 @@ package uk.gov.hmrc.ui.pages
 import com.typesafe.scalalogging.LazyLogging
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, Wait, WebDriverWait}
 import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
+import org.scalatest.compatible.Assertion
 import org.scalatest.concurrent.Eventually
 import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.selenium.component.PageObject
@@ -154,5 +155,13 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
 
   def waitForPageTitle(expectedTitle: String): Unit =
     fluentWait.until(ExpectedConditions.titleIs(expectedTitle))
+
+  def verifyTaskRowStatus(expectedStatusId: String, expectedStatus: String): Unit = {
+    waitForVisibilityOfElement(By.id(expectedStatusId))
+    assert(
+      driver.findElement(By.id(expectedStatusId)).getText == expectedStatus,
+      s"Row Status mismatch! Expected: $expectedStatus, Actual: ${driver.findElement(By.id(expectedStatusId))}"
+    )
+  }
 
 }
