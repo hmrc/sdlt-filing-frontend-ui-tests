@@ -47,25 +47,36 @@ object AuthWizard extends BasePage {
   val btnSubmit: By       = By.id("submit")
   val btnAddEnrolment: By = By.id("add-ident-btn-0")
 
-  def buildRedirectUrl(loginType: LoginTypes, userType: UserTypes): String = {
-    val Redirect =
-      if (
-        Env.baseUrl.equals(
-          "http://localhost:9949/auth-login-stub/gg-sign-in?continue=http://localhost:10910/stamp-duty-land-tax-filing"
-        )
-      ) "http://localhost:10910/stamp-duty-land-tax-filing"
-      else s"/stamp-duty-land-tax-filing"
-    Redirect
-  }
+  def buildRedirectUrl(loginType: LoginTypes, userType: UserTypes, returnId: Option[String] = None): String =
+    returnId match {
+      case Some(id) =>
+        val Redirect =
+          if (
+            Env.baseUrl.equals(
+              s"http://localhost:9949/auth-login-stub/gg-sign-in?continue=http://localhost:10910/stamp-duty-land-tax-filing"
+            )
+          ) s"http://localhost:10910/stamp-duty-land-tax-filing?returnId=$id"
+          else s"/stamp-duty-land-tax-filing?returnId=$id"
+        Redirect
+      case _        =>
+        val Redirect =
+          if (
+            Env.baseUrl.equals(
+              "http://localhost:9949/auth-login-stub/gg-sign-in?continue=http://localhost:10910/stamp-duty-land-tax-filing"
+            )
+          ) "http://localhost:10910/stamp-duty-land-tax-filing"
+          else s"/stamp-duty-land-tax-filing"
+        Redirect
+    }
 
   def fillInputs(): this.type = {
     driver.findElement(affinityGroup).sendKeys("Individual")
     this
   }
 
-  def login(loginType: LoginTypes, userType: UserTypes): Unit = {
+  def login(loginType: LoginTypes, userType: UserTypes, returnId: Option[String] = None): Unit = {
     AuthWizard.navigateToPage(url)
-    sendKeys(redirectUrl, buildRedirectUrl(HASDIRECT, Organisation))
+    sendKeys(redirectUrl, buildRedirectUrl(HASDIRECT, Organisation, returnId))
     fillInputs()
     click(btnSubmit)
   }
