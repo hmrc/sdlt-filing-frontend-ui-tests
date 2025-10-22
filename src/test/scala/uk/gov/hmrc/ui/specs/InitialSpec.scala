@@ -36,7 +36,7 @@ class InitialSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing frontend Task List Homepage") {
-    Scenario("Hit the TaskList with no return id") {
+    Scenario("Hit the TaskList with no return id ") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("I should be on the initial page")
