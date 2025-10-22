@@ -21,6 +21,6 @@ object IndividualOrCompanyPage extends BasePage {
   override def pageUrl: String = "stamp-duty-land-tax-filing/purchaser/surname-or-company-name"
 
   override def pageTitle: String =
-    "Purchaser (1) surname or company name - sdlt-filing-frontend - GOV.UK"
+    "What is the purchasers name? - Preliminary question - Stamp Taxes Online - GOV.UK"
 
 }

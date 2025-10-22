@@ -21,6 +21,6 @@ object IsAnIndividualPage extends BasePage {
   override def pageUrl: String = "stamp-duty-land-tax-filing/purchaser/is-individual"
 
   override def pageTitle: String =
-    "Is Purchaser (1) an individual? - sdlt-filing-frontend - GOV.UK"
+    "Is Purchaser (1) an individual? - Stamp Taxes Online - GOV.UK"
 
 }
