@@ -23,4 +23,5 @@ object IndividualOrCompanyPage extends BasePage {
   override def pageTitle: String =
     "Purchaser (1) surname or company name - sdlt-filing-frontend - GOV.UK"
 
+
 }
