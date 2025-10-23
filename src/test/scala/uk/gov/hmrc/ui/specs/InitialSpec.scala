@@ -21,7 +21,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage}
+import uk.gov.hmrc.ui.pages.{AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage, PropertyAddress}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -49,6 +49,14 @@ class InitialSpec
       Then("User input their name or company name and submits")
       IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
       IndividualOrCompanyPage.clickSubmitButton()
+
+      Then("User should be on the Address Look-up screen")
+      PropertyAddress.verifyPageTitle(PropertyAddress.pageTitle)
+      Then("User enter the postcode and conitnue")
+      PropertyAddress.enterPostCode("AB123M")
+      PropertyAddress.radioButton("#123")
+      PropertyAddress.clickSubmitButton()
+
       Then("User should be on Is the User and Individual Page")
       IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
     }
@@ -66,6 +74,14 @@ class InitialSpec
       Then("User input their name or company name and submits")
       IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
       IndividualOrCompanyPage.clickSubmitButton()
+
+      Then("User should be on the Address Look-up screen")
+      PropertyAddress.verifyPageTitle(PropertyAddress.pageTitle)
+      Then("User enter the postcode and conitnue")
+      PropertyAddress.enterPostCode("AB123M")
+      PropertyAddress.radioButton("#123")
+      PropertyAddress.clickSubmitButton()
+
       Then("User should be on Is the User and Individual Page")
       IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
     }

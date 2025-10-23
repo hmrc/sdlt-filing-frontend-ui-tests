@@ -51,6 +51,7 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     val txtMonth: By        = By.ById("value.month")
     val txtYear: By         = By.ById("value.year")
     val txtEmailAddress: By = By.cssSelector("#value")
+    val txtPostCode: By     = By.ById("postcode")
     val cbxConfirm          = "#value_0"
   }
 
