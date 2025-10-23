@@ -18,9 +18,11 @@ package uk.gov.hmrc.ui.pages
 
 object IndividualOrCompanyPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/purchaser/surname-or-company-name"
+  override def pageUrl: String = "preliminary-questions/who-is-making-the-purchase"
 
   override def pageTitle: String =
-    "Purchaser (1) surname or company name - sdlt-filing-frontend - GOV.UK"
+    "Who is making the purchase? – Preliminary questions – Stamp Taxes Online – GOV.UK"
 
+  def individual: String = " "
+  def business: String = " "
 }

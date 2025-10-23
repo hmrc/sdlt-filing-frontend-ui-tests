@@ -35,39 +35,35 @@ class InitialSpec
     with Browser
     with ScreenshotOnFailure {
 
-  Feature("SDLT Filing frontend Task List Homepage") {
+  Feature("SDLT Filing frontend preliminary questions- who is making purchase screen") {
     Scenario("Hit the TaskList with no return id ") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
-      Then("I should be on the initial page")
-      InitialPage.verifyPageTitle(InitialPage.pageTitle)
-      InitialPage.verifyTaskRowStatus("status-prelimQuestionDetailRow", "Not Started")
-      Then("User clicks Prelim Questions Task")
-      InitialPage.clickLinkById("task-list-link-prelim-questions")
-      Then("User should be on the Individual or Company Name page")
+      Then("user navigates to Individual or company page")
+      IndividualOrCompanyPage.navigateToPage(IndividualOrCompanyPage.pageUrl)
+      And("user should be on Individual or company page")
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
-      Then("User input their name or company name and submits")
-      IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
-      IndividualOrCompanyPage.clickSubmitButton()
-      Then("User should be on Is the User and Individual Page")
-      IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      When("user clicks An Individual Radio Button")
+      IndividualOrCompanyPage.radioButton(IndividualOrCompanyPage.individual)
+      And("user clicks An Save and Continue Button")
+      IndividualOrCompanyPage.saveAndContinue()
+     /* Then("user is on purchase name screen")
+      PurchasePage.verifyPageTitle(purchasePage.pageTitle)*/
     }
 
     Scenario("Hit the TaskList with a return id") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, Some("123456"))
-      Then("I should be on the initial page")
-      InitialPage.verifyPageTitle(InitialPage.pageTitle)
-      InitialPage.verifyTaskRowStatus("status-prelimQuestionDetailRow", "Complete")
-      Then("User clicks Prelim Questions Task")
-      InitialPage.clickLinkById("task-list-link-prelim-questions")
-      Then("User should be on the Individual or Company Name page")
+      Then("user navigates to Individual or company page")
+      IndividualOrCompanyPage.navigateToPage(IndividualOrCompanyPage.pageUrl)
+      And("user should be on Individual or company page")
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
-      Then("User input their name or company name and submits")
-      IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
-      IndividualOrCompanyPage.clickSubmitButton()
-      Then("User should be on Is the User and Individual Page")
-      IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      When("user clicks A Business Radio Button")
+      IndividualOrCompanyPage.radioButton(IndividualOrCompanyPage.business)
+      And("user clicks An Save and Continue Button")
+      IndividualOrCompanyPage.saveAndContinue()
+     /* Then("user is on purchase name screen")
+       PurchasePage.verifyPageTitle(purchasePage.pageTitle)*/
     }
   }
 }
