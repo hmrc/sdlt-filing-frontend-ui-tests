@@ -21,7 +21,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, InitialPage, IndividualOrCompanyPage, IsAnIndividualPage}
+import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -55,7 +55,7 @@ class InitialSpec
       Then("User should be navigated to the About the Transaction Page")
       AboutTheTransactionPage.navigateToPage(AboutTheTransactionPage.pageUrl)
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
-      AboutTheTransactionPage.radioButton("Residential property purchase")
+      AboutTheTransactionPage.radioButton("#value_0")
       AboutTheTransactionPage.saveAndContinue()
     }
 
@@ -77,7 +77,7 @@ class InitialSpec
       Then("User should be navigated to the About the Transaction Page")
       AboutTheTransactionPage.navigateToPage(AboutTheTransactionPage.pageUrl)
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
-      AboutTheTransactionPage.radioButton("Residential property purchase")
+      AboutTheTransactionPage.radioButton("#value_0")
       AboutTheTransactionPage.saveAndContinue()
     }
   }
