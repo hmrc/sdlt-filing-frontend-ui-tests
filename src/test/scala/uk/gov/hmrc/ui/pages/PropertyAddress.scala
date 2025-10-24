@@ -27,5 +27,12 @@ object PropertyAddress extends BasePage {
     input(Locators.txtPostCode, postCode)
     clickSubmitButton()
   }
-
+  def clickAddressManually(): Unit     = click(By.linkText(Locators.lnkAddrManually))
+  
+  def enterAddressManually(addressline1: String, town: String, addressPostcode: String): Unit = {
+    input(Locators.txtAddress1, addressline1)
+    input(Locators.txtTown, town)
+    input(Locators.txtAddressPostCode, addressPostcode)
+    clickSubmitButton()
+  }
 }
