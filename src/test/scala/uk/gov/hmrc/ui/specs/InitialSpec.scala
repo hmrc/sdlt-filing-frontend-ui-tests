@@ -21,7 +21,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage}
+import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -36,6 +36,7 @@ class InitialSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing frontend Task List Homepage") {
+
     Scenario("Hit the TaskList with no return id") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
@@ -51,6 +52,11 @@ class InitialSpec
       IndividualOrCompanyPage.clickSubmitButton()
       Then("User should be on Is the User and Individual Page")
       IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      Then("User should be navigated to the About the Transaction Page")
+      AboutTheTransactionPage.navigateToPage(AboutTheTransactionPage.pageUrl)
+      AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
+      AboutTheTransactionPage.radioButton("#value_0")
+      AboutTheTransactionPage.saveAndContinue()
     }
 
     Scenario("Hit the TaskList with a return id") {
@@ -68,6 +74,11 @@ class InitialSpec
       IndividualOrCompanyPage.clickSubmitButton()
       Then("User should be on Is the User and Individual Page")
       IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      Then("User should be navigated to the About the Transaction Page")
+      AboutTheTransactionPage.navigateToPage(AboutTheTransactionPage.pageUrl)
+      AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
+      AboutTheTransactionPage.radioButton("#value_0")
+      AboutTheTransactionPage.saveAndContinue()
     }
   }
 }
