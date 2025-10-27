@@ -21,7 +21,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage}
+import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage, PurchasersNamePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -55,10 +55,8 @@ class InitialSpec
       And("user clicks An Save and Continue Button")
       IndividualOrCompanyPage.saveAndContinue()
       Then("User input their name or company name and submits")
-      IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
-      IndividualOrCompanyPage.clickSubmitButton()
-      Then("User should be on Is the User and Individual Page")
-      //  IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
+      PurchasersNamePage.clickSubmitButton()
       Then("User should be navigated to the About the Transaction Page")
       // change this navigate to when the address lookup work has been done
       AboutTheTransactionPage.navigateToPage(
@@ -88,10 +86,8 @@ class InitialSpec
       And("User clicks An Save and Continue Button")
       IndividualOrCompanyPage.saveAndContinue()
       Then("User input their name or company name and submits")
-      IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
-      IndividualOrCompanyPage.clickSubmitButton()
-      Then("User should be on Is the User and Individual Page")
-      // IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
+      PurchasersNamePage.clickSubmitButton()
       Then("User should be navigated to the About the Transaction Page")
       // change this navigate to when the address lookup work has been done
       AboutTheTransactionPage.navigateToPage(
