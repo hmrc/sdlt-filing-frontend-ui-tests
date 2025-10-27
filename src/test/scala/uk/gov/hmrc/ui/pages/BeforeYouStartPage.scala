@@ -16,11 +16,11 @@
 
 package uk.gov.hmrc.ui.pages
 
-object InitialPage extends BasePage {
+object BeforeYouStartPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing"
+  override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/before-you-start"
 
   override def pageTitle: String =
-    "returnTaskList - Stamp Taxes Online - GOV.UK"
+    "Before you start a new Stamp Tax return – Preliminary questions - Stamp Taxes Online - GOV.UK"
 
 }
