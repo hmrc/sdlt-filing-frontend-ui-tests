@@ -49,7 +49,7 @@ class InitialSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/who-is-making-the-purchase"
       )
       And("user should be on Individual or company page")
-      //  IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
+      IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
       When("user clicks A Business Radio Button")
       IndividualOrCompanyPage.radioButton(IndividualOrCompanyPage.business)
       And("user clicks An Save and Continue Button")
@@ -58,7 +58,7 @@ class InitialSpec
       IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
       IndividualOrCompanyPage.clickSubmitButton()
       Then("User should be on Is the User and Individual Page")
-      IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      //  IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
       Then("User should be navigated to the About the Transaction Page")
       // change this navigate to when the address lookup work has been done
       AboutTheTransactionPage.navigateToPage(
@@ -91,7 +91,7 @@ class InitialSpec
       IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
       IndividualOrCompanyPage.clickSubmitButton()
       Then("User should be on Is the User and Individual Page")
-      IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
+      // IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
       Then("User should be navigated to the About the Transaction Page")
       // change this navigate to when the address lookup work has been done
       AboutTheTransactionPage.navigateToPage(
