@@ -16,14 +16,11 @@
 
 package uk.gov.hmrc.ui.pages
 
-object IndividualOrCompanyPage extends BasePage {
+object AboutTheTransactionPage extends BasePage {
 
-  override def pageUrl: String =
-    "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/who-is-making-the-purchase"
+  override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/transaction-type"
 
   override def pageTitle: String =
-    "What is the purchasers name? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+    "What type of transaction is this? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
-  def individual: String = "#value_0"
-  def business: String   = "#value_1"
 }
