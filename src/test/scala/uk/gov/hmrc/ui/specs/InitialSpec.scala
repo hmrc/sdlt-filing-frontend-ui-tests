@@ -21,7 +21,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage}
+import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, BeforeYouStartPage, IndividualOrCompanyPage, IsAnIndividualPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -40,12 +40,11 @@ class InitialSpec
     Scenario("Hit the TaskList with no return id") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
-      Then("I should be on the initial page")
-      InitialPage.verifyPageTitle(InitialPage.pageTitle)
-      InitialPage.verifyTaskRowStatus("status-prelimQuestionDetailRow", "Not Started")
-      Then("User clicks Prelim Questions Task")
-      InitialPage.clickLinkById("task-list-link-prelim-questions")
-      Then("User should be on the Individual or Company Name page")
+      Then("User should be on the Before You Start page")
+      BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
+      Then("User clicks on the continue button")
+      BeforeYouStartPage.saveAndContinue()
+      Then("User should be navigated to the Individual or Company Name page")
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
       Then("User input their name or company name and submits")
       IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
@@ -65,12 +64,11 @@ class InitialSpec
     Scenario("Hit the TaskList with a return id") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, Some("123456"))
-      Then("I should be on the initial page")
-      InitialPage.verifyPageTitle(InitialPage.pageTitle)
-      InitialPage.verifyTaskRowStatus("status-prelimQuestionDetailRow", "Complete")
-      Then("User clicks Prelim Questions Task")
-      InitialPage.clickLinkById("task-list-link-prelim-questions")
-      Then("User should be on the Individual or Company Name page")
+      Then("User should be on the Before You Start page")
+      BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
+      Then("User clicks on the continue button")
+      BeforeYouStartPage.saveAndContinue()
+      Then("User should be navigated to the Individual or Company Name page")
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
       Then("User input their name or company name and submits")
       IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
