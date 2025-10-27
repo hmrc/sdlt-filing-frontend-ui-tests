@@ -49,7 +49,7 @@ class InitialSpec
       IsAnIndividualPage.radioButton("#purchaserIsIndividual")
       IsAnIndividualPage.saveAndContinue()
       Then("User should be navigated to the Individual or Company Name page")
-      BeforeYouStartPage.navigateToPage(
+      IndividualOrCompanyPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/purchaser-name"
       )
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
