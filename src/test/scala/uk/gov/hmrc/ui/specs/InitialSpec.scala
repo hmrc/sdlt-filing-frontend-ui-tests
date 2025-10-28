@@ -21,7 +21,8 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, BeforeYouStartPage, IndividualOrCompanyPage, IsAnIndividualPage}
+import uk.gov.hmrc.ui.pages._
+import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, BeforeYouStartPage, IndividualOrCompanyPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -36,8 +37,7 @@ class InitialSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing frontend Task List Homepage") {
-
-    Scenario("Hit the TaskList with no return id") {
+    Scenario("Hit the TaskList with no return id and is a business") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("User should be on the Before You Start page")
@@ -45,17 +45,16 @@ class InitialSpec
       Then("User clicks on the continue button")
       BeforeYouStartPage.saveAndContinue()
       Then("User should be on Is the User and Individual Page")
-      IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
-      IsAnIndividualPage.radioButton("#purchaserIsIndividual")
-      IsAnIndividualPage.saveAndContinue()
-      Then("User should be navigated to the Individual or Company Name page")
-      IndividualOrCompanyPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/purchaser-name"
-      )
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
+      When("user clicks A Business Radio Button as a business")
+      IndividualOrCompanyPage.radioButton(IndividualOrCompanyPage.business)
+      And("user clicks An Save and Continue Button")
+      IndividualOrCompanyPage.saveAndContinue()
+      Then("User is directed to the Input your name page")
+      PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitle)
       Then("User input their name or company name and submits")
-      IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
-      IndividualOrCompanyPage.clickSubmitButton()
+      PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
+      PurchasersNamePage.clickSubmitButton()
       Then("User should be navigated to the About the Transaction Page")
       // change this navigate to when the address lookup work has been done
       AboutTheTransactionPage.navigateToPage(
@@ -66,25 +65,24 @@ class InitialSpec
       AboutTheTransactionPage.saveAndContinue()
     }
 
-    Scenario("Hit the TaskList with a return id") {
+    Scenario("Hit the TaskList with no return id and is an individual") {
       Given("I enter login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, Some("123456"))
+      AuthWizard.login(HASDIRECT, Organisation)
       Then("User should be on the Before You Start page")
       BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
       Then("User clicks on the continue button")
       BeforeYouStartPage.saveAndContinue()
       Then("User should be on Is the User and Individual Page")
-      IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
-      IsAnIndividualPage.radioButton("#purchaserIsIndividual")
-      IsAnIndividualPage.saveAndContinue()
-      Then("User should be navigated to the Individual or Company Name page")
-      IndividualOrCompanyPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/purchaser-name"
-      )
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
+      When("user clicks A Business Radio Button as a business")
+      IndividualOrCompanyPage.radioButton(IndividualOrCompanyPage.individual)
+      And("user clicks An Save and Continue Button")
+      IndividualOrCompanyPage.saveAndContinue()
+      Then("User is directed to the Input your name page")
+      PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitle)
       Then("User input their name or company name and submits")
-      IndividualOrCompanyPage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
-      IndividualOrCompanyPage.clickSubmitButton()
+      PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
+      PurchasersNamePage.clickSubmitButton()
       Then("User should be navigated to the About the Transaction Page")
       // change this navigate to when the address lookup work has been done
       AboutTheTransactionPage.navigateToPage(
