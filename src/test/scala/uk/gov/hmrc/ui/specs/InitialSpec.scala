@@ -21,7 +21,8 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.{AuthWizard, CYAPage, IndividualOrCompanyPage, InitialPage, IsAnIndividualPage}
+import uk.gov.hmrc.ui.pages._
+import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, BeforeYouStartPage, IndividualOrCompanyPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -36,53 +37,60 @@ class InitialSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing frontend Task List Homepage") {
-  /*  Scenario("Update purchaser type from CYA page") {
+    Scenario("Hit the TaskList with no return id and is a business") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
-      And("user navigates to check your answers page")
-      CYAPage.navigateToPage(CYAPage.pageUrl)
-      Then("user should be on check your answers page")
-      CYAPage.verifyPageTitle(CYAPage.pageTitle)
-      When("user clicks on change for purchaser type")
-      CYAPage.clickLinkById(CYAPage.changePurchaserType)
-      Then("user should be on individual or company page")
+      Then("User should be on the Before You Start page")
+      BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
+      Then("User clicks on the continue button")
+      BeforeYouStartPage.saveAndContinue()
+      Then("User should be on Is the User and Individual Page")
       IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
+      When("user clicks A Business Radio Button as a business")
+      IndividualOrCompanyPage.radioButton(IndividualOrCompanyPage.business)
+      And("user clicks An Save and Continue Button")
+      IndividualOrCompanyPage.saveAndContinue()
+      Then("User is directed to the Input your name page")
+      PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitle)
+      Then("User input their name or company name and submits")
+      PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
+      PurchasersNamePage.clickSubmitButton()
+      Then("User should be navigated to the About the Transaction Page")
+      // change this navigate to when the address lookup work has been done
+      AboutTheTransactionPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/transaction-type"
+      )
+      AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
+      AboutTheTransactionPage.radioButton("#value_0")
+      AboutTheTransactionPage.saveAndContinue()
     }
-    Scenario("Update purchaser's name form CYA page") {
+
+    Scenario("Hit the TaskList with no return id and is an individual") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
-      And("user navigates to check your answers page")
-      CYAPage.navigateToPage(CYAPage.pageUrl)
-      Then("user should be on check your answers page")
-      CYAPage.verifyPageTitle(CYAPage.pageTitle)
-      When("user clicks on change for purchaser name")
-      CYAPage.clickLinkById(CYAPage.changePurchaserName)
-      Then("user should be on purchaser's name page")
-      IsAnIndividualPage.verifyPageTitle(IsAnIndividualPage.pageTitle)
-    }
-    Scenario("Update property address form CYA page") {
-      Given("I enter login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      And("user navigates to check your answers page")
-      CYAPage.navigateToPage(CYAPage.pageUrl)
-      Then("user should be on check your answers page")
-      CYAPage.verifyPageTitle(CYAPage.pageTitle)
-      When("user clicks on change for property address")
-      CYAPage.clickLinkById(CYAPage.changePropertyAddress)
-      Then("user should be on property address page")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.pageTitle)
-    }
-    Scenario("Update transaction type  form CYA page") {
-      Given("I enter login using the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      And("user navigates to check your answers page")
-      CYAPage.navigateToPage(CYAPage.pageUrl)
-      Then("user should be on check your answers page")
-      CYAPage.verifyPageTitle(CYAPage.pageTitle)
-      When("user clicks on change for transaction type")
-      CYAPage.clickLinkById(CYAPage.changeTransactionType)
-      Then("user should be on transaction type page")
-      TransactionPage.verifyPageTitle(TransactionPage.pageTitle)*/
+      Then("User should be on the Before You Start page")
+      BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
+      Then("User clicks on the continue button")
+      BeforeYouStartPage.saveAndContinue()
+      Then("User should be on Is the User and Individual Page")
+      IndividualOrCompanyPage.verifyPageTitle(IndividualOrCompanyPage.pageTitle)
+      When("user clicks A Business Radio Button as a business")
+      IndividualOrCompanyPage.radioButton(IndividualOrCompanyPage.individual)
+      And("user clicks An Save and Continue Button")
+      IndividualOrCompanyPage.saveAndContinue()
+      Then("User is directed to the Input your name page")
+      PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitle)
+      Then("User input their name or company name and submits")
+      PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
+      PurchasersNamePage.clickSubmitButton()
+      Then("User should be navigated to the About the Transaction Page")
+      // change this navigate to when the address lookup work has been done
+      AboutTheTransactionPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/transaction-type"
+      )
+      AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
+      AboutTheTransactionPage.radioButton("#value_0")
+      AboutTheTransactionPage.saveAndContinue()
     }
   }
 }
