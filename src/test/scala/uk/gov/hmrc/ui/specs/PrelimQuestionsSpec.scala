@@ -22,11 +22,11 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages._
-import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, BeforeYouStartPage, IndividualOrCompanyPage}
+import uk.gov.hmrc.ui.pages.{AboutTheTransactionPage, AuthWizard, BeforeYouStartPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
-class InitialSpec
+class PrelimQuestionsSpec
     extends AnyFeatureSpec
     with BaseSpec
     with GivenWhenThen
@@ -55,17 +55,26 @@ class InitialSpec
       Then("User input their name or company name and submits")
       PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
       PurchasersNamePage.clickSubmitButton()
+      Given("User is on the Address Look-up screen")
+      PropertyAddress.verifyPageTitle(PropertyAddress.pageTitle)
+      When("User clicks on the link")
+      PropertyAddress.clickAddressManually()
+      And("User enters the address manually")
+      PropertyAddress.verifyPageTitle(PropertyAddress.editPageTitle)
+      PropertyAddress.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("User is on the Review screen")
+      PropertyAddress.verifyPageTitle(PropertyAddress.confirmPageTitle)
+      And("User clicks continue")
+      PropertyAddress.clickContinueButton()
       Then("User should be navigated to the About the Transaction Page")
-      // change this navigate to when the address lookup work has been done
-      AboutTheTransactionPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/transaction-type"
-      )
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
+      And("User check the first radio button")
       AboutTheTransactionPage.radioButton("#value_0")
+      And("User clicks continue")
       AboutTheTransactionPage.saveAndContinue()
     }
 
-    Scenario("Hit the TaskList with no return id and is an individual") {
+    Scenario("Hit the TaskList with no return id and is a individual") {
       Given("I enter login using the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("User should be on the Before You Start page")
@@ -83,13 +92,22 @@ class InitialSpec
       Then("User input their name or company name and submits")
       PurchasersNamePage.input(By.id("purchaserSurnameOrCompanyName"), "Test Name")
       PurchasersNamePage.clickSubmitButton()
+      Given("User is on the Address Look-up screen")
+      PropertyAddress.verifyPageTitle(PropertyAddress.pageTitle)
+      When("User clicks on the link")
+      PropertyAddress.clickAddressManually()
+      And("User enters the address manually")
+      PropertyAddress.verifyPageTitle(PropertyAddress.editPageTitle)
+      PropertyAddress.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("User is on the Review screen")
+      PropertyAddress.verifyPageTitle(PropertyAddress.confirmPageTitle)
+      And("User clicks continue")
+      PropertyAddress.clickContinueButton()
       Then("User should be navigated to the About the Transaction Page")
-      // change this navigate to when the address lookup work has been done
-      AboutTheTransactionPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/preliminary-questions/transaction-type"
-      )
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
+      And("User check the first radio button")
       AboutTheTransactionPage.radioButton("#value_0")
+      And("User clicks continue")
       AboutTheTransactionPage.saveAndContinue()
     }
   }
