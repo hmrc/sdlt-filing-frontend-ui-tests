@@ -39,19 +39,24 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
 
   /** Locator values */
   object Locators {
-    val btnContinue         = ".govuk-button"
-    val lnkBack             = "Back"
-    val btnSubmit           = ".govuk-button"
-    val lnkHeader           = ".govuk-header__link.govuk-header__service-name"
-    val rdoYes              = "#value_0"
-    val rdoNo               = "#value_1"
-    val txtFileName         = ".govuk-body"
-    val txtBannerTitle      = "#govuk-notification-banner-title"
-    val lnkRemoveFile       = "dd[class='govuk-summary-list__actions'] a[class='govuk-link']"
-    val txtMonth: By        = By.ById("value.month")
-    val txtYear: By         = By.ById("value.year")
-    val txtEmailAddress: By = By.cssSelector("#value")
-    val cbxConfirm          = "#value_0"
+    val btnContinue        = ".govuk-button"
+    val lnkBack            = "Back"
+    val btnSubmit          = ".govuk-button"
+    val continueButton     = By.cssSelector("#continue")
+    val lnkHeader          = ".govuk-header__link.govuk-header__service-name"
+    val rdoYes             = "#value_0"
+    val rdoNo              = "#value_1"
+    val txtFileName        = ".govuk-body"
+    val txtBannerTitle     = "#govuk-notification-banner-title"
+    val lnkRemoveFile      = "dd[class='govuk-summary-list__actions'] a[class='govuk-link']"
+    val txtMonth: By       = By.ById("value.month")
+    val txtYear: By        = By.ById("value.year")
+    val txtPostCode: By    = By.ById("postcode")
+    val txtAddress1: By    = By.ById("line1")
+    val txtTown: By        = By.ById("town")
+    val txtAddressPostCode = By.ById("postcode")
+    val lnkAddrManually    = "Enter the address manually"
+    val cbxConfirm         = "#value_0"
   }
 
   def pageUrl: String
@@ -91,12 +96,13 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
   }
 
   /** Specific actions */
-  def clickSubmitButton(): Unit = click(By.cssSelector(Locators.btnSubmit))
-  def clickBackLink(): Unit     = click(By.linkText(Locators.lnkBack))
-  def saveAndContinue(): Unit   = click(By.cssSelector(Locators.btnContinue))
-  def acceptAndContinue(): Unit = click(By.cssSelector(Locators.btnContinue))
-  def header(): Unit            = click(By.cssSelector(Locators.lnkHeader))
-  def removeFile(): Unit        = click(By.cssSelector(Locators.lnkRemoveFile))
+  def clickSubmitButton(): Unit   = click(By.cssSelector(Locators.btnSubmit))
+  def clickContinueButton(): Unit = click(Locators.continueButton)
+  def clickBackLink(): Unit       = click(By.linkText(Locators.lnkBack))
+  def saveAndContinue(): Unit     = click(By.cssSelector(Locators.btnContinue))
+  def acceptAndContinue(): Unit   = click(By.cssSelector(Locators.btnContinue))
+  def header(): Unit              = click(By.cssSelector(Locators.lnkHeader))
+  def removeFile(): Unit          = click(By.cssSelector(Locators.lnkRemoveFile))
 
   /** Navigation methods */
   def navigateToPage(url: String): Unit = driver.navigate().to(url)
