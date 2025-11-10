@@ -71,6 +71,9 @@ object AuthWizard extends BasePage {
 
   def fillInputs(): this.type = {
     driver.findElement(affinityGroup).sendKeys("Individual")
+    driver.findElement(enrolmentKey).sendKeys("IR-SDLT-ORG")
+    driver.findElement(enrolmentId).sendKeys("STORN")
+    driver.findElement(enrolmentValue).sendKeys("1234567890")
     this
   }
 
