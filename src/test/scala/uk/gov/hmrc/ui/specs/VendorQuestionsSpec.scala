@@ -54,7 +54,7 @@ class VendorQuestionsSpec
       And("user clicks An Save and Continue Button")
       AboutTheVendorPage.saveAndContinue()
       Then("User inputs their business name")
-      VendorOrCompanyNamePage.input(By.id("name"), "Test Business")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.business), "Test Business")
       Then("User clicks on save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
     }
@@ -75,9 +75,9 @@ class VendorQuestionsSpec
       And("user clicks An Save and Continue Button")
       AboutTheVendorPage.saveAndContinue()
       Then("User inputs their first name, middle name, and surname")
-      VendorOrCompanyNamePage.input(By.id("forename1"), "Test-Fname")
-      VendorOrCompanyNamePage.input(By.id("forename2"), "Test-MName")
-      VendorOrCompanyNamePage.input(By.id("name"), "Test-Sname")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.forename), "Test-Fname")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.middlename), "Test-MName")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.surname), "Test-Sname")
       Then("User clicks on save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
     }
