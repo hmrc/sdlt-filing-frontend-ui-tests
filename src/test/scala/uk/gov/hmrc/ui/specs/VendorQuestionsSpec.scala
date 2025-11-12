@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouStartPage, CYAPage, IndividualOrCompanyPage, PropertyAddress, PurchasersNamePage}
-import uk.gov.hmrc.ui.pages.Vendor.AboutTheVendorPage
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, VendorAgentsNamePage, VendorOrCompanyNamePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -53,6 +53,21 @@ class VendorQuestionsSpec
       AboutTheVendorPage.radioButton(AboutTheVendorPage.business)
       And("user clicks An Save and Continue Button")
       AboutTheVendorPage.saveAndContinue()
+      Then("User inputs their business name")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.business), "Test Business")
+      Then("User clicks on save and continue button")
+      VendorOrCompanyNamePage.saveAndContinue()
+
+      Then("User navigates to Vendor Agent's Name page")
+      VendorAgentsNamePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/agent-name"
+      )
+      Then("User should be on Vendor Agents Name page")
+      VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
+      Then("User input the Vendor Agent's Name and submits")
+      VendorAgentsNamePage.input(By.id("agentName"), "Agent Test1")
+      VendorAgentsNamePage.clickSubmitButton()
+
     }
 
     Scenario("Hit the TaskList for individual vendor questions") {
@@ -70,6 +85,22 @@ class VendorQuestionsSpec
       AboutTheVendorPage.radioButton(AboutTheVendorPage.individual)
       And("user clicks An Save and Continue Button")
       AboutTheVendorPage.saveAndContinue()
+      Then("User inputs their first name, middle name, and surname")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.forename), "Test-Fname")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.middlename), "Test-MName")
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.surname), "Test-Sname")
+      Then("User clicks on save and continue button")
+      VendorOrCompanyNamePage.saveAndContinue()
+
+      Then("User navigates to Vendor Agent's Name page")
+      VendorAgentsNamePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/agent-name"
+      )
+      Then("User should be on Vendor Agents Name page")
+      VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
+      Then("User input the Vendor Agent's Name and submits")
+      VendorAgentsNamePage.input(By.id("agentName"), "Agent Test1")
+      VendorAgentsNamePage.clickSubmitButton()
     }
   }
 }

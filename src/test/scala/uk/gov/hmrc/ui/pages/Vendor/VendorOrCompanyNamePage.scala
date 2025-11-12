@@ -18,13 +18,17 @@ package uk.gov.hmrc.ui.pages.Vendor
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AboutTheVendorPage extends BasePage {
+object VendorOrCompanyNamePage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendor/who-is-the-vendor"
+  override def pageUrl: String = "about-the-vendor/vendor-name"
 
-  override def pageTitle: String = "Who is the vendor? – About the vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = " What is the vendor’s full name? – About the vendor - Stamp Taxes Online - GOV.UK"
 
-  def individual: String = "#value_1"
+  def forename: String = "forename1"
 
-  def business: String = "#value_0"
+  def middlename: String = "forename2"
+
+  def surname: String = "name"
+
+  def business: String = "name"
 }
