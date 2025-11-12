@@ -43,7 +43,7 @@ class VendorQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation)
       Given("Given the user is on Return Task list Page")
       ReturnTaskListPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=123456-no-vendor"
+        "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=no-vendor"
       )
       And("User should click on vendor questions in return Task List page")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
@@ -75,7 +75,7 @@ class VendorQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation)
       Given("Given the user is on Return Task list Page")
       ReturnTaskListPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=123456-no-vendor"
+        "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=no-vendor"
       )
       And("User should click on vendor questions in return Task List page")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
