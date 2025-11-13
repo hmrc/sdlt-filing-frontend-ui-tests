@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouStartPage, CYAPage, IndividualOrCompanyPage, PropertyAddress, PurchasersNamePage}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddress, VendorAgentsNamePage, VendorOrCompanyNamePage}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddress, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddress}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -63,6 +63,17 @@ class VendorQuestionsSpec
       ConfirmVendorsAddress.radioButton("#value_1")
       Then("User clicks on save and continue button")
       ConfirmVendorsAddress.saveAndContinue()
+      Given("User is on address look-up page")
+      VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.pageTitle)
+      When("User clicks on the link")
+      VendorPropertyAddress.clickAddressManually()
+      And("User enters the address manually")
+      VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.editPageTitleBusiness)
+      VendorPropertyAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      Then("User is on the Review screen")
+      VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.confirmPageTitleBusiness)
+      And("User clicks continue")
+      VendorPropertyAddress.clickContinueButton()
 
     }
 
@@ -113,8 +124,9 @@ class VendorQuestionsSpec
       AboutTheVendorPage.saveAndContinue()
       Then("User inputs their business name")
       VendorOrCompanyNamePage.input(By.id("name"), VendorOrCompanyNamePage.businessName)
-      Then("User clicks on save and continue button")
-      VendorOrCompanyNamePage.saveAndContinue()
+//      To be uncommented once other intermittent pages are ready
+//      Then("User clicks on save and continue button")
+//      VendorOrCompanyNamePage.saveAndContinue()
 
       Then("User navigates to Vendor Agent's Name page")
       VendorAgentsNamePage.navigateToPage(
@@ -124,7 +136,7 @@ class VendorQuestionsSpec
       VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
       Then("User input the Vendor Agent's Name and submits")
       VendorAgentsNamePage.input(By.id("agentName"), "Agent Test1")
-      VendorAgentsNamePage.clickSubmitButton()
+      VendorAgentsNamePage.saveAndContinue()
 
     }
   }
