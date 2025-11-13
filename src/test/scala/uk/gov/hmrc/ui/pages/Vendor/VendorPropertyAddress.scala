@@ -33,13 +33,13 @@ object VendorPropertyAddress extends BasePage {
     s"Review and confirm ${VendorOrCompanyNamePage.businessName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
   def PageTitleIndividual: String =
-    s"Find ${VendorOrCompanyNamePage.forename} ${VendorOrCompanyNamePage.middlename} ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Find ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleIndividual: String =
-    s"Enter ${VendorOrCompanyNamePage.forename} ${VendorOrCompanyNamePage.middlename} ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Enter ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleIndividual: String    =
-    s"Review and confirm ${VendorOrCompanyNamePage.forename} ${VendorOrCompanyNamePage.middlename} ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
   def enterPostCode(postCode: String): Unit = {
     input(Locators.txtPostCode, postCode)
     clickSubmitButton()
