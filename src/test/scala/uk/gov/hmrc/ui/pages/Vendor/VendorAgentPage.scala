@@ -27,4 +27,6 @@ object VendorAgentPage extends BasePage {
 
   def yesRadioButton: String = "#value"
 
+  def noRadioButton: String = "#value-2"
+
 }
