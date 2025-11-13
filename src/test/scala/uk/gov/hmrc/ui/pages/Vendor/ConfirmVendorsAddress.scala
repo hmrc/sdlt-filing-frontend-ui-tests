@@ -18,17 +18,14 @@ package uk.gov.hmrc.ui.pages.Vendor
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VendorOrCompanyNamePage extends BasePage {
+object ConfirmVendorsAddress extends BasePage {
 
-  override def pageUrl: String = "about-the-vendor/vendor-name"
+  override def pageUrl: String = "about-the-vendor/confirm-vendor-address"
 
-  override def pageTitle: String = " What is the vendor’s full name? – About the vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    s"Confirm ${VendorOrCompanyNamePage.businessName}’s address – About the Vendor - Stamp Taxes Online - GOV.UK"
 
-  def forename: String = "Test firstName"
+  def pageTitleIndividual: String =
+    s"Confirm ${VendorOrCompanyNamePage.forename} ${VendorOrCompanyNamePage.middlename} ${VendorOrCompanyNamePage.surname}’s address – About the Vendor - Stamp Taxes Online - GOV.UK"
 
-  def middlename: String = "MiddleName"
-
-  def surname: String = "Test surname"
-
-  def businessName: String = "test Business"
 }
