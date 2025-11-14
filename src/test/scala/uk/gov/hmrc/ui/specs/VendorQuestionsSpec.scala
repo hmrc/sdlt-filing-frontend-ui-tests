@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouStartPage, CYAPage, IndividualOrCompanyPage, PropertyAddress, PurchasersNamePage}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddress, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddress}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddress, VendorAgentPage, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddress}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -124,14 +124,19 @@ class VendorQuestionsSpec
       AboutTheVendorPage.saveAndContinue()
       Then("User inputs their business name")
       VendorOrCompanyNamePage.input(By.id("name"), VendorOrCompanyNamePage.businessName)
-//      To be uncommented once other intermittent pages are ready
-//      Then("User clicks on save and continue button")
-//      VendorOrCompanyNamePage.saveAndContinue()
+      Then("User clicks on save and continue button")
+      VendorOrCompanyNamePage.saveAndContinue()
 
-      Then("User navigates to Vendor Agent's Name page")
-      VendorAgentsNamePage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/agent-name"
+      Then("User navigates to Vendor Agent page")
+      VendorAgentPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/vendor-agent"
       )
+      Then("User should be on Vendor agent page")
+      VendorAgentPage.verifyPageTitle(VendorAgentPage.pageTitle)
+      Then("User select yes to vendor agent")
+      VendorAgentPage.radioButton(VendorAgentPage.yesRadioButton)
+      Then("User clicks on save and continue button")
+      VendorAgentPage.saveAndContinue()
       Then("User should be on Vendor Agents Name page")
       VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
       Then("User input the Vendor Agent's Name and submits")
