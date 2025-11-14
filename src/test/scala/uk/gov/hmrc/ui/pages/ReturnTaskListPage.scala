@@ -16,8 +16,6 @@
 
 package uk.gov.hmrc.ui.pages
 
-import uk.gov.hmrc.ui.pages.BasePage
-
 object ReturnTaskListPage extends BasePage {
 
   override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/transaction-type"

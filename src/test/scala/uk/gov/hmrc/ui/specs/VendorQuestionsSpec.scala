@@ -22,8 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouStartPage, CYAPage, IndividualOrCompanyPage, PropertyAddress, PurchasersNamePage}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddress, VendorAgentPage, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddress}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddress, VendorAgentAddress, VendorAgentPage, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddress}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -140,9 +139,19 @@ class VendorQuestionsSpec
       Then("User should be on Vendor Agents Name page")
       VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
       Then("User input the Vendor Agent's Name and submits")
-      VendorAgentsNamePage.input(By.id("agentName"), "Agent Test1")
+      VendorAgentsNamePage.input(By.id("agentName"), VendorAgentsNamePage.agentName)
       VendorAgentsNamePage.saveAndContinue()
-
+      Given("User is on Agents address look-up page")
+      VendorAgentAddress.verifyPageTitle(VendorAgentAddress.pageTitle)
+      When("User clicks on the link to add address manually")
+      VendorAgentAddress.clickAddressManually()
+      And("User enters the address manually")
+      VendorAgentAddress.verifyPageTitle(VendorAgentAddress.editPageTitleAgent)
+      VendorAgentAddress.enterAddressManually("523", "AGC", "TE12 1TS")
+      Then("User is on the Address Review screen")
+      VendorAgentAddress.verifyPageTitle(VendorAgentAddress.confirmPageTitleAgent)
+      And("User clicks on continue button")
+      VendorPropertyAddress.clickContinueButton()
     }
   }
 }
