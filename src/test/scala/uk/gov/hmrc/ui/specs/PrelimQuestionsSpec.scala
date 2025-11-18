@@ -38,7 +38,7 @@ class PrelimQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Prelim Questions") {
-    Scenario("Complete the Prelim Questions user journey as a Business with no stub data") {
+    Scenario("Complete the Prelim Questions user journey as a Business with no return id stub data") {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
@@ -98,7 +98,7 @@ class PrelimQuestionsSpec
       CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
     }
 
-    Scenario("Complete the Prelim Questions user journey as an Individual with no stub data") {
+    Scenario("Complete the Prelim Questions user journey as an Individual with no return id stub data") {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
