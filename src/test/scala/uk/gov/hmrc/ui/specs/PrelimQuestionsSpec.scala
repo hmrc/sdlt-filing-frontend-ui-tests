@@ -37,8 +37,8 @@ class PrelimQuestionsSpec
     with Browser
     with ScreenshotOnFailure {
 
-  Feature("SDLT Filing frontend Task List Homepage") {
-    Scenario("Hit the TaskList with no return id and is a business") {
+  Feature("SDLT Filing Frontend Prelim Questions") {
+    Scenario("Complete the Prelim Questions user journey as a Business with no stub data") {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
@@ -70,7 +70,7 @@ class PrelimQuestionsSpec
       PropertyAddressPage.clickContinueButton()
       Then("the user should be navigated to the About the Transaction page")
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
-      When("the user selects 'F - Conveyance/transfer' radio button")
+      When("the user selects the 'F - Conveyance/transfer' radio button")
       AboutTheTransactionPage.radioButton(AboutTheTransactionPage.conveyance)
       And("clicks the Save and continue button")
       AboutTheTransactionPage.saveAndContinue()
@@ -98,7 +98,7 @@ class PrelimQuestionsSpec
       CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
     }
 
-    Scenario("Hit the TaskList with no return id and is a individual") {
+    Scenario("Complete the Prelim Questions user journey as an Individual with no stub data") {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
@@ -130,7 +130,7 @@ class PrelimQuestionsSpec
       PropertyAddressPage.clickContinueButton()
       Then("the user should be navigated to the About the Transaction page")
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
-      When("the user selects 'F - Conveyance/transfer' radio button")
+      When("the user selects the 'F - Conveyance/transfer' radio button")
       AboutTheTransactionPage.radioButton(AboutTheTransactionPage.conveyance)
       And("clicks the Save and continue button")
       AboutTheTransactionPage.saveAndContinue()

@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.Vendor
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ConfirmVendorsAddress extends BasePage {
+object ConfirmVendorsAddressPage extends BasePage {
 
   override def pageUrl: String = "about-the-vendor/confirm-vendor-address"
 
@@ -28,4 +28,7 @@ object ConfirmVendorsAddress extends BasePage {
   def pageTitleIndividual: String =
     s"Confirm ${VendorOrCompanyNamePage.forename} ${VendorOrCompanyNamePage.middlename} ${VendorOrCompanyNamePage.surname}’s address – About the Vendor - Stamp Taxes Online - GOV.UK"
 
+  def yesRadioButton: String = "#value_0"
+
+  def noRadioButton: String = "#value_1"
 }

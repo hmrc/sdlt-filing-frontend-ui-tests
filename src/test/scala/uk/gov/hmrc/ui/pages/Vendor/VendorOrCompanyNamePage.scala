@@ -22,7 +22,7 @@ object VendorOrCompanyNamePage extends BasePage {
 
   override def pageUrl: String = "about-the-vendor/vendor-name"
 
-  override def pageTitle: String = " What is the vendor’s full name? – About the vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "What is the vendor’s full name? – About the vendor - Stamp Taxes Online - GOV.UK"
 
   def forename: String = "Test firstName"
 

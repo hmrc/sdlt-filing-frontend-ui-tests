@@ -19,31 +19,18 @@ package uk.gov.hmrc.ui.pages.Vendor
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VendorPropertyAddress extends BasePage {
+object VendorAgentAddressPage extends BasePage {
 
   override def pageUrl: String = "/lookup-address"
 
   override def pageTitle: String =
-    s"Find ${VendorOrCompanyNamePage.businessName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Find ${VendorAgentsNamePage.agentName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
-  val editPageTitleBusiness: String =
-    s"Enter ${VendorOrCompanyNamePage.businessName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+  val editPageTitleAgent: String =
+    s"Enter ${VendorAgentsNamePage.agentName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
-  val confirmPageTitleBusiness: String =
-    s"Review and confirm ${VendorOrCompanyNamePage.businessName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
-
-  def PageTitleIndividual: String =
-    s"Find ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
-
-  val editPageTitleIndividual: String =
-    s"Enter ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
-
-  val confirmPageTitleIndividual: String    =
-    s"Review and confirm ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
-  def enterPostCode(postCode: String): Unit = {
-    input(Locators.txtPostCode, postCode)
-    clickSubmitButton()
-  }
+  val confirmPageTitleAgent: String =
+    s"Review and confirm ${VendorAgentsNamePage.agentName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
   def clickAddressManually(): Unit = click(By.linkText(Locators.lnkAddrManually))
 
