@@ -25,4 +25,11 @@ object AboutTheTransactionPage extends BasePage {
   override def pageTitle: String =
     "What type of transaction is this? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
+  def conveyance: String = "#value_0"
+
+  def grantoflease: String = "#value_1"
+
+  def conveyancelease: String = "#value_2"
+
+  def other: String = "#value_3"
 }
