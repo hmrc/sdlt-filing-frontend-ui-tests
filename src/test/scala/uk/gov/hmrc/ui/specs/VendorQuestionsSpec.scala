@@ -125,11 +125,17 @@ class VendorQuestionsSpec
       VendorOrCompanyNamePage.input(By.id("name"), VendorOrCompanyNamePage.businessName)
       Then("User clicks on save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
-
-      Then("User navigates to Vendor Agent page")
-      VendorAgentPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/vendor-agent"
-      )
+      Given("User is on address look-up page")
+      VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.pageTitle)
+      When("User clicks on the link")
+      VendorPropertyAddress.clickAddressManually()
+      And("User enters the address manually")
+      VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.editPageTitleBusiness)
+      VendorPropertyAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      Then("User is on the Review screen")
+      VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.confirmPageTitleBusiness)
+      And("User clicks continue")
+      VendorPropertyAddress.clickContinueButton()
       Then("User should be on Vendor agent page")
       VendorAgentPage.verifyPageTitle(VendorAgentPage.pageTitle)
       Then("User select yes to vendor agent")
