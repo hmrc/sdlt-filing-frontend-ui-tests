@@ -26,5 +26,6 @@ object IndividualOrCompanyPage extends BasePage {
     "Who is making the purchase? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
   def individual: String = "#value_0"
-  def business: String   = "#value_1"
+
+  def business: String = "#value_1"
 }

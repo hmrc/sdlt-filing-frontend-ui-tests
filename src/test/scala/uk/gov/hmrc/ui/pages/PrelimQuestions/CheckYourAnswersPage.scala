@@ -18,9 +18,9 @@ package uk.gov.hmrc.ui.pages.PrelimQuestions
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
-import PropertyAddress.click
+import PropertyAddressPage.click
 
-object CYAPage extends BasePage {
+object CheckYourAnswersPage extends BasePage {
 
   override def pageUrl: String = "preliminary-questions/check-answers"
 
