@@ -25,4 +25,14 @@ object PurchasersNamePage extends BasePage {
   override def pageTitle: String =
     "What is the purchaser’s name? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
+  def pageTitleCompany: String =
+    "What is the company’s name? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+
+  def forename: String = "forename1"
+
+  def middlename: String = "forename2"
+
+  def surname: String = "name"
+
+  def companyName: String = "name"
 }
