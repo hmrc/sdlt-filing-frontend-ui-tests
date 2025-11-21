@@ -41,9 +41,7 @@ class VendorQuestionsSpec
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=123456"
-      )
+      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user should be navigated to the About the Vendor page")
@@ -82,9 +80,7 @@ class VendorQuestionsSpec
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=123456"
-      )
+      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user should be navigated to the About the Vendor page")
@@ -114,9 +110,7 @@ class VendorQuestionsSpec
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=no-vendor"
-      )
+      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrlNoVendor)
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user should be navigated to the About the Vendor page")

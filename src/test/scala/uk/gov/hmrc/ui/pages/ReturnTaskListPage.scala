@@ -18,9 +18,10 @@ package uk.gov.hmrc.ui.pages
 
 object ReturnTaskListPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/transaction-type"
+  override def pageUrl: String = "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=123456"
 
-  override def pageTitle: String =
-    "What type of transaction is this? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+  def pageUrlNoVendor: String = "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=no-vendor"
+
+  override def pageTitle: String = "returnTaskList - Stamp Taxes Online - GOV.UK"
 
 }
