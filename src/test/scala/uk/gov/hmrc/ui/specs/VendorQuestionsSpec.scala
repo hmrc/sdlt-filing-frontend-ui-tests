@@ -22,7 +22,8 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddressPage}
+import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yesRadioButton}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -159,6 +160,24 @@ class VendorQuestionsSpec
       VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.confirmPageTitleAgent)
       And("clicks the Confirm address button")
       VendorPropertyAddressPage.clickContinueButton()
+    }
+    Scenario("Remove the Vendor") {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation)
+      Then("the user should be navigated to the Return Task List page")
+      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrlNoVendor)
+      When("the user clicks on the 'Vendor Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
+      Then("the user should be navigated to the remove the Vendor page")
+      RemoveVendorPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/remove-vendor"
+      )
+      And("the user is on remove the vendor page")
+      RemoveVendorPage.verifyPageTitle(pageTitle)
+      Then("the user clicks on yes radio button")
+      RemoveVendorPage.radioButton(yesRadioButton)
+      And("the user clicks on save and continue button")
+      RemoveVendorPage.saveAndContinue()
     }
   }
 }
