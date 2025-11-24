@@ -38,7 +38,7 @@ class VendorQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Vendor Questions") {
-    Scenario("Complete the Vendor Questions user journey as a Business with prelim questions submitted stub data") {
+    Scenario("Complete the Vendor Questions user journey as a Company with prelim questions submitted stub data") {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Return Task List page")
@@ -47,14 +47,17 @@ class VendorQuestionsSpec
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user should be navigated to the About the Vendor page")
       AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
-      When("the user selects the 'A Business' radio button")
-      AboutTheVendorPage.radioButton(AboutTheVendorPage.business)
+      When("the user selects the 'A Company' radio button")
+      AboutTheVendorPage.radioButton(AboutTheVendorPage.company)
       And("clicks the Save and continue button")
       AboutTheVendorPage.saveAndContinue()
       Then("the user should be navigated to the Vendor or Company Name page")
-      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitle)
-      When("the user inputs their business name")
-      VendorOrCompanyNamePage.input(By.id("name"), VendorOrCompanyNamePage.businessName)
+      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitleCompany)
+      When("the user inputs their company name")
+      VendorOrCompanyNamePage.input(
+        By.id(VendorOrCompanyNamePage.companyNameInput),
+        VendorOrCompanyNamePage.companyName
+      )
       And("clicks the Save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
       Then("the user should be navigated to the Confirm Vendors Address page")
@@ -93,9 +96,9 @@ class VendorQuestionsSpec
       Then("the user should be navigated to the Vendor or Company Name page")
       AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitle)
       When("the user inputs their first name, middle name, and surname")
-      VendorOrCompanyNamePage.input(By.id("forename1"), VendorOrCompanyNamePage.forename)
-      VendorOrCompanyNamePage.input(By.id("forename2"), VendorOrCompanyNamePage.middlename)
-      VendorOrCompanyNamePage.input(By.id("name"), VendorOrCompanyNamePage.surname)
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.forenameInput), VendorOrCompanyNamePage.forename)
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.middlenameInput), VendorOrCompanyNamePage.middlename)
+      VendorOrCompanyNamePage.input(By.id(VendorOrCompanyNamePage.surnameInput), VendorOrCompanyNamePage.surname)
       And("clicks the Save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
       Then("the user should be navigated to the Confirm Vendors Address page")
@@ -116,14 +119,17 @@ class VendorQuestionsSpec
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user should be navigated to the About the Vendor page")
       AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
-      When("the user selects the 'A Business' radio button")
-      AboutTheVendorPage.radioButton(AboutTheVendorPage.business)
+      When("the user selects the 'A Company' radio button")
+      AboutTheVendorPage.radioButton(AboutTheVendorPage.company)
       And("clicks the Save and continue button")
       AboutTheVendorPage.saveAndContinue()
       Then("the user should be navigated to the Vendor or Company Name page")
-      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitle)
-      When("the user inputs their business name")
-      VendorOrCompanyNamePage.input(By.id("name"), VendorOrCompanyNamePage.businessName)
+      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitleCompany)
+      When("the user inputs their company name")
+      VendorOrCompanyNamePage.input(
+        By.id(VendorOrCompanyNamePage.companyNameInput),
+        VendorOrCompanyNamePage.companyName
+      )
       And("clicks the Save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
       Then("the user should be navigated to the Vendor Property Address page")

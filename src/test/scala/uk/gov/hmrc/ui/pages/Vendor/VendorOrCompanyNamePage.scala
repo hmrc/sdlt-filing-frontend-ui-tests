@@ -24,11 +24,21 @@ object VendorOrCompanyNamePage extends BasePage {
 
   override def pageTitle: String = "What is the vendor’s full name? – About the vendor - Stamp Taxes Online - GOV.UK"
 
+  def pageTitleCompany: String = "What is the company’s name? – About the vendor - Stamp Taxes Online - GOV.UK"
+
+  def forenameInput: String = "forename1"
+
   def forename: String = "Test firstName"
 
   def middlename: String = "MiddleName"
 
+  def middlenameInput: String = "forename2"
+
   def surname: String = "Test surname"
 
-  def businessName: String = "test Business"
+  def surnameInput: String = "name"
+
+  def companyNameInput: String = "name"
+
+  def companyName: String = "test Business"
 }
