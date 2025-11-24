@@ -84,14 +84,17 @@ class e2eSpec
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user should be navigated to the About the Vendor page")
       AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
-      When("the user selects the 'A Business' radio button")
-      AboutTheVendorPage.radioButton(AboutTheVendorPage.business)
+      When("the user selects the 'A Company' radio button")
+      AboutTheVendorPage.radioButton(AboutTheVendorPage.company)
       And("clicks the Save and continue button")
       AboutTheVendorPage.saveAndContinue()
       Then("the user should be navigated to the Vendor or Company Name page")
-      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitle)
-      When("the user inputs their business name")
-      VendorOrCompanyNamePage.input(By.id("name"), VendorOrCompanyNamePage.businessName)
+      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitleCompany)
+      When("the user inputs their company name")
+      VendorOrCompanyNamePage.input(
+        By.id(VendorOrCompanyNamePage.companyNameInput),
+        VendorOrCompanyNamePage.companyName
+      )
       And("clicks the Save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
       Then("the user should be navigated to the Confirm Vendors Address page")

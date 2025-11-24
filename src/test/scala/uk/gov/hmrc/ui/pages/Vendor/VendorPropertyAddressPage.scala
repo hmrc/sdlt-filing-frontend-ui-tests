@@ -24,13 +24,13 @@ object VendorPropertyAddressPage extends BasePage {
   override def pageUrl: String = "/lookup-address"
 
   override def pageTitle: String =
-    s"Find ${VendorOrCompanyNamePage.businessName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Find ${VendorOrCompanyNamePage.companyName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleBusiness: String =
-    s"Enter ${VendorOrCompanyNamePage.businessName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Enter ${VendorOrCompanyNamePage.companyName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleBusiness: String =
-    s"Review and confirm ${VendorOrCompanyNamePage.businessName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${VendorOrCompanyNamePage.companyName}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
 
   def PageTitleIndividual: String =
     s"Find ${VendorOrCompanyNamePage.surname}’s address - About the Vendor - Stamp Taxes Online - GOV.UK"
