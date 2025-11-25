@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yesRadioButton}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorOrCompanyNamePage, VendorPropertyAddressPage}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -45,6 +45,16 @@ class VendorQuestionsSpec
       ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
+      Then("the user should be navigated to the Vendor Overview page")
+      VendorOverviewPage.verifyPageTitle(VendorOverviewPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      VendorOverviewPage.radioButton(VendorOverviewPage.yesRadioButton)
+      And("clicks the Continue button")
+      VendorOverviewPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Before You Start page")
+      VendorBeforeYouStartPage.verifyPageTitle(VendorBeforeYouStartPage.pageTitle)
+      When("clicks the Continue button")
+      VendorBeforeYouStartPage.saveAndContinue()
       Then("the user should be navigated to the About the Vendor page")
       AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
       When("the user selects the 'A Company' radio button")
@@ -87,6 +97,16 @@ class VendorQuestionsSpec
       ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
+      Then("the user should be navigated to the Vendor Overview page")
+      VendorOverviewPage.verifyPageTitle(VendorOverviewPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      VendorOverviewPage.radioButton(VendorOverviewPage.yesRadioButton)
+      And("clicks the Continue button")
+      VendorOverviewPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Before You Start page")
+      VendorBeforeYouStartPage.verifyPageTitle(VendorBeforeYouStartPage.pageTitle)
+      When("clicks the Continue button")
+      VendorBeforeYouStartPage.saveAndContinue()
       Then("the user should be navigated to the About the Vendor page")
       AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
       When("the user selects the 'An Individual' radio button")
@@ -117,6 +137,10 @@ class VendorQuestionsSpec
       ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrlNoVendor)
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
+      Then("the user should be navigated to the Vendor Before You Start page")
+      VendorBeforeYouStartPage.verifyPageTitle(VendorBeforeYouStartPage.pageTitle)
+      When("clicks the Continue button")
+      VendorBeforeYouStartPage.saveAndContinue()
       Then("the user should be navigated to the About the Vendor page")
       AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
       When("the user selects the 'A Company' radio button")
@@ -167,7 +191,8 @@ class VendorQuestionsSpec
       And("clicks the Confirm address button")
       VendorPropertyAddressPage.clickContinueButton()
     }
-    Scenario("Remove the Vendor") {
+
+    Scenario("Remove the Vendor with no vendor stub data") {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Return Task List page")
