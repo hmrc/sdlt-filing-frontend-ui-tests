@@ -16,7 +16,9 @@
 
 package uk.gov.hmrc.ui.pages.Vendor
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
+import uk.gov.hmrc.ui.pages.PrelimQuestions.CheckYourAnswersPage.click
 
 object VendorOverviewPage extends BasePage {
 
@@ -27,4 +29,9 @@ object VendorOverviewPage extends BasePage {
   def yesRadioButton: String = "#value"
 
   def noRadioButton: String = "#value-no"
+
+  val VendorRemoveLink: String =
+    "//a[@href='/stamp-duty-land-tax-filing/about-the-vendor/vendor-overview/remove-vendor/VEN-REF-001']"
+
+  def clickRemoveVendor(): Unit = click(By.xpath(VendorRemoveLink))
 }
