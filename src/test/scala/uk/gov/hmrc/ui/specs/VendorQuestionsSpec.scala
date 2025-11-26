@@ -47,6 +47,16 @@ class VendorQuestionsSpec
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user should be navigated to the Vendor Overview page")
       VendorOverviewPage.verifyPageTitle(VendorOverviewPage.pageTitle)
+      When("the user selects the Remove link to remove a vendor")
+      VendorOverviewPage.clickRemoveVendor()
+      And("the user is on remove the vendor page")
+      RemoveVendorPage.verifyPageTitle(pageTitle)
+      Then("the user clicks on yes radio button")
+      RemoveVendorPage.radioButton(yesRadioButton)
+      And("the user clicks on save and continue button")
+      RemoveVendorPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Overview page")
+      VendorOverviewPage.verifyPageTitle(VendorOverviewPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       VendorOverviewPage.radioButton(VendorOverviewPage.yesRadioButton)
       And("clicks the Continue button")
@@ -204,23 +214,5 @@ class VendorQuestionsSpec
       DoYouWantToAddContactDetailsPage.saveAndContinue()
     }
 
-    Scenario("Remove the Vendor with no vendor stub data") {
-      Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      Then("the user should be navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrlNoVendor)
-      When("the user clicks on the 'Vendor Questions' link")
-      AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
-      Then("the user should be navigated to the remove the Vendor page")
-      RemoveVendorPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/remove-vendor"
-      )
-      And("the user is on remove the vendor page")
-      RemoveVendorPage.verifyPageTitle(pageTitle)
-      Then("the user clicks on yes radio button")
-      RemoveVendorPage.radioButton(yesRadioButton)
-      And("the user clicks on save and continue button")
-      RemoveVendorPage.saveAndContinue()
-    }
   }
 }
