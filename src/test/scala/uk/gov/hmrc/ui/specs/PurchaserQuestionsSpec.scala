@@ -1,0 +1,156 @@
+/*
+ * Copyright 2025 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package uk.gov.hmrc.ui.specs
+
+import org.openqa.selenium.By
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.verbs.ShouldVerb
+import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
+import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
+import uk.gov.hmrc.ui.pages.*
+import uk.gov.hmrc.ui.pages.Vendor.*
+import uk.gov.hmrc.ui.pages.purchaser.{PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
+import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+
+class PurchaserQuestionsSpec
+    extends AnyFeatureSpec
+    with BaseSpec
+    with GivenWhenThen
+    with ShouldVerb
+    with BeforeAndAfterAll
+    with BeforeAndAfterEach
+    with Browser
+    with ScreenshotOnFailure {
+
+  Feature("SDLT Filing Frontend Purchaser Questions") {
+    Scenario(
+      "Complete the Purchaser Questions user journey as a Individual with prelim questions submitted stub data incomplete purchaser"
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
+      When("the user clicks on the 'Purchaser Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user should be navigated to the Purchaser Before you start page page")
+      PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
+      And("clicks the Continue button")
+      PurchaserBeforeYouStartPage.saveAndContinue()
+      Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
+      PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
+      And("the user clicks no")
+      PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.no)
+      PurchaserConfirmNameOfPurchaserPage.saveAndContinue()
+      Then("the user should be on who is the purchaser page")
+      PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
+      And("the user clicks individual")
+      PurchaserWhoIsMakingThePurchasePage.radioButton(PurchaserWhoIsMakingThePurchasePage.individual)
+      PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
+      Then("the user should be on the What is the purchaser’s name? page")
+      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      And("the user inputs all fields")
+      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.forename1Id), "forename1")
+      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.forename2Id), "forename2")
+      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.surnameId), "surname")
+      PurchaserNameOfPurchaserPage.saveAndContinue()
+      Then("the user should be redirected to address lookup")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitle)
+      When("the user clicks on the 'Enter the address manually' link")
+      PurchaserAddressPage.clickAddressManually()
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitle)
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitle)
+      PurchaserAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitle)
+      And("clicks the Confirm address button")
+      PurchaserAddressPage.clickContinueButton()
+    }
+
+    Scenario(
+      "Complete the Purchaser Questions user journey as a Company with prelim questions submitted stub data incomplete purchaser"
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
+      When("the user clicks on the 'Purchaser Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user should be navigated to the Purchaser Before you start page page")
+      PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
+      And("clicks the Continue button")
+      PurchaserBeforeYouStartPage.saveAndContinue()
+      Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
+      PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
+      And("the user clicks no")
+      PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.no)
+      PurchaserConfirmNameOfPurchaserPage.saveAndContinue()
+      Then("the user should be on who is the purchaser page")
+      PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
+      And("the user clicks individual")
+      PurchaserWhoIsMakingThePurchasePage.radioButton(PurchaserWhoIsMakingThePurchasePage.company)
+      PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
+      Then("the user should be on the What is the purchaser’s name? page")
+      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      And("the user inputs company name")
+      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.companyId), "Company Name")
+      PurchaserNameOfPurchaserPage.saveAndContinue()
+      Then("the user should be redirected to address lookup")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompany)
+      When("the user clicks on the 'Enter the address manually' link")
+      PurchaserAddressPage.clickAddressManually()
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitleCompany)
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitleCompany)
+      PurchaserAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompany)
+      And("clicks the Confirm address button")
+      PurchaserAddressPage.clickContinueButton()
+    }
+
+    Scenario(
+      "Complete the Purchaser Questions user journey as a Company with prelim questions submitted stub data incomplete purchaser yes to stub data"
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
+      When("the user clicks on the 'Purchaser Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user should be navigated to the Purchaser Before you start page page")
+      PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
+      And("clicks the Continue button")
+      PurchaserBeforeYouStartPage.saveAndContinue()
+      Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
+      PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
+      And("the user clicks no")
+      PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.yes)
+      PurchaserConfirmNameOfPurchaserPage.saveAndContinue()
+      Then("the user should be redirected to address lookup")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompanyStub)
+      When("the user clicks on the 'Enter the address manually' link")
+      PurchaserAddressPage.clickAddressManually()
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitleCompanyStub)
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitleCompanyStub)
+      PurchaserAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompanyStub)
+      And("clicks the Confirm address button")
+      PurchaserAddressPage.clickContinueButton()
+    }
+  }
+}

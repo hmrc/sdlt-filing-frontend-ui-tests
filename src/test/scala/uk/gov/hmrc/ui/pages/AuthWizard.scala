@@ -55,8 +55,8 @@ object AuthWizard extends BasePage {
             Env.baseUrl.equals(
               s"http://localhost:9949/auth-login-stub/gg-sign-in?continue=http://localhost:10910/stamp-duty-land-tax-filing"
             )
-          ) s"http://localhost:10910/stamp-duty-land-tax-filing?returnId=$id"
-          else s"/stamp-duty-land-tax-filing?returnId=$id"
+          ) s"http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=$id"
+          else s"/stamp-duty-land-tax-filing/returnTaskList?returnId=$id"
         Redirect
       case _        =>
         val Redirect =
