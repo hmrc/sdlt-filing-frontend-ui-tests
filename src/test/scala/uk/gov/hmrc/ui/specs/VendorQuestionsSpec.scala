@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yesRadioButton}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -190,6 +190,18 @@ class VendorQuestionsSpec
       VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.confirmPageTitleAgent)
       And("clicks the Confirm address button")
       VendorPropertyAddressPage.clickContinueButton()
+
+      // The below 2 steps to be removed once the navigation is ready
+      When("the user navigates to Do you want to add contact details for agent page")
+      DoYouWantToAddContactDetailsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/add-agent-contact-details"
+      )
+      Then("user is on the Do you want to add contact details for agent page")
+      DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
+      And("user selects Yes radio button")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
+      And("user clicks Save and Continue")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
     }
 
     Scenario("Remove the Vendor with no vendor stub data") {
