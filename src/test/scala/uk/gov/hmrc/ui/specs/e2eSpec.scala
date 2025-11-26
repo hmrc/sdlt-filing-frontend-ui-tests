@@ -40,7 +40,7 @@ class e2eSpec
   Feature("SDLT Filing Frontend end to end") {
     Scenario("Complete the end to end flow of Filing Journey") {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, Some("1234567890"))
+      AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
       BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
       And("clicks the Save and continue button")
