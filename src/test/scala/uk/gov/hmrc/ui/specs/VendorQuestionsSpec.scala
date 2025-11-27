@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yesRadioButton}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -140,7 +140,9 @@ class VendorQuestionsSpec
 
     }
 
-    Scenario("Complete the Vendor Questions user journey for Vendor Agent with no vendor stub data") {
+    Scenario(
+      "Complete the Vendor Questions user journey for Vendor Agent with a reference number and no vendor stub data"
+    ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Return Task List page")
@@ -200,32 +202,107 @@ class VendorQuestionsSpec
       VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.confirmPageTitleAgent)
       And("clicks the Confirm address button")
       VendorPropertyAddressPage.clickContinueButton()
-
-      // The below 2 steps to be removed once the navigation is ready
-      /*When("the user navigates to Do you want to add contact details for agent page")
-      DoYouWantToAddContactDetailsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/add-agent-contact-details"
-      )
       Then("user is on the Do you want to add contact details for agent page")
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
       And("user selects Yes radio button")
       DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
-      And("user clicks Save and Continue")
-      DoYouWantToAddContactDetailsPage.saveAndContinue()*/
-      // this code is replaced
-      Then("User navigates to Agent Reference Number Page")
-      AgentReferenceNumberPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/enter-agent-reference-number"
+//      Uncomment below 2 steps once navigation is ready
+//      And("user clicks Save and Continue")
+//      DoYouWantToAddContactDetailsPage.saveAndContinue()
+//      The below 2 steps to be removed once the navigation is ready
+      When("the user navigates to Do you want to add contact details for agent page")
+      DoYouWantToAddContactDetailsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/add-agent-reference-number"
       )
-      AgentReferenceNumberPage.verifyPageTitle(AgentReferenceNumberPage.pageTitle)
-      And("the user enters agent reference number")
-      AgentReferenceNumberPage.input(
-        By.id(AgentReferenceNumberPage.agentReference),
-        AgentReferenceNumberPage.agentReferenceNumber
-      )
+      Then("the user is on the Agent Reference Page")
+      DoYouKnowYourAgentReferencePage.verifyPageTitle(DoYouKnowYourAgentReferencePage.pageTitle)
+      And("user selects yes button")
+      DoYouKnowYourAgentReferencePage.radioButton(DoYouKnowYourAgentReferencePage.yes)
+      And("user clicks save and continue")
+      DoYouKnowYourAgentReferencePage.saveAndContinue()
+    }
 
-      And("the user clicks on save and continue button")
-      AgentReferenceNumberPage.saveAndContinue()
+    Scenario(
+      "Complete the Vendor Questions user journey for Vendor Agent without a reference number and no vendor stub data"
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation)
+      Then("the user should be navigated to the Return Task List page")
+      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrlNoVendor)
+      When("the user clicks on the 'Vendor Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
+      Then("the user should be navigated to the Vendor Before You Start page")
+      VendorBeforeYouStartPage.verifyPageTitle(VendorBeforeYouStartPage.pageTitle)
+      When("clicks the Continue button")
+      VendorBeforeYouStartPage.saveAndContinue()
+      Then("the user should be navigated to the About the Vendor page")
+      AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
+      When("the user selects the 'A Company' radio button")
+      AboutTheVendorPage.radioButton(AboutTheVendorPage.company)
+      And("clicks the Save and continue button")
+      AboutTheVendorPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor or Company Name page")
+      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitleCompany)
+      When("the user inputs their company name")
+      VendorOrCompanyNamePage.input(
+        By.id(VendorOrCompanyNamePage.companyNameInput),
+        VendorOrCompanyNamePage.companyName
+      )
+      And("clicks the Save and continue button")
+      VendorOrCompanyNamePage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Property Address page")
+      VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.pageTitle)
+      When("the user clicks on the 'Enter the address manually' link")
+      VendorPropertyAddressPage.clickAddressManually()
+      And("enters their address manually")
+      VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.editPageTitleBusiness)
+      VendorPropertyAddressPage.enterAddressManually("523", "AGC", "TE11 1TS")
+      Then("the user should be navigated to the Vendor Property Address page to 'Review and confirm the address'")
+      VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.confirmPageTitleBusiness)
+      And("clicks the Confirm address button")
+      VendorPropertyAddressPage.clickContinueButton()
+      Then("the user should be navigated to the Vendor Agent page")
+      VendorAgentPage.verifyPageTitle(VendorAgentPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      VendorAgentPage.radioButton(VendorAgentPage.yesRadioButton)
+      And("clicks the Save and continue button")
+      VendorAgentPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Agents Name page")
+      VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
+      When("the user inputs their Vendor Agent's name")
+      VendorAgentsNamePage.input(By.id("agentName"), VendorAgentsNamePage.agentName)
+      And("clicks the Save and continue button")
+      VendorAgentsNamePage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Agent Address page")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.pageTitle)
+      When("the user clicks on the 'Enter the address manually' link")
+      VendorAgentAddressPage.clickAddressManually()
+      And("enters their address manually")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.editPageTitleAgent)
+      VendorAgentAddressPage.enterAddressManually("523", "AGC", "TE12 1TS")
+      Then("the user should be navigated to the Vendor Agent Address page to 'Review and confirm the address'")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.confirmPageTitleAgent)
+      And("clicks the Confirm address button")
+      VendorPropertyAddressPage.clickContinueButton()
+      Then("user is on the Do you want to add contact details for agent page")
+      DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
+      And("user selects Yes radio button")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
+//    Uncomment below 2 steps once navigation is ready
+//      And("user clicks Save and Continue")
+//      DoYouWantToAddContactDetailsPage.saveAndContinue()
+//    The below 2 steps to be removed once the navigation is ready
+      When("the user navigates to Do you want to add contact details for agent page")
+      DoYouWantToAddContactDetailsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/add-agent-reference-number"
+      )
+      Then("the user is on the Agent Reference Page")
+      DoYouKnowYourAgentReferencePage.verifyPageTitle(DoYouKnowYourAgentReferencePage.pageTitle)
+      And("user selects yes button")
+      DoYouKnowYourAgentReferencePage.radioButton(DoYouKnowYourAgentReferencePage.no)
+      And("user clicks save and continue")
+      DoYouKnowYourAgentReferencePage.saveAndContinue()
+
     }
 
   }
