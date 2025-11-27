@@ -304,5 +304,6 @@ class VendorQuestionsSpec
       DoYouKnowYourAgentReferencePage.saveAndContinue()
 
     }
+
   }
 }
