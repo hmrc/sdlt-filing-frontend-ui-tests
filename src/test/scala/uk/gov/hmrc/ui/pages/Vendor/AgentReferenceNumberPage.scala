@@ -23,10 +23,10 @@ object AgentReferenceNumberPage extends BasePage {
   override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendor/enter-agent-reference-number"
 
   override def pageTitle: String =
-    "What is the agent’s reference for this return? – About the vendor – Stamp Taxes Online – GOV.UK"
+    "What is the agent’s reference for this return? - About the vendor - Stamp Taxes Online - GOV.UK"
 
-  def agentReference: String = "#agentReference"
+  def agentReference: String = "agentReference"
 
-  def agentReferenceNumber: String = "Agent&$001"
+  def agentReferenceNumber: String = "Agent_001"
 
 }
