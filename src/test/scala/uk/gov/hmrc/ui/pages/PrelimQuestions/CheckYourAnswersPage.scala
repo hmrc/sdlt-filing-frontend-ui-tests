@@ -28,13 +28,13 @@ object CheckYourAnswersPage extends BasePage {
     "Check your answers – Preliminary-questions - Stamp Taxes Online - GOV.UK"
 
   val purchaserTypeChange =
-    "a[href ='/stamp-duty-land-tax-filing/change/preliminary-questions/who-is-making-the-purchase']"
+    "a[href ='/stamp-duty-land-tax-filing/preliminary-questions/who-is-making-the-purchase/change']"
 
   val purchaserNameChange = "a[href ='/stamp-duty-land-tax-filing/preliminary-questions/purchaser-name/change']"
 
   val propertyAddressChange = "a[href ='/stamp-duty-land-tax-filing/preliminary-questions/address?changeRoute=change']"
 
-  val transactionTypeChange = "a[href ='/stamp-duty-land-tax-filing/change/preliminary-questions/transaction-type']"
+  val transactionTypeChange = "a[href ='/stamp-duty-land-tax-filing/preliminary-questions/transaction-type/change']"
 
   def clickPurchaserNameChange(): Unit = click(By.cssSelector(purchaserNameChange))
 
