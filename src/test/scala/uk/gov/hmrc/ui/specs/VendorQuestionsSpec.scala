@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yesRadioButton}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsContactDetailsPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -206,14 +206,22 @@ class VendorQuestionsSpec
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
       And("user selects Yes radio button")
       DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
-//      Uncomment below 2 steps once navigation is ready
-//      And("user clicks Save and Continue")
-//      DoYouWantToAddContactDetailsPage.saveAndContinue()
-//      The below 2 steps to be removed once the navigation is ready
-      When("the user navigates to Do you want to add contact details for agent page")
-      DoYouWantToAddContactDetailsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/add-agent-reference-number"
+      And("user clicks Save and Continue")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Agent's Contact Details page")
+      VendorAgentsContactDetailsPage.verifyPageTitle(VendorAgentsContactDetailsPage.pageTitle)
+      When("the user inputs their Vendor Agent's phone number")
+      VendorAgentsContactDetailsPage.input(
+        By.id(VendorAgentsContactDetailsPage.agentPhoneNumber),
+        VendorAgentsContactDetailsPage.agentPhoneNumberInput
       )
+      And("and inputs their Vendor Agent's email address")
+      VendorAgentsContactDetailsPage.input(
+        By.id(VendorAgentsContactDetailsPage.agentEmailAddress),
+        VendorAgentsContactDetailsPage.agentEmailAddressInput
+      )
+      And("clicks the Save and continue button")
+      VendorAgentsContactDetailsPage.saveAndContinue()
       Then("the user is on the Agent Reference Page")
       DoYouKnowYourAgentReferencePage.verifyPageTitle(DoYouKnowYourAgentReferencePage.pageTitle)
       And("user selects yes button")
@@ -296,24 +304,11 @@ class VendorQuestionsSpec
       VendorPropertyAddressPage.clickContinueButton()
       Then("user is on the Do you want to add contact details for agent page")
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
-      And("user selects Yes radio button")
+      And("user selects No radio button")
       DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
-//    Uncomment below 2 steps once navigation is ready
-//      And("user clicks Save and Continue")
-//      DoYouWantToAddContactDetailsPage.saveAndContinue()
-//    The below 2 steps to be removed once the navigation is ready
-      When("the user navigates to Do you want to add contact details for agent page")
-      DoYouWantToAddContactDetailsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/add-agent-reference-number"
-      )
-      Then("the user is on the Agent Reference Page")
-      DoYouKnowYourAgentReferencePage.verifyPageTitle(DoYouKnowYourAgentReferencePage.pageTitle)
-      And("user selects yes button")
-      DoYouKnowYourAgentReferencePage.radioButton(DoYouKnowYourAgentReferencePage.no)
-      And("user clicks save and continue")
-      DoYouKnowYourAgentReferencePage.saveAndContinue()
+      And("user clicks Save and Continue")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
 
     }
-
   }
 }
