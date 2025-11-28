@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yesRadioButton}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -220,6 +220,16 @@ class VendorQuestionsSpec
       DoYouKnowYourAgentReferencePage.radioButton(DoYouKnowYourAgentReferencePage.yes)
       And("user clicks save and continue")
       DoYouKnowYourAgentReferencePage.saveAndContinue()
+      Then("User navigates to Agent Reference Number Page")
+      AgentReferenceNumberPage.verifyPageTitle(AgentReferenceNumberPage.pageTitle)
+      And("the user enters agent reference number")
+      AgentReferenceNumberPage.input(
+        By.id(AgentReferenceNumberPage.agentReference),
+        AgentReferenceNumberPage.agentReferenceNumber
+      )
+      And("the user clicks on save and continue button")
+      AgentReferenceNumberPage.saveAndContinue()
+
     }
 
     Scenario(
