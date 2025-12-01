@@ -306,14 +306,10 @@ class VendorQuestionsSpec
       VendorPropertyAddressPage.clickContinueButton()
       Then("user is on the Do you want to add contact details for agent page")
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
-//      And("user selects No radio button")
-//      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
-//      And("user clicks Save and Continue")
-//      DoYouWantToAddContactDetailsPage.saveAndContinue()
-      When("user navigated to Agent Reference Page")
-      DoYouKnowYourAgentReferencePage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendor/add-agent-reference-number"
-      )
+      And("user selects No radio button")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
+      And("user clicks Save and Continue")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
       Then("the user is on the Agent Reference Page")
       DoYouKnowYourAgentReferencePage.verifyPageTitle(DoYouKnowYourAgentReferencePage.pageTitle)
       And("user selects yes button")
