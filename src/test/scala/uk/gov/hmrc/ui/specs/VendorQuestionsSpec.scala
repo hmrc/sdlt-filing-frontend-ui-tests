@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yesRadioButton}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsContactDetailsPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
+import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsContactDetailsPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorCheckYourAnswersPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -237,6 +237,8 @@ class VendorQuestionsSpec
       )
       And("the user clicks on save and continue button")
       AgentReferenceNumberPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Check Your Answers page")
+      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
 
     }
 
@@ -306,6 +308,54 @@ class VendorQuestionsSpec
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
       And("user selects No radio button")
       DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
+      And("user clicks Save and Continue")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
+      Then("the user is on the Agent Reference Page")
+      DoYouKnowYourAgentReferencePage.verifyPageTitle(DoYouKnowYourAgentReferencePage.pageTitle)
+      And("user selects yes button")
+      DoYouKnowYourAgentReferencePage.radioButton(DoYouKnowYourAgentReferencePage.no)
+      And("user clicks save and continue")
+      DoYouKnowYourAgentReferencePage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Check Your Answers page")
+      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
+      When("the user clicks the 'Change' link for Vendor type")
+      VendorCheckYourAnswersPage.clickVendorTypeChange()
+      Then("the user should be navigated to who is the vendor page")
+      AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
+      When("the user selects indivdual")
+      AboutTheVendorPage.radioButton(AboutTheVendorPage.individual)
+      And("clicks the Save and continue button")
+      AboutTheVendorPage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Check Your Answers page")
+      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
+      When("the user clicks the 'Change' link for Vendor Name")
+      VendorCheckYourAnswersPage.clickVendorNameChange()
+      Then("the user should be navigated to Vendor or Company name page")
+      VendorOrCompanyNamePage.verifyPageTitle(VendorOrCompanyNamePage.pageTitle)
+      When("the user changes the surname")
+      VendorOrCompanyNamePage.input(
+        By.id(VendorOrCompanyNamePage.surnameInput),
+        VendorOrCompanyNamePage.surname
+      )
+      And("clicks the Save and continue button")
+      VendorOrCompanyNamePage.saveAndContinue()
+      Then("the user should be navigated to the Vendor Check Your Answers page")
+      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
+      When("the user clicks the 'Change' link for Vendor address")
+      VendorCheckYourAnswersPage.clickVendorAddressChange()
+      Then("the user should be navigated to the Vendor Address page")
+      VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.PageTitleIndividual)
+      When("the user clicks on the 'Enter the address manually' link")
+      VendorPropertyAddressPage.clickAddressManually()
+      And("enters their address manually")
+      VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.editPageTitleIndividual)
+      VendorPropertyAddressPage.enterAddressManually("123", "TEST", "ZZ11 1ZZ")
+      Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
+      VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.confirmPageTitleIndividual)
+      And("clicks the Confirm address button")
+      VendorPropertyAddressPage.clickContinueButton()
+      Then("the user should be navigated to the Check Your Answers page")
+      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
       And("user clicks Save and Continue")
       DoYouWantToAddContactDetailsPage.saveAndContinue()
 
