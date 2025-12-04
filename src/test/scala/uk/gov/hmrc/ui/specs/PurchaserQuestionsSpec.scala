@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserWhoIsMakingThePurchasePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -151,6 +151,53 @@ class PurchaserQuestionsSpec
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompanyStub)
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
+    }
+
+    Scenario(
+      "Complete the Purchaser Questions user journey as a Company with prelim questions submitted stub data and full purchaser"
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))
+      When("the user clicks on the 'Purchaser Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user should be navigated to the Purchaser Before you start page page")
+      PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
+      And("clicks the Continue button")
+      PurchaserBeforeYouStartPage.saveAndContinue()
+      Then("the user should be on who is the purchaser page")
+      PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
+      And("the user clicks individual")
+      PurchaserWhoIsMakingThePurchasePage.radioButton(PurchaserWhoIsMakingThePurchasePage.company)
+      PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
+      Then("the user should be on the What is the purchaser’s name? page")
+      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      And("the user inputs company name")
+      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.companyId), "Company Name")
+      PurchaserNameOfPurchaserPage.saveAndContinue()
+      Then("the user should be redirected to address lookup")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompany)
+      When("the user clicks on the 'Enter the address manually' link")
+      PurchaserAddressPage.clickAddressManually()
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitleCompany)
+      And("enters their address manually")
+      PurchaserAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompany)
+      And("clicks the Confirm address button")
+      PurchaserAddressPage.clickContinueButton()
+//    The below 2 lines to be removed once the navigation is ready
+      When("the user navigates to the Does Purchaser have NI Page")
+      DoesPurchaserHaveNI.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/does-purchaser-have-ni"
+      )
+      Then("the user lands on to the Does Purchaser have NI page")
+      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      And("user selects Yes on the page")
+      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
+      And("the user click Save and Continue")
+      DoesPurchaserHaveNI.saveAndContinue()
+
     }
   }
 }
