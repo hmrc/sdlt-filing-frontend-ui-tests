@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -197,6 +197,15 @@ class PurchaserQuestionsSpec
       DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
       And("the user click Save and Continue")
       DoesPurchaserHaveNI.saveAndContinue()
+      Then("the user navigates to What is Purchaser's National Insurance Page")
+      PurchaserNationalinsuranceNumberPage.verifyPageTitle(PurchaserNationalinsuranceNumberPage.pageTitle)
+      And("User enter a valid National Insurance Number")
+      PurchaserNationalinsuranceNumberPage.input(
+        By.id(PurchaserNationalinsuranceNumberPage.Nino),
+        PurchaserNationalinsuranceNumberPage.NinoValue
+      )
+      And("the user click Save and Continue")
+      PurchaserNationalinsuranceNumberPage.saveAndContinue()
 
     }
   }
