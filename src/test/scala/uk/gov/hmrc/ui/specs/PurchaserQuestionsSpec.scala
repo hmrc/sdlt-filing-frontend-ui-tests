@@ -79,8 +79,8 @@ class PurchaserQuestionsSpec
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitle)
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
-      //user should be navigated to Do you want to add phone number?
-      //user select no and continue
+      // user should be navigated to Do you want to add phone number?
+      // user select no and continue
       //    The below 2 lines to be removed once the navigation is ready
       When("the user navigates to the Does Purchaser have NI Page")
       DoesPurchaserHaveNI.navigateToPage(
@@ -92,9 +92,9 @@ class PurchaserQuestionsSpec
       DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
       And("the user click Save and Continue")
       DoesPurchaserHaveNI.saveAndContinue()
-      //User should be navigated to What is purchaser National Insurance Number page
-      //User enters NI number and continue
-      //User should be navigated to What is purchaser Date of Birth? page
+      // User should be navigated to What is purchaser National Insurance Number page
+      // User enters NI number and continue
+      // User should be navigated to What is purchaser Date of Birth? page
       // User enters DOB and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
@@ -143,20 +143,20 @@ class PurchaserQuestionsSpec
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitle)
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
-      //Scenario to cover individual purchaser without NI number
-      //user should be navigated to Do you want to add phone number?
-      //user select no and continue
-      //user should be navigated to Does purchaser have NI page
-      //User select no and continue
-      //User should be navigated to  Provide a form of ID for purchaser page
-      //User enters ID details and continue
+      // Scenario to cover individual purchaser without NI number
+      // user should be navigated to Do you want to add phone number?
+      // user select no and continue
+      // user should be navigated to Does purchaser have NI page
+      // User select no and continue
+      // User should be navigated to  Provide a form of ID for purchaser page
+      // User enters ID details and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
     }
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with prelim questions submitted stub data incomplete purchaser"
+      "Complete the Purchaser Questions user journey as a Company with VAT ID and with prelim questions submitted stub data incomplete purchaser"
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
@@ -194,12 +194,12 @@ class PurchaserQuestionsSpec
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompany)
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
-      //user should be navigated to Do you want to add phone number?
-      //user select no and continue
-       //User should be navigated to "select ID type for purchaser page
+      // user should be navigated to Do you want to add phone number?
+      // user select no and continue
+      // User should be navigated to "select ID type for purchaser page
       // User selects VAT ID type and continue
-      //user navigates to enter VAT number page
-      //user enters VAT number and continue
+      // user navigates to enter VAT number page
+      // user enters VAT number and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
@@ -208,7 +208,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with prelim questions submitted stub data incomplete purchaser yes to stub data"
+      "Complete the Purchaser Questions user journey as a Company with UTR ID and with prelim questions submitted stub data incomplete purchaser yes to stub data"
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
@@ -236,12 +236,12 @@ class PurchaserQuestionsSpec
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompanyStub)
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
-      //user should be navigated to Do you want to add phone number?
-      //user select no and continue
-      //User should be navigated to "select ID type for purchaser page
+      // user should be navigated to Do you want to add phone number?
+      // user select no and continue
+      // User should be navigated to "select ID type for purchaser page
       // User selects UTR ID type and continue
-      //user navigates to enter UTR details page
-      //user enters UTR details and continue
+      // user navigates to enter UTR details page
+      // user enters UTR details and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
@@ -249,7 +249,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with prelim questions submitted stub data and full purchaser"
+      "Complete the Purchaser Questions user journey as a Company with partnership UTR ID with prelim questions submitted stub data and full purchaser"
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))
@@ -281,58 +281,58 @@ class PurchaserQuestionsSpec
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompany)
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
-      //user should be navigated to Do you want to add phone number?
-      //user select no and continue
-      //User should be navigated to "select ID type for purchaser page
+      // user should be navigated to Do you want to add phone number?
+      // user select no and continue
+      // User should be navigated to "select ID type for purchaser page
       // User selects partnership UTR ID type and continue
-      //user navigates to enter partnership UTR details page
-      //user enters partnership UTR number and continue
+      // user navigates to enter partnership UTR details page
+      // user enters partnership UTR number and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
-
-      Scenario(
-        "Complete the Purchaser Questions user journey as a Company with prelim questions submitted stub data and full purchaser"
-      ) {
-        Given("the user logs in through the Authority Wizard page")
-        AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))
-        When("the user clicks on the 'Purchaser Questions' link")
-        AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
-        Then("the user should be navigated to the Purchaser Before you start page page")
-        PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
-        And("clicks the Continue button")
-        PurchaserBeforeYouStartPage.saveAndContinue()
-        Then("the user should be on who is the purchaser page")
-        PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
-        And("the user clicks company")
-        PurchaserWhoIsMakingThePurchasePage.radioButton(PurchaserWhoIsMakingThePurchasePage.company)
-        PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
-        Then("the user should be on the What is the purchaser’s name? page")
-        PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
-        And("the user inputs company name")
-        PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.companyId), "Company Name")
-        PurchaserNameOfPurchaserPage.saveAndContinue()
-        Then("the user should be redirected to address lookup")
-        PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompany)
-        When("the user clicks on the 'Enter the address manually' link")
-        PurchaserAddressPage.clickAddressManually()
-        And("enters their address manually")
-        PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitleCompany)
-        And("enters their address manually")
-        PurchaserAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
-        Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
-        PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompany)
-        And("clicks the Confirm address button")
-        PurchaserAddressPage.clickContinueButton()
-        //user should be navigated to Do you want to add phone number?
-        //user select yes and continue
-        //User should be navigated to "enter phone number for purchaser page
-        // User enters phone number and continue
-        // User should be navigated to "Is purchaser acting as trustee page
-        // User selects no or yes and continue
-        // User should be navigated to "Are purchaser and vendor connected page
-        // User selects no or yes and continue
+    }
+    Scenario(
+      "Complete the Purchaser Questions user journey as a Company with phone number details and prelim questions submitted stub data and full purchaser"
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))
+      When("the user clicks on the 'Purchaser Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user should be navigated to the Purchaser Before you start page page")
+      PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
+      And("clicks the Continue button")
+      PurchaserBeforeYouStartPage.saveAndContinue()
+      Then("the user should be on who is the purchaser page")
+      PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
+      And("the user clicks company")
+      PurchaserWhoIsMakingThePurchasePage.radioButton(PurchaserWhoIsMakingThePurchasePage.company)
+      PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
+      Then("the user should be on the What is the purchaser’s name? page")
+      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      And("the user inputs company name")
+      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.companyId), "Company Name")
+      PurchaserNameOfPurchaserPage.saveAndContinue()
+      Then("the user should be redirected to address lookup")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompany)
+      When("the user clicks on the 'Enter the address manually' link")
+      PurchaserAddressPage.clickAddressManually()
+      And("enters their address manually")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitleCompany)
+      And("enters their address manually")
+      PurchaserAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitleCompany)
+      And("clicks the Confirm address button")
+      PurchaserAddressPage.clickContinueButton()
+      // user should be navigated to Do you want to add phone number?
+      // user select yes and continue
+      // User should be navigated to "enter phone number for purchaser page
+      // User enters phone number and continue
+      // User should be navigated to "Is purchaser acting as trustee page
+      // User selects no or yes and continue
+      // User should be navigated to "Are purchaser and vendor connected page
+      // User selects no or yes and continue
 
     }
   }
