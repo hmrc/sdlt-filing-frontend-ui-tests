@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage, VATRegistrationNumberPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -205,7 +205,16 @@ class PurchaserQuestionsSpec
       // user select no and continue
       // User should be navigated to "select ID type for purchaser page
       // User selects VAT ID type and continue
-      // user navigates to enter VAT number page
+      Then("the user navigates to VAT Registration number page")
+      DoesPurchaserHaveNI.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/vat-registration-number"
+      )
+      VATRegistrationNumberPage.verifyPageTitle(VATRegistrationNumberPage.pageTitle)
+
+      And("user enters VAT registration number")
+      VATRegistrationNumberPage.input(By.id(VATRegistrationNumberPage.vat), "VATNumber")
+      And("clicks the Continue button")
+      VATRegistrationNumberPage.saveAndContinue()
       // user enters VAT number and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
