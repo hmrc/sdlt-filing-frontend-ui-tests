@@ -73,8 +73,18 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     element.sendKeys(value)
   }
 
-  /** Method to input values into month and year fields */
-  def inputMonthAndYear(monthSelector: By, yearSelector: By, monthValue: String, yearValue: String): Unit = {
+  /** Method to input values into date, month and year fields */
+  def inputDateMonthAndYear(
+    dateSelector: By,
+    monthSelector: By,
+    yearSelector: By,
+    dateValue: String,
+    monthValue: String,
+    yearValue: String
+  ): Unit = {
+    val dateElement  = waitForVisibilityOfElement(dateSelector)
+    dateElement.clear()
+    dateElement.sendKeys(dateValue)
     val monthElement = waitForVisibilityOfElement(monthSelector)
     monthElement.clear()
     monthElement.sendKeys(monthValue)
