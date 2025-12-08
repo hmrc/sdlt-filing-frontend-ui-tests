@@ -206,14 +206,14 @@ class PurchaserQuestionsSpec
       // User should be navigated to "select ID type for purchaser page
       // User selects VAT ID type and continue
       Then("the user navigates to VAT Registration number page")
-      DoesPurchaserHaveNI.navigateToPage(
+      VATRegistrationNumberPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/vat-registration-number"
       )
       VATRegistrationNumberPage.verifyPageTitle(VATRegistrationNumberPage.pageTitle)
 
       And("user enters VAT registration number")
       VATRegistrationNumberPage.input(By.id(VATRegistrationNumberPage.vat), "VATNumber")
-      And("clicks the Continue button")
+      And("user clicks the Continue button")
       VATRegistrationNumberPage.saveAndContinue()
       // user enters VAT number and continue
       // User should be navigated to "Is purchaser acting as trustee page
