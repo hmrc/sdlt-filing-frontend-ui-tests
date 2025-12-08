@@ -30,3 +30,4 @@ object DoesPurchaserHavePhoneNumber extends BasePage {
   def no: String = "#value-2"
 
 }
+//
