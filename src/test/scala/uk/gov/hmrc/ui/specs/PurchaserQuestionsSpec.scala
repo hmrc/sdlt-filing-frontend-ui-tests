@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -101,8 +101,12 @@ class PurchaserQuestionsSpec
       )
       And("the user click Save and Continue")
       PurchaserNationalinsuranceNumberPage.saveAndContinue()
-      // User should be navigated to What is purchaser Date of Birth? page
-      // User enters DOB and continue
+      Then("User should be navigated to What is purchaser Date of Birth page")
+      PurchaserDateOfBirth.verifyPageTitle(PurchaserDateOfBirth.pageTitle)
+      And("User enters Purchaser's Date of Birth")
+      PurchaserDateOfBirth.enterDateOfBirth()
+      And("the user click Save and Continue")
+      PurchaserDateOfBirth.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
