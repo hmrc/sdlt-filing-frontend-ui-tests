@@ -23,11 +23,9 @@ object VendorCheckYourAnswersPage extends BasePage {
 
   override def pageUrl: String = "about-the-vendor/check-answers"
 
-  override def pageTitle: String =
-    "Check your answers – About the vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Check your answers – About the vendor - Stamp Taxes Online - GOV.UK"
 
-  val vendorTypeChange =
-    "a[href ='/stamp-duty-land-tax-filing/about-the-vendor/who-is-the-vendor/change']"
+  val vendorTypeChange = "a[href ='/stamp-duty-land-tax-filing/about-the-vendor/who-is-the-vendor/change']"
 
   val vendorNameChange = "a[href ='/stamp-duty-land-tax-filing/about-the-vendor/vendor-name/change']"
 
