@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserDoesPurchaserHaveNI, PurchaserDoesPurchaserHavePhoneNumber, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -80,17 +80,17 @@ class PurchaserQuestionsSpec
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("User should be navigated to Do you want to add phone number?")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      PurchaserDoesPurchaserHavePhoneNumber.verifyPageTitle(PurchaserDoesPurchaserHavePhoneNumber.pageTitle)
       And("user selects No on the page")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      PurchaserDoesPurchaserHavePhoneNumber.radioButton(PurchaserDoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      PurchaserDoesPurchaserHavePhoneNumber.saveAndContinue()
       Then("the user lands on to the Does Purchaser have NI page")
-      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      PurchaserDoesPurchaserHaveNI.verifyPageTitle(PurchaserDoesPurchaserHaveNI.pageTitle)
       And("user selects Yes on the page")
-      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
+      PurchaserDoesPurchaserHaveNI.radioButton(PurchaserDoesPurchaserHaveNI.yes)
       And("the user click Save and Continue")
-      DoesPurchaserHaveNI.saveAndContinue()
+      PurchaserDoesPurchaserHaveNI.saveAndContinue()
       Then("the user navigates to What is Purchaser's National Insurance Page")
       PurchaserNationalinsuranceNumberPage.verifyPageTitle(PurchaserNationalinsuranceNumberPage.pageTitle)
       And("User enter a valid National Insurance Number")
@@ -155,11 +155,11 @@ class PurchaserQuestionsSpec
       PurchaserAddressPage.clickContinueButton()
       // Scenario to cover individual purchaser without NI number
       Then("User should be navigated to Do you want to add phone number?")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      PurchaserDoesPurchaserHavePhoneNumber.verifyPageTitle(PurchaserDoesPurchaserHavePhoneNumber.pageTitle)
       And("user selects No on the page")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      PurchaserDoesPurchaserHavePhoneNumber.radioButton(PurchaserDoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      PurchaserDoesPurchaserHavePhoneNumber.saveAndContinue()
       // user should be navigated to Does purchaser have NI page
       // User select no and continue
       // User should be navigated to  Provide a form of ID for purchaser page
@@ -209,11 +209,11 @@ class PurchaserQuestionsSpec
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("User should be navigated to Do you want to add phone number?")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      PurchaserDoesPurchaserHavePhoneNumber.verifyPageTitle(PurchaserDoesPurchaserHavePhoneNumber.pageTitle)
       And("user selects No on the page")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      PurchaserDoesPurchaserHavePhoneNumber.radioButton(PurchaserDoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      PurchaserDoesPurchaserHavePhoneNumber.saveAndContinue()
       // User should be navigated to "select ID type for purchaser page
       // User selects VAT ID type and continue
       // user navigates to enter VAT number page
@@ -255,11 +255,11 @@ class PurchaserQuestionsSpec
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("User should be navigated to Do you want to add phone number?")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      PurchaserDoesPurchaserHavePhoneNumber.verifyPageTitle(PurchaserDoesPurchaserHavePhoneNumber.pageTitle)
       And("user selects No on the page")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      PurchaserDoesPurchaserHavePhoneNumber.radioButton(PurchaserDoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      PurchaserDoesPurchaserHavePhoneNumber.saveAndContinue()
       // User should be navigated to "select ID type for purchaser page
       // User selects UTR ID type and continue
       // user navigates to enter UTR details page
@@ -304,11 +304,11 @@ class PurchaserQuestionsSpec
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("User should be navigated to Do you want to add phone number?")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      PurchaserDoesPurchaserHavePhoneNumber.verifyPageTitle(PurchaserDoesPurchaserHavePhoneNumber.pageTitle)
       And("user selects No on the page")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      PurchaserDoesPurchaserHavePhoneNumber.radioButton(PurchaserDoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      PurchaserDoesPurchaserHavePhoneNumber.saveAndContinue()
       // User should be navigated to "select ID type for purchaser page
       // User selects partnership UTR ID type and continue
       // user navigates to enter partnership UTR details page
@@ -352,11 +352,11 @@ class PurchaserQuestionsSpec
       And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("User should be navigated to Do you want to add phone number?")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      PurchaserDoesPurchaserHavePhoneNumber.verifyPageTitle(PurchaserDoesPurchaserHavePhoneNumber.pageTitle)
       And("user selects Yes on the page")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.yes)
+      PurchaserDoesPurchaserHavePhoneNumber.radioButton(PurchaserDoesPurchaserHavePhoneNumber.yes)
       And("user clicks Save and Continue")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      PurchaserDoesPurchaserHavePhoneNumber.saveAndContinue()
       // User should be navigated to "enter phone number for purchaser page
       // User enters phone number and continue
       // User should be navigated to "Is purchaser acting as trustee page
