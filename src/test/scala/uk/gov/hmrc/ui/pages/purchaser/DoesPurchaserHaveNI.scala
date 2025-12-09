@@ -20,7 +20,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object DoesPurchaserHaveNI extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/does-purchaser-have-ni"
+  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/add-national-insurance-number"
 
   override def pageTitle: String =
     "Does the purchaser have a National Insurance number? – About the purchaser - Stamp Taxes Online - GOV.UK"
