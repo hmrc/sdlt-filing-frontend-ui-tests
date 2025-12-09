@@ -38,7 +38,7 @@ class e2eSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend end to end") {
-    Scenario("Complete the end to end flow of Filing Journey") {
+    Scenario("Complete the end to end flow of the Filing Journey") {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
@@ -54,7 +54,10 @@ class e2eSpec
       Then("the user should be navigated to the Purchasers Name page")
       PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitleCompany)
       When("the user inputs their company name")
-      PurchasersNamePage.input(By.id(PurchasersNamePage.companyName), "Test Company")
+      PurchasersNamePage.input(
+        By.id(PurchasersNamePage.companyName),
+        PurchasersNamePage.companyNameInput
+      )
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user should be navigated to the Property Address page")
