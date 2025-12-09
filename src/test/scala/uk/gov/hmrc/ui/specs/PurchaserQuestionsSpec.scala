@@ -21,9 +21,9 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.*
+import uk.gov.hmrc.ui.pages.{purchaser, *}
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -160,15 +160,33 @@ class PurchaserQuestionsSpec
       DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
       DoesPurchaserHavePhoneNumber.saveAndContinue()
-      // user should be navigated to Does purchaser have NI page
-      // User select no and continue
-      // User should be navigated to  Provide a form of ID for purchaser page
-      // User enters ID details and continue
-      // User should be navigated to "Is purchaser acting as trustee page
+      Then("the user lands on to the Does Purchaser have NI page")
+      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      And("user selects No on the page")
+      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.no)
+      And("the user click Save and Continue")
+      DoesPurchaserHaveNI.saveAndContinue()
+      Then("User should be navigated to Provide a form of ID for purchaser page")
+      IndividualPurchaserIDPage.verifyPageTitle(IndividualPurchaserIDPage.pageTitle)
+      When("User enters ID details")
+      IndividualPurchaserIDPage.input(
+        By.id(IndividualPurchaserIDPage.purchaserIdNumberOrReference),
+        IndividualPurchaserIDPage.idNumberOrReferenceInput
+      )
+      And("User enters Country Issued details")
+      IndividualPurchaserIDPage.input(
+        By.id(IndividualPurchaserIDPage.purchaserCountryIssued),
+        IndividualPurchaserIDPage.countryIssuedInput
+      )
+      And("User clicks Save and Continue")
+      IndividualPurchaserIDPage.saveAndContinue()
+
+      // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
     }
+
     Scenario(
       "Complete the Purchaser Questions user journey as a Company with VAT ID and with prelim questions submitted stub data incomplete purchaser"
     ) {
