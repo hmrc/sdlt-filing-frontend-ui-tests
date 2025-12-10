@@ -26,19 +26,19 @@ object VendorOrCompanyNamePage extends BasePage {
 
   def pageTitleCompany: String = "What is the company’s name? – About the vendor - Stamp Taxes Online - GOV.UK"
 
-  def forenameInput: String = "forename1"
+  def forename: String = "forename1"
 
-  def forename: String = "Test firstName"
+  def forenameInput: String = "Test firstName"
 
-  def middlename: String = "MiddleName"
+  def middlename: String = "forename2"
 
-  def middlenameInput: String = "forename2"
+  def middlenameInput: String = "MiddleName"
 
-  def surname: String = "Test surname"
+  def surname: String = "name"
 
-  def surnameInput: String = "name"
+  def surnameInput: String = "Test surname"
 
-  def companyNameInput: String = "name"
+  def companyName: String = "name"
 
-  def companyName: String = "test Business"
+  def companyNameInput: String = "test Business"
 }

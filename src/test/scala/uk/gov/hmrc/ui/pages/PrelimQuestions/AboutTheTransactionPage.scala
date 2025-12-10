@@ -27,9 +27,9 @@ object AboutTheTransactionPage extends BasePage {
 
   def conveyance: String = "#value_0"
 
-  def grantoflease: String = "#value_1"
+  def grantOfLease: String = "#value_1"
 
-  def conveyancelease: String = "#value_2"
+  def conveyanceLease: String = "#value_2"
 
   def other: String = "#value_3"
 }

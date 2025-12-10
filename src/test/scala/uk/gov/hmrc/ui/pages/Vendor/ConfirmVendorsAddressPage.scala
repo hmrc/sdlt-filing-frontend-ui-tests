@@ -23,12 +23,12 @@ object ConfirmVendorsAddressPage extends BasePage {
   override def pageUrl: String = "about-the-vendor/confirm-vendor-address"
 
   override def pageTitle: String =
-    s"Confirm ${VendorOrCompanyNamePage.companyName}’s address – About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Confirm ${VendorOrCompanyNamePage.companyNameInput}’s address – About the Vendor - Stamp Taxes Online - GOV.UK"
 
   def pageTitleIndividual: String =
-    s"Confirm ${VendorOrCompanyNamePage.forename} ${VendorOrCompanyNamePage.middlename} ${VendorOrCompanyNamePage.surname}’s address – About the Vendor - Stamp Taxes Online - GOV.UK"
+    s"Confirm ${VendorOrCompanyNamePage.forenameInput} ${VendorOrCompanyNamePage.middlenameInput} ${VendorOrCompanyNamePage.surnameInput}’s address – About the Vendor - Stamp Taxes Online - GOV.UK"
 
-  def yesRadioButton: String = "#value_0"
+  def yes: String = "#value_0"
 
-  def noRadioButton: String = "#value_1"
+  def no: String = "#value_1"
 }

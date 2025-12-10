@@ -24,5 +24,7 @@ object VendorAgentsNamePage extends BasePage {
 
   override def pageTitle: String = "What is the agent’s name? - About the vendor - Stamp Taxes Online - GOV.UK"
 
-  def agentName: String = "Agent Test1"
+  def agentName: String = "agentName"
+
+  def agentNameInput: String = "Agent Test1"
 }

@@ -26,9 +26,9 @@ object VendorOverviewPage extends BasePage {
 
   override def pageTitle: String = "Vendor Overview - About the Vendor - Stamp Taxes Online - GOV.UK"
 
-  def yesRadioButton: String = "#value"
+  def yes: String = "#value"
 
-  def noRadioButton: String = "#value-no"
+  def no: String = "#value-no"
 
   val VendorRemoveLink: String =
     "//a[@href='/stamp-duty-land-tax-filing/about-the-vendor/vendor-overview/remove-vendor/VEN-REF-001']"
