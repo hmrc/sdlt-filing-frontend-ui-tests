@@ -377,7 +377,7 @@ class PurchaserQuestionsSpec
       DoesPurchaserHavePhoneNumber.saveAndContinue()
       Then("user navigates to enter phone number for purchaser page")
       PurchaserContactPhoneNumber.verifyPageTitle(PurchaserContactPhoneNumber.pageTitle)
-      And("User enters phone number ")
+      And("User enters phone number")
       PurchaserContactPhoneNumber.input(
         By.id(PurchaserContactPhoneNumber.phoneNumberInputField),
         PurchaserContactPhoneNumber.phoneNumberValue
