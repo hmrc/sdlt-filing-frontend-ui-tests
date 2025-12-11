@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.{purchaser, *}
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage, VATRegistrationNumberPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
