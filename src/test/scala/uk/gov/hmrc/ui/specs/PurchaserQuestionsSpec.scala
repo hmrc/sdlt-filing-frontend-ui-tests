@@ -21,9 +21,9 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.*
+import uk.gov.hmrc.ui.pages.{purchaser, *}
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PartnershipUTRPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -232,8 +232,12 @@ class PurchaserQuestionsSpec
       DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
       DoesPurchaserHavePhoneNumber.saveAndContinue()
-      // User should be navigated to "select ID type for purchaser page
-      // User selects VAT ID type and continue
+      Then("the user is navigated to the Confirm Purchaser Identity page")
+      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
+      When("the user selects the 'VAT registration number' radio button")
+      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.vatRegistrationNumber)
+      And("clicks the Save and continue button")
+      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
       // user navigates to enter VAT number page
       // user enters VAT number and continue
       // User should be navigated to "Is purchaser acting as trustee page
@@ -244,7 +248,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with UTR ID and with prelim questions submitted stub data incomplete purchaser yes to stub data"
+      "Complete the Purchaser Questions user journey as a Company with corporation UTR ID and with prelim questions submitted stub data incomplete purchaser yes to stub data"
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
@@ -256,7 +260,7 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.saveAndContinue()
       Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
       PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
-      And("the user clicks no")
+      And("the user clicks yes")
       PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.yes)
       PurchaserConfirmNameOfPurchaserPage.saveAndContinue()
       Then("the user should be redirected to address lookup")
@@ -278,8 +282,12 @@ class PurchaserQuestionsSpec
       DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
       DoesPurchaserHavePhoneNumber.saveAndContinue()
-      // User should be navigated to "select ID type for purchaser page
-      // User selects UTR ID type and continue
+      Then("the user is navigated to the Confirm Purchaser Identity page")
+      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitleStub)
+      When("the user selects the 'Corporation tax Unique Taxpayer Reference (UTR)' radio button")
+      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.corporationTaxUTR)
+      And("clicks the Save and continue button")
+      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
       // user navigates to enter UTR details page
       // user enters UTR details and continue
       // User should be navigated to "Is purchaser acting as trustee page
@@ -327,8 +335,12 @@ class PurchaserQuestionsSpec
       DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
       And("user clicks Save and Continue")
       DoesPurchaserHavePhoneNumber.saveAndContinue()
-      // User should be navigated to "select ID type for purchaser page
-      // User selects partnership UTR ID type and continue
+      Then("the user is navigated to the Confirm Purchaser Identity page")
+      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
+      When("the user selects the 'Partnership Unique Taxpayer Reference (UTR)' radio button")
+      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.partnershipUTR)
+      And("clicks the Save and continue button")
+      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user navigates to the Partnership UTR page")
       PartnershipUTRPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/partnership-utr"
@@ -338,11 +350,15 @@ class PurchaserQuestionsSpec
       PartnershipUTRPage.input(By.id(PartnershipUTRPage.purchaserUTRReference), PartnershipUTRPage.purchaserUTRInput)
       And("clicks the Continue button")
       PartnershipUTRPage.saveAndContinue()
+
+      // user navigates to enter partnership UTR details page
+      // user enters partnership UTR number and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
     }
+
     Scenario(
       "Complete the Purchaser Questions user journey as a Company with phone number details and prelim questions submitted stub data and full purchaser"
     ) {
