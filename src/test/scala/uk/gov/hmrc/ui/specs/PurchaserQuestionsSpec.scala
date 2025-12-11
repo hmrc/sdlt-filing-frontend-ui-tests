@@ -330,7 +330,9 @@ class PurchaserQuestionsSpec
       // User should be navigated to "select ID type for purchaser page
       // User selects partnership UTR ID type and continue
       Then("the user navigates to the Partnership UTR page")
-      PartnershipUTRPage.navigateToPage("http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/partnership-utr")
+      PartnershipUTRPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/partnership-utr"
+      )
       PartnershipUTRPage.verifyPageTitle(PartnershipUTRPage.pageTitle)
       And("user enters partnership UTR number")
       PartnershipUTRPage.input(By.id(PartnershipUTRPage.purchaserUTRReference), PartnershipUTRPage.purchaserUTRInput)

@@ -23,7 +23,7 @@ object PartnershipUTRPage extends BasePage {
   override def pageUrl: String = "about-the-purchaser/partnership-utr"
 
   override def pageTitle: String =
-    "What is the purchaser’s Partnership Unique Taxpayer Reference (UTR)? – About the purchaser – Stamp Taxes Online – GOV.UK"
+    "What is the purchaser’s Partnership Unique Taxpayer Reference (UTR)? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def purchaserUTRReference = "partnershipUniqueTaxpayerReference"
 
