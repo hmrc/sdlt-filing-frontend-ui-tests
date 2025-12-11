@@ -349,10 +349,7 @@ class VendorQuestionsSpec
       Then("the user is navigated to Vendor or Company name page")
       VendorOrCompanyNamePage.verifyPageTitle(VendorOrCompanyNamePage.pageTitle)
       When("the user updates their surname")
-      VendorOrCompanyNamePage.input(
-        By.id(VendorOrCompanyNamePage.surname),
-        VendorOrCompanyNamePage.surnameInput
-      )
+      VendorOrCompanyNamePage.vendorFullNameInput()
       And("clicks the Save and continue button")
       VendorOrCompanyNamePage.saveAndContinue()
       Then("the user is navigated to the Vendor Check Your Answers page")
