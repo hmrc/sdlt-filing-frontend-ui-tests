@@ -17,6 +17,7 @@
 package uk.gov.hmrc.ui.pages.Vendor
 
 import uk.gov.hmrc.ui.pages.BasePage
+import org.openqa.selenium.By
 
 object VendorOrCompanyNamePage extends BasePage {
 
@@ -41,4 +42,19 @@ object VendorOrCompanyNamePage extends BasePage {
   def companyName: String = "name"
 
   def companyNameInput: String = "test Business"
+
+  def vendorFullNameInput(): Unit =
+    VendorOrCompanyNamePage.input(
+      By.id(VendorOrCompanyNamePage.forename),
+      VendorOrCompanyNamePage.forenameInput
+    )
+    VendorOrCompanyNamePage.input(
+      By.id(VendorOrCompanyNamePage.middlename),
+      VendorOrCompanyNamePage.middlenameInput
+    )
+    VendorOrCompanyNamePage.input(
+      By.id(VendorOrCompanyNamePage.surname),
+      VendorOrCompanyNamePage.surnameInput
+    )
+
 }
