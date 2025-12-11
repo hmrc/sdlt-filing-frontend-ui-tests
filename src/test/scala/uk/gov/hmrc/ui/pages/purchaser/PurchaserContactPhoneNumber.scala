@@ -23,7 +23,7 @@ object PurchaserContactPhoneNumber extends BasePage {
   override def pageUrl: String = "about-the-purchaser/enter-purchaser-phone-number"
 
   override def pageTitle: String =
-    "What is the purchaser’s phone number? – About the purchaser – Stamp Taxes Online – GOV.UK"
+    "What is the purchaser’s phone number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def phoneNumberInputField    = "value"
   def phoneNumberValue: String = "01234567890"
