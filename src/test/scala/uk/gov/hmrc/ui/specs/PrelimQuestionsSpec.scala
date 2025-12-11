@@ -54,7 +54,10 @@ class PrelimQuestionsSpec
       Then("the user should be navigated to the Purchasers Name page")
       PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitleCompany)
       When("the user inputs their company name")
-      PurchasersNamePage.input(By.id(PurchasersNamePage.companyName), "Test Company")
+      PurchasersNamePage.input(
+        By.id(PurchasersNamePage.companyName),
+        PurchasersNamePage.companyNameInput
+      )
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user should be navigated to the Property Address page")
@@ -66,7 +69,7 @@ class PrelimQuestionsSpec
       PropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
       PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
-      And("clicks the Confirm address button")
+      When("the user clicks the Confirm address button")
       PropertyAddressPage.clickContinueButton()
       Then("the user should be navigated to the About the Transaction page")
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
@@ -91,7 +94,7 @@ class PrelimQuestionsSpec
       Then("the user should be navigated to the About the Transaction page")
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
       When("the user selects the 'L - Grant of lease' radio button")
-      AboutTheTransactionPage.radioButton(AboutTheTransactionPage.grantoflease)
+      AboutTheTransactionPage.radioButton(AboutTheTransactionPage.grantOfLease)
       And("clicks the Save and continue button")
       AboutTheTransactionPage.saveAndContinue()
       Then("the user should be navigated to the Check Your Answers page")
@@ -114,7 +117,10 @@ class PrelimQuestionsSpec
       Then("the user should be navigated to the Purchasers Name page")
       PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitle)
       When("the user inputs the purchaser's surname")
-      PurchasersNamePage.input(By.id(PurchasersNamePage.purchasersSurname), "Test Sname")
+      PurchasersNamePage.input(
+        By.id(PurchasersNamePage.purchasersSurname),
+        PurchasersNamePage.purchasersSurnameInput
+      )
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user should be navigated to the Property Address page")
@@ -126,7 +132,7 @@ class PrelimQuestionsSpec
       PropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
       PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
-      And("clicks the Confirm address button")
+      When("the user clicks the Confirm address button")
       PropertyAddressPage.clickContinueButton()
       Then("the user should be navigated to the About the Transaction page")
       AboutTheTransactionPage.verifyPageTitle(AboutTheTransactionPage.pageTitle)
@@ -141,13 +147,16 @@ class PrelimQuestionsSpec
       Then("the user should be navigated to the Purchasers Name page")
       PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitle)
       When("the user inputs the purchaser's surname")
-      PurchasersNamePage.input(By.id(PurchasersNamePage.purchasersSurname), "Test Surname")
+      PurchasersNamePage.input(
+        By.id(PurchasersNamePage.purchasersSurname),
+        PurchasersNamePage.purchasersSurnameCYAInput
+      )
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user should be navigated to the Check Your Answers page")
       CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
       When("the user clicks the 'Change' link for Property address")
-      CheckYourAnswersPage.clickPropetyAddressChange()
+      CheckYourAnswersPage.clickPropertyAddressChange()
       Then("the user should be navigated to the Property Address page")
       PropertyAddressPage.verifyPageTitle(PropertyAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
@@ -157,7 +166,7 @@ class PrelimQuestionsSpec
       PropertyAddressPage.enterAddressManually("523", "AGC", "TE11 1TS")
       Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
       PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
-      And("clicks the Confirm address button")
+      When("the user clicks the Confirm address button")
       PropertyAddressPage.clickContinueButton()
       Then("the user should be navigated to the Check Your Answers page")
       CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)

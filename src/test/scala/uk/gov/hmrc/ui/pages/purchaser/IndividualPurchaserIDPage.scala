@@ -18,15 +18,19 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserNationalinsuranceNumberPage extends BasePage {
+object IndividualPurchaserIDPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/enter-national-insurance-number"
+  override def pageUrl: String = "about-the-purchaser/form-of-id-individual"
 
   override def pageTitle: String =
-    "What is the purchaser’s National Insurance number? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Provide a form of ID for the purchaser - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def Nino: String = "nationalInsuranceNumber"
+  def purchaserIdNumberOrReference: String = "idNumberOrReference"
 
-  def NinoValue: String = "AA123456A"
+  def idNumberOrReferenceInput: String = "1234567890"
+
+  def purchaserCountryIssued: String = "countryIssued"
+
+  def countryIssuedInput: String = "country"
 
 }

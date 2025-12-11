@@ -25,8 +25,8 @@ object VendorAgentPage extends BasePage {
   override def pageTitle: String =
     "Is the vendor represented by an agent? - About the vendor - Stamp Taxes Online - GOV.UK"
 
-  def yesRadioButton: String = "#value"
+  def yes: String = "#value"
 
-  def noRadioButton: String = "#value-2"
+  def no: String = "#value-2"
 
 }

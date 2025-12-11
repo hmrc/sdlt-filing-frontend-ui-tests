@@ -25,7 +25,7 @@ object RemoveVendorPage extends BasePage {
   override def pageTitle: String =
     "Are you sure you want to remove the vendor? - About the vendor - Stamp Taxes Online - GOV.UK"
 
-  def yesRadioButton: String = "#value"
+  def yes: String = "#value"
 
-  def noRadioButton: String = "#value-2"
+  def no: String = "#value-2"
 }

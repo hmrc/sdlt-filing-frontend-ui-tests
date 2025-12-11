@@ -22,8 +22,7 @@ object IndividualOrCompanyPage extends BasePage {
 
   override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/who-is-making-the-purchase"
 
-  override def pageTitle: String =
-    "Who is making the purchase? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Who is making the purchase? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
   def company: String = "#value_0"
 
