@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.{purchaser, *}
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserContactPhoneNumber, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PartnershipUTRPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserContactPhoneNumber, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -341,6 +341,13 @@ class PurchaserQuestionsSpec
       PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.partnershipUTR)
       And("clicks the Save and continue button")
       PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      Then("the user navigates to the Partnership UTR page")
+      PartnershipUTRPage.verifyPageTitle(PartnershipUTRPage.pageTitle)
+      And("user enters partnership UTR number")
+      PartnershipUTRPage.input(By.id(PartnershipUTRPage.purchaserUTRReference), PartnershipUTRPage.purchaserUTRInput)
+      And("clicks the Continue button")
+      PartnershipUTRPage.saveAndContinue()
+
       // user navigates to enter partnership UTR details page
       // user enters partnership UTR number and continue
       // User should be navigated to "Is purchaser acting as trustee page
