@@ -27,5 +27,5 @@ object VATRegistrationNumberPage extends BasePage {
 
   def vat: String = "registrationNumber"
 
-  def VATNumber: String = "123456789"
+  def VATNumber: String = "471592236"
 }
