@@ -238,8 +238,12 @@ class PurchaserQuestionsSpec
       PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.vatRegistrationNumber)
       And("clicks the Save and continue button")
       PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
-      // user navigates to enter VAT number page
-      // user enters VAT number and continue
+      Then("the user navigates to VAT Registration number page")
+      VATRegistrationNumberPage.verifyPageTitle(VATRegistrationNumberPage.pageTitle)
+      And("user enters VAT registration number")
+      VATRegistrationNumberPage.input(By.id(VATRegistrationNumberPage.vat), VATRegistrationNumberPage.VATNumber)
+      And("user clicks the Continue button")
+      VATRegistrationNumberPage.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
