@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.{purchaser, *}
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PartnershipUTRPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserContactPhoneNumber, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage, PartnershipUTRPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -395,8 +395,15 @@ class PurchaserQuestionsSpec
       DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.yes)
       And("user clicks Save and Continue")
       DoesPurchaserHavePhoneNumber.saveAndContinue()
-      // User should be navigated to "enter phone number for purchaser page
-      // User enters phone number and continue
+      Then("user navigates to enter phone number for purchaser page")
+      PurchaserContactPhoneNumber.verifyPageTitle(PurchaserContactPhoneNumber.pageTitle)
+      And("User enters phone number")
+      PurchaserContactPhoneNumber.input(
+        By.id(PurchaserContactPhoneNumber.phoneNumberInputField),
+        PurchaserContactPhoneNumber.phoneNumberValue
+      )
+      And("user clicks Save and Continue")
+      PurchaserContactPhoneNumber.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
