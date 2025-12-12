@@ -27,6 +27,6 @@ object PartnershipUTRPage extends BasePage {
 
   def purchaserUTRReference = "partnershipUniqueTaxpayerReference"
 
-  def purchaserUTRInput = "1234567890"
+  def purchaserUTRInput = "1111111111"
 
 }
