@@ -23,7 +23,7 @@ object PurchaserConfirmNameOfPurchaserPage extends BasePage {
   override def pageUrl: String = "about-the-purchaser/confirm-purchaser-name"
 
   override def pageTitle: String =
-    "Is this the name of the purchaser? – About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Is this the name of the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value_0"
 
