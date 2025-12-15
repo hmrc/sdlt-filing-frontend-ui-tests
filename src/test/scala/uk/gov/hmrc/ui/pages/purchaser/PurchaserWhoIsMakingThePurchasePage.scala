@@ -22,7 +22,7 @@ object PurchaserWhoIsMakingThePurchasePage extends BasePage {
 
   override def pageUrl: String = "about-the-purchaser/who-is-making-the-purchase"
 
-  override def pageTitle: String = "Who is making the purchase? – About the purchaser - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Who is making the purchase? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def company: String = "#value_0"
 
