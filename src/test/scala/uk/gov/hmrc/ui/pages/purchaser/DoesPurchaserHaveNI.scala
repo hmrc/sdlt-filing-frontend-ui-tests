@@ -23,7 +23,7 @@ object DoesPurchaserHaveNI extends BasePage {
   override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/add-national-insurance-number"
 
   override def pageTitle: String =
-    "Does the purchaser have a National Insurance number? – About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Does the purchaser have a National Insurance number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value_0"
 

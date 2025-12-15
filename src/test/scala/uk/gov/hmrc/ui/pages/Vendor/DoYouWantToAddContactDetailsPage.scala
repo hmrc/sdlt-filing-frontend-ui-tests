@@ -23,7 +23,7 @@ object DoYouWantToAddContactDetailsPage extends BasePage {
   override def pageUrl: String = "about-the-vendor/add-agent-contact-details"
 
   override def pageTitle: String =
-    "Do you want to add contact details for the agent? – About the vendor - Stamp Taxes Online - GOV.UK"
+    "Do you want to add contact details for the agent? - About the vendor - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 

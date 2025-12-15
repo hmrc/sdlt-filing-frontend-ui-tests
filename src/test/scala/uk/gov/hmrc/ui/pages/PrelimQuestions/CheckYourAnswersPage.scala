@@ -24,7 +24,7 @@ object CheckYourAnswersPage extends BasePage {
 
   override def pageUrl: String = "preliminary-questions/check-answers"
 
-  override def pageTitle: String = "Check your answers – Preliminary-questions - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Check your answers - Preliminary-questions - Stamp Taxes Online - GOV.UK"
 
   val purchaserTypeChange =
     "a[href ='/stamp-duty-land-tax-filing/preliminary-questions/who-is-making-the-purchase/change']"

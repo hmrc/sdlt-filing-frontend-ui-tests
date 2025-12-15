@@ -23,7 +23,7 @@ object DoesPurchaserHavePhoneNumber extends BasePage {
   override def pageUrl: String = "/about-the-purchaser/add-purchaser-phone-number"
 
   override def pageTitle: String =
-    "Do you want to add a phone number for the purchaser? – About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Do you want to add a phone number for the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
