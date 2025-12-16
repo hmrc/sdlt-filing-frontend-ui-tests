@@ -156,10 +156,19 @@ class PurchaserQuestionsSpec
       // Scenario to cover individual purchaser without NI number
       Then("User should be navigated to Do you want to add phone number?")
       DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
-      And("user selects No on the page")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      And("user selects Yes on the page")
+      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.yes)
       And("user clicks Save and Continue")
       DoesPurchaserHavePhoneNumber.saveAndContinue()
+      Then("user navigates to enter phone number for purchaser page")
+      PurchaserContactPhoneNumber.verifyPageTitle(PurchaserContactPhoneNumber.pageTitle)
+      And("User enters phone number")
+      PurchaserContactPhoneNumber.input(
+        By.id(PurchaserContactPhoneNumber.phoneNumberInputField),
+        PurchaserContactPhoneNumber.phoneNumberValue
+      )
+      And("user clicks Save and Continue")
+      PurchaserContactPhoneNumber.saveAndContinue()
       Then("the user lands on to the Does Purchaser have NI page")
       DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
       And("user selects No on the page")
@@ -359,9 +368,6 @@ class PurchaserQuestionsSpec
       PartnershipUTRPage.input(By.id(PartnershipUTRPage.purchaserUTRReference), PartnershipUTRPage.purchaserUTRInput)
       And("clicks the Continue button")
       PartnershipUTRPage.saveAndContinue()
-
-      // user navigates to enter partnership UTR details page
-      // user enters partnership UTR number and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
@@ -369,7 +375,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with phone number details and prelim questions submitted stub data and full purchaser"
+      "Complete the Purchaser Questions user journey as a Company, providing phone number details along with another form of ID and prelim questions submitted stub data and full purchaser"
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))
@@ -416,6 +422,13 @@ class PurchaserQuestionsSpec
       )
       And("user clicks Save and Continue")
       PurchaserContactPhoneNumber.saveAndContinue()
+      Then("the user is navigated to the Confirm Purchaser Identity page")
+      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
+      When("the user selects the 'Partnership Unique Taxpayer Reference (UTR)' radio button")
+      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.anotherFormOfID)
+      And("clicks the Save and continue button")
+      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      // Then("the user navigates to the Other form of ID page")
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
