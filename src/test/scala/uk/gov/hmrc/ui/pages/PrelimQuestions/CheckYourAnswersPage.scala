@@ -18,7 +18,6 @@ package uk.gov.hmrc.ui.pages.PrelimQuestions
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
-import PropertyAddressPage.click
 
 object CheckYourAnswersPage extends BasePage {
 

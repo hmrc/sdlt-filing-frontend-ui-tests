@@ -22,6 +22,7 @@ import uk.gov.hmrc.ui.util.Env
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.util.Users.{LoginTypes, UserTypes}
+import scala.annotation.unused
 
 object AuthWizard extends BasePage {
 
@@ -47,7 +48,11 @@ object AuthWizard extends BasePage {
   val btnSubmit: By       = By.id("submit")
   val btnAddEnrolment: By = By.id("add-ident-btn-0")
 
-  def buildRedirectUrl(loginType: LoginTypes, userType: UserTypes, returnId: Option[String] = None): String =
+  def buildRedirectUrl(
+    @unused loginType: LoginTypes,
+    @unused userType: UserTypes,
+    returnId: Option[String] = None
+  ): String =
     returnId match {
       case Some(id) =>
         val Redirect =
@@ -77,7 +82,7 @@ object AuthWizard extends BasePage {
     this
   }
 
-  def login(loginType: LoginTypes, userType: UserTypes, returnId: Option[String] = None): Unit = {
+  def login(@unused loginType: LoginTypes, @unused userType: UserTypes, returnId: Option[String] = None): Unit = {
     AuthWizard.navigateToPage(url)
     sendKeys(redirectUrl, buildRedirectUrl(HASDIRECT, Organisation, returnId))
     fillInputs()
