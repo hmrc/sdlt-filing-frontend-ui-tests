@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PartnershipUTRPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserContactPhoneNumber, PurchaserCorporationTaxUTRPage, PurchaserDateOfBirth, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage, VATRegistrationNumberPage, WhatTypeOfCompany}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PartnershipUTRPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserContactPhoneNumber, PurchaserCorporationTaxUTRPage, PurchaserDateOfBirth, PurchaserFormOfIDCompanyPage, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage, VATRegistrationNumberPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -465,12 +465,25 @@ class PurchaserQuestionsSpec
       PurchaserContactPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Confirm Purchaser Identity page")
       PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
-      When("the user selects the 'Partnership Unique Taxpayer Reference (UTR)' radio button")
+      When("the user selects the 'Another form of ID' radio button")
       PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.anotherFormOfID)
       And("clicks the Save and continue button")
       PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
-      // Then("the user navigates to the Other form of ID page")
-      // User enters other form of ID details and continue
+      Then("the user is navigated to the Form of ID Company page")
+      PurchaserFormOfIDCompanyPage.verifyPageTitle(PurchaserFormOfIDCompanyPage.pageTitle)
+      When("the user inputs their ID number or reference")
+      PurchaserFormOfIDCompanyPage.input(
+        By.id(PurchaserFormOfIDCompanyPage.idNumberOrReference),
+        PurchaserFormOfIDCompanyPage.idNumberOrReferenceInput
+      )
+      And("inputs their Country of issue")
+      PurchaserFormOfIDCompanyPage.input(
+        By.id(PurchaserFormOfIDCompanyPage.countryOfIssue),
+        PurchaserFormOfIDCompanyPage.countryOfIssueInput
+      )
+      And("clicks the Save and continue button")
+      PurchaserFormOfIDCompanyPage.saveAndContinue()
+
       // User should be navigated to "What type of company page
       // User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
