@@ -110,6 +110,9 @@ class PurchaserQuestionsSpec
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
+      //Is Purchaser represented by an agent page
+      // User selects no  and continue
+      //User should be navigated to purchasers check your answers page
     }
 
     Scenario(
@@ -189,11 +192,13 @@ class PurchaserQuestionsSpec
       )
       And("User clicks Save and Continue")
       IndividualPurchaserIDPage.saveAndContinue()
-
       // User should be navigated to "Is purchaser acting as trustee page"
-      // User selects no or yes and continue
+      // User selects no  and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
+      //Is Purchaser represented by an agent page
+      // User selects yes and continue
+      //user is navigated to select Purchaser's Agent  page
     }
 
     Scenario(
@@ -253,8 +258,10 @@ class PurchaserQuestionsSpec
       VATRegistrationNumberPage.input(By.id(VATRegistrationNumberPage.vat), VATRegistrationNumberPage.VATNumber)
       And("user clicks the Continue button")
       VATRegistrationNumberPage.saveAndContinue()
+      //User should be navigated to "What type of company page
+      //User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
-      // User selects no or yes and continue
+      // User selects no  yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
 
@@ -310,7 +317,8 @@ class PurchaserQuestionsSpec
       )
       And("clicks the Save and continue button")
       PurchaserCorporationTaxUTRPage.saveAndContinue()
-
+      //User should be navigated to "What type of company page
+      //User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
@@ -368,6 +376,8 @@ class PurchaserQuestionsSpec
       PartnershipUTRPage.input(By.id(PartnershipUTRPage.purchaserUTRReference), PartnershipUTRPage.purchaserUTRInput)
       And("clicks the Continue button")
       PartnershipUTRPage.saveAndContinue()
+      //User should be navigated to "What type of company page
+      //User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
@@ -429,6 +439,9 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
       // Then("the user navigates to the Other form of ID page")
+      //User enters other form of ID details and continue
+      //User should be navigated to "What type of company page
+      //User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
