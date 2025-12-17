@@ -49,7 +49,7 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
+      Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
       PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
       And("the user clicks no")
       PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.no)
@@ -106,10 +106,13 @@ class PurchaserQuestionsSpec
       PurchaserDateOfBirth.enterDateOfBirth()
       And("the user click Save and Continue")
       PurchaserDateOfBirth.saveAndContinue()
-      // User should be navigated to "Is purchaser acting as trustee page
+      // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
+      // Is Purchaser represented by an agent page
+      // User selects no  and continue
+      // User should be navigated to purchasers check your answers page
     }
 
     Scenario(
@@ -123,7 +126,7 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
+      Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
       PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
       And("the user clicks no")
       PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.no)
@@ -189,11 +192,13 @@ class PurchaserQuestionsSpec
       )
       And("User clicks Save and Continue")
       IndividualPurchaserIDPage.saveAndContinue()
-
       // User should be navigated to "Is purchaser acting as trustee page"
-      // User selects no or yes and continue
+      // User selects no  and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
+      // Is Purchaser represented by an agent page
+      // User selects yes and continue
+      // user is navigated to select Purchaser's Agent  page
     }
 
     Scenario(
@@ -207,7 +212,7 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
+      Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
       PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
       And("the user clicks no")
       PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.no)
@@ -253,8 +258,10 @@ class PurchaserQuestionsSpec
       VATRegistrationNumberPage.input(By.id(VATRegistrationNumberPage.vat), VATRegistrationNumberPage.VATNumber)
       And("user clicks the Continue button")
       VATRegistrationNumberPage.saveAndContinue()
+      // User should be navigated to "What type of company page"
+      // User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
-      // User selects no or yes and continue
+      // User selects no  yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
 
@@ -271,7 +278,7 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      Then("the user should be navigated to the confirm page when there isnt a full purchaser (no address line 1)")
+      Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
       PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
       And("the user clicks yes")
       PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.yes)
@@ -310,7 +317,8 @@ class PurchaserQuestionsSpec
       )
       And("clicks the Save and continue button")
       PurchaserCorporationTaxUTRPage.saveAndContinue()
-
+      // User should be navigated to "What type of company page"
+      // User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
@@ -368,6 +376,8 @@ class PurchaserQuestionsSpec
       PartnershipUTRPage.input(By.id(PartnershipUTRPage.purchaserUTRReference), PartnershipUTRPage.purchaserUTRInput)
       And("clicks the Continue button")
       PartnershipUTRPage.saveAndContinue()
+      // User should be navigated to "What type of company page"
+      // User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
@@ -429,6 +439,9 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
       // Then("the user navigates to the Other form of ID page")
+      // User enters other form of ID details and continue
+      // User should be navigated to "What type of company page
+      // User selects type of company and continue
       // User should be navigated to "Is purchaser acting as trustee page
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
