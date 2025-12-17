@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHaveNI, DoesPurchaserHavePhoneNumber, IndividualPurchaserIDPage, PartnershipUTRPage, PurchaserAddressPage, PurchaserBeforeYouStartPage, PurchaserConfirmNameOfPurchaserPage, PurchaserConfirmPurchaserIdentityPage, PurchaserContactPhoneNumber, PurchaserCorporationTaxUTRPage, PurchaserDateOfBirth, PurchaserFormOfIDCompanyPage, PurchaserNameOfPurchaserPage, PurchaserNationalinsuranceNumberPage, PurchaserWhoIsMakingThePurchasePage, VATRegistrationNumberPage}
+import uk.gov.hmrc.ui.pages.purchaser.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
@@ -271,7 +271,7 @@ class PurchaserQuestionsSpec
       )
       And("user clicks the Continue button")
       WhatTypeOfCompany.saveAndContinue()
-      // User should be navigated to "Is purchaser acting as trustee page
+      // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no  yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
@@ -340,7 +340,7 @@ class PurchaserQuestionsSpec
       )
       And("user clicks the Continue button")
       WhatTypeOfCompany.saveAndContinue()
-      // User should be navigated to "Is purchaser acting as trustee page
+      // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
@@ -409,7 +409,7 @@ class PurchaserQuestionsSpec
       )
       And("user clicks the Continue button")
       WhatTypeOfCompany.saveAndContinue()
-      // User should be navigated to "Is purchaser acting as trustee page
+      // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
@@ -483,10 +483,18 @@ class PurchaserQuestionsSpec
       )
       And("clicks the Save and continue button")
       PurchaserFormOfIDCompanyPage.saveAndContinue()
-
-      // User should be navigated to "What type of company page
-      // User selects type of company and continue
-      // User should be navigated to "Is purchaser acting as trustee page
+      Then("the user navigates to What type of company page?")
+      WhatTypeOfCompany.verifyPageTitle(WhatTypeOfCompany.pageTitle)
+      And("user selects 2 types of company")
+      WhatTypeOfCompany.selectCompanyTypes(
+        Seq(
+          "Unincorporated sole trader other than builder",
+          "Superannuation or pension fund"
+        )
+      )
+      And("user clicks the Continue button")
+      WhatTypeOfCompany.saveAndContinue()
+      // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
       // User should be navigated to "Are purchaser and vendor connected page
       // User selects no or yes and continue
