@@ -259,7 +259,7 @@ class PurchaserQuestionsSpec
       And("user clicks the Continue button")
       VATRegistrationNumberPage.saveAndContinue()
       Then("the user navigates to What type of company page?")
-       WhatTypeOfCompany.verifyPageTitle(WhatTypeOfCompany.pageTitle)
+      WhatTypeOfCompany.verifyPageTitle(WhatTypeOfCompany.pageTitle)
       And("user selects 4 types of company")
       WhatTypeOfCompany.selectCompanyTypes(
         Seq(
