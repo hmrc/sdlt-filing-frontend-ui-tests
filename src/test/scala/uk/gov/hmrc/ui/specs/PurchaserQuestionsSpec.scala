@@ -261,14 +261,10 @@ class PurchaserQuestionsSpec
       Then("the user navigates to What type of company page?")
       WhatTypeOfCompany.verifyPageTitle(WhatTypeOfCompany.pageTitle)
       And("user selects 4 types of company")
-      WhatTypeOfCompany.selectCompanyTypes(
-        Seq(
-          "Bank",
-          "Central Government",
-          "Building Association",
-          "Other company"
-        )
-      )
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Bank, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Building_Association, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Insurance_Assurance_company, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Property_company, true)
       And("user clicks the Continue button")
       WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
@@ -331,13 +327,9 @@ class PurchaserQuestionsSpec
       Then("the user navigates to What type of company page?")
       WhatTypeOfCompany.verifyPageTitle(WhatTypeOfCompany.pageTitle)
       And("user selects 3 types of company")
-      WhatTypeOfCompany.selectCompanyTypes(
-        Seq(
-          "Public corporation",
-          "Central Government",
-          "Other financial institute"
-        )
-      )
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Public_corporation, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Central_Government, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Other_financial_institute, true)
       And("user clicks the Continue button")
       WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
@@ -400,13 +392,9 @@ class PurchaserQuestionsSpec
       Then("the user navigates to What type of company page?")
       WhatTypeOfCompany.verifyPageTitle(WhatTypeOfCompany.pageTitle)
       And("user selects 3 types of company")
-      WhatTypeOfCompany.selectCompanyTypes(
-        Seq(
-          "Local authority",
-          "Unincorporated sole trader other than builder",
-          "Superannuation or pension fund"
-        )
-      )
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Local_authority, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Unincorporated_sole_trader_other_than_builder, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Superannuation_or_pension_fund, true)
       And("user clicks the Continue button")
       WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
@@ -485,13 +473,10 @@ class PurchaserQuestionsSpec
       PurchaserFormOfIDCompanyPage.saveAndContinue()
       Then("the user navigates to What type of company page?")
       WhatTypeOfCompany.verifyPageTitle(WhatTypeOfCompany.pageTitle)
-      And("user selects 2 types of company")
-      WhatTypeOfCompany.selectCompanyTypes(
-        Seq(
-          "Unincorporated sole trader other than builder",
-          "Superannuation or pension fund"
-        )
-      )
+      And("user selects 3 types of company")
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Unincorporated_builder, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Partnership, true)
+      WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Insurance_Assurance_company, true)
       And("user clicks the Continue button")
       WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
