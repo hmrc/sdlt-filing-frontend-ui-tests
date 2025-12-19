@@ -104,12 +104,20 @@ class PurchaserQuestionsSpec
       PurchaserDateOfBirth.verifyPageTitle(PurchaserDateOfBirth.pageTitle)
       And("User enters Purchaser's Date of Birth")
       PurchaserDateOfBirth.enterDateOfBirth()
-      And("the user click Save and Continue")
-      PurchaserDateOfBirth.saveAndContinue()
-      // User should be navigated to "Is purchaser acting as trustee page"
-      // User selects no or yes and continue
-      // User should be navigated to "Are purchaser and vendor connected page
-      // User selects no or yes and continue
+//      uncomment when pr-6 has been added
+//      And("the user click Save and Continue")
+//      PurchaserDateOfBirth.saveAndContinue()
+//      User should be navigated to "Is purchaser acting as trustee page"
+//      User selects no or yes and continue
+      Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
+      // the line below to be removed once pr-6 has been added
+      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // Is Purchaser represented by an agent page
       // User selects no  and continue
       // User should be navigated to purchasers check your answers page
@@ -190,12 +198,20 @@ class PurchaserQuestionsSpec
         By.id(IndividualPurchaserIDPage.purchaserCountryIssued),
         IndividualPurchaserIDPage.countryIssuedInput
       )
-      And("User clicks Save and Continue")
-      IndividualPurchaserIDPage.saveAndContinue()
+      //      uncomment when pr-6 has been added
+//      And("User clicks Save and Continue")
+//      IndividualPurchaserIDPage.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
-      // User selects no  and continue
-      // User should be navigated to "Are purchaser and vendor connected page
-      // User selects no or yes and continue
+      // User selects no and continue
+      Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
+      // the line below to be removed once pr-6 has been added
+      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // Is Purchaser represented by an agent page
       // User selects yes and continue
       // user is navigated to select Purchaser's Agent  page
@@ -265,12 +281,19 @@ class PurchaserQuestionsSpec
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Building_Association, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Insurance_Assurance_company, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Property_company, true)
-      And("user clicks the Continue button")
-      WhatTypeOfCompany.saveAndContinue()
+      //      uncomment when pr-6 has been added
+      //      And("user clicks the Continue button")
+//      WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no  yes and continue
-      // User should be navigated to "Are purchaser and vendor connected page
-      // User selects no or yes and continue
+      Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
+      // the line below to be removed once pr-6 has been added
+      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
 
     }
 
@@ -330,12 +353,20 @@ class PurchaserQuestionsSpec
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Public_corporation, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Central_Government, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Other_financial_institute, true)
-      And("user clicks the Continue button")
-      WhatTypeOfCompany.saveAndContinue()
+      //      uncomment when pr-6 has been added
+      //      And("user clicks the Continue button")
+//      WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
-      // User should be navigated to "Are purchaser and vendor connected page
-      // User selects no or yes and continue
+      Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
+      // the line below to be removed once pr-6 has been added
+      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
+
     }
 
     Scenario(
@@ -395,12 +426,20 @@ class PurchaserQuestionsSpec
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Local_authority, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Unincorporated_sole_trader_other_than_builder, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Superannuation_or_pension_fund, true)
-      And("user clicks the Continue button")
-      WhatTypeOfCompany.saveAndContinue()
+      //      uncomment when pr-6 has been added
+//      And("user clicks the Continue button")
+//      WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
-      // User should be navigated to "Are purchaser and vendor connected page
-      // User selects no or yes and continue
+      Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
+      // the line below to be removed once pr-6 has been added
+      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
+
     }
 
     Scenario(
@@ -477,13 +516,19 @@ class PurchaserQuestionsSpec
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Unincorporated_builder, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Partnership, true)
       WhatTypeOfCompany.checkbox(WhatTypeOfCompany.Insurance_Assurance_company, true)
-      And("user clicks the Continue button")
-      WhatTypeOfCompany.saveAndContinue()
+      //      uncomment when pr-6 has been added
+//      And("user clicks the Continue button")
+//      WhatTypeOfCompany.saveAndContinue()
       // User should be navigated to "Is purchaser acting as trustee page"
       // User selects no or yes and continue
-      // User should be navigated to "Are purchaser and vendor connected page
-      // User selects no or yes and continue
-
+      Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
+      // the line below to be removed once pr-6 has been added
+      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
     }
   }
 }
