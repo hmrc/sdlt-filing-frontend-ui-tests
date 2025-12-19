@@ -21,7 +21,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 object PurchaserAndVendorConnectedPage extends BasePage {
 
   override def pageUrl: String =
-    "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-and-vendor-connected"
+    "about-the-purchaser/purchaser-and-vendor-connected"
 
   override def pageTitle: String =
     "Are the purchaser and the vendor connected? - About the purchaser - Stamp Taxes Online - GOV.UK"

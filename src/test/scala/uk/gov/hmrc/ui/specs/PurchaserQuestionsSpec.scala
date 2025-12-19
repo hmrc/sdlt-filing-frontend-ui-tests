@@ -111,7 +111,9 @@ class PurchaserQuestionsSpec
 //      User selects no or yes and continue
       Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
       // the line below to be removed once pr-6 has been added
-      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-and-vendor-connected"
+      )
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
@@ -288,7 +290,9 @@ class PurchaserQuestionsSpec
       // User selects no  yes and continue
       Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
       // the line below to be removed once pr-6 has been added
-      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-and-vendor-connected"
+      )
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
@@ -433,7 +437,9 @@ class PurchaserQuestionsSpec
       // User selects no or yes and continue
       Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
       // the line below to be removed once pr-6 has been added
-      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-and-vendor-connected"
+      )
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
@@ -523,7 +529,9 @@ class PurchaserQuestionsSpec
       // User selects no or yes and continue
       Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
       // the line below to be removed once pr-6 has been added
-      PurchaserAndVendorConnectedPage.navigateToPage(PurchaserAndVendorConnectedPage.pageUrl)
+      PurchaserAndVendorConnectedPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-and-vendor-connected"
+      )
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
