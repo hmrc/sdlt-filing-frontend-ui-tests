@@ -102,7 +102,10 @@ class PrelimQuestionsSpec
       CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
     }
 
-    Scenario("Complete the Prelim Questions user journey as an Individual with no return id stub data", PrelimsJourney) {
+    Scenario(
+      "Complete the Prelim Questions user journey as an Individual with no return id stub data",
+      PrelimsJourney
+    ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
