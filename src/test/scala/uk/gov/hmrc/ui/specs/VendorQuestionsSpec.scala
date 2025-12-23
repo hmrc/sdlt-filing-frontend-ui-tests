@@ -26,6 +26,8 @@ import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yes}
 import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsContactDetailsPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorCheckYourAnswersPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.scalatest.Tag
+object VendorJourney extends Tag("VendorJourney")
 
 class VendorQuestionsSpec
     extends AnyFeatureSpec
@@ -38,7 +40,10 @@ class VendorQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Vendor Questions") {
-    Scenario("Complete the Vendor Questions user journey as a Company with prelim questions submitted stub data") {
+    Scenario(
+      "Complete the Vendor Questions user journey as a Company with prelim questions submitted stub data",
+      VendorJourney
+    ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user is navigated to the Return Task List page")
@@ -101,7 +106,10 @@ class VendorQuestionsSpec
       VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
     }
 
-    Scenario("Complete the Vendor Questions user journey as an Individual with prelim questions submitted stub data") {
+    Scenario(
+      "Complete the Vendor Questions user journey as an Individual with prelim questions submitted stub data",
+      VendorJourney
+    ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user is navigated to the Return Task List page")
@@ -152,7 +160,8 @@ class VendorQuestionsSpec
     }
 
     Scenario(
-      "Complete the Vendor Questions user journey for Vendor Agent with a reference number and no vendor stub data"
+      "Complete the Vendor Questions user journey for Vendor Agent with a reference number and no vendor stub data",
+      VendorJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
@@ -256,7 +265,8 @@ class VendorQuestionsSpec
     }
 
     Scenario(
-      "Complete the Vendor Questions user journey for Vendor Agent without a reference number and no vendor stub data"
+      "Complete the Vendor Questions user journey for Vendor Agent without a reference number and no vendor stub data",
+      VendorJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)

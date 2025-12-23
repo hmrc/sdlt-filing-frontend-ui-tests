@@ -26,6 +26,8 @@ import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouS
 import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.scalatest.Tag
+object e2eJourney extends Tag("e2eJourney")
 
 class e2eSpec
     extends AnyFeatureSpec
@@ -38,7 +40,7 @@ class e2eSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend end to end") {
-    Scenario("Complete the end to end flow of the Filing Journey") {
+    Scenario("Complete the end to end flow of the Filing Journey", e2eJourney) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user is navigated to the Before You Start page")
