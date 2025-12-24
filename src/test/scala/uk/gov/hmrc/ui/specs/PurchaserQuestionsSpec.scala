@@ -26,6 +26,8 @@ import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.pages.purchaser.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.scalatest.Tag
+object PurchaserJourney extends Tag("PurchaserJourney")
 
 class PurchaserQuestionsSpec
     extends AnyFeatureSpec
@@ -39,7 +41,8 @@ class PurchaserQuestionsSpec
 
   Feature("SDLT Filing Frontend Purchaser Questions") {
     Scenario(
-      "Complete the Purchaser Questions user journey as a Individual with prelim questions submitted stub data incomplete purchaser"
+      "Complete the Purchaser Questions user journey as a Individual with prelim questions submitted stub data incomplete purchaser",
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
@@ -125,7 +128,8 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Individual who doesn't have NI with prelim questions submitted stub data incomplete purchaser"
+      "Complete the Purchaser Questions user journey as a Individual who doesn't have NI with prelim questions submitted stub data incomplete purchaser",
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
@@ -220,7 +224,8 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with VAT ID and with prelim questions submitted stub data incomplete purchaser"
+      "Complete the Purchaser Questions user journey as a Company with VAT ID and with prelim questions submitted stub data incomplete purchaser",
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
@@ -300,7 +305,8 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with corporation UTR ID and with prelim questions submitted stub data incomplete purchaser yes to stub data"
+      "Complete the Purchaser Questions user journey as a Company with corporation UTR ID and with prelim questions submitted stub data incomplete purchaser yes to stub data",
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
@@ -372,7 +378,8 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with partnership UTR ID with prelim questions submitted stub data and full purchaser"
+      "Complete the Purchaser Questions user journey as a Company with partnership UTR ID with prelim questions submitted stub data and full purchaser",
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))
@@ -445,7 +452,8 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company, providing phone number details along with another form of ID and prelim questions submitted stub data and full purchaser"
+      "Complete the Purchaser Questions user journey as a Company, providing phone number details along with another form of ID and prelim questions submitted stub data and full purchaser",
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))

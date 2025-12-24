@@ -24,6 +24,8 @@ import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.PurchaserAgent.PurchaserAgentBeforeYouStartPage
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.scalatest.Tag
+object PurchaserAgentJourney extends Tag("PurchaserAgentJourney")
 
 class PurchaserAgentSpec
     extends AnyFeatureSpec
@@ -36,7 +38,7 @@ class PurchaserAgentSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Purchaser Agent Journey") {
-    Scenario("Complete the Purchaser Agent Journey") {
+    Scenario("Complete the Purchaser Agent Journey", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user is navigated to the Return Task List page")

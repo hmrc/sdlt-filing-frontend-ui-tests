@@ -25,6 +25,8 @@ import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouS
 import uk.gov.hmrc.ui.pages.AuthWizard
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.scalatest.Tag
+object PrelimsJourney extends Tag("PrelimsJourney")
 
 class PrelimQuestionsSpec
     extends AnyFeatureSpec
@@ -37,7 +39,7 @@ class PrelimQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Prelim Questions") {
-    Scenario("Complete the Prelim Questions user journey as a Company with no return id stub data") {
+    Scenario("Complete the Prelim Questions user journey as a Company with no return id stub data", PrelimsJourney) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
@@ -100,7 +102,10 @@ class PrelimQuestionsSpec
       CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
     }
 
-    Scenario("Complete the Prelim Questions user journey as an Individual with no return id stub data") {
+    Scenario(
+      "Complete the Prelim Questions user journey as an Individual with no return id stub data",
+      PrelimsJourney
+    ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user should be navigated to the Before You Start page")
