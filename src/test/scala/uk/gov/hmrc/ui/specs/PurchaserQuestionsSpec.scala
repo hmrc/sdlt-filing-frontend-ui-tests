@@ -121,10 +121,26 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
-
-      // Is Purchaser represented by an agent page
-      // User selects no and continue
       // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser name
+      // User should be navigated to purchaser name page
+      // User updates purchaser name details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser NI number
+      // User should be navigated to purchaser NI number page
+      // User updates purchaser NI number details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser date of birth
+      // User should be navigated to purchaser date of birth page
+      // User updates purchaser date of birth details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on save and continue
+      // User should be navigated to purchaser overview page
+      // User selects yes to add another purchaser
+      // User should be navigated to who is making the purchase page
     }
 
     Scenario(
@@ -217,10 +233,27 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
-
-      // Is Purchaser represented by an agent page
-      // User selects yes and continue
-      // user is navigated to select Purchaser's Agent page
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser address
+      // User should be navigated to purchaser address page
+      // User updates purchaser address details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser phone number
+      // User should be navigated to purchaser phone number page
+      // User updates purchaser phone number details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser ID details
+      // User should be navigated to purchaser ID details page
+      // User updates purchaser ID details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on save and continue
+      // User should be navigated to purchaser overview page
+      // User selects remove link to remove another purchaser
+      // User should be navigated to "Are you sure you want to remove purchaser page"
+      // User selects Yes to remove purchaser
     }
 
     Scenario(
@@ -302,6 +335,21 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser name
+      // User should be navigated to purchaser name page
+      // User updates purchaser name details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser VAT number
+      // User should be navigated to purchaser VAT number page
+      // User updates purchaser VAT number details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on save and continue
+      // User should be navigated to purchaser overview page
+      // User selects no to add another purchaser
+      // User should be navigated to return tasklist page
     }
 
     Scenario(
@@ -375,6 +423,18 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser Identity
+      // User should be navigated to purchaser Identity page
+      // User updates purchaser Identity details to partnership UTR
+      // User clicks on save and continue
+      // User should be navigated to enter partnership UTR page
+      // User enters partnership UTR details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on save and continue
+      // User should be navigated to purchaser overview page
+      // User selects change  purchaser
     }
 
     Scenario(
@@ -449,6 +509,22 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser phone number details
+      // User should be navigated to purchaser phone number details page
+      // User updates yes for phone number
+      // User enters phone number details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for type of company
+      // User should be navigated to type of company page
+      // User updates type of company details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on save and continue
+      // User should be navigated to purchaser overview page
+      // User selects no to add another purchaser
+      // User should be navigated to return tasklist page
     }
 
     Scenario(
@@ -540,6 +616,21 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for purchaser Acting as a Trustee
+      // User should be navigated to purchaser Acting as a Trustee page
+      // User updates purchaser Acting as a Trustee details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on change link for Are purchaser and vendor connected
+      // User should be navigated to Are purchaser and vendor connected page
+      // User updates Are purchaser and vendor connected details
+      // User clicks on save and continue
+      // User should be navigated to purchasers check your answers page
+      // User clicks on save and continue
+      // User should be navigated to purchaser overview page
+      // User selects no to add another purchaser
+      // User should be navigated to return tasklist page
     }
   }
 }
