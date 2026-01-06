@@ -26,8 +26,7 @@ import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouS
 import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
-import org.scalatest.Tag
-object e2eJourney extends Tag("e2eJourney")
+import uk.gov.hmrc.ui.tags.*
 
 class e2eSpec
     extends AnyFeatureSpec

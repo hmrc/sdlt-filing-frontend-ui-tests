@@ -26,8 +26,7 @@ import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yes}
 import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsContactDetailsPage, VendorAgentsNamePage, VendorBeforeYouStartPage, VendorCheckYourAnswersPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
-import org.scalatest.Tag
-object VendorJourney extends Tag("VendorJourney")
+import uk.gov.hmrc.ui.tags.*
 
 class VendorQuestionsSpec
     extends AnyFeatureSpec
