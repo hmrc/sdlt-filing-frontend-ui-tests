@@ -24,8 +24,7 @@ import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.PurchaserAgent.PurchaserAgentBeforeYouStartPage
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
-import org.scalatest.Tag
-object PurchaserAgentJourney extends Tag("PurchaserAgentJourney")
+import uk.gov.hmrc.ui.tags.*
 
 class PurchaserAgentSpec
     extends AnyFeatureSpec

@@ -25,8 +25,7 @@ import uk.gov.hmrc.ui.pages.PrelimQuestions.{AboutTheTransactionPage, BeforeYouS
 import uk.gov.hmrc.ui.pages.AuthWizard
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
-import org.scalatest.Tag
-object PrelimsJourney extends Tag("PrelimsJourney")
+import uk.gov.hmrc.ui.tags.*
 
 class PrelimQuestionsSpec
     extends AnyFeatureSpec
