@@ -49,17 +49,34 @@ class PurchaserAgentSpec
       PurchaserAgentBeforeYouStartPage.verifyPageTitle(PurchaserAgentBeforeYouStartPage.pageTitle)
       And("user selects 'Yes' radio button")
       PurchaserAgentBeforeYouStartPage.radioButton(PurchaserAgentBeforeYouStartPage.yes)
-      And("clicks the continue button")
-      PurchaserAgentBeforeYouStartPage.saveAndContinue()
+
+      // Uncomment next two lines when navigation to the next page is ready
+//      And("clicks the continue button")
+//      PurchaserAgentBeforeYouStartPage.saveAndContinue()
+
       // User navigated to Select Purchaser Agent Details page
       // User selects Add an Agent for return radio button
       // User clicks save and continue
       // User navigated to What is the Agent's Name page
       // User inputs Agent's name
       // User clicks save and continue
-      // User navigated to What is the Agent's Address page
-      // User inputs Agent's address details
-      // User clicks save and continue
+
+      Then("the user is navigated to the Purchaser Agent Address page")
+      // Remove line below when navigation from previous page is complete
+      PurchaserAgentAddressPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-address-lookup"
+      )
+      PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.pageTitle)
+      When("the user clicks on the 'Enter the address manually' link")
+      PurchaserAgentAddressPage.clickAddressManually()
+      And("enters their address manually")
+      PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.editPageTitleAgent)
+      PurchaserAgentAddressPage.enterAddressManually("523", "AGC", "TE11 1TS")
+      Then("the user is navigated to the Purchaser Agent Address page to 'Review and confirm' the address")
+      PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.confirmPageTitleAgent)
+      And("clicks the Confirm address button")
+      PurchaserAgentAddressPage.clickContinueButton()
+
       // User navigated to Do you want to add contact details for the Agent page
       // User selects Yes radio button
       // User clicks save and continue
