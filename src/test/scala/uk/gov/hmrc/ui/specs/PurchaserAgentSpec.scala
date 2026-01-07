@@ -16,12 +16,14 @@
 
 package uk.gov.hmrc.ui.specs
 
+import org.openqa.selenium.By
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.PurchaserAgent.PurchaserAgentBeforeYouStartPage
+import uk.gov.hmrc.ui.pages.PurchaserAgent.{PurchaserAgentBeforeYouStartPage, PurchaserAgentContactDetails}
+import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHavePhoneNumber, PurchaserContactPhoneNumber}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
@@ -63,8 +65,25 @@ class PurchaserAgentSpec
       // User selects Yes radio button
       // User clicks save and continue
       // User navigated to What is the Agent's Contact Details page
-      // User inputs Agent's contact details
-      // User clicks save and continue
+
+      // next line to be deleted when navigation completed
+      PurchaserAgentContactDetails.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/enter-agent-contact-details"
+      )
+      Then("User should be navigated to Agent Contact Details Page")
+      PurchaserAgentContactDetails.verifyPageTitle(PurchaserAgentContactDetails.pageTitle)
+      When("User enters Purchaser Agent's phone number")
+      PurchaserAgentContactDetails.input(
+        By.id(PurchaserAgentContactDetails.emailAddress),
+        PurchaserAgentContactDetails.emailAddressInput
+      )
+      And("User enters Purchaser Agent's email address")
+      PurchaserAgentContactDetails.input(
+        By.id(PurchaserAgentContactDetails.phoneNumber),
+        PurchaserAgentContactDetails.phoneNumberInput
+      )
+      And("User clicks save and continue")
+      PurchaserAgentContactDetails.saveAndContinue()
       // User navigated to Do you want to add reference for this return page
     }
 
