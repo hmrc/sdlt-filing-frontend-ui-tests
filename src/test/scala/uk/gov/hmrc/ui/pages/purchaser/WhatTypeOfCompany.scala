@@ -23,7 +23,7 @@ object WhatTypeOfCompany extends BasePage {
   override def pageUrl: String = "about-the-purchaser/type-of-company"
 
   override def pageTitle: String =
-    "What type of company is the purchaser? – About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What type of company is the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val Bank: String                                          = "#value_0"
   val Building_Association: String                          = "#value_1"

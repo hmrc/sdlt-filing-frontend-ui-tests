@@ -22,8 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.PurchaserAgent.{PurchaserAgentBeforeYouStartPage, PurchaserAgentContactDetails}
-import uk.gov.hmrc.ui.pages.purchaser.{DoesPurchaserHavePhoneNumber, PurchaserContactPhoneNumber}
+import uk.gov.hmrc.ui.pages.PurchaserAgent.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*

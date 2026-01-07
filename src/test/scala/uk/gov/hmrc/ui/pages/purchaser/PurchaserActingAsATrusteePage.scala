@@ -23,7 +23,7 @@ object PurchaserActingAsATrusteePage extends BasePage {
   override def pageUrl: String = "about-the-purchaser/acting-as-a-trustee"
 
   override def pageTitle: String =
-    "Is the purchaser acting as a trustee? – About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Is the purchaser acting as a trustee? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value_0"
 
