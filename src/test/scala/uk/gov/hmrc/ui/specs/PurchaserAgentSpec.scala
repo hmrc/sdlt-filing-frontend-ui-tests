@@ -57,9 +57,18 @@ class PurchaserAgentSpec
       // User navigated to Select Purchaser Agent Details page
       // User selects Add an Agent for return radio button
       // User clicks save and continue
-      // User navigated to What is the Agent's Name page
-      // User inputs Agent's name
-      // User clicks save and continue
+
+      // remove line below when navigation from previous page is complete
+      PurchaserAgentName.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-name"
+      )
+      //
+      Then("The user should be navigated to the Agents Name Page")
+      PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
+      And("The user enters their purchaser Agents name")
+      PurchaserAgentName.input(By.id(PurchaserAgentName.purchaserAName), "TestName Test")
+      And("The User selects save and continue")
+      PurchaserAgentName.saveAndContinue()
 
       Then("the user is navigated to the Purchaser Agent Address page")
       // Remove line below when navigation from previous page is complete
