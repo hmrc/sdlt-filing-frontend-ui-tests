@@ -44,9 +44,7 @@ class VendorQuestionsSpec
       VendorJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      Then("the user is navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user is navigated to the Vendor Overview page")
@@ -110,9 +108,7 @@ class VendorQuestionsSpec
       VendorJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      Then("the user is navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user is navigated to the Vendor Overview page")
@@ -268,9 +264,7 @@ class VendorQuestionsSpec
       VendorJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      Then("the user is navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrlNoVendor)
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user is navigated to the Vendor Before You Start page")
