@@ -40,9 +40,7 @@ class PurchaserAgentSpec
   Feature("SDLT Filing Frontend Purchaser Agent Journey") {
     Scenario("Complete the Purchaser Agent Journey for new return", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      Then("the user is navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
@@ -114,9 +112,7 @@ class PurchaserAgentSpec
 
     Scenario("Complete the Purchaser Agent Journey", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation)
-      Then("the user is navigated to the Return Task List page")
-      ReturnTaskListPage.navigateToPage(ReturnTaskListPage.pageUrl)
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
