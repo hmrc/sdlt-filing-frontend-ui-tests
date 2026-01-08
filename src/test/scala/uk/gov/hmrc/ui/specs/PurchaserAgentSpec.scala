@@ -60,19 +60,13 @@ class PurchaserAgentSpec
       PurchaserAgentName.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-name"
       )
-      //
       Then("The user should be navigated to the Agents Name Page")
       PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
       And("The user enters their purchaser Agents name")
-      PurchaserAgentName.input(By.id(PurchaserAgentName.purchaserAName), "TestName Test")
+      PurchaserAgentName.input(By.id(PurchaserAgentName.purchaserAName), PurchaserAgentName.purchaserANameInput)
       And("The User selects save and continue")
       PurchaserAgentName.saveAndContinue()
-
       Then("the user is navigated to the Purchaser Agent Address page")
-      // Remove line below when navigation from previous page is complete
-      PurchaserAgentAddressPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-address-lookup"
-      )
       PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
       PurchaserAgentAddressPage.clickAddressManually()
