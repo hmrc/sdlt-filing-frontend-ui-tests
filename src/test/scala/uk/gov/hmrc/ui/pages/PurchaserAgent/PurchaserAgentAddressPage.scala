@@ -24,13 +24,13 @@ object PurchaserAgentAddressPage extends BasePage {
   override def pageUrl: String = "about-the-purchasers-agent/agent-address-lookup"
 
   override def pageTitle: String =
-    "Find Agent Name’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    s"Find ${PurchaserAgentName.purchaserANameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleAgent: String =
-    "Enter Agent Name’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    s"Enter ${PurchaserAgentName.purchaserANameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleAgent: String =
-    "Review and confirm Agent Name’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${PurchaserAgentName.purchaserANameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
   def clickAddressManually(): Unit = click(By.linkText(Locators.lnkAddrManually))
 

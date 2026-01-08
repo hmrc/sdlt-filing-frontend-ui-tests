@@ -27,4 +27,5 @@ object PurchaserAgentName extends BasePage {
 
   def purchaserAName: String = "value"
 
+  def purchaserANameInput: String = "TestName Test"
 }
