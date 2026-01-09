@@ -101,10 +101,15 @@ class PurchaserAgentSpec
       )
       And("User clicks save and continue")
       PurchaserAgentContactDetails.saveAndContinue()
-      // User navigated to Do you want to add reference for this return page
+      Then("User navigated to Do you want to add reference for this return page")
+      PurchaserAgentAddReferencePage.verifyPageTitle(PurchaserAgentAddReferencePage.pageTitle)
+      And("User selects Yes radio button")
+      PurchaserAgentAddReferencePage.radioButton(PurchaserAgentAddReferencePage.yes)
+      And("User clicks save and continue")
+      PurchaserAgentAddReferencePage.saveAndContinue()
     }
 
-    Scenario("Complete the Purchaser Agent Journey", PurchaserAgentJourney) {
+    Scenario("Complete the Purchaser Agent Journey for additional purchaser", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
