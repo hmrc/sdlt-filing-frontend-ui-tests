@@ -77,9 +77,12 @@ class PurchaserAgentSpec
       PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.confirmPageTitleAgent)
       And("clicks the Confirm address button")
       PurchaserAgentAddressPage.clickContinueButton()
-
-      // User navigated to Do you want to add contact details for the Agent page
-      // User selects Yes radio button
+      Then("The user is navigated to the Does The Purchaser Agent have Contact Details page ")
+      DoesPurchaserAgentHaveContactDetailsPage.verifyPageTitle(DoesPurchaserAgentHaveContactDetailsPage.pageTitle)
+      And("The user clicks yes")
+      DoesPurchaserAgentHaveContactDetailsPage.radioButton(DoesPurchaserAgentHaveContactDetailsPage.yes)
+      And("The user selects save and continue")
+      DoesPurchaserAgentHaveContactDetailsPage.saveAndContinue()
       // User clicks save and continue
       // User navigated to What is the Agent's Contact Details page
 
