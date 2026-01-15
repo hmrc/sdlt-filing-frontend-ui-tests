@@ -77,16 +77,12 @@ class PurchaserAgentSpec
       PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.confirmPageTitleAgent)
       And("clicks the Confirm address button")
       PurchaserAgentAddressPage.clickContinueButton()
-
-      // User navigated to Do you want to add contact details for the Agent page
-      // User selects Yes radio button
-      // User clicks save and continue
-      // User navigated to What is the Agent's Contact Details page
-
-      // next line to be deleted when navigation completed
-      PurchaserAgentContactDetails.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/enter-agent-contact-details"
-      )
+      Then("The user is navigated to the Does The Purchaser Agent have Contact Details page ")
+      DoesPurchaserAgentHaveContactDetailsPage.verifyPageTitle(DoesPurchaserAgentHaveContactDetailsPage.pageTitle)
+      And("The user clicks yes")
+      DoesPurchaserAgentHaveContactDetailsPage.radioButton(DoesPurchaserAgentHaveContactDetailsPage.yes)
+      And("The user selects save and continue")
+      DoesPurchaserAgentHaveContactDetailsPage.saveAndContinue()
       Then("User should be navigated to Agent Contact Details Page")
       PurchaserAgentContactDetails.verifyPageTitle(PurchaserAgentContactDetails.pageTitle)
       When("User enters Purchaser Agent's phone number")
@@ -101,6 +97,59 @@ class PurchaserAgentSpec
       )
       And("User clicks save and continue")
       PurchaserAgentContactDetails.saveAndContinue()
+      Then("User navigated to Do you want to add reference for this return page")
+      PurchaserAgentAddReferencePage.verifyPageTitle(PurchaserAgentAddReferencePage.pageTitle)
+      And("User selects Yes radio button")
+      PurchaserAgentAddReferencePage.radioButton(PurchaserAgentAddReferencePage.yes)
+      And("User clicks save and continue")
+      PurchaserAgentAddReferencePage.saveAndContinue()
+    }
+
+    Scenario("Complete the Purchaser Agent Journey with no contact info", wip) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
+      When("the user clicks on the 'Purchaser Agent Questions' link")
+      PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
+      Then("the user should be navigated to the Before You Start page")
+      PurchaserAgentBeforeYouStartPage.verifyPageTitle(PurchaserAgentBeforeYouStartPage.pageTitle)
+      And("user selects 'Yes' radio button")
+      PurchaserAgentBeforeYouStartPage.radioButton(PurchaserAgentBeforeYouStartPage.yes)
+
+      // Uncomment next two lines when navigation to the next page is ready
+      //      And("clicks the continue button")
+      //      PurchaserAgentBeforeYouStartPage.saveAndContinue()
+
+      // User navigated to Select Purchaser Agent Details page
+      // User selects Add an Agent for return radio button
+      // User clicks save and continue
+
+      // remove line below when navigation from previous page is complete
+      PurchaserAgentName.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-name"
+      )
+      Then("The user should be navigated to the Agents Name Page")
+      PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
+      And("The user enters their purchaser Agents name")
+      PurchaserAgentName.input(By.id(PurchaserAgentName.purchaserAName), PurchaserAgentName.purchaserANameInput)
+      And("The User selects save and continue")
+      PurchaserAgentName.saveAndContinue()
+      Then("the user is navigated to the Purchaser Agent Address page")
+      PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.pageTitle)
+      When("the user clicks on the 'Enter the address manually' link")
+      PurchaserAgentAddressPage.clickAddressManually()
+      And("enters their address manually")
+      PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.editPageTitleAgent)
+      PurchaserAgentAddressPage.enterAddressManually("523", "AGC", "TE11 1TS")
+      Then("the user is navigated to the Purchaser Agent Address page to 'Review and confirm' the address")
+      PurchaserAgentAddressPage.verifyPageTitle(PurchaserAgentAddressPage.confirmPageTitleAgent)
+      And("clicks the Confirm address button")
+      PurchaserAgentAddressPage.clickContinueButton()
+      Then("The user is navigated to the Does The Purchaser Agent have Contact Details page ")
+      DoesPurchaserAgentHaveContactDetailsPage.verifyPageTitle(DoesPurchaserAgentHaveContactDetailsPage.pageTitle)
+      And("The user clicks no")
+      DoesPurchaserAgentHaveContactDetailsPage.radioButton(DoesPurchaserAgentHaveContactDetailsPage.no)
+      And("The user selects save and continue")
+      DoesPurchaserAgentHaveContactDetailsPage.saveAndContinue()
       Then("User navigated to Do you want to add reference for this return page")
       PurchaserAgentAddReferencePage.verifyPageTitle(PurchaserAgentAddReferencePage.pageTitle)
       And("User selects Yes radio button")
