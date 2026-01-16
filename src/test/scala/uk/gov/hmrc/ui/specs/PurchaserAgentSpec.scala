@@ -40,26 +40,21 @@ class PurchaserAgentSpec
   Feature("SDLT Filing Frontend Purchaser Agent Journey") {
     Scenario("Complete the Purchaser Agent Journey for new return", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
       PurchaserAgentBeforeYouStartPage.verifyPageTitle(PurchaserAgentBeforeYouStartPage.pageTitle)
       And("user selects 'Yes' radio button")
       PurchaserAgentBeforeYouStartPage.radioButton(PurchaserAgentBeforeYouStartPage.yes)
-
-      // Uncomment next two lines when navigation to the next page is ready
-//      And("clicks the continue button")
-//      PurchaserAgentBeforeYouStartPage.saveAndContinue()
-
-      // User navigated to Select Purchaser Agent Details page
-      // User selects Add an Agent for return radio button
-      // User clicks save and continue
-
-      // remove line below when navigation from previous page is complete
-      PurchaserAgentName.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-name"
-      )
+      And("clicks the continue button")
+      PurchaserAgentBeforeYouStartPage.saveAndContinue()
+      Then("User navigated to Select Purchaser Agent Details page")
+      PurchaserAgentDetailsPage.verifyPageTitle(PurchaserAgentDetailsPage.pageTitle)
+      When("User selects 'Add a new agent for this return' radio button")
+      PurchaserAgentDetailsPage.radioButton(PurchaserAgentDetailsPage.addNewAgent)
+      And("User clicks save and continue")
+      PurchaserAgentDetailsPage.saveAndContinue()
       Then("The user should be navigated to the Agents Name Page")
       PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
       And("The user enters their purchaser Agents name")
@@ -105,28 +100,23 @@ class PurchaserAgentSpec
       PurchaserAgentAddReferencePage.saveAndContinue()
     }
 
-    Scenario("Complete the Purchaser Agent Journey with no contact info", wip) {
+    Scenario("Complete the Purchaser Agent Journey with no contact info", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
       PurchaserAgentBeforeYouStartPage.verifyPageTitle(PurchaserAgentBeforeYouStartPage.pageTitle)
       And("user selects 'Yes' radio button")
       PurchaserAgentBeforeYouStartPage.radioButton(PurchaserAgentBeforeYouStartPage.yes)
-
-      // Uncomment next two lines when navigation to the next page is ready
-      //      And("clicks the continue button")
-      //      PurchaserAgentBeforeYouStartPage.saveAndContinue()
-
-      // User navigated to Select Purchaser Agent Details page
-      // User selects Add an Agent for return radio button
-      // User clicks save and continue
-
-      // remove line below when navigation from previous page is complete
-      PurchaserAgentName.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-name"
-      )
+      And("clicks the continue button")
+      PurchaserAgentBeforeYouStartPage.saveAndContinue()
+      Then("User navigated to Select Purchaser Agent Details page")
+      PurchaserAgentDetailsPage.verifyPageTitle(PurchaserAgentDetailsPage.pageTitle)
+      When("User selects 'Add a new agent for this return' radio button")
+      PurchaserAgentDetailsPage.radioButton(PurchaserAgentDetailsPage.addNewAgent)
+      And("User clicks save and continue")
+      PurchaserAgentDetailsPage.saveAndContinue()
       Then("The user should be navigated to the Agents Name Page")
       PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
       And("The user enters their purchaser Agents name")
@@ -160,7 +150,7 @@ class PurchaserAgentSpec
 
     Scenario("Complete the Purchaser Agent Journey for additional purchaser", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
@@ -169,10 +159,18 @@ class PurchaserAgentSpec
       PurchaserAgentBeforeYouStartPage.radioButton(PurchaserAgentBeforeYouStartPage.yes)
       And("clicks the continue button")
       PurchaserAgentBeforeYouStartPage.saveAndContinue()
-      // User navigated to Select Purchaser Agent Details page
-      // User selects existing agent from list radio button
-      // User clicks save and continue
-      // User navigated to Do you want to add reference for this return page
+      Then("User navigated to Select Purchaser Agent Details page")
+      PurchaserAgentDetailsPage.verifyPageTitle(PurchaserAgentDetailsPage.pageTitle)
+      When("User selects 'Add a new agent for this return' radio button")
+      PurchaserAgentDetailsPage.radioButton(PurchaserAgentDetailsPage.selectAgent)
+      And("User clicks save and continue")
+      PurchaserAgentDetailsPage.saveAndContinue()
+      Then("User navigated to Do you want to add reference for this return page")
+      PurchaserAgentAddReferencePage.verifyPageTitle(PurchaserAgentAddReferencePage.pageTitle)
+      And("User selects Yes radio button")
+      PurchaserAgentAddReferencePage.radioButton(PurchaserAgentAddReferencePage.yes)
+      And("User clicks save and continue")
+      PurchaserAgentAddReferencePage.saveAndContinue()
     }
   }
 }
