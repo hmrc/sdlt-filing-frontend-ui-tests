@@ -118,8 +118,10 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
-      And("clicks the Save and continue button")
-      PurchaserAndVendorConnectedPage.saveAndContinue()
+      // uncomment next two lines when navigation to the next page is ready
+//      And("clicks the Save and continue button")
+//      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // User should be navigated to purchasers check your answers page
       // User clicks on change link for purchaser name
       // User should be navigated to purchaser name page
@@ -137,9 +139,16 @@ class PurchaserQuestionsSpec
       // User clicks on save and continue
       // User should be navigated to purchasers check your answers page
       // User clicks on save and continue
-      // User should be navigated to purchaser overview page
-      // User selects yes to add another purchaser
-      // User should be navigated to who is making the purchase page
+
+      Then("the user is navigated to the Purchaser Overview page")
+      // Remove the line below once navigation from the previous page is complete
+      PurchaserOverviewPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
+      )
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
+      Then("the user is navigated to the Return Tasklist page")
     }
 
     Scenario(
@@ -230,8 +239,10 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
-      And("clicks the Save and continue button")
-      PurchaserAndVendorConnectedPage.saveAndContinue()
+      // uncomment next two lines when navigation to the next page is ready
+//      And("clicks the Save and continue button")
+//      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // User should be navigated to purchasers check your answers page
       // User clicks on change link for purchaser address
       // User should be navigated to purchaser address page
@@ -249,10 +260,16 @@ class PurchaserQuestionsSpec
       // User clicks on save and continue
       // User should be navigated to purchasers check your answers page
       // User clicks on save and continue
-      // User should be navigated to purchaser overview page
-      // User selects remove link to remove another purchaser
-      // User should be navigated to "Are you sure you want to remove purchaser page"
-      // User selects Yes to remove purchaser
+
+      Then("the user is navigated to the Purchaser Overview page")
+      // Remove the line below once navigation from the previous page is complete
+      PurchaserOverviewPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
+      )
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
+      Then("the user is navigated to the Return Tasklist page")
     }
 
     Scenario(
@@ -263,6 +280,12 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser"))
       When("the user clicks on the 'Purchaser Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user is navigated to the Purchaser Overview page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserOverviewPage.radioButton(PurchaserOverviewPage.yes)
+      And("clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
       Then("the user should be navigated to the Purchaser Before you start page page")
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
@@ -390,8 +413,10 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
-      And("clicks the Save and continue button")
-      PurchaserAndVendorConnectedPage.saveAndContinue()
+      // uncomment next two lines when navigation to the next page is ready
+//      And("clicks the Save and continue button")
+//      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // User should be navigated to purchasers check your answers page
       // User clicks on change link for purchaser name
       // User should be navigated to purchaser name page
@@ -404,6 +429,17 @@ class PurchaserQuestionsSpec
       // User clicks on save and continue
       // User should be navigated to purchasers check your answers page
       // User clicks on save and continue
+
+      Then("the user is navigated to the Purchaser Overview page")
+      // Remove the line below once navigation from the previous page is complete
+      PurchaserOverviewPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
+      )
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
+      Then("the user is navigated to the Return Tasklist page")
+
       // User should be navigated to purchaser overview page
       // User selects no to add another purchaser
       // User should be navigated to return tasklist page
@@ -417,6 +453,12 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
       When("the user clicks on the 'Purchaser Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user is navigated to the Purchaser Overview page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserOverviewPage.radioButton(PurchaserOverviewPage.yes)
+      And("clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
       Then("the user should be navigated to the Purchaser Before you start page page")
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
@@ -479,8 +521,10 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
-      And("clicks the Save and continue button")
-      PurchaserAndVendorConnectedPage.saveAndContinue()
+      // uncomment next two lines when navigation to the next page is ready
+//      And("clicks the Save and continue button")
+//      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // User should be navigated to purchasers check your answers page
       // User clicks on change link for purchaser Identity
       // User should be navigated to purchaser Identity page
@@ -491,8 +535,18 @@ class PurchaserQuestionsSpec
       // User clicks on save and continue
       // User should be navigated to purchasers check your answers page
       // User clicks on save and continue
+
+      Then("the user is navigated to the Purchaser Overview page")
+      // Remove the line below once navigation from the previous page is complete
+      PurchaserOverviewPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
+      )
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the 'Change' link for Purchaser")
+      PurchaserOverviewPage.clickPurchaserChange()
+
       // User should be navigated to purchaser overview page
-      // User selects change  purchaser
+      // User selects change purchaser
     }
 
     Scenario(
@@ -565,8 +619,10 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
-      And("clicks the Save and continue button")
-      PurchaserAndVendorConnectedPage.saveAndContinue()
+      // uncomment next two lines when navigation to the next page is ready
+      //      And("clicks the Save and continue button")
+      //      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // User should be navigated to purchasers check your answers page
       // User clicks on change link for purchaser phone number details
       // User should be navigated to purchaser phone number details page
@@ -580,6 +636,17 @@ class PurchaserQuestionsSpec
       // User clicks on save and continue
       // User should be navigated to purchasers check your answers page
       // User clicks on save and continue
+
+      Then("the user is navigated to the Purchaser Overview page")
+      // Remove the line below once navigation from the previous page is complete
+      PurchaserOverviewPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
+      )
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
+      Then("the user is navigated to the Return Tasklist page")
+
       // User should be navigated to purchaser overview page
       // User selects no to add another purchaser
       // User should be navigated to return tasklist page
@@ -672,8 +739,10 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
-      And("clicks the Save and continue button")
-      PurchaserAndVendorConnectedPage.saveAndContinue()
+      // uncomment next two lines when navigation to the next page is ready
+//      And("clicks the Save and continue button")
+//      PurchaserAndVendorConnectedPage.saveAndContinue()
+
       // User should be navigated to purchasers check your answers page
       // User clicks on change link for purchaser Acting as a Trustee
       // User should be navigated to purchaser Acting as a Trustee page
@@ -686,10 +755,18 @@ class PurchaserQuestionsSpec
       // User clicks on save and continue
       // User should be navigated to purchasers check your answers page
       // User clicks on save and continue
-      // User should be navigated to purchaser overview page
-      // User selects no to add another purchaser
-      // User should be navigated to return tasklist page
+
+      Then("the user is navigated to the Purchaser Overview page")
+      // Remove the line below once navigation from the previous page is complete
+      PurchaserOverviewPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
+      )
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
+      Then("the user is navigated to the Return Tasklist page")
     }
+
     Scenario(
       "Complete the Additional Purchaser Questions user journey for additional purchaser",
       PurchaserJourney
@@ -698,6 +775,12 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
       When("the user clicks on the 'Purchaser Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user is navigated to the Purchaser Overview page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserOverviewPage.radioButton(PurchaserOverviewPage.yes)
+      And("clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
       Then("the user should be navigated to the Purchaser Before you start page page")
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
