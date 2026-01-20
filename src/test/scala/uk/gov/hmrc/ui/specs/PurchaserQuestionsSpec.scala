@@ -805,7 +805,7 @@ class PurchaserQuestionsSpec
 
     Scenario(
       "Remove Purchaser Journey with 98 purchaser stub data",
-      wip
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("98-purchasers"))
