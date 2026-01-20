@@ -53,9 +53,9 @@ object PurchaserCheckYourAnswers extends BasePage {
   val VATRegistrationNumber =
     "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/vat-registration-number/change']"
 
-  val utrNumber = ""
+  val utrNumber = "a[href = '/stamp-duty-land-tax-filing/about-the-purchaser/corporation-tax-utr/change']"
 
-  val purchaserUTRNumber = " "
+  val partnershipUTRNumber = " "
 
   val idAndCountryIssued = "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/form-of-id-company/change']"
 
@@ -90,7 +90,7 @@ object PurchaserCheckYourAnswers extends BasePage {
 
   def clickUTRNumberChange(): Unit = click(By.cssSelector(utrNumber))
 
-  def clickPurchaserUTRNumberChange(): Unit = click(By.cssSelector(purchaserUTRNumber))
+  def clickPartnershipUTRNumberChange(): Unit = click(By.cssSelector(partnershipUTRNumber))
 
   def clickIdAndCountryIssuedChange(): Unit = click(By.cssSelector(idAndCountryIssued))
 
