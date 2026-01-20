@@ -146,6 +146,22 @@ class PurchaserQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
       )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      And("The user clicks remove link to remove a purchaser")
+      PurchaserOverviewPage.clickRemovePurchaser()
+      Then("The user is navigated to Are you sure you want to remove purchaser page")
+      RemovePurchaserPage.verifyPageTitle(RemovePurchaserPage.pageTitle)
+      And("The user clicks no")
+      RemovePurchaserPage.radioButton(RemovePurchaserPage.no)
+      Then("The user is navigated back to Purchaser Overview Page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      And("The user clicks remove link to remove a purchaser")
+      PurchaserOverviewPage.clickRemovePurchaser()
+      Then("The user is navigated to Are you sure you want to remove purchaser page")
+      RemovePurchaserPage.verifyPageTitle(RemovePurchaserPage.pageTitle)
+      And("The user clicks yes")
+      RemovePurchaserPage.radioButton(RemovePurchaserPage.yes)
+      Then("The user is navigated back to Purchaser Overview Page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
       Then("the user is navigated to the Return Tasklist page")
@@ -260,8 +276,7 @@ class PurchaserQuestionsSpec
       // User clicks on save and continue
       // User should be navigated to purchasers check your answers page
       // User clicks on save and continue
-
-      Then("the user is navigated to the Purchaser Overview page")
+      // Then("the user is navigated to the Purchaser Overview page")
       // Remove the line below once navigation from the previous page is complete
       PurchaserOverviewPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
