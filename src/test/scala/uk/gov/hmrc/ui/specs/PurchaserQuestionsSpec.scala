@@ -40,7 +40,7 @@ class PurchaserQuestionsSpec
 
   Feature("SDLT Filing Frontend Purchaser Questions") {
     Scenario(
-      "Complete the Main Purchaser Questions user journey as a Individual with prelim questions submitted stub data no purchaser",
+      "Complete the Main Purchaser Questions user journey as a Individual when there is no purchaser added",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -121,7 +121,7 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       When("User clicks on change link for purchaser name")
       PurchaserCheckYourAnswers.clickPurchaserNameChange()
       Then("User should be navigated to purchaser name page")
@@ -131,7 +131,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserNameOfPurchaserPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on change link for purchaser NI number")
       PurchaserCheckYourAnswers.clickPurchaserNINumberChange()
       And("User should be navigated to purchaser NI number page")
@@ -141,7 +141,7 @@ class PurchaserQuestionsSpec
       And("User clicks on save and continue")
       PurchaserNationalinsuranceNumberPage.saveAndContinue()
       Then("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       When("User clicks on change link for purchaser date of birth")
       PurchaserCheckYourAnswers.clickPurchaserDOBChange()
       Then("User should be navigated to purchaser date of birth page")
@@ -151,7 +151,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserDateOfBirth.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
@@ -163,7 +163,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Main Purchaser Questions user journey as a Individual who doesn't have NI with prelim questions submitted stub data no purchaser",
+      "Complete the Main Purchaser Questions user journey as a Individual who doesn't have NI",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -253,7 +253,7 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on change link for purchaser address")
       PurchaserCheckYourAnswers.clickPurchaserAddressChange()
       Then("User should be navigated to purchaser address page")
@@ -266,7 +266,7 @@ class PurchaserQuestionsSpec
       And("User clicks on save and continue")
       PurchaserAddressPage.clickContinueButton()
       Then("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on change link for purchaser phone number")
       PurchaserCheckYourAnswers.clickPurchaserPhoneNumberChange()
       Then("User should be navigated to purchaser phone number page")
@@ -292,7 +292,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       IndividualPurchaserIDPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
@@ -363,8 +363,41 @@ class PurchaserQuestionsSpec
       )
       And("user clicks Save and Continue")
       PurchaserContactPhoneNumber.saveAndContinue()
+      Then("the user lands on to the Does Purchaser have NI page")
+      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      And("user selects Yes on the page")
+      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
+      And("the user click Save and Continue")
+      DoesPurchaserHaveNI.saveAndContinue()
+      Then("the user navigates to What is Purchaser's National Insurance Page")
+      PurchaserNationalinsuranceNumberPage.verifyPageTitle(PurchaserNationalinsuranceNumberPage.pageTitle)
+      And("User enter a valid National Insurance Number")
+      PurchaserNationalinsuranceNumberPage.input(
+        By.id(PurchaserNationalinsuranceNumberPage.Nino),
+        PurchaserNationalinsuranceNumberPage.NinoValue
+      )
+      And("the user click Save and Continue")
+      PurchaserNationalinsuranceNumberPage.saveAndContinue()
+      Then("User should be navigated to What is purchaser Date of Birth page")
+      PurchaserDateOfBirth.verifyPageTitle(PurchaserDateOfBirth.pageTitle)
+      And("User enters Purchaser's Date of Birth")
+      PurchaserDateOfBirth.enterDateOfBirth()
+      And("the user click Save and Continue")
+      PurchaserDateOfBirth.saveAndContinue()
+      Then("the user is navigated to is the Purchaser Acting as a Trustee page")
+      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      And("clicks the Save and continue button")
+      PurchaserActingAsATrusteePage.saveAndContinue()
+      Then("the user is navigated to Are the Purchaser and Vendor Connected page")
+      PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
       Then("User navigates to CYA Page")
-      //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       When("User clicks on change link for purchaser type")
       PurchaserCheckYourAnswers.clickPurchaserTypeChange()
       Then("the user should be on who is the purchaser page")
@@ -374,38 +407,11 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("User navigates to CYA Page")
-      //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-      And("User clicks on link for missing form ID")
-      PurchaserCheckYourAnswers.clickFormOfIDChange()
-      Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
-      When("the user selects the 'partnership UTR registration number' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.partnershipUTR)
-      And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
-      And("user clicks the Continue button")
-      VATRegistrationNumberPage.saveAndContinue()
-      Then("User navigates to CYA Page")
-      //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-      And("User clicks on link for missing UTR number")
-      PurchaserCheckYourAnswers.clickPurchaserUTRNumberChange()
-      Then("the user navigates to partnership UTR number page")
-      PartnershipUTRPage.verifyPageTitle(PartnershipUTRPage.pageTitle)
-      When("user enters partnership UTR number")
-      PartnershipUTRPage.input(By.id(PartnershipUTRPage.purchaserUTRReference), PartnershipUTRPage.purchaserUTRInput)
-      And("user clicks the Continue button")
-      PartnershipUTRPage.saveAndContinue()
-      Then("User navigates to CYA Page")
-      //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-      Then("User clicks on save and continue")
-      PurchaserCheckYourAnswers.saveAndContinue()
-      Then("the user is navigated to the Purchaser Overview page")
-      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
     }
 
     Scenario(
-      "Complete the Main Purchaser Questions user journey as a Company with VAT ID and with prelim questions submitted stub data no purchaser",
+      "Complete the Main Purchaser Questions user journey as a Company with VAT ID",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -484,7 +490,7 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       Then("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on change link for purchaser name")
       PurchaserCheckYourAnswers.clickPurchaserNameChange()
       Then("User should be navigated to purchaser name page")
@@ -494,7 +500,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserNameOfPurchaserPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on change link for purchaser VAT number")
       PurchaserCheckYourAnswers.clickVATRegistrationNumberChange()
       Then("User should be navigated to purchaser VAT number page")
@@ -504,7 +510,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       VATRegistrationNumberPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
@@ -519,7 +525,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with corporation UTR ID and with prelim questions submitted stub data incomplete purchaser yes to stub data",
+      "Complete the Purchaser Questions user journey as a Company with corporation UTR ID for incomplete purchaser stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -597,7 +603,7 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       When("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on change link for purchaser Identity")
       PurchaserCheckYourAnswers.clickFormOfIDChange()
       Then("User should be navigated to purchaser Identity page")
@@ -607,7 +613,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks link for missing purchaser partnership UTR")
       PurchaserCheckYourAnswers.clickPurchaserUTRNumberChange()
       Then("the user is navigated to the Partnership UTR page")
@@ -617,7 +623,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PartnershipUTRPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
@@ -627,7 +633,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Main Purchaser Questions user journey as a Company with partnership UTR ID with prelim questions submitted stub data and full purchaser",
+      "Complete the Main Purchaser Questions user journey as a Company with partnership UTR ID with full purchaser stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -699,7 +705,7 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       When("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on change link for does purchaser have phone number")
       PurchaserCheckYourAnswers.clickAddPhoneNumberChange()
       Then("User should be navigated to does purchaser have phone number page")
@@ -709,7 +715,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       DoesPurchaserHavePhoneNumber.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on link for missing purchaser phone number")
       PurchaserCheckYourAnswers.clickPurchaserPhoneNumberChange()
       Then("user navigates to enter phone number for purchaser page")
@@ -722,7 +728,7 @@ class PurchaserQuestionsSpec
       And("user clicks Save and Continue")
       PurchaserContactPhoneNumber.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on change link for type of company")
       PurchaserCheckYourAnswers.clickTypeOfCompanyChange()
       Then("User should be navigated to type of company page")
@@ -733,7 +739,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       WhatTypeOfCompany.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
@@ -744,7 +750,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Main Purchaser Questions user journey as a Company, providing phone number details along with another form of ID and prelim questions submitted stub data and full purchaser",
+      "Complete the Main Purchaser Questions user journey as a Company, providing phone number details along with another form of ID with no purchaser stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -833,7 +839,7 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on change link for purchaser Acting as a Trustee")
       PurchaserCheckYourAnswers.clickIsCompanyActingAsTrusteeChange()
       Then("User should be navigated to purchaser Acting as a Trustee page")
@@ -843,7 +849,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserActingAsATrusteePage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on change link for Are purchaser and vendor connected")
       PurchaserCheckYourAnswers.clickAreCompanyAndVendorConnectedChange()
       Then("User should be navigated to Are purchaser and vendor connected page")
@@ -853,7 +859,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
@@ -864,7 +870,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Additional Purchaser Questions user journey for additional purchaser",
+      "Complete the Purchaser Questions user journey for additional purchaser for a company and later changing to individual in CYA page",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -938,7 +944,7 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
       Then("user is navigated to check your answers page for additional purchaser")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on change link for purchaser type")
       PurchaserCheckYourAnswers.clickPurchaserTypeChange()
       Then("User should be navigated to who is making the purchase page")
@@ -948,7 +954,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on missing link for Does purchaser have NI number")
       PurchaserCheckYourAnswers.clickDoPurchaserHaveNINumberChange()
       Then("User should be navigated to does purchaser have NI number page")
@@ -958,7 +964,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       DoesPurchaserHaveNI.saveAndContinue()
       Then("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on missing link for purchaser NI number")
       PurchaserCheckYourAnswers.clickPurchaserNINumberChange()
       Then("User should be navigated to purchaser NI number page")
@@ -968,7 +974,7 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserNationalinsuranceNumberPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on missing link for purchaser date of birth")
       PurchaserCheckYourAnswers.clickPurchaserDOBChange()
       Then("User should be navigated to purchaser date of birth page")
@@ -978,7 +984,7 @@ class PurchaserQuestionsSpec
       And("the user click Save and Continue")
       PurchaserDateOfBirth.saveAndContinue()
       Then("User should be navigated to purchasers check your answers page")
-      // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       And("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
 
