@@ -29,7 +29,7 @@ import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
 
 class PurchaserQuestionsSpec
-  extends AnyFeatureSpec
+    extends AnyFeatureSpec
     with BaseSpec
     with GivenWhenThen
     with ShouldVerb
@@ -118,6 +118,8 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
       //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       When("User clicks on change link for purchaser name")
@@ -255,6 +257,8 @@ class PurchaserQuestionsSpec
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAndVendorConnectedPage.saveAndContinue()
       And("User should be navigated to purchasers check your answers page")
       // PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on change link for purchaser address")
