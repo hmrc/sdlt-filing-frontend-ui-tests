@@ -805,10 +805,10 @@ class PurchaserQuestionsSpec
 
     Scenario(
       "Remove Purchaser Journey with 98 purchaser stub data",
-      PurchaserJourney
+      wip
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("98-purchaser"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("98-purchasers"))
       When("the user clicks on the 'Purchaser Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
       Then("the user is navigated to the Purchaser Overview page")
@@ -819,6 +819,8 @@ class PurchaserQuestionsSpec
       RemovePurchaserPage.verifyPageTitle(RemovePurchaserPage.pageTitle)
       And("The user clicks no")
       RemovePurchaserPage.radioButton(RemovePurchaserPage.no)
+      When("the user clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
       Then("The user is navigated back to Purchaser Overview Page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       And("The user clicks remove link to remove a purchaser")
@@ -827,6 +829,8 @@ class PurchaserQuestionsSpec
       RemovePurchaserPage.verifyPageTitle(RemovePurchaserPage.pageTitle)
       And("The user clicks yes")
       RemovePurchaserPage.radioButton(RemovePurchaserPage.yes)
+      When("the user clicks the Continue button")
+      PurchaserOverviewPage.saveAndContinue()
       Then("The user is navigated back to Purchaser Overview Page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")

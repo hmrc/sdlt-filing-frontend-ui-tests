@@ -29,7 +29,7 @@ object PurchaserOverviewPage extends BasePage {
     "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/change-purchaser/221110169']"
 
   val PurchaserRemoveLink: String =
-    "a[@href= '/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/remove-purchaser/PUR001']"
+    "a[href= '/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/remove-purchaser/PUR002']"
 
   def yes: String = "#value"
 
