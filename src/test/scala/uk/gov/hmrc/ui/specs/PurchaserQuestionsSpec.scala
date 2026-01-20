@@ -155,10 +155,6 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
-      // Remove the line below once navigation from the previous page is complete
-      PurchaserOverviewPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
-      )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
@@ -303,10 +299,6 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
-      // Remove the line below once navigation from the previous page is complete
-      PurchaserOverviewPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
-      )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
@@ -414,7 +406,8 @@ class PurchaserQuestionsSpec
       //  PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
-      // User should be navigated to purchaser overview page
+      Then("the user is navigated to the Purchaser Overview page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       // User selects yes to add another purchaser
       // User should be navigated to who is making the purchase page
     }
@@ -523,10 +516,6 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
-      // Remove the line below once navigation from the previous page is complete
-      PurchaserOverviewPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
-      )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
@@ -640,10 +629,6 @@ class PurchaserQuestionsSpec
       And("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
-      // Remove the line below once navigation from the previous page is complete
-      PurchaserOverviewPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
-      )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the 'Change' link for Purchaser")
       PurchaserOverviewPage.clickPurchaserChange()
@@ -763,10 +748,6 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
-      // Remove the line below once navigation from the previous page is complete
-      PurchaserOverviewPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
-      )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
@@ -891,10 +872,6 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
-      // Remove the line below once navigation from the previous page is complete
-      PurchaserOverviewPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
-      )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
