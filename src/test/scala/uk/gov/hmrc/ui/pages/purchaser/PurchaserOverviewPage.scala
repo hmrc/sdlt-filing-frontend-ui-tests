@@ -28,10 +28,15 @@ object PurchaserOverviewPage extends BasePage {
   val purchaserChange =
     "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/change-purchaser/221110169']"
 
+  val PurchaserRemoveLink: String =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/remove-purchaser/PUR002']"
+
   def yes: String = "#value"
 
   def no: String = "#value-no"
 
   def clickPurchaserChange(): Unit = click(By.cssSelector(purchaserChange))
+
+  def clickRemovePurchaser(): Unit = click(By.cssSelector(PurchaserRemoveLink))
 
 }
