@@ -159,9 +159,6 @@ class PurchaserQuestionsSpec
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
       Then("the user is navigated to the Return Tasklist page")
-      // User should be navigated to purchaser overview page
-      // User selects yes to add another purchaser
-      // User should be navigated to who is making the purchase page
 
     }
 
@@ -303,10 +300,6 @@ class PurchaserQuestionsSpec
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
       Then("the user is navigated to the Return Tasklist page")
-      // User selects remove link to remove another purchaser
-      // User should be navigated to "Are you sure you want to remove purchaser page"
-      // User selects Yes to remove purchaser
-
     }
 
     Scenario(
@@ -408,8 +401,7 @@ class PurchaserQuestionsSpec
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-      // User selects yes to add another purchaser
-      // User should be navigated to who is making the purchase page
+
     }
 
     Scenario(
@@ -516,10 +508,6 @@ class PurchaserQuestionsSpec
       Then("User clicks on save and continue")
       PurchaserCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
-      // Remove the line below once navigation from the previous page is complete
-      PurchaserOverviewPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview"
-      )
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
@@ -636,9 +624,6 @@ class PurchaserQuestionsSpec
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user clicks the 'Change' link for Purchaser")
       PurchaserOverviewPage.clickPurchaserChange()
-
-      // User should be navigated to purchaser overview page
-      // User selects change purchaser
     }
 
     Scenario(
@@ -756,10 +741,6 @@ class PurchaserQuestionsSpec
       When("the user clicks the Continue button")
       PurchaserOverviewPage.saveAndContinue()
       Then("the user is navigated to the Return Tasklist page")
-
-      // User should be navigated to purchaser overview page
-      // User selects no to add another purchaser
-      // User should be navigated to return tasklist page
     }
 
     Scenario(
