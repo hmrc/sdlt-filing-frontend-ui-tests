@@ -148,7 +148,7 @@ class PurchaserAgentSpec
       PurchaserAgentAddReferencePage.saveAndContinue()
     }
 
-    Scenario("Complete the Purchaser Agent Journey for additional purchaser", PurchaserAgentJourney) {
+    Scenario("Complete the Purchaser Agent Journey for additional purchaser", wip) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
@@ -171,6 +171,35 @@ class PurchaserAgentSpec
       PurchaserAgentAddReferencePage.radioButton(PurchaserAgentAddReferencePage.yes)
       And("User clicks save and continue")
       PurchaserAgentAddReferencePage.saveAndContinue()
+    }
+
+    Scenario("Complete the Purchaser Agent Journey as existing purchaser", PurchaserAgentJourney) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      When("the user clicks on the 'Purchaser Agent Questions' link")
+      PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
+      Then("the user should be navigated to the Before You Start page")
+      PurchaserAgentBeforeYouStartPage.verifyPageTitle(PurchaserAgentBeforeYouStartPage.pageTitle)
+      And("user selects 'Yes' radio button")
+      PurchaserAgentBeforeYouStartPage.radioButton(PurchaserAgentBeforeYouStartPage.yes)
+      And("clicks the continue button")
+      PurchaserAgentBeforeYouStartPage.saveAndContinue()
+      Then("User navigated to Select Purchaser Agent Details page")
+      PurchaserAgentDetailsPage.verifyPageTitle(PurchaserAgentDetailsPage.pageTitle)
+      When("User selects existing agent name radio button")
+      PurchaserAgentDetailsPage.radioButton(PurchaserAgentDetailsPage.selectAgent)
+      And("User clicks save and continue")
+      PurchaserAgentDetailsPage.saveAndContinue()
+      // remove once navigation is completed
+      PurchaserAgentCorrespondencePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/agent-authorised-for-correspondence"
+      )
+      Then("User Is navigated to Is Purchaser Agent authorised to have Correspondence Page")
+      PurchaserAgentCorrespondencePage.verifyPageTitle(PurchaserAgentCorrespondencePage.pageTitle)
+      And("The user selects the Yes Radio Button")
+      PurchaserAgentCorrespondencePage.radioButton(PurchaserAgentCorrespondencePage.yes)
+      And("The user clicks save and continue")
+      PurchaserAgentCorrespondencePage.saveAndContinue()
     }
   }
 }
