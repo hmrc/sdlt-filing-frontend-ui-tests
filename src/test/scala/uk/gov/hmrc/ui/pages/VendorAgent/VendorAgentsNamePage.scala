@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Vendor
+package uk.gov.hmrc.ui.pages.VendorAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
 object VendorAgentsNamePage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendor/agent-name"
+  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendors-agent/agent-name"
 
-  override def pageTitle: String = "What is the agent’s name? - About the vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "What is the agent’s name? – About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   def agentName: String = "agentName"
 
