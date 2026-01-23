@@ -98,13 +98,12 @@ class PurchaserAgentSpec
       PurchaserAgentAddReferencePage.radioButton(PurchaserAgentAddReferencePage.no)
       And("User clicks save and continue")
       PurchaserAgentAddReferencePage.saveAndContinue()
-//      Need a fix for the below steps to pass
-//      Then("User Is navigated to Is Purchaser Agent authorised to have Correspondence Page")
-//      PurchaserAgentCorrespondencePage.verifyPageTitle(PurchaserAgentCorrespondencePage.pageTitle)
-//      And("The user selects the Yes Radio Button")
-//      PurchaserAgentCorrespondencePage.radioButton(PurchaserAgentCorrespondencePage.yes)
-//      And("The user clicks save and continue")
-//      PurchaserAgentCorrespondencePage.saveAndContinue()
+      Then("User Is navigated to Is Purchaser Agent authorised to have Correspondence Page")
+      PurchaserAgentCorrespondencePage.verifyPageTitle(PurchaserAgentCorrespondencePage.pageTitle)
+      And("The user selects the Yes Radio Button")
+      PurchaserAgentCorrespondencePage.radioButton(PurchaserAgentCorrespondencePage.yes)
+      And("The user clicks save and continue")
+      PurchaserAgentCorrespondencePage.saveAndContinue()
     }
 
     Scenario("Complete the Purchaser Agent Journey with no contact info", PurchaserAgentJourney) {
