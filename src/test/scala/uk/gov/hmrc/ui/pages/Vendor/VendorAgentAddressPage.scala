@@ -18,6 +18,7 @@ package uk.gov.hmrc.ui.pages.Vendor
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
+import uk.gov.hmrc.ui.pages.VendorAgent.VendorAgentsNamePage
 
 object VendorAgentAddressPage extends BasePage {
 

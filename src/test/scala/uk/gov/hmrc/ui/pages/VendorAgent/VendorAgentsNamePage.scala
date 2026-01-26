@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.tags
+package uk.gov.hmrc.ui.pages.VendorAgent
 
-import org.scalatest.Tag
+import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAgentJourney extends Tag("uk.gov.hmrc.ui.tags.PurchaserAgentJourney")
-object e2eJourney extends Tag("uk.gov.hmrc.ui.tags.e2eJourney")
-object PrelimsJourney extends Tag("uk.gov.hmrc.ui.tags.PrelimsJourney")
-object PurchaserJourney extends Tag("uk.gov.hmrc.ui.tags.PurchaserJourney")
-object VendorJourney extends Tag("uk.gov.hmrc.ui.tags.VendorJourney")
-object VendorAgentJourney extends Tag("uk.gov.hmrc.ui.tags.VendorAgentJourney")
-object wip extends Tag("uk.gov.hmrc.ui.tags.wip")
+object VendorAgentsNamePage extends BasePage {
+
+  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendors-agent/agent-name"
+
+  override def pageTitle: String = "What is the agent’s name? – About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+
+  def agentName: String = "agentName"
+
+  def agentNameInput: String = "Agent Test1"
+}

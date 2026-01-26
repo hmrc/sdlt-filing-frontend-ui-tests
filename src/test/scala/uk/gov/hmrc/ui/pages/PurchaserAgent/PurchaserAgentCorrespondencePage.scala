@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Vendor
+package uk.gov.hmrc.ui.pages.PurchaserAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VendorAgentsNamePage extends BasePage {
+object PurchaserAgentCorrespondencePage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendor/agent-name"
+  override def pageUrl: String =
+    "about-the-purchasers-agent/agent-authorised-for-correspondence"
 
-  override def pageTitle: String = "What is the agent’s name? - About the vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Is the agent authorised to handle correspondence on behalf of the purchaser? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
-  def agentName: String = "agentName"
+  def yes: String = "#value_0"
 
-  def agentNameInput: String = "Agent Test1"
+  def no: String = "#value_1"
 }
