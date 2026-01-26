@@ -22,7 +22,6 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yes}
 import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.pages.VendorAgent.VendorAgentsNamePage
 import uk.gov.hmrc.ui.tags.*
