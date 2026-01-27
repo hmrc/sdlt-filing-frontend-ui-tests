@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.VendorAgent.VendorAgentsNamePage
+import uk.gov.hmrc.ui.pages.VendorAgent.*
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -60,6 +60,23 @@ class VendorAgentSpec
       )
       And("clicks the Save and continue button")
       VendorAgentsNamePage.saveAndContinue()
+      Then("the user is navigated to the Vendor Agent Address page")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.pageTitle)
+      When("the user clicks on the 'Enter the address manually' link")
+      VendorAgentAddressPage.clickAddressManually()
+      And("enters their address manually")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.editPageTitleAgent)
+      VendorAgentAddressPage.enterAddressManually("523", "AGC", "TE12 1TS")
+      Then("the user is navigated to the Vendor Agent Address page to 'Review and confirm' the address")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.confirmPageTitleAgent)
+      And("clicks the Confirm address button")
+      VendorPropertyAddressPage.clickContinueButton()
+      Then("the user is navigated to the Do You Want To Add Contact Details for Agent page")
+      DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
+      When("the user selects the 'No' radio button")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
+      And("user clicks Save and Continue")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
     }
 
     Scenario(
@@ -83,7 +100,23 @@ class VendorAgentSpec
       )
       And("clicks the Save and continue button")
       VendorAgentsNamePage.saveAndContinue()
+      Then("the user is navigated to the Vendor Agent Address page")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.pageTitle)
+      When("the user clicks on the 'Enter the address manually' link")
+      VendorAgentAddressPage.clickAddressManually()
+      And("enters their address manually")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.editPageTitleAgent)
+      VendorAgentAddressPage.enterAddressManually("523", "AGC", "TE12 1TS")
+      Then("the user is navigated to the Vendor Agent Address page to 'Review and confirm' the address")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.confirmPageTitleAgent)
+      When("the user clicks the Confirm address button")
+      VendorPropertyAddressPage.clickContinueButton()
+      Then("the user is navigated to the Do You Want To Add Contact Details for Agent page")
+      DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
+      And("clicks the Save and continue button")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
     }
-
   }
 }
