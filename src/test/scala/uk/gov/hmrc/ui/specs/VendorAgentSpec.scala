@@ -73,8 +73,8 @@ class VendorAgentSpec
       VendorPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Do You Want To Add Contact Details for Agent page")
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
-      When("the user selects the 'No' radio button")
-      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
+      When("the user selects the 'Yes' radio button")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
       And("user clicks Save and Continue")
       DoYouWantToAddContactDetailsPage.saveAndContinue()
     }
@@ -113,8 +113,8 @@ class VendorAgentSpec
       VendorPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Do You Want To Add Contact Details for Agent page")
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
+      When("the user selects the 'No' radio button")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
       And("clicks the Save and continue button")
       DoYouWantToAddContactDetailsPage.saveAndContinue()
     }
