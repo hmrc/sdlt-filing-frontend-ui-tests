@@ -22,9 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.Vendor.RemoveVendorPage.{pageTitle, yes}
-import uk.gov.hmrc.ui.pages.Vendor.{AboutTheVendorPage, AgentReferenceNumberPage, ConfirmVendorsAddressPage, DoYouKnowYourAgentReferencePage, DoYouWantToAddContactDetailsPage, RemoveVendorPage, VendorAgentAddressPage, VendorAgentPage, VendorAgentsContactDetailsPage, VendorBeforeYouStartPage, VendorCheckYourAnswersPage, VendorOrCompanyNamePage, VendorOverviewPage, VendorPropertyAddressPage}
-import uk.gov.hmrc.ui.pages.VendorAgent.VendorAgentsNamePage
+import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
@@ -53,9 +51,9 @@ class VendorQuestionsSpec
       When("the user clicks the 'Remove' link to remove a vendor")
       VendorOverviewPage.clickRemoveVendor()
       Then("the user is navigated to the Remove Vendor page")
-      RemoveVendorPage.verifyPageTitle(pageTitle)
+      RemoveVendorPage.verifyPageTitle(RemoveVendorPage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      RemoveVendorPage.radioButton(yes)
+      RemoveVendorPage.radioButton(RemoveVendorPage.yes)
       And("clicks the Save and continue button")
       RemoveVendorPage.saveAndContinue()
       Then("the user is navigated to the Vendor Overview page")
