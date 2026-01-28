@@ -24,13 +24,22 @@ object PurchaserAgentAddressPage extends BasePage {
   override def pageUrl: String = "about-the-purchasers-agent/agent-address-lookup"
 
   override def pageTitle: String =
-    s"Find ${PurchaserAgentName.purchaserANameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    s"Find ${PurchaserAgentName.agentNameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+
+  val pageTitle2: String =
+    s"Find ${PurchaserAgentName.agentNameInput2}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleAgent: String =
-    s"Enter ${PurchaserAgentName.purchaserANameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    s"Enter ${PurchaserAgentName.agentNameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+
+  val editPageTitleAgent2: String =
+    s"Enter ${PurchaserAgentName.agentNameInput2}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleAgent: String =
-    s"Review and confirm ${PurchaserAgentName.purchaserANameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${PurchaserAgentName.agentNameInput}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+
+  val confirmPageTitleAgent2: String =
+    s"Review and confirm ${PurchaserAgentName.agentNameInput2}’s address - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
   def clickAddressManually(): Unit = click(By.linkText(Locators.lnkAddrManually))
 
