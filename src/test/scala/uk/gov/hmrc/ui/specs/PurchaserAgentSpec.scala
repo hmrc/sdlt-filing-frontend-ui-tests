@@ -310,5 +310,28 @@ class PurchaserAgentSpec
       And("User clicks save and continue")
       PurchaserAgentCheckYourAnswers.saveAndContinue()
     }
+
+    Scenario(
+      "Complete the Purchaser Agent Journey with full purchaser with return agent stub data",
+      PurchaserAgentJourney
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser-with-agent"))
+      When("the user clicks on the 'Purchaser Agent Questions' link")
+      PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
+
+      Then("the user is navigated to the Purchaser Agent Remove page")
+      // Remove line below once navigation to Purchaser Agent Overview is complete
+      PurchaserAgentRemovePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/remove-purchasers-agent"
+      )
+      PurchaserAgentRemovePage.verifyPageTitle(PurchaserAgentRemovePage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserAgentRemovePage.radioButton(PurchaserAgentRemovePage.yes)
+      And("clicks the Save and continue button")
+      PurchaserAgentRemovePage.saveAndContinue()
+      Then("the user is navigated to the Purchaser Agent Overview page")
+    }
+
   }
 }
