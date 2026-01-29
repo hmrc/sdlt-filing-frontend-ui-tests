@@ -22,7 +22,8 @@ object PurchaserAgentRemovePage extends BasePage {
 
   override def pageUrl: String = "about-the-purchasers-agent/remove-purchasers-agent"
 
-  override def pageTitle: String = "Are you sure you want to remove the purchaser’s agent? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Are you sure you want to remove the purchaser’s agent? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
