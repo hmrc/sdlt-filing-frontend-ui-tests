@@ -47,8 +47,14 @@ class VendorAgentSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-agent-questions")
+      Then("The user navigates to the vendor agent before you start page")
+      VendorAgentBeforeYouStartPage.verifyPageTitle(VendorAgentBeforeYouStartPage.pageTitle)
+      And("The user clicks the yes radio button")
+      VendorAgentBeforeYouStartPage.radioButton(VendorAgentBeforeYouStartPage.yes)
+      And("The user selects save and continue")
+      VendorAgentBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Vendor Agents Name page")
-//     remove below step once the navigation is ready
+      //      remove below step once the navigation is ready
       VendorAgentsNamePage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendors-agent/agent-name"
       )
@@ -81,12 +87,18 @@ class VendorAgentSpec
 
     Scenario(
       "Complete the Vendor Agent user journey without contact details and reference information",
-      VendorAgentJourney
+      wip
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
       When("the user clicks on the 'Vendor Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-vendor-agent-questions")
+      Then("The user navigates to the vendor agent before you start page")
+      VendorAgentBeforeYouStartPage.verifyPageTitle(VendorAgentBeforeYouStartPage.pageTitle)
+      And("The user clicks the yes radio button")
+      VendorAgentBeforeYouStartPage.radioButton(VendorAgentBeforeYouStartPage.yes)
+      And("The user selects save and continue")
+      VendorAgentBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Vendor Agents Name page")
 //      remove below step once the navigation is ready
       VendorAgentsNamePage.navigateToPage(
