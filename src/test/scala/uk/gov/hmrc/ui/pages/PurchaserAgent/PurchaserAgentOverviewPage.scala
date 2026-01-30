@@ -29,13 +29,14 @@ object PurchaserAgentOverviewPage extends BasePage {
   val purchaserAgentChange =
     "a[href ='/stamp-duty-land-tax-filing/about-the-purchasers-agent/purchasers-agent-overview/change-agent/RA001']"
 
-  val purchaserAgentRemove = "a[href = '/stamp-duty-land-tax-filing/about-the-purchasers-agent/purchasers-agent-overview/remove-agent/RA001']"
+  val purchaserAgentRemove =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-purchasers-agent/purchasers-agent-overview/remove-agent/RA001']"
 
   def yes: String = "#value"
 
   def no: String = "#value-no"
 
   def clickPurchaserAgentChange(): Unit = click(By.cssSelector(purchaserAgentChange))
-  
+
   def clickPurchaserAgentRemove(): Unit = click(By.cssSelector(purchaserAgentRemove))
 }
