@@ -172,6 +172,14 @@ class PurchaserAgentSpec
       PurchaserAgentCorrespondencePage.radioButton(PurchaserAgentCorrespondencePage.no)
       And("The user clicks save and continue")
       PurchaserAgentCorrespondencePage.saveAndContinue()
+      And("clicks the save and continue button")
+      PurchaserAgentCheckYourAnswers.saveAndContinue()
+      Then("the user is navigated to the Purchaser Agent Overview page")
+      PurchaserAgentOverviewPage.verifyPageTitle(PurchaserAgentOverviewPage.pageTitle)
+      When("the user selects 'Yes' radio button")
+      PurchaserAgentOverviewPage.radioButton(PurchaserAgentOverviewPage.yes)
+      And("clicks the save and continue button")
+      PurchaserAgentOverviewPage.saveAndContinue()
     }
 
     Scenario("Complete the Purchaser Agent Journey with no contact info", PurchaserAgentJourney) {
@@ -265,6 +273,14 @@ class PurchaserAgentSpec
       PurchaserAgentContactDetails.saveAndContinue()
       Then("User should be navigated to purchaser Agent's check your answers page")
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+      And("clicks the save and continue button")
+      PurchaserAgentCheckYourAnswers.saveAndContinue()
+      Then("the user is navigated to the Purchaser Agent Overview page")
+      PurchaserAgentOverviewPage.verifyPageTitle(PurchaserAgentOverviewPage.pageTitle)
+      When("the user selects 'Yes' radio button")
+      PurchaserAgentOverviewPage.radioButton(PurchaserAgentOverviewPage.yes)
+      And("clicks the save and continue button")
+      PurchaserAgentOverviewPage.saveAndContinue()
     }
 
     Scenario("Complete the Purchaser Agent Journey for additional purchaser", PurchaserAgentJourney) {
@@ -309,6 +325,8 @@ class PurchaserAgentSpec
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
       And("User clicks save and continue")
       PurchaserAgentCheckYourAnswers.saveAndContinue()
+      Then("the user is navigated to the Purchaser Agent Overview page")
+      PurchaserAgentOverviewPage.verifyPageTitle(PurchaserAgentOverviewPage.pageTitle)
     }
 
     Scenario(
@@ -319,18 +337,22 @@ class PurchaserAgentSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser-with-agent"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
-
-      Then("the user is navigated to the Purchaser Agent Remove page")
-      // Remove line below once navigation to Purchaser Agent Overview is complete
-      PurchaserAgentRemovePage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-purchasers-agent/remove-purchasers-agent"
-      )
+      Then("the user is navigated to the Purchaser Agent Overview page")
+      PurchaserAgentOverviewPage.verifyPageTitle(PurchaserAgentOverviewPage.pageTitle)
+      When("the user clicks the 'Remove' link to remove a vendor")
+      PurchaserAgentOverviewPage.clickPurchaserAgentRemove()
+      Then("the user is navigated to the Remove Vendor page")
       PurchaserAgentRemovePage.verifyPageTitle(PurchaserAgentRemovePage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAgentRemovePage.radioButton(PurchaserAgentRemovePage.yes)
       And("clicks the Save and continue button")
       PurchaserAgentRemovePage.saveAndContinue()
       Then("the user is navigated to the Purchaser Agent Overview page")
+      PurchaserAgentOverviewPage.verifyPageTitle(PurchaserAgentOverviewPage.pageTitle)
+      When("the user clicks the 'Change' link to return to check your answer")
+      PurchaserAgentOverviewPage.clickPurchaserAgentChange()
+      Then("User should be navigated to purchaser Agent's check your answers page")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
     }
 
   }
