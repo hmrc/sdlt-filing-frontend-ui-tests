@@ -54,10 +54,6 @@ class VendorAgentSpec
       And("The user selects save and continue")
       VendorAgentBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Vendor Agents Name page")
-      //      remove below step once the navigation is ready
-      VendorAgentsNamePage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendors-agent/agent-name"
-      )
       VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
       When("the user inputs their Vendor Agent's name")
       VendorAgentsNamePage.input(
@@ -87,7 +83,7 @@ class VendorAgentSpec
 
     Scenario(
       "Complete the Vendor Agent user journey without contact details and reference information",
-      wip
+      VendorAgentJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
@@ -100,10 +96,6 @@ class VendorAgentSpec
       And("The user selects save and continue")
       VendorAgentBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Vendor Agents Name page")
-//      remove below step once the navigation is ready
-      VendorAgentsNamePage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendors-agent/agent-name"
-      )
       VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
       When("the user inputs their Vendor Agent's name")
       VendorAgentsNamePage.input(
