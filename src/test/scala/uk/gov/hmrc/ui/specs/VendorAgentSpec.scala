@@ -94,6 +94,20 @@ class VendorAgentSpec
       )
       And("user clicks Save and Continue")
       VendorAgentContactDetailsPage.saveAndContinue()
+
+      //      Below steps to be uncommented once DTR-2092 is ready
+//      And("user clicks Save and Continue")
+//      DoYouWantToAddContactDetailsPage.saveAndContinue()
+      Then("the user is navigated to Do you want to add a reference for this return page")
+      //     remove below step once the navigation is ready
+      DoYouWantToAddAgentReferencePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendors-agent/add-agent-reference-number"
+      )
+      DoYouWantToAddAgentReferencePage.verifyPageTitle(DoYouWantToAddAgentReferencePage.pageTitle)
+      And("the user selects the 'Yes' radio button")
+      DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.yes)
+      And("clicks the Save and continue button")
+      DoYouWantToAddAgentReferencePage.saveAndContinue()
     }
 
     Scenario(
@@ -136,6 +150,12 @@ class VendorAgentSpec
       DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.no)
       And("clicks the Save and continue button")
       DoYouWantToAddContactDetailsPage.saveAndContinue()
+      Then("the user is navigated to Do you want to add a reference for this return page")
+      DoYouWantToAddAgentReferencePage.verifyPageTitle(DoYouWantToAddAgentReferencePage.pageTitle)
+      And("the user selects the 'Yes' radio button")
+      DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.yes)
+      And("clicks the Save and continue button")
+      DoYouWantToAddAgentReferencePage.saveAndContinue()
     }
   }
 }
