@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Vendor
+package uk.gov.hmrc.ui.pages.VendorAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object DoYouKnowYourAgentReferencePage extends BasePage {
+object DoYouWantToAddAgentReferencePage extends BasePage {
 
   override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendor/add-agent-reference-number"
 
   override def pageTitle: String =
-    "Do you want to add a reference for this return? - About the vendor - Stamp Taxes Online - GOV.UK"
+    "Do you want to add a reference for this return? - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value_0"
 
