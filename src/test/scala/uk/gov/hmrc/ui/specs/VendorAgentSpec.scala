@@ -108,6 +108,15 @@ class VendorAgentSpec
       DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.yes)
       And("clicks the Save and continue button")
       DoYouWantToAddAgentReferencePage.saveAndContinue()
+      Then("the user is navigated to the Agent Reference Page")
+      AgentReferenceNumberPage.verifyPageTitle(AgentReferenceNumberPage.pageTitle)
+      And("the user enters agent reference number")
+      AgentReferenceNumberPage.input(
+        By.id(AgentReferenceNumberPage.agentReference),
+        AgentReferenceNumberPage.agentReferenceNumber
+      )
+      And("the user clicks on save and continue button")
+      AgentReferenceNumberPage.saveAndContinue()
     }
 
     Scenario(
@@ -152,8 +161,8 @@ class VendorAgentSpec
       DoYouWantToAddContactDetailsPage.saveAndContinue()
       Then("the user is navigated to Do you want to add a reference for this return page")
       DoYouWantToAddAgentReferencePage.verifyPageTitle(DoYouWantToAddAgentReferencePage.pageTitle)
-      And("the user selects the 'Yes' radio button")
-      DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.yes)
+      And("the user selects the 'No' radio button")
+      DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.no)
       And("clicks the Save and continue button")
       DoYouWantToAddAgentReferencePage.saveAndContinue()
     }
