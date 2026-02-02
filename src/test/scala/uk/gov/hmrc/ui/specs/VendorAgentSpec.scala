@@ -24,6 +24,7 @@ import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.pages.VendorAgent.*
+import uk.gov.hmrc.ui.pages.VendorAgent.VendorAgentContactDetailsPage
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -77,14 +78,23 @@ class VendorAgentSpec
       DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
-//      Below steps to be uncommented once DTR-2092 is ready
-//      And("user clicks Save and Continue")
-//      DoYouWantToAddContactDetailsPage.saveAndContinue()
-      Then("the user is navigated to Do you want to add a reference for this return page")
-      //     remove below step once the navigation is ready
-      DoYouWantToAddAgentReferencePage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-vendors-agent/add-agent-reference-number"
+      And("the user clicks the Save and continue button")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
+      Then("the user is navigated to the Enter Contact Details for Agent page")
+      VendorAgentContactDetailsPage.verifyPageTitle(VendorAgentContactDetailsPage.pageTitle)
+      When("the user inputs their phone number details")
+      VendorAgentContactDetailsPage.input(
+        By.id(VendorAgentContactDetailsPage.phoneNumber),
+        VendorAgentContactDetailsPage.phoneNumberInput
       )
+      And("the user inputs their email address details")
+      VendorAgentContactDetailsPage.input(
+        By.id(VendorAgentContactDetailsPage.emailAddress),
+        VendorAgentContactDetailsPage.emailAddressInput
+      )
+      And("user clicks Save and Continue")
+      VendorAgentContactDetailsPage.saveAndContinue()
+      Then("the user is navigated to Do you want to add a reference for this return page")
       DoYouWantToAddAgentReferencePage.verifyPageTitle(DoYouWantToAddAgentReferencePage.pageTitle)
       And("the user selects the 'Yes' radio button")
       DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.yes)
