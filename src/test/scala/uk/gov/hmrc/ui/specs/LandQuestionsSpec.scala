@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.ui.specs
 
-import org.openqa.selenium.By
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
@@ -43,14 +42,9 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
-      // update link id when land place holder is live
       LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
-      // remove the next line when land place holder is live
-      LandBeforeYouStartPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/before-you-start"
-      )
       Then("the user should be navigated to the Purchaser Before you start page page")
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
@@ -62,9 +56,6 @@ class LandQuestionsSpec
       And("The user selects save and continue")
       TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
-      InterestTransferredCreatedPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
-      )
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Freehold' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.FG)
@@ -91,14 +82,9 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
-      // update link id when land place holder is live
       LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
-      // remove the next line when land place holder is live
-      LandBeforeYouStartPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/before-you-start"
-      )
       Then("the user should be navigated to the Purchaser Before you start page page")
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
@@ -110,9 +96,6 @@ class LandQuestionsSpec
       And("The user selects save and continue")
       TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
-      InterestTransferredCreatedPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
-      )
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Long Leasehold' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.LG)
@@ -142,14 +125,9 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
-      // update link id when land place holder is live
       LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
-      // remove the next line when land place holder is live
-      LandBeforeYouStartPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/before-you-start"
-      )
       Then("the user should be navigated to the Purchaser Before you start page page")
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
@@ -161,9 +139,6 @@ class LandQuestionsSpec
       And("The user selects save and continue")
       TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
-      InterestTransferredCreatedPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
-      )
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Leasehold subject' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.LT)
@@ -195,14 +170,9 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
-      // update link id when land place holder is live
       LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
-      // remove the next line when land place holder is live
-      LandBeforeYouStartPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/before-you-start"
-      )
       Then("the user should be navigated to the Purchaser Before you start page page")
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
@@ -214,9 +184,6 @@ class LandQuestionsSpec
       And("The user selects save and continue")
       TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
-      InterestTransferredCreatedPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
-      )
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Other' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.OT)
@@ -238,14 +205,9 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
-      // update link id when land place holder is live
       LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
-      // remove the next line when land place holder is live
-      LandBeforeYouStartPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/before-you-start"
-      )
       Then("the user should be navigated to the Purchaser Before you start page page")
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
@@ -257,9 +219,6 @@ class LandQuestionsSpec
       And("The user selects save and continue")
       TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
-      InterestTransferredCreatedPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
-      )
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Freehold vacant position' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.FP)
