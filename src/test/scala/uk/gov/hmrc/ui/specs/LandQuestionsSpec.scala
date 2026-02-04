@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import org.openqa.selenium.By
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
@@ -54,8 +55,12 @@ class LandQuestionsSpec
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       LandBeforeYouStartPage.saveAndContinue()
-      // Then("the user should be navigated to What is the type of property")
-      // And("the user selects the 'Residential' radio button")
+      Then("the user should be navigated to What is the type of property")
+      TypeOfPropertyPage.verifyPageTitle(TypeOfPropertyPage.pageTitle)
+      And("the user selects the 'Residential' radio button")
+      TypeOfPropertyPage.radioButton(TypeOfPropertyPage.residential)
+      And("The user selects save and continue")
+      TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
       InterestTransferredCreatedPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
@@ -98,8 +103,12 @@ class LandQuestionsSpec
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       LandBeforeYouStartPage.saveAndContinue()
-      // Then("the user should be navigated to What is the type of property")
-      // And("the user selects the 'Additional Residential property' radio button")
+      Then("the user should be navigated to What is the type of property")
+      TypeOfPropertyPage.verifyPageTitle(TypeOfPropertyPage.pageTitle)
+      And("the user selects the 'Additional Residental Property' radio button")
+      TypeOfPropertyPage.radioButton(TypeOfPropertyPage.additional_residential)
+      And("The user selects save and continue")
+      TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
       InterestTransferredCreatedPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
@@ -145,8 +154,12 @@ class LandQuestionsSpec
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       LandBeforeYouStartPage.saveAndContinue()
-      // Then("the user should be navigated to What is the type of property")
-      // And("the user selects the 'Mixed' radio button")
+      Then("the user should be navigated to What is the type of property")
+      TypeOfPropertyPage.verifyPageTitle(TypeOfPropertyPage.pageTitle)
+      And("the user selects the 'Mixed' radio button")
+      TypeOfPropertyPage.radioButton(TypeOfPropertyPage.mixed)
+      And("The user selects save and continue")
+      TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
       InterestTransferredCreatedPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
@@ -194,8 +207,12 @@ class LandQuestionsSpec
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       LandBeforeYouStartPage.saveAndContinue()
-      // Then("the user should be navigated to What is the type of property")
-      // And("selects 'Non-residential' property type")
+      Then("the user should be navigated to What is the type of property")
+      TypeOfPropertyPage.verifyPageTitle(TypeOfPropertyPage.pageTitle)
+      And("the user selects the 'Non-Residential' radio button")
+      TypeOfPropertyPage.radioButton(TypeOfPropertyPage.non_residential)
+      And("The user selects save and continue")
+      TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
       InterestTransferredCreatedPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
@@ -233,8 +250,12 @@ class LandQuestionsSpec
       LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
       And("clicks the Continue button")
       LandBeforeYouStartPage.saveAndContinue()
-      // Then("the user should be navigated to What is the type of property")
-      // And("selects 'Non-residential' property type")
+      Then("the user should be navigated to What is the type of property")
+      TypeOfPropertyPage.verifyPageTitle(TypeOfPropertyPage.pageTitle)
+      And("the user selects the 'Non-Residential' radio button")
+      TypeOfPropertyPage.radioButton(TypeOfPropertyPage.non_residential)
+      And("The user selects save and continue")
+      TypeOfPropertyPage.saveAndContinue()
       Then("the user is be navigated to Interest transferred or created page")
       InterestTransferredCreatedPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/interest-transferred-or-created"
