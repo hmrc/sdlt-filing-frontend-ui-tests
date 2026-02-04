@@ -164,7 +164,7 @@ class PurchaserQuestionsSpec
 
     Scenario(
       "Complete the Main Purchaser Questions user journey as a Individual who doesn't have NI",
-      wip
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
