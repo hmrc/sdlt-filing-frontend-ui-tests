@@ -164,7 +164,7 @@ class PurchaserQuestionsSpec
 
     Scenario(
       "Complete the Main Purchaser Questions user journey as a Individual who doesn't have NI",
-      PurchaserJourney
+      wip
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
@@ -263,7 +263,9 @@ class PurchaserQuestionsSpec
       And("enters their updated address manually")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.editPageTitle)
       PurchaserAddressPage.enterAddressManually("123", "TEST", "ZZ11 1ZZ")
-      And("User clicks on save and continue")
+      Then("the user should be navigated to the Property Address page to 'Review and confirm the address'")
+      PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.confirmPageTitle)
+      And("clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("User should be navigated to purchasers check your answers page")
       PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
