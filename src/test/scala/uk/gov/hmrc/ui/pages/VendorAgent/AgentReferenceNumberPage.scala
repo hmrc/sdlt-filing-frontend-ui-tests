@@ -29,4 +29,6 @@ object AgentReferenceNumberPage extends BasePage {
 
   def agentReferenceNumber: String = "Agent_001"
 
+  def agentReferenceNumber2: String = "Agent_002"
+
 }

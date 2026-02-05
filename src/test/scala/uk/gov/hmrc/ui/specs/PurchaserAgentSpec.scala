@@ -172,6 +172,8 @@ class PurchaserAgentSpec
       PurchaserAgentCorrespondencePage.radioButton(PurchaserAgentCorrespondencePage.no)
       And("The user clicks save and continue")
       PurchaserAgentCorrespondencePage.saveAndContinue()
+      Then("User should be navigated to purchasers Agent's check your answers page")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
       And("clicks the save and continue button")
       PurchaserAgentCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Purchaser Agent Overview page")
