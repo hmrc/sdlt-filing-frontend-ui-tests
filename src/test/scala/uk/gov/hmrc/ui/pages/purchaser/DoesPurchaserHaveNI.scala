@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAddNINumberPage extends BasePage {
+object DoesPurchaserHaveNI extends BasePage {
 
   override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/add-national-insurance-number"
 
