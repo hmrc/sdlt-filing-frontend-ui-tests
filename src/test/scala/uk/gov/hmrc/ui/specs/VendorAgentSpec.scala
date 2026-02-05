@@ -24,7 +24,6 @@ import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.pages.VendorAgent.*
-import uk.gov.hmrc.ui.pages.VendorAgent.VendorAgentContactDetailsPage
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -109,6 +108,9 @@ class VendorAgentSpec
       )
       And("the user clicks on save and continue button")
       AgentReferenceNumberPage.saveAndContinue()
+      Then("User should be navigated to Vendor Agent's check your answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+
     }
 
     Scenario(
@@ -157,6 +159,66 @@ class VendorAgentSpec
       DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.no)
       And("clicks the Save and continue button")
       DoYouWantToAddAgentReferencePage.saveAndContinue()
+      Then("User should be navigated to Vendor Agent's check your answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+      And("User clicks on change link for Vendor Agent's name")
+      VendorAgentCheckYourAnswersPage.clickVendorAgentNameChange()
+      Then("User should be navigated to Vendor Agent's name page")
+      VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
+      And("User updates agent name details")
+      VendorAgentsNamePage.input(By.id(VendorAgentsNamePage.agentName), VendorAgentsNamePage.agentNameInput2)
+      Then("User clicks on save and continue")
+      VendorAgentsNamePage.saveAndContinue()
+      And("User should be navigated to Vendor Agent's check your answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+      Then("User clicks on change link for Vendor Agent's address")
+      VendorAgentCheckYourAnswersPage.clickVendorAgentAddressChange()
+      And("User should be navigated to Vendor Agent's address page")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.pageTitle2)
+      When("the user clicks on the 'Enter the address manually' link")
+      VendorAgentAddressPage.clickAddressManually()
+      And("enters their updated address manually")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.editPageTitleAgent2)
+      VendorAgentAddressPage.enterAddressManually("123", "TEST", "ZZ11 1ZZ")
+      Then("the user is navigated to the Vendor Agent Address page to 'Review and confirm' the address")
+      VendorAgentAddressPage.verifyPageTitle(VendorAgentAddressPage.confirmPageTitleAgent2)
+      And("User clicks on save and continue")
+      VendorAgentAddressPage.clickContinueButton()
+      Then("User should be navigated to Vendors Agent's check your answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+      And("User clicks on change link for Do you want to add agent contact details")
+      VendorAgentCheckYourAnswersPage.clickAddAgentContactDetailsChange()
+      Then("User is navigated to Do you want to add agent contact details page")
+      DoYouWantToAddContactDetailsPage.verifyPageTitle(DoYouWantToAddContactDetailsPage.pageTitle)
+      And("The user selects Yes")
+      DoYouWantToAddContactDetailsPage.radioButton(DoYouWantToAddContactDetailsPage.yes)
+      And("The user selects save and continue")
+      DoYouWantToAddContactDetailsPage.saveAndContinue()
+      Then("User should be navigated to Vendors Agent's check your answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+      And("User clicks on change link for Do you want to add Reference Number")
+      VendorAgentCheckYourAnswersPage.clickDoYouWantToAddReferenceChange()
+      Then("User navigated to Do you want to add reference for this return page")
+      DoYouWantToAddAgentReferencePage.verifyPageTitle(DoYouWantToAddAgentReferencePage.pageTitle)
+      And("User selects Yes radio button")
+      DoYouWantToAddAgentReferencePage.radioButton(DoYouWantToAddAgentReferencePage.yes)
+      And("User clicks save and continue")
+      DoYouWantToAddAgentReferencePage.saveAndContinue()
+      Then("User should be navigated to Vendors Agent's check your answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+      And("User clicks on change link for enter agent reference number")
+      VendorAgentCheckYourAnswersPage.clickVendorAgentReferenceNumberChange()
+      Then("User is navigated to What is Agent's reference for this return page")
+      AgentReferenceNumberPage.verifyPageTitle(AgentReferenceNumberPage.pageTitle)
+      And("User enter Reference value")
+      AgentReferenceNumberPage.input(
+        By.id(AgentReferenceNumberPage.agentReference),
+        AgentReferenceNumberPage.agentReferenceNumber2
+      )
+      And("User clicks save and continue")
+      AgentReferenceNumberPage.saveAndContinue()
+      Then("User should be navigated to Vendors Agent's check your answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
     }
   }
 }

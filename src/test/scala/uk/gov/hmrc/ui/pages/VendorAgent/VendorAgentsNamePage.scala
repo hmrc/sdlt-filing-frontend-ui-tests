@@ -27,4 +27,6 @@ object VendorAgentsNamePage extends BasePage {
   def agentName: String = "agentName"
 
   def agentNameInput: String = "Agent Test1"
+
+  def agentNameInput2: String = "Updated Agent Name"
 }

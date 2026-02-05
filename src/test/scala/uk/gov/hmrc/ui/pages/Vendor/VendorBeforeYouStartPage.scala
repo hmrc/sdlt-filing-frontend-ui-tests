@@ -22,6 +22,6 @@ object VendorBeforeYouStartPage extends BasePage {
 
   override def pageUrl: String = "about-the-vendor/before-you-start"
 
-  override def pageTitle: String = "Before you start - About the Vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Before you start - About the vendor - Stamp Taxes Online - GOV.UK"
 
 }
