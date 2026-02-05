@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PartnershipUTRPage extends BasePage {
+object PurchaserPartnershipUTRPage extends BasePage {
 
   override def pageUrl: String = "about-the-purchaser/partnership-utr"
 

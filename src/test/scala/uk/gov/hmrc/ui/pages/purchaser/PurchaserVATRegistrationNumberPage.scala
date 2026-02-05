@@ -18,15 +18,16 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserConfirmNameOfPurchaserPage extends BasePage {
+object PurchaserVATRegistrationNumberPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/confirm-purchaser-name"
+  override def pageUrl: String = "about-the-purchaser/vat-registration-number"
 
   override def pageTitle: String =
-    "Is this the name of the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s VAT registration number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value_0"
+  def vat: String = "registrationNumber"
 
-  def no: String = "#value_1"
+  def VATNumber: String = "123456782"
 
+  def VATNumber2: String = "069425349"
 }

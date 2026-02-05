@@ -29,11 +29,15 @@ object PurchaserNameOfPurchaserPage extends BasePage {
   def purchaserNameCompanyStub = "Stub Company name"
 
   def purchasersSurname: String = "purchaserSurnameOrCompanyName"
-  def forename1Id: String       = "forename1"
-  def forename2Id: String       = "forename2"
+  def forenameId: String        = "forename1"
+  def middlenameId: String      = "forename2"
   def surnameId: String         = "name"
 
-  def companyName: String = "purchaserSurnameOrCompanyName"
-  def companyId: String   = "name"
+  def forenameInput: String   = "forename1"
+  def middlenameInput: String = "forename2"
+  def surnameInput: String    = "surname"
 
+  def companyName: String  = "purchaserSurnameOrCompanyName"
+  def companyName2: String = "Company Name"
+  def companyId: String    = "name"
 }

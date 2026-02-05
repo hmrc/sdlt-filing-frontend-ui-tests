@@ -18,14 +18,14 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VATRegistrationNumberPage extends BasePage {
+object PurchaserEnterPhoneNumberPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/vat-registration-number"
+  override def pageUrl: String = "about-the-purchaser/enter-purchaser-phone-number"
 
   override def pageTitle: String =
-    "What is the purchaser’s VAT registration number? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s phone number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def vat: String = "registrationNumber"
-
-  def VATNumber: String = "123456782"
+  def phoneNumberInputField     = "value"
+  def phoneNumberValue: String  = "01234567890"
+  def phoneNumberValue2: String = "07122256789"
 }

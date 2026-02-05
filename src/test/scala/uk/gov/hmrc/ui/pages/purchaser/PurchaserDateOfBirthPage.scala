@@ -17,20 +17,21 @@
 package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
+import org.openqa.selenium.By
 
-object IndividualPurchaserIDPage extends BasePage {
+object PurchaserDateOfBirthPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/form-of-id-individual"
+  override def pageUrl: String = "about-the-purchaser/date-of-birth "
 
   override def pageTitle: String =
-    "Provide a form of ID for the purchaser - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s date of birth? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def purchaserIdNumberOrReference: String = "idNumberOrReference"
-
-  def idNumberOrReferenceInput: String = "1234567890"
-
-  def purchaserCountryIssued: String = "countryIssued"
-
-  def countryIssuedInput: String = "country"
-
+  def enterDateOfBirth(): Unit = inputDateMonthAndYear(
+    By.id("value.day"),
+    By.id("value.month"),
+    By.id("value.year"),
+    "10",
+    "10",
+    "1999"
+  )
 }

@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object WhatTypeOfCompany extends BasePage {
+object PurchaserTypeOfCompanyPage extends BasePage {
 
   override def pageUrl: String = "about-the-purchaser/type-of-company"
 
