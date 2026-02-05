@@ -17,21 +17,18 @@
 package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
-import org.openqa.selenium.By
 
-object PurchaserDateOfBirth extends BasePage {
+object PurchaserEnterNINumberPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/date-of-birth "
+  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/enter-national-insurance-number"
 
   override def pageTitle: String =
-    "What is the purchaser’s date of birth? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s National Insurance number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def enterDateOfBirth(): Unit = inputDateMonthAndYear(
-    By.id("value.day"),
-    By.id("value.month"),
-    By.id("value.year"),
-    "10",
-    "10",
-    "1999"
-  )
+  def Nino: String = "nationalInsuranceNumber"
+
+  def NinoValue: String = "AA123456A"
+
+  def NinoValue2: String = "NJ123456C"
+
 }

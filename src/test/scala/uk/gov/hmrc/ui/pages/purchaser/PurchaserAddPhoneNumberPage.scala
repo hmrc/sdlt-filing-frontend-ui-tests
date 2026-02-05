@@ -18,14 +18,15 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object RemovePurchaserPage extends BasePage {
+object PurchaserAddPhoneNumberPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/remove-purchaser"
+  override def pageUrl: String = "/about-the-purchaser/add-purchaser-phone-number"
 
   override def pageTitle: String =
-    "Are you sure you want to remove the purchaser? – About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Do you want to add a phone number for the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value_0"
+  def yes: String = "#value"
 
-  def no: String = "#value_1"
+  def no: String = "#value-2"
+
 }

@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PartnershipUTRPage extends BasePage {
+object PurchaserConfirmNamePage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/partnership-utr"
+  override def pageUrl: String = "about-the-purchaser/confirm-purchaser-name"
 
   override def pageTitle: String =
-    "What is the purchaser’s Partnership Unique Taxpayer Reference (UTR)? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Is this the name of the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def purchaserUTRReference = "partnershipUniqueTaxpayerReference"
+  def yes: String = "#value_0"
 
-  def purchaserUTRInput = "1111111111"
+  def no: String = "#value_1"
 
 }

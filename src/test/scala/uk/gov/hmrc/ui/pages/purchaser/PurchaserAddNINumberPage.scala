@@ -18,12 +18,12 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserConfirmNameOfPurchaserPage extends BasePage {
+object PurchaserAddNINumberPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/confirm-purchaser-name"
+  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/add-national-insurance-number"
 
   override def pageTitle: String =
-    "Is this the name of the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Does the purchaser have a National Insurance number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value_0"
 

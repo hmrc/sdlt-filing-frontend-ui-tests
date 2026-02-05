@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object DoesPurchaserHavePhoneNumber extends BasePage {
+object PurchaserPartnershipUTRPage extends BasePage {
 
-  override def pageUrl: String = "/about-the-purchaser/add-purchaser-phone-number"
+  override def pageUrl: String = "about-the-purchaser/partnership-utr"
 
   override def pageTitle: String =
-    "Do you want to add a phone number for the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s Partnership Unique Taxpayer Reference (UTR)? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  def purchaserUTRReference = "partnershipUniqueTaxpayerReference"
 
-  def no: String = "#value-2"
+  def purchaserUTRInput = "1111111111"
 
 }
