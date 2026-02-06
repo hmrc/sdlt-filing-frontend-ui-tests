@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Vendor
+package uk.gov.hmrc.ui.pages.VendorAgent
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VendorAgentsContactDetailsPage extends BasePage {
+object VendorAgentOverviewPage extends BasePage {
 
-  override def pageUrl: String = "about-the-vendor/enter-agent-contact-details"
+  override def pageUrl: String = "about-the-vendors-agent/vendors-agent-overview"
 
   override def pageTitle: String =
-    "What are the agent’s contact details? - About the vendor - Stamp Taxes Online - GOV.UK"
+    "Vendor’s agent overview - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
-  def agentPhoneNumber: String = "phoneNumber"
+  def yes: String = "#value"
 
-  def agentPhoneNumberInput: String = "07594847364"
+  def no: String = "#value-no"
 
-  def agentEmailAddress: String = "emailAddress"
-
-  def agentEmailAddressInput: String = "testemail@gmail.com"
 }

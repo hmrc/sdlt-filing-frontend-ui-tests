@@ -110,7 +110,16 @@ class VendorAgentSpec
       AgentReferenceNumberPage.saveAndContinue()
       Then("User should be navigated to Vendor Agent's check your answers page")
       VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
-
+      And("User clicks on save and continue button")
+      VendorAgentCheckYourAnswersPage.saveAndContinue()
+      Then("User should be navigated to Vendor Agent's overview page")
+      VendorAgentOverviewPage.verifyPageTitle(VendorAgentOverviewPage.pageTitle)
+      And("user clicks on yes for the question 'Do you want to add an agent for vendor?")
+      VendorAgentOverviewPage.radioButton(VendorAgentOverviewPage.yes)
+      And("User clicks on save and continue button")
+      VendorAgentOverviewPage.saveAndContinue()
+      Then("User should be navigated to Vendor's Before you start page")
+      VendorAgentBeforeYouStartPage.verifyPageTitle(VendorAgentBeforeYouStartPage.pageTitle)
     }
 
     Scenario(
@@ -219,6 +228,14 @@ class VendorAgentSpec
       AgentReferenceNumberPage.saveAndContinue()
       Then("User should be navigated to Vendors Agent's check your answers page")
       VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+      And("User clicks on save and continue button")
+      VendorAgentCheckYourAnswersPage.saveAndContinue()
+      Then("User should be navigated to Vendor Agent's overview page")
+      VendorAgentOverviewPage.verifyPageTitle(VendorAgentOverviewPage.pageTitle)
+      And("user clicks on no for the question 'Do you want to add an agent for vendor?")
+      VendorAgentOverviewPage.radioButton(VendorAgentOverviewPage.no)
+      And("User clicks on save and continue button")
+      VendorAgentOverviewPage.saveAndContinue()
     }
   }
 }
