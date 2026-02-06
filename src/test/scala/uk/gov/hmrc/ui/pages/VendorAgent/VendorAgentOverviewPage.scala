@@ -25,8 +25,17 @@ object VendorAgentOverviewPage extends BasePage {
   override def pageTitle: String =
     "Vendor’s agent overview - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
+  val VendorAgentRemoveLink: String =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-vendors-agent/vendors-agent-overview/remove-agent/RA001']"
+
+  val VendorAgentChangeLink: String =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-vendors-agent/vendors-agent-overview/change-agent/RA001']"
+
   def yes: String = "#value"
 
   def no: String = "#value-no"
 
+  def clickVendorAgentRemove(): Unit = click(By.cssSelector(VendorAgentRemoveLink))
+
+  def clickVendorAgentChange(): Unit = click(By.cssSelector(VendorAgentChangeLink))
 }
