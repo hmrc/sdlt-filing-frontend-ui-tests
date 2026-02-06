@@ -1181,7 +1181,7 @@ class PurchaserQuestionsSpec
       PurchaserOverviewPage.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview Page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-      And("The user clicks the 'Remove' link to remove a purchaser")
+      When("The user clicks the 'Remove' link to remove a purchaser")
       PurchaserOverviewPage.clickRemovePurchaser()
       Then("the user is navigated to Are you sure you want to remove the purchaser page")
       PurchaserRemovePage.verifyPageTitle(PurchaserRemovePage.pageTitle)
