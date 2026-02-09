@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.VendorAgent
+package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VendorAgentOverviewPage extends BasePage {
+object DoYouHaveNLPGPage extends BasePage {
 
-  override def pageUrl: String = "about-the-vendors-agent/vendors-agent-overview"
+  override def pageUrl: String = "about-the-land/add-NLPG-UPRN"
 
   override def pageTitle: String =
-    "Vendor’s agent overview - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    "Do you have an NLPG UPRN for the land or property? - About the land - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
-  def no: String = "#value-no"
+  def no: String = "#value-2"
 
 }

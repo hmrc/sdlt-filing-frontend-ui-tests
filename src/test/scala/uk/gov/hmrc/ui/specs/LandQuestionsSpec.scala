@@ -76,8 +76,16 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.saveAndContinue()
       // when the user is on Title Number for land or property
       // When the user enters a valid title number and continues
-      // Then the user is on Do you have an NLPG UPRN for the land or property?
-      // When the user selects "Yes" and continues
+      When("user is on Do you have an NLPG UPRN for the land or property ? page")
+      DoYouHaveNLPGPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-NLPG-UPRN"
+      )
+      Then("the user is on Do you have an NLPG UPRN for the land or property ?")
+      DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
+      And("selects 'No' for having NLPG UPRN")
+      DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
+      And("user clicks Save & Continue")
+      DoYouHaveNLPGPage.saveAndContinue()
       // Then the user is on What is the NLPG UPRN for the land or property*/
       // When the user enters a valid NLPG UPRN and continues
       // Then the user is on Will you be sending a plan by post ?
@@ -130,8 +138,12 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.no)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
-      // Then the user is on Do you have an NLPG UPRN for the land or property ?
-      // When the user selects "No" and continues
+      Then("the user is on Do you have an NLPG UPRN for the land or property ?")
+      DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
+      And("selects 'No' for having NLPG UPRN")
+      DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.no)
+      And("user clicks Save & Continue")
+      DoYouHaveNLPGPage.saveAndContinue()
       // Then the user is on Will you be sending a plan by post ?
       // When the user selects Yes/No radio button and continues
       // Then the user is on Minerals or mineral rights(Are there any mineral or mineral rights reserved or excluded for the land or property ?)
@@ -182,8 +194,16 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.saveAndContinue()
       // Then the user is on Title Number for land or property
       // When the user enters a valid title number and continues
-      // Then the user is on Do you have an NLPG UPRN for the land or property ?
-      // When the user selects "No" and continues
+      When("user is on Do you have an NLPG UPRN for the land or property ? page")
+      // ********Remove the below step once the navigation is ready********
+      DoYouHaveNLPGPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-NLPG-UPRN"
+      )
+      DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
+      And("selects 'No' for having NLPG UPRN")
+      DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.no)
+      And("user clicks Save & Continue")
+      DoYouHaveNLPGPage.saveAndContinue()
       // Then the user is on Will you be sending a plan by post ?
       // When user selects yes/No radio button and continues
       // Then the user is on Minerals or mineral rights(Are there any mineral or mineral rights reserved or excluded for the land or property ?)
@@ -232,7 +252,17 @@ class LandQuestionsSpec
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
       // And("enters the title number")
-      // And("selects 'No' for having NLPG UPRN")
+      When("user is on Do you have an NLPG UPRN for the land or property ? page")
+      // ********Remove the below step once the navigation is ready********
+      DoYouHaveNLPGPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-NLPG-UPRN"
+      )
+      DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
+      And("selects 'No' for having NLPG UPRN")
+      DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
+      And("user clicks Save & Continue")
+      DoYouHaveNLPGPage.saveAndContinue()
+      // And("user enters a valid NLPG UPRN and continues")
       // And("selects whether sending a plan by post")
       // And("selects 'Yes' for minerals or mineral rights")
       // And("selects 'Yes' for agricultural or development land")
@@ -277,7 +307,16 @@ class LandQuestionsSpec
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
       // And("enters the title number")
-      // And("selects 'No' for having NLPG UPRN")
+      Then("the user is on Do you have an NLPG UPRN for the land or property ?")
+      // ********Remove the below step once the navigation is ready********
+      DoYouHaveNLPGPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-NLPG-UPRN"
+      )
+      DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
+      And("selects 'No' for having NLPG UPRN")
+      DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.no)
+      And("user clicks Save & Continue")
+      DoYouHaveNLPGPage.saveAndContinue()
       // And("selects whether sending a plan by post")
       // And("selects 'Yes' for minerals or mineral rights")
       // And("selects 'Yes' for agricultural or development land")
