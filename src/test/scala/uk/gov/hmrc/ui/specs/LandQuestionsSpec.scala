@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import org.openqa.selenium.By
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
@@ -74,8 +75,12 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
-      // when the user is on Title Number for land or property
-      // When the user enters a valid title number and continues
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
       When("user is on Do you have an NLPG UPRN for the land or property ? page")
       DoYouHaveNLPGPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-NLPG-UPRN"
@@ -192,8 +197,12 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
-      // Then the user is on Title Number for land or property
-      // When the user enters a valid title number and continues
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
       When("user is on Do you have an NLPG UPRN for the land or property ? page")
       // ********Remove the below step once the navigation is ready********
       DoYouHaveNLPGPage.navigateToPage(
@@ -251,6 +260,13 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
+      // And("selects 'No' for having NLPG UPRN")
       // And("enters the title number")
       When("user is on Do you have an NLPG UPRN for the land or property ? page")
       // ********Remove the below step once the navigation is ready********
@@ -306,6 +322,13 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
+      // And("selects 'No' for having NLPG UPRN")
       // And("enters the title number")
       Then("the user is on Do you have an NLPG UPRN for the land or property ?")
       // ********Remove the below step once the navigation is ready********
