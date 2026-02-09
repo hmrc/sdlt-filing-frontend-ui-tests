@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import org.openqa.selenium.By
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
@@ -74,8 +75,12 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
-      // when the user is on Title Number for land or property
-      // When the user enters a valid title number and continues
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
       // Then the user is on Do you have an NLPG UPRN for the land or property?
       // When the user selects "Yes" and continues
       // Then the user is on What is the NLPG UPRN for the land or property*/
@@ -180,8 +185,12 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
-      // Then the user is on Title Number for land or property
-      // When the user enters a valid title number and continues
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
       // Then the user is on Do you have an NLPG UPRN for the land or property ?
       // When the user selects "No" and continues
       // Then the user is on Will you be sending a plan by post ?
@@ -231,7 +240,12 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
-      // And("enters the title number")
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
       // And("selects 'No' for having NLPG UPRN")
       // And("selects whether sending a plan by post")
       // And("selects 'Yes' for minerals or mineral rights")
@@ -276,7 +290,12 @@ class LandQuestionsSpec
       HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
       And("the user clicks Save & Continue")
       HM_LandRegistrationPage.saveAndContinue()
-      // And("enters the title number")
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("The user selects save and continue")
+      LandTitleNumberPage.saveAndContinue()
       // And("selects 'No' for having NLPG UPRN")
       // And("selects whether sending a plan by post")
       // And("selects 'Yes' for minerals or mineral rights")
