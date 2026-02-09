@@ -82,7 +82,7 @@ class LandQuestionsSpec
       )
       Then("the user is on Do you have an NLPG UPRN for the land or property ?")
       DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
-      And("selects 'No' for having NLPG UPRN")
+      And("selects 'Yes' for having NLPG UPRN")
       DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
       And("user clicks Save & Continue")
       DoYouHaveNLPGPage.saveAndContinue()
@@ -258,7 +258,7 @@ class LandQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-NLPG-UPRN"
       )
       DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
-      And("selects 'No' for having NLPG UPRN")
+      And("selects 'Yes' for having NLPG UPRN")
       DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
       And("user clicks Save & Continue")
       DoYouHaveNLPGPage.saveAndContinue()
