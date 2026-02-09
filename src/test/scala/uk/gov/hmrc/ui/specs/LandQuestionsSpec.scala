@@ -59,10 +59,21 @@ class LandQuestionsSpec
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Freehold' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.FG)
-      Then(" the user clicks the Save and continue button")
-      InterestTransferredCreatedPage.saveAndContinue()
+      // ********Enable below 2 lines once navigation is ready********
+//      Then(" the user clicks the Save and continue button")
+//      InterestTransferredCreatedPage.saveAndContinue()
       // Then("the user is on Confirm the address of the land or property")
       // when the user selects "Yes" and continues
+      // ********Remove the below step once the navigation is ready********
+      HM_LandRegistrationPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      )
+      Then("the user is on Is the land or property registered  with HM Land Registry ?")
+      HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
+      When("the user selects Yes and continues")
+      HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
+      And("the user clicks Save & Continue")
+      HM_LandRegistrationPage.saveAndContinue()
       // when the user is on Title Number for land or property
       // When the user enters a valid title number and continues
       // Then the user is on Do you have an NLPG UPRN for the land or property?
@@ -99,8 +110,9 @@ class LandQuestionsSpec
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Long Leasehold' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.LG)
-      Then(" the user clicks the Save and continue button")
-      InterestTransferredCreatedPage.saveAndContinue()
+      // ********Enable below 2 lines once navigation is ready********
+//      Then(" the user clicks the Save and continue button")
+//      InterestTransferredCreatedPage.saveAndContinue()
       // When the user selects the radio button and continues
       // Then the user is on Confirm the address of the land or property
       // When the user selects "No" and continues
@@ -108,8 +120,16 @@ class LandQuestionsSpec
       // When the user selects an address and continues
       // Then the user is on What is the local authority code
       // When the user enters a valid local authority code and continues
-      // Then the user is on Is the land or property registered with HM Land Registry ?
-      // When the user selects "No" and continues
+      // ********Remove the below step once the navigation is ready********
+      HM_LandRegistrationPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      )
+      Then("the user is on Is the land or property registered  with HM Land Registry ?")
+      HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
+      When("the user selects No and continues")
+      HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.no)
+      And("the user clicks Save & Continue")
+      HM_LandRegistrationPage.saveAndContinue()
       // Then the user is on Do you have an NLPG UPRN for the land or property ?
       // When the user selects "No" and continues
       // Then the user is on Will you be sending a plan by post ?
@@ -142,15 +162,24 @@ class LandQuestionsSpec
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Leasehold subject' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.LT)
-      Then(" the user clicks the Save and continue button")
-      InterestTransferredCreatedPage.saveAndContinue()
+      // ********Enable below 2 lines once navigation is ready********
+//      Then(" the user clicks the Save and continue button")
+//      InterestTransferredCreatedPage.saveAndContinue()
       // When the user selects radio button and  continues
       // Then the user is on Confirm the address of the land or property
       // When the user selects "Yes" and continues
       // Then the user is on What is the local authority code
       // When the user enters a valid local authority code and continues
-      // Then the user is on Is the land or property registered  with HM Land Registry ?
-      // When the user selects "Yes" and continues
+      // ********Remove the below step once the navigation is ready********
+      HM_LandRegistrationPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      )
+      Then("the user is on Is the land or property registered  with HM Land Registry ?")
+      HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
+      When("the user selects Yes and continues")
+      HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
+      And("the user clicks Save & Continue")
+      HM_LandRegistrationPage.saveAndContinue()
       // Then the user is on Title Number for land or property
       // When the user enters a valid title number and continues
       // Then the user is on Do you have an NLPG UPRN for the land or property ?
@@ -187,11 +216,21 @@ class LandQuestionsSpec
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Other' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.OT)
-      Then(" the user clicks the Save and continue button")
-      InterestTransferredCreatedPage.saveAndContinue()
+      // ********Enable below 2 lines once navigation is ready********
+//      Then(" the user clicks the Save and continue button")
+//      InterestTransferredCreatedPage.saveAndContinue()
       // And("confirms the address")
       // And("enters the local authority code")
-      // And("selects 'Yes' for registered with HM Land Registry")
+      // ********Remove the below step once the navigation is ready********
+      HM_LandRegistrationPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      )
+      Then("the user is on Is the land or property registered  with HM Land Registry ?")
+      HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
+      When("the user selects Yes and continues")
+      HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
+      And("the user clicks Save & Continue")
+      HM_LandRegistrationPage.saveAndContinue()
       // And("enters the title number")
       // And("selects 'No' for having NLPG UPRN")
       // And("selects whether sending a plan by post")
@@ -222,11 +261,21 @@ class LandQuestionsSpec
       InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
       And("the user selects the 'Freehold vacant position' radio button and continues")
       InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.FP)
-      Then(" the user clicks the Save and continue button")
-      InterestTransferredCreatedPage.saveAndContinue()
+      // ********Enable below 2 lines once navigation is ready********
+//      Then(" the user clicks the Save and continue button")
+//      InterestTransferredCreatedPage.saveAndContinue()
       // And("confirms the address")
       // And("enters the local authority code")
-      // And("selects 'Yes' for registered with HM Land Registry")
+      // Remove the below step once the navigation is ready
+      HM_LandRegistrationPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      )
+      Then("the user is on Is the land or property registered  with HM Land Registry ?")
+      HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
+      When("the user selects Yes and continues")
+      HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
+      And("the user clicks Save & Continue")
+      HM_LandRegistrationPage.saveAndContinue()
       // And("enters the title number")
       // And("selects 'No' for having NLPG UPRN")
       // And("selects whether sending a plan by post")
