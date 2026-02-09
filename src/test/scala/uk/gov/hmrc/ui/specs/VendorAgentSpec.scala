@@ -237,5 +237,31 @@ class VendorAgentSpec
       And("User clicks on save and continue button")
       VendorAgentOverviewPage.saveAndContinue()
     }
+
+    Scenario(
+      "Removing vendor agent",
+      VendorAgentJourney
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
+      When("the user clicks on the 'Vendor Questions' link")
+      AboutTheVendorPage.clickLinkById("task-list-link-vendor-agent-questions")
+      Then("the user is navigated to the Vendor Agent Overview page")
+      VendorAgentOverviewPage.verifyPageTitle(VendorAgentOverviewPage.pageTitle)
+      When("the user clicks the 'Remove' link to remove a vendor agent")
+      VendorAgentOverviewPage.clickVendorAgentRemove()
+      Then("the user is navigated to Are you sure you want to remove the vendor agent page")
+      VendorAgentRemovePage.verifyPageTitle(VendorAgentRemovePage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      VendorAgentRemovePage.radioButton(VendorAgentRemovePage.yes)
+      And("clicks the Save and continue button")
+      VendorAgentRemovePage.saveAndContinue()
+      Then("the user is navigated to the Vendor Agent Overview page")
+      VendorAgentOverviewPage.verifyPageTitle(VendorAgentOverviewPage.pageTitle)
+      When("the user clicks the 'Change' link to amend a vendor agent's details")
+      VendorAgentOverviewPage.clickVendorAgentChange()
+      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+      VendorAgentCheckYourAnswersPage.verifyPageTitle(VendorAgentCheckYourAnswersPage.pageTitle)
+    }
   }
 }

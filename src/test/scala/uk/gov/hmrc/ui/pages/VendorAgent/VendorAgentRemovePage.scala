@@ -16,27 +16,17 @@
 
 package uk.gov.hmrc.ui.pages.VendorAgent
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VendorAgentOverviewPage extends BasePage {
+object VendorAgentRemovePage extends BasePage {
 
-  override def pageUrl: String = "about-the-vendors-agent/vendors-agent-overview"
+  override def pageUrl: String = "about-the-vendors-agent/remove-vendors-agent"
 
   override def pageTitle: String =
-    "Vendor’s agent overview - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
-
-  val VendorAgentRemoveLink: String =
-    "a[href= '/stamp-duty-land-tax-filing/about-the-vendors-agent/vendors-agent-overview/remove-agent/RA001']"
-
-  val VendorAgentChangeLink: String =
-    "a[href= '/stamp-duty-land-tax-filing/about-the-vendors-agent/vendors-agent-overview/change-agent/RA001']"
+    "Are you sure you want to remove the vendor’s agent? - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
-  def no: String = "#value-no"
+  def no: String = "#value-2"
 
-  def clickVendorAgentRemove(): Unit = click(By.cssSelector(VendorAgentRemoveLink))
-
-  def clickVendorAgentChange(): Unit = click(By.cssSelector(VendorAgentChangeLink))
 }
