@@ -65,10 +65,18 @@ class LandQuestionsSpec
 //      InterestTransferredCreatedPage.saveAndContinue()
       // Then("the user is on Confirm the address of the land or property")
       // when the user selects "Yes" and continues
-      // ********Remove the below step once the navigation is ready********
-      HM_LandRegistrationPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      LocalAuthorityCodePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/local-authority-code"
       )
+      Then("the user is on What is the local authority code")
+      LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
+      And("the user enters a valid local authority code")
+      LocalAuthorityCodePage.input(
+        By.id(LocalAuthorityCodePage.localAuthCode),
+        LocalAuthorityCodePage.localAuthCodeInput
+      )
+      And("the user clicks on Save & Continue")
+      LocalAuthorityCodePage.saveAndContinue()
       Then("the user is on Is the land or property registered  with HM Land Registry ?")
       HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
       When("the user selects Yes and continues")
@@ -131,12 +139,18 @@ class LandQuestionsSpec
       // When the user selects "No" and continues
       // Then the user is on Address lookup
       // When the user selects an address and continues
-      // Then the user is on What is the local authority code
-      // When the user enters a valid local authority code and continues
-      // ********Remove the below step once the navigation is ready********
-      HM_LandRegistrationPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      LocalAuthorityCodePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/local-authority-code"
       )
+      Then("the user is on What is the local authority code")
+      LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
+      And("the user enters a valid local authority code")
+      LocalAuthorityCodePage.input(
+        By.id(LocalAuthorityCodePage.localAuthCode),
+        LocalAuthorityCodePage.localAuthCodeInput
+      )
+      And("the user clicks on Save & Continue")
+      LocalAuthorityCodePage.saveAndContinue()
       Then("the user is on Is the land or property registered  with HM Land Registry ?")
       HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
       When("the user selects No and continues")
@@ -185,12 +199,18 @@ class LandQuestionsSpec
       // When the user selects radio button and  continues
       // Then the user is on Confirm the address of the land or property
       // When the user selects "Yes" and continues
-      // Then the user is on What is the local authority code
-      // When the user enters a valid local authority code and continues
-      // ********Remove the below step once the navigation is ready********
-      HM_LandRegistrationPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      LocalAuthorityCodePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/local-authority-code"
       )
+      Then("the user is on What is the local authority code")
+      LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
+      And("the user enters a valid local authority code")
+      LocalAuthorityCodePage.input(
+        By.id(LocalAuthorityCodePage.localAuthCode),
+        LocalAuthorityCodePage.localAuthCodeInput
+      )
+      And("the user clicks on Save & Continue")
+      LocalAuthorityCodePage.saveAndContinue()
       Then("the user is on Is the land or property registered  with HM Land Registry ?")
       HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
       When("the user selects Yes and continues")
@@ -249,11 +269,18 @@ class LandQuestionsSpec
 //      Then(" the user clicks the Save and continue button")
 //      InterestTransferredCreatedPage.saveAndContinue()
       // And("confirms the address")
-      // And("enters the local authority code")
-      // ********Remove the below step once the navigation is ready********
-      HM_LandRegistrationPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      LocalAuthorityCodePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/local-authority-code"
       )
+      Then("the user is on What is the local authority code")
+      LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
+      And("the user enters a valid local authority code")
+      LocalAuthorityCodePage.input(
+        By.id(LocalAuthorityCodePage.localAuthCode),
+        LocalAuthorityCodePage.localAuthCodeInput
+      )
+      And("the user clicks on Save & Continue")
+      LocalAuthorityCodePage.saveAndContinue()
       Then("the user is on Is the land or property registered  with HM Land Registry ?")
       HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
       When("the user selects Yes and continues")
@@ -311,11 +338,18 @@ class LandQuestionsSpec
 //      Then(" the user clicks the Save and continue button")
 //      InterestTransferredCreatedPage.saveAndContinue()
       // And("confirms the address")
-      // And("enters the local authority code")
-      // Remove the below step once the navigation is ready
-      HM_LandRegistrationPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
+      LocalAuthorityCodePage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/local-authority-code"
       )
+      Then("the user is on What is the local authority code")
+      LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
+      And("the user enters a valid local authority code")
+      LocalAuthorityCodePage.input(
+        By.id(LocalAuthorityCodePage.localAuthCode),
+        LocalAuthorityCodePage.localAuthCodeInput
+      )
+      And("the user clicks on Save & Continue")
+      LocalAuthorityCodePage.saveAndContinue()
       Then("the user is on Is the land or property registered  with HM Land Registry ?")
       HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
       When("the user selects Yes and continues")
