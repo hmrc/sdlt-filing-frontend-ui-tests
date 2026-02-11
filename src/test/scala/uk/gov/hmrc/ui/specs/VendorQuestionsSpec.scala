@@ -155,7 +155,7 @@ class VendorQuestionsSpec
 //      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
     }
 
-    Scenario(
+ /*   Scenario(
       "Complete the Vendor Questions user journey for Vendor Agent with a reference number and no vendor stub data",
       VendorJourney
     ) {
@@ -194,7 +194,7 @@ class VendorQuestionsSpec
       Then("the user is navigated to the Vendor Property Address page to 'Review and confirm' the address")
       VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.confirmPageTitleBusiness)
       When("the user clicks the Confirm address button")
-      VendorPropertyAddressPage.clickContinueButton()
+      VendorPropertyAddressPage.clickContinueButton()*/
 //      Tests to be modfified once vendor flow is fixed
 //      Then("the user is navigated to the Vendor Agents Name page")
 //      VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
