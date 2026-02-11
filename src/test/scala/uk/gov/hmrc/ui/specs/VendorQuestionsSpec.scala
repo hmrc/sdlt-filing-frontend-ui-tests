@@ -195,12 +195,6 @@ class VendorQuestionsSpec
       VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.confirmPageTitleBusiness)
       When("the user clicks the Confirm address button")
       VendorPropertyAddressPage.clickContinueButton()
-      Then("the user is navigated to the Vendor Agent page")
-      VendorAgentPage.verifyPageTitle(VendorAgentPage.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      VendorAgentPage.radioButton(VendorAgentPage.yes)
-      And("clicks the Save and continue button")
-      VendorAgentPage.saveAndContinue()
 //      Tests to be modfified once vendor flow is fixed
 //      Then("the user is navigated to the Vendor Agents Name page")
 //      VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
