@@ -155,7 +155,7 @@ class VendorQuestionsSpec
 //      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
     }
 
- /*   Scenario(
+    /*   Scenario(
       "Complete the Vendor Questions user journey for Vendor Agent with a reference number and no vendor stub data",
       VendorJourney
     ) {
@@ -253,7 +253,6 @@ class VendorQuestionsSpec
 //      AgentReferenceNumberPage.saveAndContinue()
 //      Then("the user is navigated to the Vendor Check Your Answers page")
 //      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
-    }
 
     Scenario(
       "Complete the Vendor Questions user journey for Vendor Agent without a reference number and no vendor stub data",
