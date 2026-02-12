@@ -75,8 +75,9 @@ class LandQuestionsSpec
       LandAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Land Address page to 'Review and confirm the address'")
       LandAddressPage.verifyPageTitle(LandAddressPage.confirmPageTitle)
-      When("the user clicks the Confirm address button")
-      LandAddressPage.clickContinueButton()
+      // enable below 2 steps after navigation is ready
+//      When("the user clicks the Confirm address button")
+//      LandAddressPage.clickContinueButton()
       // ********Remove the below step once the navigation is ready********
       HM_LandRegistrationPage.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/HM-land-registration"
@@ -151,8 +152,9 @@ class LandQuestionsSpec
       LandAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Land Address page to 'Review and confirm the address'")
       LandAddressPage.verifyPageTitle(LandAddressPage.confirmPageTitle)
-      When("the user clicks the Confirm address button")
-      LandAddressPage.clickContinueButton()
+      // enable below 2 steps after navigation is ready
+//      When("the user clicks the Confirm address button")
+//      LandAddressPage.clickContinueButton()
       // Then the user is on What is the local authority code
       // When the user enters a valid local authority code and continues
       // ********Remove the below step once the navigation is ready********
@@ -217,8 +219,9 @@ class LandQuestionsSpec
       LandAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Land Address page to 'Review and confirm the address'")
       LandAddressPage.verifyPageTitle(LandAddressPage.confirmPageTitle)
-      When("the user clicks the Confirm address button")
-      LandAddressPage.clickContinueButton()
+      // enable below 2 steps after navigation is ready
+//      When("the user clicks the Confirm address button")
+//      LandAddressPage.clickContinueButton()
       // Then the user is on What is the local authority code
       // When the user enters a valid local authority code and continues
       // ********Remove the below step once the navigation is ready********
@@ -295,8 +298,9 @@ class LandQuestionsSpec
       LandAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Land Address page to 'Review and confirm the address'")
       LandAddressPage.verifyPageTitle(LandAddressPage.confirmPageTitle)
-      When("the user clicks the Confirm address button")
-      LandAddressPage.clickContinueButton()
+      // enable below 2 steps after navigation is ready
+//      When("the user clicks the Confirm address button")
+//      LandAddressPage.clickContinueButton()
       // And("enters the local authority code")
       // ********Remove the below step once the navigation is ready********
       HM_LandRegistrationPage.navigateToPage(
@@ -312,8 +316,9 @@ class LandQuestionsSpec
       LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
       When("The user enters Land Title Number")
       LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
-      And("The user selects save and continue")
-      LandTitleNumberPage.saveAndContinue()
+      // enable below 2 steps after navigation is ready
+//      And("The user selects save and continue")
+//      LandTitleNumberPage.saveAndContinue()
       // And("selects 'No' for having NLPG UPRN")
       // And("enters the title number")
       When("user is on Do you have an NLPG UPRN for the land or property ? page")
@@ -371,8 +376,9 @@ class LandQuestionsSpec
       LandAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Land Address page to 'Review and confirm the address'")
       LandAddressPage.verifyPageTitle(LandAddressPage.confirmPageTitle)
-      When("the user clicks the Confirm address button")
-      LandAddressPage.clickContinueButton()
+      // enable below 2 steps after navigation is ready
+//      When("the user clicks the Confirm address button")
+//      LandAddressPage.clickContinueButton()
       // And("enters the local authority code")
       // Remove the below step once the navigation is ready
       HM_LandRegistrationPage.navigateToPage(
@@ -388,8 +394,9 @@ class LandQuestionsSpec
       LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
       When("The user enters Land Title Number")
       LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
-      And("The user selects save and continue")
-      LandTitleNumberPage.saveAndContinue()
+      // enable below 2 steps after navigation is ready
+//      And("The user selects save and continue")
+//      LandTitleNumberPage.saveAndContinue()
       // And("selects 'No' for having NLPG UPRN")
       // And("enters the title number")
       Then("the user is on Do you have an NLPG UPRN for the land or property ?")
