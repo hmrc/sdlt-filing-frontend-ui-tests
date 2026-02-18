@@ -1159,11 +1159,11 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Purchaser Question user journey for removing purchaser with 98 purchaser stub data",
+      "Purchaser Question user journey for removing purchaser with 97 purchasers 1 vendor stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("98-purchasers"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("97-purchasers-1-vendor"))
       When("the user clicks on the 'Purchaser Questions' link")
       AboutTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
       Then("the user is navigated to the Purchaser Overview page")
