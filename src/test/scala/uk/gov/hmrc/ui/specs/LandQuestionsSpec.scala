@@ -436,13 +436,28 @@ class LandQuestionsSpec
 
       // And("selects 'Yes' for agricultural or development land")
       // And("selects 'Yes' for knowing the area of land")
-      // And user navigates to Select one unit of measurement for the area of land
-      // And("selects 'square metres' as unit of measurement")
+      // ********Remove below step once navigation is ready*******
+      UnitOfMeasurementPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/unit-of-measurement"
+      )
+      Then("User is navigated to Select one unit of measurement for the area of land Page")
+      UnitOfMeasurementPage.verifyPageTitle(UnitOfMeasurementPage.pageTitle)
+      And("selects 'square metres' as unit of measurement")
+      UnitOfMeasurementPage.radioButton(UnitOfMeasurementPage.squareMetres)
+      And("The user selects save and continue")
+      UnitOfMeasurementPage.saveAndContinue()
       // And("enters area in square metres")
       // Then("the user navigated to CYA page")
-      // And user clicks on change link for unit of measurement
-      // And user changes unit of measurement to hectares
-      // And user enters area in hectares
+      // ********Remove below step once navigation is ready*******
+      UnitOfMeasurementPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/unit-of-measurement"
+      )
+      Then("User is navigated to Select one unit of measurement for the area of land Page")
+      UnitOfMeasurementPage.verifyPageTitle(UnitOfMeasurementPage.pageTitle)
+      And("selects 'hectares' as unit of measurement")
+      UnitOfMeasurementPage.radioButton(UnitOfMeasurementPage.hectares)
+      And("The user selects save and continue")
+      UnitOfMeasurementPage.saveAndContinue()
       // Then("the user navigated to CYA page")
     }
   }
