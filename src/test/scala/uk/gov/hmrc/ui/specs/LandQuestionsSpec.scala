@@ -105,8 +105,18 @@ class LandQuestionsSpec
       // **********************
       // Then the user is on Will you be sending a plan by post ?
       // When the user  selects yes and continues
-      // Then the user is on Minerals or mineral rights(Are there any mineral or mineral rights reserved or excluded for the land or property ?)
-      // When the user selects "No" and continues
+
+      Then("the user is navigated to the Land Minerals Or Mineral Rights page")
+      LandMineralsOrMineralRightsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
+      )
+      LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
+      When("the user selects the 'No' radio button")
+      LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.no)
+      // uncomment next two lines when navigation to the next page is ready
+      // And("clicks the Save and continue button")
+      // LandMineralsOrMineralRightsPage.saveAndContinue()
+
       // Then the user is on Check your answers
       // When the user selects Save and continue
       // Then the user is on the Overview page
@@ -176,8 +186,18 @@ class LandQuestionsSpec
       DoYouHaveNLPGPage.saveAndContinue()
       // Then the user is on Will you be sending a plan by post ?
       // When the user selects Yes/No radio button and continues
-      // Then the user is on Minerals or mineral rights(Are there any mineral or mineral rights reserved or excluded for the land or property ?)
-      // When the user selects "No" and continues
+
+      Then("the user is navigated to the Land Minerals Or Mineral Rights page")
+      LandMineralsOrMineralRightsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
+      )
+      LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
+      When("the user selects the 'No' radio button")
+      LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.no)
+      // uncomment next two lines when navigation to the next page is ready
+      // And("clicks the Save and continue button")
+      // LandMineralsOrMineralRightsPage.saveAndContinue()
+
       // Then the user is on Check your answers
       // When the user selects Save and continue
       // Then the user is on the Overview page
@@ -242,8 +262,18 @@ class LandQuestionsSpec
       DoYouHaveNLPGPage.saveAndContinue()
       // Then the user is on Will you be sending a plan by post ?
       // When user selects yes/No radio button and continues
-      // Then the user is on Minerals or mineral rights(Are there any mineral or mineral rights reserved or excluded for the land or property ?)
-      // When the user selects "Yes" and continues
+
+      Then("the user is navigated to the Land Minerals Or Mineral Rights page")
+      LandMineralsOrMineralRightsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
+      )
+      LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
+      // uncomment next two lines when navigation to the next page is ready
+      // And("clicks the Save and continue button")
+      // LandMineralsOrMineralRightsPage.saveAndContinue()
+
       // Then the user is on Agricultural or development land (Does the transaction involve agricultural or development land ?)
       // When the user selects "No" and continues
       // Then the user is on Check your answers
@@ -317,7 +347,18 @@ class LandQuestionsSpec
       // NLPGUPRNPage.saveAndContinue()
       // **********************
       // And("selects whether sending a plan by post")
-      // And("selects 'Yes' for minerals or mineral rights")
+
+      Then("the user is navigated to the Land Minerals Or Mineral Rights page")
+      LandMineralsOrMineralRightsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
+      )
+      LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
+      // uncomment next two lines when navigation to the next page is ready
+      // And("clicks the Save and continue button")
+      // LandMineralsOrMineralRightsPage.saveAndContinue()
+
       // And("selects 'Yes' for agricultural or development land")
       // And("selects 'No' for knowing the area of land")
       // Then("the user navigated to CYA page")
@@ -381,7 +422,18 @@ class LandQuestionsSpec
       And("clicks the Save and continue button")
       DoYouHaveNLPGPage.saveAndContinue()
       // And("selects whether sending a plan by post")
-      // And("selects 'Yes' for minerals or mineral rights")
+
+      Then("the user is navigated to the Land Minerals Or Mineral Rights page")
+      LandMineralsOrMineralRightsPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
+      )
+      LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
+      // uncomment next two lines when navigation to the next page is ready
+      // And("clicks the Save and continue button")
+      // LandMineralsOrMineralRightsPage.saveAndContinue()
+
       // And("selects 'Yes' for agricultural or development land")
       // And("selects 'Yes' for knowing the area of land")
       // And user navigates to Select one unit of measurement for the area of land
