@@ -95,8 +95,14 @@ class LandQuestionsSpec
       DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
       And("clicks the Save and continue button")
       DoYouHaveNLPGPage.saveAndContinue()
-      // Then the user is on What is the NLPG UPRN for the land or property*/
-      // When the user enters a valid NLPG UPRN and continues
+      Then("the user is on What is the NLPG UPRN for the land or property page")
+      NLPGUPRNPage.verifyPageTitle(NLPGUPRNPage.pageTitle)
+      When("the user enters a valid NLPG UPRN ")
+      NLPGUPRNPage.input(By.id(NLPGUPRNPage.nlpg_uprn), NLPGUPRNPage.nlpg_uprnInput)
+      // *****Uncomment below line once navigation from NLPG UPRN page is implemented*****
+      // And("clicks the Save and continue button")
+      // NLPGUPRNPage.saveAndContinue()
+      // **********************
       // Then the user is on Will you be sending a plan by post ?
       // When the user  selects yes and continues
       // Then the user is on Minerals or mineral rights(Are there any mineral or mineral rights reserved or excluded for the land or property ?)
@@ -302,7 +308,14 @@ class LandQuestionsSpec
       DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
       And("clicks the Save and continue button")
       DoYouHaveNLPGPage.saveAndContinue()
-      // And("user enters a valid NLPG UPRN and continues")
+      Then("the user is on What is the NLPG UPRN for the land or property page")
+      NLPGUPRNPage.verifyPageTitle(NLPGUPRNPage.pageTitle)
+      When("the user enters a valid NLPG UPRN ")
+      NLPGUPRNPage.input(By.id(NLPGUPRNPage.nlpg_uprn), NLPGUPRNPage.nlpg_uprnInput)
+      // *****Uncomment below line once navigation from NLPG UPRN page is implemented*****
+      // And("clicks the Save and continue button")
+      // NLPGUPRNPage.saveAndContinue()
+      // **********************
       // And("selects whether sending a plan by post")
       // And("selects 'Yes' for minerals or mineral rights")
       // And("selects 'Yes' for agricultural or development land")
