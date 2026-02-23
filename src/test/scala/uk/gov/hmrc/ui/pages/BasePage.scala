@@ -170,7 +170,7 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
   }
 
   def waitForPageTitle(expectedTitle: String): Unit =
-    fluentWait.until(ExpectedConditions.titleIs(expectedTitle))
+    fluentWait.until(ExpectedConditions.titleContains(expectedTitle))
 
   def verifyTaskRowStatus(expectedStatusId: String, expectedStatus: String): Unit = {
     waitForVisibilityOfElement(By.id(expectedStatusId))

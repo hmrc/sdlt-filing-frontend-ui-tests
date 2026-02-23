@@ -22,6 +22,6 @@ object UKResidencyBeforeYouStartPage extends BasePage {
 
   override def pageUrl: String = "about-UK-residency/before-you-start"
 
-  override def pageTitle: String = "Before you start - About UK Residency - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Before you start - About UK residency - Stamp Taxes Online - GOV.UK"
 
 }
