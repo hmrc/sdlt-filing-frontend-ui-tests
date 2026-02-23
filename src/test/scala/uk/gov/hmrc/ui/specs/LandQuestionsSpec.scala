@@ -99,17 +99,15 @@ class LandQuestionsSpec
       NLPGUPRNPage.verifyPageTitle(NLPGUPRNPage.pageTitle)
       When("the user enters a valid NLPG UPRN ")
       NLPGUPRNPage.input(By.id(NLPGUPRNPage.nlpg_uprn), NLPGUPRNPage.nlpg_uprnInput)
-      // *****Uncomment below line once navigation from NLPG UPRN page is implemented*****
-      // And("clicks the Save and continue button")
-      // NLPGUPRNPage.saveAndContinue()
-      // **********************
-      // Then the user is on Will you be sending a plan by post ?
-      // When the user  selects yes and continues
-
+      And("clicks the Save and continue button")
+      NLPGUPRNPage.saveAndContinue()
+      Then("the user is navigated to the Sending Plan By Post page")
+      LandSendingPlanByPostPage.verifyPageTitle(LandSendingPlanByPostPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandSendingPlanByPostPage.radioButton(LandSendingPlanByPostPage.yes)
+      And("clicks the Save and continue button")
+      LandSendingPlanByPostPage.saveAndContinue()
       Then("the user is navigated to the Land Minerals Or Mineral Rights page")
-      LandMineralsOrMineralRightsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
-      )
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'No' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.no)
@@ -182,15 +180,15 @@ class LandQuestionsSpec
       DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
       And("selects 'No' for having NLPG UPRN")
       DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.no)
-//      And("clicks the Save and continue button")
-//      DoYouHaveNLPGPage.saveAndContinue()
-      // Then the user is on Will you be sending a plan by post ?
-      // When the user selects Yes/No radio button and continues
-
+      And("clicks the Save and continue button")
+      DoYouHaveNLPGPage.saveAndContinue()
+      Then("the user is navigated to the Sending Plan By Post page")
+      LandSendingPlanByPostPage.verifyPageTitle(LandSendingPlanByPostPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandSendingPlanByPostPage.radioButton(LandSendingPlanByPostPage.yes)
+      And("clicks the Save and continue button")
+      LandSendingPlanByPostPage.saveAndContinue()
       Then("the user is navigated to the Land Minerals Or Mineral Rights page")
-      LandMineralsOrMineralRightsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
-      )
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'No' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.no)
@@ -258,15 +256,15 @@ class LandQuestionsSpec
       DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
       And("selects 'No' for having NLPG UPRN")
       DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.no)
-//      And("user clicks Save & Continue")
-//      DoYouHaveNLPGPage.saveAndContinue()
-      // Then the user is on Will you be sending a plan by post ?
-      // When user selects yes/No radio button and continues
-
+      And("user clicks Save & Continue")
+      DoYouHaveNLPGPage.saveAndContinue()
+      Then("the user is navigated to the Sending Plan By Post page")
+      LandSendingPlanByPostPage.verifyPageTitle(LandSendingPlanByPostPage.pageTitle)
+      When("the user selects the 'No' radio button")
+      LandSendingPlanByPostPage.radioButton(LandSendingPlanByPostPage.no)
+      And("clicks the Save and continue button")
+      LandSendingPlanByPostPage.saveAndContinue()
       Then("the user is navigated to the Land Minerals Or Mineral Rights page")
-      LandMineralsOrMineralRightsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
-      )
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
@@ -342,16 +340,15 @@ class LandQuestionsSpec
       NLPGUPRNPage.verifyPageTitle(NLPGUPRNPage.pageTitle)
       When("the user enters a valid NLPG UPRN ")
       NLPGUPRNPage.input(By.id(NLPGUPRNPage.nlpg_uprn), NLPGUPRNPage.nlpg_uprnInput)
-      // *****Uncomment below line once navigation from NLPG UPRN page is implemented*****
-      // And("clicks the Save and continue button")
-      // NLPGUPRNPage.saveAndContinue()
-      // **********************
-      // And("selects whether sending a plan by post")
-
+      And("clicks the Save and continue button")
+      NLPGUPRNPage.saveAndContinue()
+      Then("the user is navigated to the Sending Plan By Post page")
+      LandSendingPlanByPostPage.verifyPageTitle(LandSendingPlanByPostPage.pageTitle)
+      When("the user selects the 'No' radio button")
+      LandSendingPlanByPostPage.radioButton(LandSendingPlanByPostPage.no)
+      And("clicks the Save and continue button")
+      LandSendingPlanByPostPage.saveAndContinue()
       Then("the user is navigated to the Land Minerals Or Mineral Rights page")
-      LandMineralsOrMineralRightsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
-      )
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
@@ -419,14 +416,15 @@ class LandQuestionsSpec
       DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
       And("selects 'No' for having NLPG UPRN")
       DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.no)
-//      And("clicks the Save and continue button")
-//      DoYouHaveNLPGPage.saveAndContinue()
-      // And("selects whether sending a plan by post")
-
+      And("clicks the Save and continue button")
+      DoYouHaveNLPGPage.saveAndContinue()
+      Then("the user is navigated to the Sending Plan By Post page")
+      LandSendingPlanByPostPage.verifyPageTitle(LandSendingPlanByPostPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandSendingPlanByPostPage.radioButton(LandSendingPlanByPostPage.yes)
+      And("clicks the Save and continue button")
+      LandSendingPlanByPostPage.saveAndContinue()
       Then("the user is navigated to the Land Minerals Or Mineral Rights page")
-      LandMineralsOrMineralRightsPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/minerals-or-mineral-rights"
-      )
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
