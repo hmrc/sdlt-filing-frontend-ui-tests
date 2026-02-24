@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
 object LandConfirmAddressPage extends BasePage {
@@ -25,7 +26,15 @@ object LandConfirmAddressPage extends BasePage {
   override def pageTitle: String =
     "Confirm the address of the land or property – About the land - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value_0"
+  val confirmAddressButton: By = By.cssSelector(Locators.btnContinue)
 
-  def no: String = "#value_1"
+  def confirmAddress(): Unit = {
+    waitForVisibilityOfElement(confirmAddressButton)
+    click(confirmAddressButton)
+  }
+
+  val yes: String = "#value_0"
+
+  val no: String = "#value_1"
+
 }
