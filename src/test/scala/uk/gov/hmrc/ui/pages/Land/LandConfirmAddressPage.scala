@@ -26,13 +26,6 @@ object LandConfirmAddressPage extends BasePage {
   override def pageTitle: String =
     "Confirm the address of the land or property – About the land - Stamp Taxes Online - GOV.UK"
 
-  val confirmAddressButton: By = By.cssSelector(Locators.btnContinue)
-
-  def confirmAddress(): Unit = {
-    waitForVisibilityOfElement(confirmAddressButton)
-    click(confirmAddressButton)
-  }
-
   val yes: String = "#value_0"
 
   val no: String = "#value_1"
