@@ -109,7 +109,6 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
   def clickContinueButton(): Unit = click(Locators.continueButton)
   def clickBackLink(): Unit       = click(By.linkText(Locators.lnkBack))
   def saveAndContinue(): Unit     = click(By.cssSelector(Locators.btnContinue))
-  def confirmAddress(): Unit      = click(By.cssSelector(Locators.btnContinue))
   def acceptAndContinue(): Unit   = click(By.cssSelector(Locators.btnContinue))
   def header(): Unit              = click(By.cssSelector(Locators.lnkHeader))
   def removeFile(): Unit          = click(By.cssSelector(Locators.lnkRemoveFile))
