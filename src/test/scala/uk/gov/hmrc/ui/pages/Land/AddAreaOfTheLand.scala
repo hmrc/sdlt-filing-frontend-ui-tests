@@ -16,12 +16,12 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
 object AddAreaOfTheLand extends BasePage {
 
-  override def pageUrl: String   = "about-the-land/add-area-of-land"
+  override def pageUrl: String = "about-the-land/add-area-of-land"
+
   override def pageTitle: String = "Do you know the area of the land? - About the land - Stamp Taxes Online - GOV.UK"
 
   val yes: String = "#value"

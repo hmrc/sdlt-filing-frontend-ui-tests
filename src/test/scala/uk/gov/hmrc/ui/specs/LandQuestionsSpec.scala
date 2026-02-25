@@ -360,15 +360,14 @@ class LandQuestionsSpec
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
-      // uncomment next two lines when navigation to the next page is ready
-      // And("clicks the Save and continue button")
-      // LandMineralsOrMineralRightsPage.saveAndContinue()
-
-      // And("selects 'Yes' for agricultural or development land")
-      // ********Remove below step once navigation is ready*******
-      AddAreaOfTheLand.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-area-of-land"
-      )
+      And("clicks the Save and continue button")
+      LandMineralsOrMineralRightsPage.saveAndContinue()
+      Then("the user is navigated to Agricultural Or Developmental Land Page")
+      AgriculturalOrDevelopmentalLandPage.verifyPageTitle(AgriculturalOrDevelopmentalLandPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      AgriculturalOrDevelopmentalLandPage.radioButton(AgriculturalOrDevelopmentalLandPage.yes)
+      And("clicks the Save and continue button")
+      AgriculturalOrDevelopmentalLandPage.saveAndContinue()
       Then("the user is navigated to Do you know the area of the land Page")
       AddAreaOfTheLand.verifyPageTitle(AddAreaOfTheLand.pageTitle)
       When("the user select 'no' on the page")
@@ -447,15 +446,14 @@ class LandQuestionsSpec
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
-//      uncomment next two lines when navigation to the next page is ready
-      // And("clicks the Save and continue button")
-      // LandMineralsOrMineralRightsPage.saveAndContinue()
-      // And("selects 'Yes' for agricultural or development land")
-      // ********Remove below step once navigation is ready*******
-
-      AddAreaOfTheLand.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-area-of-land"
-      )
+      And("clicks the Save and continue button")
+      LandMineralsOrMineralRightsPage.saveAndContinue()
+      Then("the user is navigated to Agricultural Or Developmental Land Page")
+      AgriculturalOrDevelopmentalLandPage.verifyPageTitle(AgriculturalOrDevelopmentalLandPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      AgriculturalOrDevelopmentalLandPage.radioButton(AgriculturalOrDevelopmentalLandPage.yes)
+      And("clicks the Save and continue button")
+      AgriculturalOrDevelopmentalLandPage.saveAndContinue()
       Then("the user is navigated to Do you know the area of the land Page")
       AddAreaOfTheLand.verifyPageTitle(AddAreaOfTheLand.pageTitle)
       When("the user select 'yes' on the page")
