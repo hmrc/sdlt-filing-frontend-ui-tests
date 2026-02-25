@@ -70,7 +70,7 @@ class LandQuestionsSpec
       LandConfirmAddressPage.waitForPage()
       LandConfirmAddressPage.saveAndContinue()
       Then("the user is on What is the local authority code")
-      LocalAuthorityCodePage.waitForPage()
+      LocalAuthorityCodePage.waitForLocalAuthPage()
       LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
       And("the user enters a valid local authority code")
       LocalAuthorityCodePage.input(
@@ -165,7 +165,7 @@ class LandQuestionsSpec
       When("the user clicks the Confirm address button")
       LandAddressPage.clickContinueButton()
       Then("the user is on What is the local authority code")
-      LocalAuthorityCodePage.waitForPage()
+      LocalAuthorityCodePage.waitForLocalAuthPage()
       LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
       And("the user enters a valid local authority code")
       LocalAuthorityCodePage.input(
@@ -237,7 +237,7 @@ class LandQuestionsSpec
       LandConfirmAddressPage.waitForPage()
       LandConfirmAddressPage.saveAndContinue()
       Then("the user is on What is the local authority code")
-      LocalAuthorityCodePage.waitForPage()
+      LocalAuthorityCodePage.waitForLocalAuthPage()
       LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
       And("the user enters a valid local authority code")
       LocalAuthorityCodePage.input(
@@ -319,7 +319,7 @@ class LandQuestionsSpec
       LandConfirmAddressPage.waitForPage()
       LandConfirmAddressPage.saveAndContinue()
       Then("the user is on What is the local authority code")
-      LocalAuthorityCodePage.waitForPage()
+      LocalAuthorityCodePage.waitForLocalAuthPage()
       LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
       And("the user enters a valid local authority code")
       LocalAuthorityCodePage.input(
@@ -411,7 +411,7 @@ class LandQuestionsSpec
       LandConfirmAddressPage.waitForPage()
       LandConfirmAddressPage.saveAndContinue()
       Then("the user is on What is the local authority code")
-      LocalAuthorityCodePage.waitForPage()
+      LocalAuthorityCodePage.waitForLocalAuthPage()
       LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
       And("the user enters a valid local authority code")
       LocalAuthorityCodePage.input(

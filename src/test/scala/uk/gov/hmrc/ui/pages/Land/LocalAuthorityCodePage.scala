@@ -17,6 +17,10 @@
 package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
+import org.openqa.selenium.support.ui.{FluentWait, Wait}
+import org.openqa.selenium.WebDriver
+import uk.gov.hmrc.selenium.webdriver.Driver
+import java.time.Duration
 
 object LocalAuthorityCodePage extends BasePage {
 
@@ -30,4 +34,12 @@ object LocalAuthorityCodePage extends BasePage {
   def localAuthCodeInput: String      = "4215"
   def welshLocalAuthCodeInput: String = "6805"
 
+  def waitForLocalAuthPage(): Unit        =
+    fluentWait.until { driver =>
+      driver.getCurrentUrl.contains(pageUrl)
+    }
+  private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
+    .withTimeout(Duration.ofSeconds(60))
+    .pollingEvery(Duration.ofMillis(500))
+    .ignoring(classOf[NoSuchElementException])
 }
