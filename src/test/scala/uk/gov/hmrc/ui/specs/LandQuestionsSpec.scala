@@ -365,7 +365,16 @@ class LandQuestionsSpec
       // LandMineralsOrMineralRightsPage.saveAndContinue()
 
       // And("selects 'Yes' for agricultural or development land")
-      // And("selects 'No' for knowing the area of land")
+      // ********Remove below step once navigation is ready*******
+      AddAreaOfTheLand.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-area-of-land"
+      )
+      Then("the user is navigated to Do you know the area of the land Page")
+      AddAreaOfTheLand.verifyPageTitle(AddAreaOfTheLand.pageTitle)
+      When("the user select 'yes' on the page")
+      AddAreaOfTheLand.radioButton(AddAreaOfTheLand.no)
+      And("click Save and Continue")
+      AddAreaOfTheLand.saveAndContinue()
       // Then("the user navigated to CYA page")
     }
 
@@ -438,16 +447,21 @@ class LandQuestionsSpec
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
-      // uncomment next two lines when navigation to the next page is ready
+//      uncomment next two lines when navigation to the next page is ready
       // And("clicks the Save and continue button")
       // LandMineralsOrMineralRightsPage.saveAndContinue()
-
       // And("selects 'Yes' for agricultural or development land")
-      // And("selects 'Yes' for knowing the area of land")
       // ********Remove below step once navigation is ready*******
-      UnitOfMeasurementPage.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/unit-of-measurement"
+
+      AddAreaOfTheLand.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/add-area-of-land"
       )
+      Then("the user is navigated to Do you know the area of the land Page")
+      AddAreaOfTheLand.verifyPageTitle(AddAreaOfTheLand.pageTitle)
+      When("the user select 'yes' on the page")
+      AddAreaOfTheLand.radioButton(AddAreaOfTheLand.yes)
+      And("click Save and Continue")
+      AddAreaOfTheLand.saveAndContinue()
       Then("User is navigated to Select one unit of measurement for the area of land Page")
       UnitOfMeasurementPage.verifyPageTitle(UnitOfMeasurementPage.pageTitle)
       When("the user selects 'square metres' as unit of measurement")
