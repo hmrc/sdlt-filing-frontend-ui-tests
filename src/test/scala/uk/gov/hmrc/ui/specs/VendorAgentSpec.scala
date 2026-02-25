@@ -118,8 +118,8 @@ class VendorAgentSpec
       VendorAgentOverviewPage.radioButton(VendorAgentOverviewPage.yes)
       And("User clicks on save and continue button")
       VendorAgentOverviewPage.saveAndContinue()
-      Then("User should be navigated to Vendor's Before you start page")
-      VendorAgentBeforeYouStartPage.verifyPageTitle(VendorAgentBeforeYouStartPage.pageTitle)
+      Then("the user is navigated to the Vendor Agents Name page")
+      VendorAgentsNamePage.verifyPageTitle(VendorAgentsNamePage.pageTitle)
     }
 
     Scenario(
