@@ -372,7 +372,7 @@ class LandQuestionsSpec
       Then("the user is navigated to Do you know the area of the land Page")
       AddAreaOfTheLand.verifyPageTitle(AddAreaOfTheLand.pageTitle)
       When("the user select 'yes' on the page")
-      AddAreaOfTheLand.radioButton(AddAreaOfTheLand.yes)
+      AddAreaOfTheLand.radioButton(AddAreaOfTheLand.no)
       And("click Save and Continue")
       AddAreaOfTheLand.saveAndContinue()
       // Then("the user navigated to CYA page")
