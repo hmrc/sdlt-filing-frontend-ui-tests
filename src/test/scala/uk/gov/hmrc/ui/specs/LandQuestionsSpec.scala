@@ -274,12 +274,14 @@ class LandQuestionsSpec
       LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.yes)
-      // uncomment next two lines when navigation to the next page is ready
-      // And("clicks the Save and continue button")
-      // LandMineralsOrMineralRightsPage.saveAndContinue()
-
-      // Then the user is on Agricultural or development land (Does the transaction involve agricultural or development land ?)
-      // When the user selects "No" and continues
+      And("clicks the Save and continue button")
+      LandMineralsOrMineralRightsPage.saveAndContinue()
+      Then("the user is navigated to Agricultural Or Developmental Land Page")
+      AgriculturalOrDevelopmentalLandPage.verifyPageTitle(AgriculturalOrDevelopmentalLandPage.pageTitle)
+      When("the user selects the 'No' radio button")
+      AgriculturalOrDevelopmentalLandPage.radioButton(AgriculturalOrDevelopmentalLandPage.no)
+      And("clicks the Save and continue button")
+      AgriculturalOrDevelopmentalLandPage.saveAndContinue()
       // Then the user is on Check your answers
       // When the user selects Save and continue
       // Then the user is on the Overview page
