@@ -40,7 +40,7 @@ class PurchaserAgentSpec
   Feature("SDLT Filing Frontend Purchaser Agent Journey") {
     Scenario("Complete the Purchaser Agent Journey for new return", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
@@ -186,7 +186,7 @@ class PurchaserAgentSpec
 
     Scenario("Complete the Purchaser Agent Journey with no contact info", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
@@ -287,7 +287,7 @@ class PurchaserAgentSpec
 
     Scenario("Complete the Purchaser Agent Journey for additional purchaser", PurchaserAgentJourney) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
       PurchaserAgentBeforeYouStartPage.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user should be navigated to the Before You Start page")
