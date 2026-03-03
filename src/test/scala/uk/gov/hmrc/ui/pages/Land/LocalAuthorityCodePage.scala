@@ -17,10 +17,6 @@
 package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
-import org.openqa.selenium.support.ui.{FluentWait, Wait}
-import org.openqa.selenium.WebDriver
-import uk.gov.hmrc.selenium.webdriver.Driver
-import java.time.Duration
 
 object LocalAuthorityCodePage extends BasePage {
 

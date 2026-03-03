@@ -38,87 +38,6 @@ class LandQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend About The Land Questions") {
-    Scenario(
-      "Complete the Land Questions user journey Address confirmed, registered with Land Registry, UPRN available (Title and UPRN captured)",
-      LandJourney
-    ) {
-      Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
-      When("the user clicks on the 'Land Questions' link")
-      LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
-      Then("the user should be navigated to the Land Before you start page page")
-      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
-      And("clicks the Continue button")
-      LandBeforeYouStartPage.saveAndContinue()
-      Then("the user should be navigated to What is the type of property")
-      TypeOfPropertyPage.verifyPageTitle(TypeOfPropertyPage.pageTitle)
-      When("the user selects the 'Residential' radio button")
-      TypeOfPropertyPage.radioButton(TypeOfPropertyPage.residential)
-      And("clicks the Save and continue button")
-      TypeOfPropertyPage.saveAndContinue()
-      Then("the user is be navigated to Interest transferred or created page")
-      InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
-      And("the user selects the 'Freehold' radio button and continues")
-      InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.FG)
-      Then(" the user clicks the Save and continue button")
-      InterestTransferredCreatedPage.saveAndContinue()
-      Then("the user is navigated to the Land Confirm Address page")
-      LandConfirmAddressPage.verifyPageTitle(LandConfirmAddressPage.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      LandConfirmAddressPage.radioButton(LandConfirmAddressPage.yes)
-      And("clicks on Save and Continue button")
-      LandConfirmAddressPage.saveAndContinue()
-      Then("the user is on What is the local authority code")
-      LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
-      And("the user enters a valid local authority code")
-      LocalAuthorityCodePage.input(
-        By.id(LocalAuthorityCodePage.localAuthCode),
-        LocalAuthorityCodePage.localAuthCodeInput
-      )
-      And("the user clicks on Save & Continue")
-      LocalAuthorityCodePage.saveAndContinue()
-      Then("the user is on Is the land or property registered  with HM Land Registry ?")
-      HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
-      When("the user selects Yes and continues")
-      HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
-      And("clicks the Save and continue button")
-      HM_LandRegistrationPage.saveAndContinue()
-      Then("The user is navigated to the Land Title Number Page")
-      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
-      When("The user enters Land Title Number")
-      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
-      And("clicks the Save and continue button")
-      LandTitleNumberPage.saveAndContinue()
-      Then("the user is on Do you have an NLPG UPRN for the land or property ?")
-      DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
-      And("selects 'Yes' for having NLPG UPRN")
-      DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
-      And("clicks the Save and continue button")
-      DoYouHaveNLPGPage.saveAndContinue()
-      Then("the user is on What is the NLPG UPRN for the land or property page")
-      NLPGUPRNPage.verifyPageTitle(NLPGUPRNPage.pageTitle)
-      When("the user enters a valid NLPG UPRN ")
-      NLPGUPRNPage.input(By.id(NLPGUPRNPage.nlpg_uprn), NLPGUPRNPage.nlpg_uprnInput)
-      And("clicks the Save and continue button")
-      NLPGUPRNPage.saveAndContinue()
-      Then("the user is navigated to the Sending Plan By Post page")
-      LandSendingPlanByPostPage.verifyPageTitle(LandSendingPlanByPostPage.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      LandSendingPlanByPostPage.radioButton(LandSendingPlanByPostPage.yes)
-      And("clicks the Save and continue button")
-      LandSendingPlanByPostPage.saveAndContinue()
-      Then("the user is navigated to the Land Minerals Or Mineral Rights page")
-      LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
-      When("the user selects the 'No' radio button")
-      LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.no)
-      // uncomment next two lines when navigation to the next page is ready
-      // And("clicks the Save and continue button")
-      // LandMineralsOrMineralRightsPage.saveAndContinue()
-
-      // Then the user is on Check your answers
-      // When the user selects Save and continue
-      // Then the user is on the Overview page
-    }
 
     Scenario(
       "Complete the Land Questions user journey address lookup used, unregistered with Land Registry, no UPRN (Title and UPRN skipped)",
@@ -476,6 +395,87 @@ class LandQuestionsSpec
       And("The user selects save and continue")
       AreaOfTheLandPage.saveAndContinue()
       // Then("the user navigated to CYA page")
+    }
+    Scenario(
+      "Complete the Land Questions user journey Address confirmed, registered with Land Registry, UPRN available (Title and UPRN captured)",
+      LandJourney
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      When("the user clicks on the 'Land Questions' link")
+      LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
+      Then("the user should be navigated to the Land Before you start page page")
+      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
+      And("clicks the Continue button")
+      LandBeforeYouStartPage.saveAndContinue()
+      Then("the user should be navigated to What is the type of property")
+      TypeOfPropertyPage.verifyPageTitle(TypeOfPropertyPage.pageTitle)
+      When("the user selects the 'Residential' radio button")
+      TypeOfPropertyPage.radioButton(TypeOfPropertyPage.residential)
+      And("clicks the Save and continue button")
+      TypeOfPropertyPage.saveAndContinue()
+      Then("the user is be navigated to Interest transferred or created page")
+      InterestTransferredCreatedPage.verifyPageTitle(InterestTransferredCreatedPage.pageTitle)
+      And("the user selects the 'Freehold' radio button and continues")
+      InterestTransferredCreatedPage.radioButton(InterestTransferredCreatedPage.FG)
+      Then(" the user clicks the Save and continue button")
+      InterestTransferredCreatedPage.saveAndContinue()
+      Then("the user is navigated to the Land Confirm Address page")
+      LandConfirmAddressPage.verifyPageTitle(LandConfirmAddressPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandConfirmAddressPage.radioButton(LandConfirmAddressPage.yes)
+      And("clicks on Save and Continue button")
+      LandConfirmAddressPage.saveAndContinue()
+      Then("the user is on What is the local authority code")
+      LocalAuthorityCodePage.verifyPageTitle(LocalAuthorityCodePage.pageTitle)
+      And("the user enters a valid local authority code")
+      LocalAuthorityCodePage.input(
+        By.id(LocalAuthorityCodePage.localAuthCode),
+        LocalAuthorityCodePage.localAuthCodeInput
+      )
+      And("the user clicks on Save & Continue")
+      LocalAuthorityCodePage.saveAndContinue()
+      Then("the user is on Is the land or property registered  with HM Land Registry ?")
+      HM_LandRegistrationPage.verifyPageTitle(HM_LandRegistrationPage.pageTitle)
+      When("the user selects Yes and continues")
+      HM_LandRegistrationPage.radioButton(HM_LandRegistrationPage.yes)
+      And("clicks the Save and continue button")
+      HM_LandRegistrationPage.saveAndContinue()
+      Then("The user is navigated to the Land Title Number Page")
+      LandTitleNumberPage.verifyPageTitle(LandTitleNumberPage.pageTitle)
+      When("The user enters Land Title Number")
+      LandTitleNumberPage.input(By.id(LandTitleNumberPage.landTitleNumber), LandTitleNumberPage.landTitleNumberInput)
+      And("clicks the Save and continue button")
+      LandTitleNumberPage.saveAndContinue()
+      Then("the user is on Do you have an NLPG UPRN for the land or property ?")
+      DoYouHaveNLPGPage.verifyPageTitle(DoYouHaveNLPGPage.pageTitle)
+      And("selects 'Yes' for having NLPG UPRN")
+      DoYouHaveNLPGPage.radioButton(DoYouHaveNLPGPage.yes)
+      And("clicks the Save and continue button")
+      DoYouHaveNLPGPage.saveAndContinue()
+      Then("the user is on What is the NLPG UPRN for the land or property page")
+      NLPGUPRNPage.verifyPageTitle(NLPGUPRNPage.pageTitle)
+      When("the user enters a valid NLPG UPRN ")
+      NLPGUPRNPage.input(By.id(NLPGUPRNPage.nlpg_uprn), NLPGUPRNPage.nlpg_uprnInput)
+      And("clicks the Save and continue button")
+      NLPGUPRNPage.saveAndContinue()
+      Then("the user is navigated to the Sending Plan By Post page")
+      LandSendingPlanByPostPage.verifyPageTitle(LandSendingPlanByPostPage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandSendingPlanByPostPage.radioButton(LandSendingPlanByPostPage.yes)
+      And("clicks the Save and continue button")
+      LandSendingPlanByPostPage.saveAndContinue()
+      Then("the user is navigated to the Land Minerals Or Mineral Rights page")
+      LandMineralsOrMineralRightsPage.verifyPageTitle(LandMineralsOrMineralRightsPage.pageTitle)
+      When("the user selects the 'No' radio button")
+      LandMineralsOrMineralRightsPage.radioButton(LandMineralsOrMineralRightsPage.no)
+      // uncomment next two lines when navigation to the next page is ready
+      // And("clicks the Save and continue button")
+      // LandMineralsOrMineralRightsPage.saveAndContinue()
+
+      // Then the user is on Check your answers
+      // When the user selects Save and continue
+      // Then the user is on the Overview page
     }
   }
 }
