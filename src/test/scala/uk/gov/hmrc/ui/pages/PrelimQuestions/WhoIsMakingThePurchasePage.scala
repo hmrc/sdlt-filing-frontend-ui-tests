@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.PrelimQuestions
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object IndividualOrCompanyPage extends BasePage {
+object WhoIsMakingThePurchasePage extends BasePage {
 
   override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/who-is-making-the-purchase"
 
