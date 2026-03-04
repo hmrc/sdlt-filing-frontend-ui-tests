@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.PrelimQuestions
+package uk.gov.hmrc.ui.pages.Preliminary
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object BeforeYouStartPage extends BasePage {
+object PreliminaryBeforeYouStartPage extends BasePage {
 
   override def pageUrl: String = "preliminary-questions/before-you-start"
 

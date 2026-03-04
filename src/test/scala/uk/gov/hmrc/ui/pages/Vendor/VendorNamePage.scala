@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.pages.Vendor
 import uk.gov.hmrc.ui.pages.BasePage
 import org.openqa.selenium.By
 
-object VendorOrCompanyNamePage extends BasePage {
+object VendorNamePage extends BasePage {
 
   override def pageUrl: String = "about-the-vendor/vendor-name"
 
@@ -44,17 +44,17 @@ object VendorOrCompanyNamePage extends BasePage {
   def companyNameInput: String = "test Business"
 
   def vendorFullNameInput(): Unit =
-    VendorOrCompanyNamePage.input(
-      By.id(VendorOrCompanyNamePage.forename),
-      VendorOrCompanyNamePage.forenameInput
+    VendorNamePage.input(
+      By.id(VendorNamePage.forename),
+      VendorNamePage.forenameInput
     )
-    VendorOrCompanyNamePage.input(
-      By.id(VendorOrCompanyNamePage.middlename),
-      VendorOrCompanyNamePage.middlenameInput
+    VendorNamePage.input(
+      By.id(VendorNamePage.middlename),
+      VendorNamePage.middlenameInput
     )
-    VendorOrCompanyNamePage.input(
-      By.id(VendorOrCompanyNamePage.surname),
-      VendorOrCompanyNamePage.surnameInput
+    VendorNamePage.input(
+      By.id(VendorNamePage.surname),
+      VendorNamePage.surnameInput
     )
 
 }

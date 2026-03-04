@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.PrelimQuestions
+package uk.gov.hmrc.ui.pages.Preliminary
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TransactionTypePage extends BasePage {
+object WhoIsMakingThePurchasePage extends BasePage {
 
-  override def pageUrl: String = "preliminary-questions/transaction-type"
+  override def pageUrl: String = "preliminary-questions/who-is-making-the-purchase"
 
-  override def pageTitle: String =
-    "What type of transaction is this? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Who is making the purchase? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
-  def conveyance: String = "#value_0"
+  def company: String = "#value_0"
 
-  def grantOfLease: String = "#value_1"
-
-  def conveyanceLease: String = "#value_2"
-
-  def other: String = "#value_3"
+  def individual: String = "#value_1"
 }

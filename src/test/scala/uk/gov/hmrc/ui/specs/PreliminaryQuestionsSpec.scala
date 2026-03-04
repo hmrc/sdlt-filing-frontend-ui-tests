@@ -21,13 +21,13 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
-import uk.gov.hmrc.ui.pages.PrelimQuestions.*
+import uk.gov.hmrc.ui.pages.Preliminary.*
 import uk.gov.hmrc.ui.pages.AuthWizard
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
 
-class PrelimQuestionsSpec
+class PreliminaryQuestionsSpec
     extends AnyFeatureSpec
     with BaseSpec
     with GivenWhenThen
@@ -37,14 +37,17 @@ class PrelimQuestionsSpec
     with Browser
     with ScreenshotOnFailure {
 
-  Feature("SDLT Filing Frontend Prelim Questions") {
-    Scenario("Complete the Prelim Questions user journey as a Company with no return id stub data", PrelimJourney) {
+  Feature("SDLT Filing Frontend Preliminary Questions") {
+    Scenario(
+      "Complete the Preliminary Questions user journey as a Company with no return id stub data",
+      PreliminaryJourney
+    ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user is navigated to the Before You Start page")
-      BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
+      PreliminaryBeforeYouStartPage.verifyPageTitle(PreliminaryBeforeYouStartPage.pageTitle)
       And("clicks the Save and continue button")
-      BeforeYouStartPage.saveAndContinue()
+      PreliminaryBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Who Is Making The Purchase page")
       WhoIsMakingThePurchasePage.verifyPageTitle(WhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'A Company' radio button")
@@ -61,16 +64,16 @@ class PrelimQuestionsSpec
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user is navigated to the Property Address page")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.pageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
-      PropertyAddressPage.clickAddressManually()
+      PreliminaryPropertyAddressPage.clickAddressManually()
       And("enters their address manually")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.editPageTitle)
-      PropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.editPageTitle)
+      PreliminaryPropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Property Address page to 'Review and confirm the address'")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.confirmPageTitle)
       When("the user clicks the Confirm address button")
-      PropertyAddressPage.clickContinueButton()
+      PreliminaryPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Transaction Type page")
       TransactionTypePage.verifyPageTitle(TransactionTypePage.pageTitle)
       When("the user selects the 'F - Conveyance/transfer' radio button")
@@ -78,9 +81,9 @@ class PrelimQuestionsSpec
       And("clicks the Save and continue button")
       TransactionTypePage.saveAndContinue()
       Then("the user is navigated to the Check Your Answers page")
-      CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
+      PreliminaryCheckYourAnswersPage.verifyPageTitle(PreliminaryCheckYourAnswersPage.pageTitle)
       When("the user clicks the 'Change' link for Purchaser type")
-      CheckYourAnswersPage.clickPurchaserTypeChange()
+      PreliminaryCheckYourAnswersPage.clickPurchaserTypeChange()
       Then("the user is navigated to the Who Is Making The Purchase page")
       WhoIsMakingThePurchasePage.verifyPageTitle(WhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'An Individual' radio button")
@@ -88,9 +91,9 @@ class PrelimQuestionsSpec
       And("clicks the Save and continue button")
       WhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the Check Your Answers page")
-      CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
+      PreliminaryCheckYourAnswersPage.verifyPageTitle(PreliminaryCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for Transaction type")
-      CheckYourAnswersPage.clickTransactionTypeChange()
+      PreliminaryCheckYourAnswersPage.clickTransactionTypeChange()
       Then("the user is navigated to the Transaction Type page")
       TransactionTypePage.verifyPageTitle(TransactionTypePage.pageTitle)
       When("the user selects the 'L - Grant of lease' radio button")
@@ -98,19 +101,19 @@ class PrelimQuestionsSpec
       And("clicks the Save and continue button")
       TransactionTypePage.saveAndContinue()
       Then("the user is navigated to the Check Your Answers page")
-      CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
+      PreliminaryCheckYourAnswersPage.verifyPageTitle(PreliminaryCheckYourAnswersPage.pageTitle)
     }
 
     Scenario(
-      "Complete the Prelim Questions user journey as an Individual with no return id stub data",
-      PrelimJourney
+      "Complete the Preliminary Questions user journey as an Individual with no return id stub data",
+      PreliminaryJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user is navigated to the Before You Start page")
-      BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
+      PreliminaryBeforeYouStartPage.verifyPageTitle(PreliminaryBeforeYouStartPage.pageTitle)
       And("clicks the Save and continue button")
-      BeforeYouStartPage.saveAndContinue()
+      PreliminaryBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Who Is Making The Purchase page")
       WhoIsMakingThePurchasePage.verifyPageTitle(WhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'An Individual' radio button")
@@ -127,16 +130,16 @@ class PrelimQuestionsSpec
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user is navigated to the Property Address page")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.pageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
-      PropertyAddressPage.clickAddressManually()
+      PreliminaryPropertyAddressPage.clickAddressManually()
       And("enters their address manually")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.editPageTitle)
-      PropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.editPageTitle)
+      PreliminaryPropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Property Address page to 'Review and confirm the address'")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.confirmPageTitle)
       When("the user clicks the Confirm address button")
-      PropertyAddressPage.clickContinueButton()
+      PreliminaryPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Transaction Type page")
       TransactionTypePage.verifyPageTitle(TransactionTypePage.pageTitle)
       When("the user selects the 'F - Conveyance/transfer' radio button")
@@ -144,9 +147,9 @@ class PrelimQuestionsSpec
       And("clicks the Save and continue button")
       TransactionTypePage.saveAndContinue()
       Then("the user is navigated to the Check Your Answers page")
-      CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
+      PreliminaryCheckYourAnswersPage.verifyPageTitle(PreliminaryCheckYourAnswersPage.pageTitle)
       When("the user clicks the 'Change' link for Purchasers name")
-      CheckYourAnswersPage.clickPurchaserNameChange()
+      PreliminaryCheckYourAnswersPage.clickPurchaserNameChange()
       Then("the user is navigated to the Purchasers Name page")
       PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitle)
       When("the user inputs the purchaser's surname")
@@ -157,22 +160,22 @@ class PrelimQuestionsSpec
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user is navigated to the Check Your Answers page")
-      CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
+      PreliminaryCheckYourAnswersPage.verifyPageTitle(PreliminaryCheckYourAnswersPage.pageTitle)
       When("the user clicks the 'Change' link for Property address")
-      CheckYourAnswersPage.clickPropertyAddressChange()
+      PreliminaryCheckYourAnswersPage.clickPropertyAddressChange()
       Then("the user is navigated to the Property Address page")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.pageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
-      PropertyAddressPage.clickAddressManually()
+      PreliminaryPropertyAddressPage.clickAddressManually()
       And("enters their address manually")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.editPageTitle)
-      PropertyAddressPage.enterAddressManually("523", "AGC", "TE11 1TS")
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.editPageTitle)
+      PreliminaryPropertyAddressPage.enterAddressManually("523", "AGC", "TE11 1TS")
       Then("the user is navigated to the Property Address page to 'Review and confirm the address'")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.confirmPageTitle)
       When("the user clicks the Confirm address button")
-      PropertyAddressPage.clickContinueButton()
+      PreliminaryPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Check Your Answers page")
-      CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
+      PreliminaryCheckYourAnswersPage.verifyPageTitle(PreliminaryCheckYourAnswersPage.pageTitle)
     }
   }
 }

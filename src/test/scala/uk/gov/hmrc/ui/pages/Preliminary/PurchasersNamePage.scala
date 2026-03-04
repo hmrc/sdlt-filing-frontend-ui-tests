@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.PrelimQuestions
+package uk.gov.hmrc.ui.pages.Preliminary
 
 import uk.gov.hmrc.ui.pages.BasePage
 

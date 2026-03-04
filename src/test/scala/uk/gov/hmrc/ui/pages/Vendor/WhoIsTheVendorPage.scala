@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.Vendor
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AboutTheVendorPage extends BasePage {
+object WhoIsTheVendorPage extends BasePage {
 
   override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendor/who-is-the-vendor"
 

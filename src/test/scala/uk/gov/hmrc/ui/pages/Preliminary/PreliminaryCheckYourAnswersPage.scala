@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.PrelimQuestions
+package uk.gov.hmrc.ui.pages.Preliminary
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object CheckYourAnswersPage extends BasePage {
+object PreliminaryCheckYourAnswersPage extends BasePage {
 
   override def pageUrl: String = "preliminary-questions/check-answers"
 

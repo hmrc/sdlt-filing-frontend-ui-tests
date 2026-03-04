@@ -22,7 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.PrelimQuestions.*
+import uk.gov.hmrc.ui.pages.Preliminary.*
 import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -43,9 +43,9 @@ class e2eSpec
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
       Then("the user is navigated to the Before You Start page")
-      BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
+      PreliminaryBeforeYouStartPage.verifyPageTitle(PreliminaryBeforeYouStartPage.pageTitle)
       And("clicks the Save and continue button")
-      BeforeYouStartPage.saveAndContinue()
+      PreliminaryBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Who Is Making The Purchase page")
       WhoIsMakingThePurchasePage.verifyPageTitle(WhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'A Company' radio button")
@@ -62,16 +62,16 @@ class e2eSpec
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user is navigated to the Property Address page")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.pageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
-      PropertyAddressPage.clickAddressManually()
+      PreliminaryPropertyAddressPage.clickAddressManually()
       And("enters their address manually")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.editPageTitle)
-      PropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.editPageTitle)
+      PreliminaryPropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Property Address page to 'Review and confirm the address'")
-      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
+      PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.confirmPageTitle)
       When("the user clicks the Confirm address button")
-      PropertyAddressPage.clickContinueButton()
+      PreliminaryPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Transaction Type page")
       TransactionTypePage.verifyPageTitle(TransactionTypePage.pageTitle)
       When("the user selects the 'F - Conveyance/transfer' radio button")
@@ -79,13 +79,13 @@ class e2eSpec
       And("clicks the Save and continue button")
       TransactionTypePage.saveAndContinue()
       Then("the user is navigated to the Check Your Answers page")
-      CheckYourAnswersPage.verifyPageTitle(CheckYourAnswersPage.pageTitle)
-      CheckYourAnswersPage.saveAndContinue()
+      PreliminaryCheckYourAnswersPage.verifyPageTitle(PreliminaryCheckYourAnswersPage.pageTitle)
+      PreliminaryCheckYourAnswersPage.saveAndContinue()
 
       Then("the user is navigated to the Return Task List page")
       ReturnTaskListPage.verifyPageTitle(ReturnTaskListPage.pageTitle)
       When("the user clicks on the 'Vendor Questions' link")
-      AboutTheVendorPage.clickLinkById("task-list-link-vendor-questions")
+      WhoIsTheVendorPage.clickLinkById("task-list-link-vendor-questions")
       Then("the user is navigated to the Vendor Overview page")
       VendorOverviewPage.verifyPageTitle(VendorOverviewPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -96,21 +96,21 @@ class e2eSpec
       VendorBeforeYouStartPage.verifyPageTitle(VendorBeforeYouStartPage.pageTitle)
       When("the user clicks the Continue button")
       VendorBeforeYouStartPage.saveAndContinue()
-      Then("the user is navigated to the About the Vendor page")
-      AboutTheVendorPage.verifyPageTitle(AboutTheVendorPage.pageTitle)
+      Then("the user is navigated to the Who Is The Vendor page")
+      WhoIsTheVendorPage.verifyPageTitle(WhoIsTheVendorPage.pageTitle)
       When("the user selects the 'A Company' radio button")
-      AboutTheVendorPage.radioButton(AboutTheVendorPage.company)
+      WhoIsTheVendorPage.radioButton(WhoIsTheVendorPage.company)
       And("clicks the Save and continue button")
-      AboutTheVendorPage.saveAndContinue()
-      Then("the user is navigated to the Vendor or Company Name page")
-      AboutTheVendorPage.verifyPageTitle(VendorOrCompanyNamePage.pageTitleCompany)
+      WhoIsTheVendorPage.saveAndContinue()
+      Then("the user is navigated to the Vendor Name page")
+      WhoIsTheVendorPage.verifyPageTitle(VendorNamePage.pageTitleCompany)
       When("the user inputs their company name")
-      VendorOrCompanyNamePage.input(
-        By.id(VendorOrCompanyNamePage.companyName),
-        VendorOrCompanyNamePage.companyNameInput
+      VendorNamePage.input(
+        By.id(VendorNamePage.companyName),
+        VendorNamePage.companyNameInput
       )
       And("clicks the Save and continue button")
-      VendorOrCompanyNamePage.saveAndContinue()
+      VendorNamePage.saveAndContinue()
       Then("the user is navigated to the Confirm Vendors Address page")
       ConfirmVendorsAddressPage.verifyPageTitle(ConfirmVendorsAddressPage.pageTitle)
       When("the user selects the 'No' radio button")
@@ -128,6 +128,8 @@ class e2eSpec
       VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.confirmPageTitleBusiness)
       And("clicks the Confirm address button")
       VendorPropertyAddressPage.clickContinueButton()
+      Then("the user is navigated to the Vendor Check Your Answers page")
+      VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
     }
   }
 }
