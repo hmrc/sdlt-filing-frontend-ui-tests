@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.VendorAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object VendorAgentsNamePage extends BasePage {
+object AddVendorAgentContactDetailsPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendors-agent/agent-name"
+  override def pageUrl: String = "about-the-vendor/add-agent-contact-details"
 
-  override def pageTitle: String = "What is the agent’s name? – About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Do you want to add contact details for the agent? - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
-  def agentName: String = "agentName"
+  def yes: String = "#value"
 
-  def agentNameInput: String = "Agent Test1"
+  def no: String = "#value-2"
 
-  def agentNameInput2: String = "Updated Agent Name"
 }

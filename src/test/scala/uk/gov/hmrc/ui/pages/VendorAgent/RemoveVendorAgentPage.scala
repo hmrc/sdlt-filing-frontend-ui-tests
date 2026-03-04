@@ -18,17 +18,15 @@ package uk.gov.hmrc.ui.pages.VendorAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AgentReferenceNumberPage extends BasePage {
+object RemoveVendorAgentPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-vendor/enter-agent-reference-number"
+  override def pageUrl: String = "about-the-vendors-agent/remove-vendors-agent"
 
   override def pageTitle: String =
-    "What is the agent’s reference for this return? - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    "Are you sure you want to remove the vendor’s agent? - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
-  def agentReference: String = "agentReference"
+  def yes: String = "#value"
 
-  def agentReferenceNumber: String = "Agent_001"
-
-  def agentReferenceNumber2: String = "Agent_002"
+  def no: String = "#value-2"
 
 }

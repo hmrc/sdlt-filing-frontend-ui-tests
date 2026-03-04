@@ -24,22 +24,22 @@ object VendorAgentAddressPage extends BasePage {
   override def pageUrl: String = "/lookup-address"
 
   override def pageTitle: String =
-    s"Find ${VendorAgentsNamePage.agentNameInput}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    s"Find ${VendorAgentNamePage.agentNameInput}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   val pageTitle2: String =
-    s"Find ${VendorAgentsNamePage.agentNameInput2}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    s"Find ${VendorAgentNamePage.agentNameInput2}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleAgent: String =
-    s"Enter ${VendorAgentsNamePage.agentNameInput}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    s"Enter ${VendorAgentNamePage.agentNameInput}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleAgent2: String =
-    s"Enter ${VendorAgentsNamePage.agentNameInput2}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    s"Enter ${VendorAgentNamePage.agentNameInput2}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleAgent: String =
-    s"Review and confirm ${VendorAgentsNamePage.agentNameInput}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${VendorAgentNamePage.agentNameInput}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleAgent2: String =
-    s"Review and confirm ${VendorAgentsNamePage.agentNameInput2}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${VendorAgentNamePage.agentNameInput2}’s address - About the vendor’s agent - Stamp Taxes Online - GOV.UK"
 
   def clickAddressManually(): Unit = click(By.linkText(Locators.lnkAddrManually))
 

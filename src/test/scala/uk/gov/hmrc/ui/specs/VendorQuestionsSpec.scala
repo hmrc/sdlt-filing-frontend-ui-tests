@@ -100,7 +100,6 @@ class VendorQuestionsSpec
       VendorPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Vendor Check Your Answers page")
       VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
-
       When("the user clicks the 'Change' link for Vendor type")
       VendorCheckYourAnswersPage.clickVendorTypeChange()
       Then("the user is navigated to the Who Is The Vendor page")
@@ -136,7 +135,7 @@ class VendorQuestionsSpec
       VendorPropertyAddressPage.clickContinueButton()
       Then("the user is navigated to the Check Your Answers page")
       VendorCheckYourAnswersPage.verifyPageTitle(VendorCheckYourAnswersPage.pageTitle)
-      And("clicks the Save and continue button")
+      When("the user clicks the Save and continue button")
       VendorCheckYourAnswersPage.saveAndContinue()
       Then("the user is navigated to the Vendor Overview page")
       VendorOverviewPage.verifyPageTitle(VendorOverviewPage.pageTitle)
