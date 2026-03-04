@@ -20,7 +20,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object BeforeYouStartPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/before-you-start"
+  override def pageUrl: String = "preliminary-questions/before-you-start"
 
   override def pageTitle: String =
     "Before you start a new Stamp Tax return - Preliminary questions - Stamp Taxes Online - GOV.UK"

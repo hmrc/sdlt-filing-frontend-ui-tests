@@ -20,7 +20,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object WhoIsMakingThePurchasePage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/preliminary-questions/who-is-making-the-purchase"
+  override def pageUrl: String = "preliminary-questions/who-is-making-the-purchase"
 
   override def pageTitle: String = "Who is making the purchase? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 

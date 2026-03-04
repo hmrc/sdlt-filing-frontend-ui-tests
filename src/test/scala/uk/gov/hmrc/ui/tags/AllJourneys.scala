@@ -20,7 +20,7 @@ import org.scalatest.Tag
 
 object PurchaserAgentJourney extends Tag("uk.gov.hmrc.ui.tags.PurchaserAgentJourney")
 object e2eJourney extends Tag("uk.gov.hmrc.ui.tags.e2eJourney")
-object PrelimsJourney extends Tag("uk.gov.hmrc.ui.tags.PrelimsJourney")
+object PrelimJourney extends Tag("uk.gov.hmrc.ui.tags.PrelimJourney")
 object PurchaserJourney extends Tag("uk.gov.hmrc.ui.tags.PurchaserJourney")
 object VendorJourney extends Tag("uk.gov.hmrc.ui.tags.VendorJourney")
 object VendorAgentJourney extends Tag("uk.gov.hmrc.ui.tags.VendorAgentJourney")

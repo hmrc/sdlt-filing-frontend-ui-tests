@@ -22,7 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.PrelimQuestions.{TransactionTypePage, BeforeYouStartPage, CheckYourAnswersPage, WhoIsMakingThePurchasePage, AddressLookupPage, PurchasersNamePage}
+import uk.gov.hmrc.ui.pages.PrelimQuestions.*
 import uk.gov.hmrc.ui.pages.Vendor.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -46,7 +46,7 @@ class e2eSpec
       BeforeYouStartPage.verifyPageTitle(BeforeYouStartPage.pageTitle)
       And("clicks the Save and continue button")
       BeforeYouStartPage.saveAndContinue()
-      Then("the user is navigated to the Individual or Company page")
+      Then("the user is navigated to the Who Is Making The Purchase page")
       WhoIsMakingThePurchasePage.verifyPageTitle(WhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'A Company' radio button")
       WhoIsMakingThePurchasePage.radioButton(WhoIsMakingThePurchasePage.company)
@@ -62,17 +62,17 @@ class e2eSpec
       And("clicks the Save and continue button")
       PurchasersNamePage.clickSubmitButton()
       Then("the user is navigated to the Property Address page")
-      AddressLookupPage.verifyPageTitle(AddressLookupPage.pageTitle)
+      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
-      AddressLookupPage.clickAddressManually()
+      PropertyAddressPage.clickAddressManually()
       And("enters their address manually")
-      AddressLookupPage.verifyPageTitle(AddressLookupPage.editPageTitle)
-      AddressLookupPage.enterAddressManually("123", "ABC", "TE13 1ES")
+      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.editPageTitle)
+      PropertyAddressPage.enterAddressManually("123", "ABC", "TE13 1ES")
       Then("the user is navigated to the Property Address page to 'Review and confirm the address'")
-      AddressLookupPage.verifyPageTitle(AddressLookupPage.confirmPageTitle)
+      PropertyAddressPage.verifyPageTitle(PropertyAddressPage.confirmPageTitle)
       When("the user clicks the Confirm address button")
-      AddressLookupPage.clickContinueButton()
-      Then("the user is navigated to the About the Transaction page")
+      PropertyAddressPage.clickContinueButton()
+      Then("the user is navigated to the Transaction Type page")
       TransactionTypePage.verifyPageTitle(TransactionTypePage.pageTitle)
       When("the user selects the 'F - Conveyance/transfer' radio button")
       TransactionTypePage.radioButton(TransactionTypePage.conveyance)
@@ -128,7 +128,6 @@ class e2eSpec
       VendorPropertyAddressPage.verifyPageTitle(VendorPropertyAddressPage.confirmPageTitleBusiness)
       And("clicks the Confirm address button")
       VendorPropertyAddressPage.clickContinueButton()
-
     }
   }
 }
