@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.UKResidency
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object UKResidencyBeforeYouStartPage extends BasePage {
+object UKResidencyBeforeYouStart extends BasePage {
 
   override def pageUrl: String = "about-UK-residency/before-you-start"
 

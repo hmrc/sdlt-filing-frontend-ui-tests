@@ -26,7 +26,6 @@ import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
-
 class UKResidencyQuestionsSpec
     extends AnyFeatureSpec
     with BaseSpec
@@ -49,25 +48,25 @@ class UKResidencyQuestionsSpec
         returnId = Some("individual-purchaser-with-agents-full-land-residential")
       )
       When("the user clicks on the 'UK Residency Questions' link")
-      UKResidencyBeforeYouStartPage.clickLinkById("task-list-link-uk-residency-questions")
+      UKResidencyBeforeYouStart.clickLinkById("task-list-link-uk-residency-questions")
       Then("the user should be navigated to the UK Residency Before you start page page")
-      UKResidencyBeforeYouStartPage.verifyPageTitle(UKResidencyBeforeYouStartPage.pageTitle)
+      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
       And("the user click on Continue button")
-      UKResidencyBeforeYouStartPage.saveAndContinue()
+      UKResidencyBeforeYouStart.saveAndContinue()
 //      Then ("the user is navigated to Residency Status page")
 //      When ("the user selects Yes radio button")
 //      And ("clicks on Save & Continue button")
       // ******Remove below lines when navigation is ready**********
-      CrownEmploymentReliefPage.navigateToPage(
+      CrownEmploymentRelief.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-UK-residency/crown-employment-relief"
       )
       Then("the user is navigated to the Crown Employment Relief page")
-      CrownEmploymentReliefPage.verifyPageTitle(CrownEmploymentReliefPage.pageTitle)
+      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
       When("the user select Yes radio button")
-      CrownEmploymentReliefPage.radioButton(CrownEmploymentReliefPage.yes)
+      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
       // ******Uncomment below 2 lines when navigation is ready**********
 //      And ("clicks on Save & Continue button")
-      // CrownEmploymentReliefPage.saveAndContinue()
+      // CrownEmploymentRelief.saveAndContinue()
 //      Then ("the user is navigated to CYA page")
 
     }
@@ -83,11 +82,11 @@ class UKResidencyQuestionsSpec
         returnId = Some("individual-purchaser-with-agents-full-land-residential")
       )
       When("the user clicks on the 'UK Residency Questions' link")
-      UKResidencyBeforeYouStartPage.clickLinkById("task-list-link-uk-residency-questions")
+      UKResidencyBeforeYouStart.clickLinkById("task-list-link-uk-residency-questions")
       Then("the user should be navigated to the UK Residency Before you start page page")
-      UKResidencyBeforeYouStartPage.verifyPageTitle(UKResidencyBeforeYouStartPage.pageTitle)
+      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
       And("the user click on Continue button")
-      UKResidencyBeforeYouStartPage.saveAndContinue()
+      UKResidencyBeforeYouStart.saveAndContinue()
       //      Then ("the user is navigated to Residency Status page")
       //      When ("the user selects No radio button")
       //      And ("clicks on Save & Continue button")
@@ -107,11 +106,11 @@ class UKResidencyQuestionsSpec
         returnId = Some("individual-purchaser-with-agents-full-land-residential")
       )
       When("the user clicks on the 'UK Residency Questions' link")
-      UKResidencyBeforeYouStartPage.clickLinkById("task-list-link-uk-residency-questions")
+      UKResidencyBeforeYouStart.clickLinkById("task-list-link-uk-residency-questions")
       Then("the user should be navigated to the UK Residency Before you start page page")
-      UKResidencyBeforeYouStartPage.verifyPageTitle(UKResidencyBeforeYouStartPage.pageTitle)
+      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
       And("the user click on Continue button")
-      UKResidencyBeforeYouStartPage.saveAndContinue()
+      UKResidencyBeforeYouStart.saveAndContinue()
       //      Then ("the user is navigated to Residency Status page")
       //      When ("the user selects Yes radio button")
       //      And ("clicks on Save & Continue button")
@@ -119,16 +118,16 @@ class UKResidencyQuestionsSpec
       //      When ("the user selects Yes radio button")
       //      And ("clicks on Save & Continue button")
       // ******Remove below lines when navigation is ready**********
-      CrownEmploymentReliefPage.navigateToPage(
+      CrownEmploymentRelief.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-UK-residency/crown-employment-relief"
       )
       Then("the user is navigated to the Crown Employment Relief page")
-      CrownEmploymentReliefPage.verifyPageTitle(CrownEmploymentReliefPage.pageTitle)
+      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
       When("the user select No radio button")
-      CrownEmploymentReliefPage.radioButton(CrownEmploymentReliefPage.no)
+      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.no)
       // ******Uncomment below 2 lines when navigation is ready**********
       //      And ("clicks on Save & Continue button")
-      // CrownEmploymentReliefPage.saveAndContinue()
+      // CrownEmploymentRelief.saveAndContinue()
       //      Then ("the user is navigated to CYA page")
 
     }
@@ -145,11 +144,11 @@ class UKResidencyQuestionsSpec
         returnId = Some("individual-purchaser-with-agents-full-land-residential")
       )
       When("the user clicks on the 'UK Residency Questions' link")
-      UKResidencyBeforeYouStartPage.clickLinkById("task-list-link-uk-residency-questions")
+      UKResidencyBeforeYouStart.clickLinkById("task-list-link-uk-residency-questions")
       Then("the user should be navigated to the UK Residency Before you start page page")
-      UKResidencyBeforeYouStartPage.verifyPageTitle(UKResidencyBeforeYouStartPage.pageTitle)
+      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
       And("the user click on Continue button")
-      UKResidencyBeforeYouStartPage.saveAndContinue()
+      UKResidencyBeforeYouStart.saveAndContinue()
       //      Then ("the user is navigated to Residency Status page")
       //      When ("the user selects No radio button")
       //      And ("clicks on Save & Continue button")

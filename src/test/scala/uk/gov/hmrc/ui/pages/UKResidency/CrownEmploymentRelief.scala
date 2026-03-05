@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.UKResidency
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object CrownEmploymentReliefPage extends BasePage {
+object CrownEmploymentRelief extends BasePage {
 
   override def pageUrl: String = "about-UK-residency/crown-employment-relief"
 
