@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 

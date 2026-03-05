@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
@@ -24,31 +24,31 @@ object PurchaserAddressPage extends BasePage {
   override def pageUrl: String = "/lookup-address"
 
   override def pageTitle: String =
-    s"Find ${PurchaserNameOfPurchaserPage.purchaserNameIndividual}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Find ${PurchaserNamePage.purchaserNameIndividual}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val editPageTitle: String =
-    s"Enter ${PurchaserNameOfPurchaserPage.purchaserNameIndividual}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Enter ${PurchaserNamePage.purchaserNameIndividual}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitle: String =
-    s"Review and confirm ${PurchaserNameOfPurchaserPage.purchaserNameIndividual}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${PurchaserNamePage.purchaserNameIndividual}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def pageTitleCompany: String =
-    s"Find ${PurchaserNameOfPurchaserPage.purchaserNameCompany}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Find ${PurchaserNamePage.purchaserNameCompany}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleCompany: String =
-    s"Enter ${PurchaserNameOfPurchaserPage.purchaserNameCompany}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Enter ${PurchaserNamePage.purchaserNameCompany}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleCompany: String =
-    s"Review and confirm ${PurchaserNameOfPurchaserPage.purchaserNameCompany}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${PurchaserNamePage.purchaserNameCompany}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def pageTitleCompanyStub: String =
-    s"Find ${PurchaserNameOfPurchaserPage.purchaserNameCompanyStub}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Find ${PurchaserNamePage.purchaserNameCompanyStub}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val editPageTitleCompanyStub: String =
-    s"Enter ${PurchaserNameOfPurchaserPage.purchaserNameCompanyStub}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Enter ${PurchaserNamePage.purchaserNameCompanyStub}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitleCompanyStub: String =
-    s"Review and confirm ${PurchaserNameOfPurchaserPage.purchaserNameCompanyStub}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"Review and confirm ${PurchaserNamePage.purchaserNameCompanyStub}’s address - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def clickAddressManually(): Unit = click(By.linkText(Locators.lnkAddrManually))
 

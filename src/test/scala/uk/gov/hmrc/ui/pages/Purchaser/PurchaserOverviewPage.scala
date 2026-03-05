@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
@@ -29,7 +29,7 @@ object PurchaserOverviewPage extends BasePage {
     "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/change-purchaser/221110169']"
 
   val PurchaserRemoveLink: String =
-    "a[href= '/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/remove-purchaser/PUR002']"
+    "a[href= '/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/remove-purchaser/221110169']"
 
   def yes: String = "#value"
 

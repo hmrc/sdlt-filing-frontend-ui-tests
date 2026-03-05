@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserVATRegistrationNumberPage extends BasePage {
+object CorporationTaxUTRPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/vat-registration-number"
+  override def pageUrl: String = "about-the-purchaser/corporation-tax-utr"
 
   override def pageTitle: String =
-    "What is the purchaser’s VAT registration number? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s Corporation Tax Unique Taxpayer Reference (UTR)? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def vat: String = "registrationNumber"
+  def corporationTaxUTR: String = "value"
 
-  def VATNumber: String = "123456782"
-
-  def VATNumber2: String = "069425349"
+  def corporationTaxUTRInput: String = "5511447954"
 }

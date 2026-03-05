@@ -23,7 +23,7 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Vendor.*
-import uk.gov.hmrc.ui.pages.purchaser.*
+import uk.gov.hmrc.ui.pages.Purchaser.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
@@ -47,38 +47,33 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
       When("the user clicks on the 'Purchaser Questions' link")
       WhoIsTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
-      Then("the user is navigated to the Before you start page")
+      Then("the user is navigated to the Before You Start page")
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      /*Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
-      PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
-      And("the user clicks yes")
-      PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.yes)
-      PurchaserConfirmNameOfPurchaserPage.saveAndContinue()*/
-      Then("the user is navigated to the Who is making the purchase page")
+      Then("the user is navigated to the Who Is Making The Purchase page")
       PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'An Individual' radio button")
       PurchaserWhoIsMakingThePurchasePage.radioButton(PurchaserWhoIsMakingThePurchasePage.individual)
       And("clicks the Save and continue button")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser’s full name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their first name, middle name, and surname")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.forenameId),
-        PurchaserNameOfPurchaserPage.forenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.forenameId),
+        PurchaserNamePage.forenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.middlenameId),
-        PurchaserNameOfPurchaserPage.middlenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.middlenameId),
+        PurchaserNamePage.middlenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.surnameId),
-        PurchaserNameOfPurchaserPage.surnameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.surnameId),
+        PurchaserNamePage.surnameInput
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
@@ -91,38 +86,38 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add a phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'No' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.no)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Does the Purchaser have a National Insurance number? page")
-      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      AddPurchaserNationalInsuranceNumber.verifyPageTitle(AddPurchaserNationalInsuranceNumber.pageTitle)
       When("the user selects the 'Yes' radio button")
-      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
+      AddPurchaserNationalInsuranceNumber.radioButton(AddPurchaserNationalInsuranceNumber.yes)
       And("clicks the Save and continue button")
-      DoesPurchaserHaveNI.saveAndContinue()
+      AddPurchaserNationalInsuranceNumber.saveAndContinue()
       Then("the user is navigated to the What is the Purchaser's national insurance number? page")
-      PurchaserEnterNINumberPage.verifyPageTitle(PurchaserEnterNINumberPage.pageTitle)
+      EnterPurchaserNationalInsuranceNumberPage.verifyPageTitle(EnterPurchaserNationalInsuranceNumberPage.pageTitle)
       When("the user inputs a National Insurance Number")
-      PurchaserEnterNINumberPage.input(
-        By.id(PurchaserEnterNINumberPage.Nino),
-        PurchaserEnterNINumberPage.NinoValue
+      EnterPurchaserNationalInsuranceNumberPage.input(
+        By.id(EnterPurchaserNationalInsuranceNumberPage.Nino),
+        EnterPurchaserNationalInsuranceNumberPage.NinoValue
       )
       And("clicks the Save and continue button")
-      PurchaserEnterNINumberPage.saveAndContinue()
+      EnterPurchaserNationalInsuranceNumberPage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser Date of Birth? page")
-      PurchaserDateOfBirthPage.verifyPageTitle(PurchaserDateOfBirthPage.pageTitle)
+      DateOfBirthPage.verifyPageTitle(DateOfBirthPage.pageTitle)
       When("the user inputs their Date of Birth")
-      PurchaserDateOfBirthPage.enterDateOfBirth()
+      DateOfBirthPage.enterDateOfBirth()
       And("clicks the Save and continue button")
-      PurchaserDateOfBirthPage.saveAndContinue()
+      DateOfBirthPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -134,40 +129,40 @@ class PurchaserQuestionsSpec
       When("the user clicks on the 'Change' link for purchaser name")
       PurchaserCheckYourAnswersPage.clickPurchaserNameChange()
       Then("the user is navigated to the What is the purchaser’s full name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user updates their name")
-      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.surnameId), "Updated surname")
+      PurchaserNamePage.input(By.id(PurchaserNamePage.surnameId), "Updated surname")
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for National Insurance number")
       PurchaserCheckYourAnswersPage.clickPurchaserNINumberChange()
       Then("the user is navigated to the What is Purchaser's national insurance number? page")
-      PurchaserEnterNINumberPage.verifyPageTitle(PurchaserEnterNINumberPage.pageTitle)
+      EnterPurchaserNationalInsuranceNumberPage.verifyPageTitle(EnterPurchaserNationalInsuranceNumberPage.pageTitle)
       When("the user updates their National Insurance Number")
-      PurchaserEnterNINumberPage.input(By.id(PurchaserEnterNINumberPage.Nino), "NJ123456C")
+      EnterPurchaserNationalInsuranceNumberPage.input(
+        By.id(EnterPurchaserNationalInsuranceNumberPage.Nino),
+        "NJ123456C"
+      )
       And("clicks the Save and continue button")
-      PurchaserEnterNINumberPage.saveAndContinue()
+      EnterPurchaserNationalInsuranceNumberPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for date of birth")
       PurchaserCheckYourAnswersPage.clickPurchaserDOBChange()
       Then("the user is navigated to the What is the purchaser Date of Birth? page")
-      PurchaserDateOfBirthPage.verifyPageTitle(PurchaserDateOfBirthPage.pageTitle)
+      DateOfBirthPage.verifyPageTitle(DateOfBirthPage.pageTitle)
       When("the user updates their Date of Birth")
-      PurchaserDateOfBirthPage.enterDateOfBirth()
+      DateOfBirthPage.enterDateOfBirth()
       And("clicks the Save and continue button")
-      PurchaserDateOfBirthPage.saveAndContinue()
+      DateOfBirthPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks the Save and continue button")
       PurchaserCheckYourAnswersPage.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-      When("the user clicks the Continue button")
-      PurchaserOverviewPage.saveAndContinue()
-      Then("the user is navigated to the Return Tasklist page")
     }
 
     Scenario(
@@ -182,11 +177,6 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      /* Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
-      PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
-      And("the user clicks no")
-      PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.no)
-      PurchaserConfirmNameOfPurchaserPage.saveAndContinue()*/
       Then("the user is navigated to the Who is making the purchase page")
       PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'An Individual' radio button")
@@ -194,22 +184,22 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser’s full name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their first name, middle name, and surname")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.forenameId),
-        PurchaserNameOfPurchaserPage.forenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.forenameId),
+        PurchaserNamePage.forenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.middlenameId),
-        PurchaserNameOfPurchaserPage.middlenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.middlenameId),
+        PurchaserNamePage.middlenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.surnameId),
-        PurchaserNameOfPurchaserPage.surnameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.surnameId),
+        PurchaserNamePage.surnameInput
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
@@ -222,46 +212,46 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'Yes' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.yes)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.yes)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the What is purchaser's phone number page")
-      PurchaserEnterPhoneNumberPage.verifyPageTitle(PurchaserEnterPhoneNumberPage.pageTitle)
+      EnterPurchaserPhoneNumberPage.verifyPageTitle(EnterPurchaserPhoneNumberPage.pageTitle)
       When("the user enters their phone number")
-      PurchaserEnterPhoneNumberPage.input(
-        By.id(PurchaserEnterPhoneNumberPage.phoneNumberInputField),
-        PurchaserEnterPhoneNumberPage.phoneNumberValue
+      EnterPurchaserPhoneNumberPage.input(
+        By.id(EnterPurchaserPhoneNumberPage.phoneNumberInputField),
+        EnterPurchaserPhoneNumberPage.phoneNumberValue
       )
       And("clicks the Save and continue button")
-      PurchaserEnterPhoneNumberPage.saveAndContinue()
+      EnterPurchaserPhoneNumberPage.saveAndContinue()
       Then("the user is navigated to the Does the Purchaser have a National Insurance number? page")
-      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      AddPurchaserNationalInsuranceNumber.verifyPageTitle(AddPurchaserNationalInsuranceNumber.pageTitle)
       When("the user selects the 'No' radio button")
-      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.no)
+      AddPurchaserNationalInsuranceNumber.radioButton(AddPurchaserNationalInsuranceNumber.no)
       And("clicks the Save and continue button")
-      DoesPurchaserHaveNI.saveAndContinue()
+      AddPurchaserNationalInsuranceNumber.saveAndContinue()
       Then("the user is navigated to the Provide a form of ID for purchaser page")
-      PurchaserFormOfIDIndividualPage.verifyPageTitle(PurchaserFormOfIDIndividualPage.pageTitle)
+      FormOfIDIndividualPage.verifyPageTitle(FormOfIDIndividualPage.pageTitle)
       When("the user inputs their ID number or reference")
-      PurchaserFormOfIDIndividualPage.input(
-        By.id(PurchaserFormOfIDIndividualPage.purchaserIdNumberOrReference),
-        PurchaserFormOfIDIndividualPage.idNumberOrReferenceInput
+      FormOfIDIndividualPage.input(
+        By.id(FormOfIDIndividualPage.purchaserIdNumberOrReference),
+        FormOfIDIndividualPage.idNumberOrReferenceInput
       )
       And("their Country of issue")
-      PurchaserFormOfIDIndividualPage.input(
-        By.id(PurchaserFormOfIDIndividualPage.purchaserCountryIssued),
-        PurchaserFormOfIDIndividualPage.countryIssuedInput
+      FormOfIDIndividualPage.input(
+        By.id(FormOfIDIndividualPage.purchaserCountryIssued),
+        FormOfIDIndividualPage.countryIssuedInput
       )
       And("clicks the Save and Continue button")
-      PurchaserFormOfIDIndividualPage.saveAndContinue()
+      FormOfIDIndividualPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'No' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.no)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.no)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the Purchaser and Vendor Connected page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -288,36 +278,33 @@ class PurchaserQuestionsSpec
       When("the user clicks on the 'Change' link for purchasers phone number")
       PurchaserCheckYourAnswersPage.clickPurchaserPhoneNumberChange()
       Then("the user is navigated to the What is purchaser's phone number page")
-      PurchaserEnterPhoneNumberPage.verifyPageTitle(PurchaserEnterPhoneNumberPage.pageTitle)
+      EnterPurchaserPhoneNumberPage.verifyPageTitle(EnterPurchaserPhoneNumberPage.pageTitle)
       When("the user updates their phone number")
-      PurchaserEnterPhoneNumberPage.input(
-        By.id(PurchaserEnterPhoneNumberPage.phoneNumberInputField),
-        PurchaserEnterPhoneNumberPage.phoneNumberValue2
+      EnterPurchaserPhoneNumberPage.input(
+        By.id(EnterPurchaserPhoneNumberPage.phoneNumberInputField),
+        EnterPurchaserPhoneNumberPage.phoneNumberValue2
       )
       And("clicks the Save and continue button")
-      PurchaserEnterPhoneNumberPage.saveAndContinue()
+      EnterPurchaserPhoneNumberPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for Purchaser form of id individual")
       PurchaserCheckYourAnswersPage.clickIndivFormOfIDChange()
       Then("the user is navigated to the Provide a Form of ID for purchaser page")
-      PurchaserFormOfIDIndividualPage.verifyPageTitle(PurchaserFormOfIDIndividualPage.pageTitle)
+      FormOfIDIndividualPage.verifyPageTitle(FormOfIDIndividualPage.pageTitle)
       When("the user updates their purchaser ID details")
-      PurchaserFormOfIDIndividualPage.input(
-        By.id(PurchaserFormOfIDIndividualPage.purchaserIdNumberOrReference),
-        PurchaserFormOfIDIndividualPage.idNumberOrReferenceInput2
+      FormOfIDIndividualPage.input(
+        By.id(FormOfIDIndividualPage.purchaserIdNumberOrReference),
+        FormOfIDIndividualPage.idNumberOrReferenceInput2
       )
       And("clicks the Save and continue button")
-      PurchaserFormOfIDIndividualPage.saveAndContinue()
+      FormOfIDIndividualPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks the Save and continue button")
       PurchaserCheckYourAnswersPage.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-      When("the user clicks the Continue button")
-      PurchaserOverviewPage.saveAndContinue()
-      Then("the user is navigated to the Return Tasklist page")
     }
 
     Scenario(
@@ -332,11 +319,6 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      /*Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
-      PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
-      And("the user clicks yes")
-      PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.yes)
-      PurchaserConfirmNameOfPurchaserPage.saveAndContinue()*/
       Then("the user is navigated to the Who is making the purchase page")
       PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'An Individual' radio button")
@@ -344,22 +326,22 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser’s full name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       And("the user inputs their first name, middle name, and surname")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.forenameId),
-        PurchaserNameOfPurchaserPage.forenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.forenameId),
+        PurchaserNamePage.forenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.middlenameId),
-        PurchaserNameOfPurchaserPage.middlenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.middlenameId),
+        PurchaserNamePage.middlenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.surnameId),
-        PurchaserNameOfPurchaserPage.surnameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.surnameId),
+        PurchaserNamePage.surnameInput
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
@@ -372,38 +354,38 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'No' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.no)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Does the Purchaser have a National Insurance number? page")
-      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      AddPurchaserNationalInsuranceNumber.verifyPageTitle(AddPurchaserNationalInsuranceNumber.pageTitle)
       When("the user selects the 'Yes' radio button")
-      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
+      AddPurchaserNationalInsuranceNumber.radioButton(AddPurchaserNationalInsuranceNumber.yes)
       And("clicks the Save and continue button")
-      DoesPurchaserHaveNI.saveAndContinue()
+      AddPurchaserNationalInsuranceNumber.saveAndContinue()
       Then("the user is navigated to the What is Purchaser's national insurance number? page")
-      PurchaserEnterNINumberPage.verifyPageTitle(PurchaserEnterNINumberPage.pageTitle)
+      EnterPurchaserNationalInsuranceNumberPage.verifyPageTitle(EnterPurchaserNationalInsuranceNumberPage.pageTitle)
       When("the user inputs a National Insurance Number")
-      PurchaserEnterNINumberPage.input(
-        By.id(PurchaserEnterNINumberPage.Nino),
-        PurchaserEnterNINumberPage.NinoValue
+      EnterPurchaserNationalInsuranceNumberPage.input(
+        By.id(EnterPurchaserNationalInsuranceNumberPage.Nino),
+        EnterPurchaserNationalInsuranceNumberPage.NinoValue
       )
       And("clicks the Save and continue button")
-      PurchaserEnterNINumberPage.saveAndContinue()
+      EnterPurchaserNationalInsuranceNumberPage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser Date of Birth? page")
-      PurchaserDateOfBirthPage.verifyPageTitle(PurchaserDateOfBirthPage.pageTitle)
+      DateOfBirthPage.verifyPageTitle(DateOfBirthPage.pageTitle)
       When("the user inputs their Date of Birth")
-      PurchaserDateOfBirthPage.enterDateOfBirth()
+      DateOfBirthPage.enterDateOfBirth()
       And("clicks the Save and continue button")
-      PurchaserDateOfBirthPage.saveAndContinue()
+      DateOfBirthPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -425,50 +407,50 @@ class PurchaserQuestionsSpec
       When("the user clicks on the link for entering company name")
       PurchaserCheckYourAnswersPage.clickPurchaserNameChange()
       Then("the user is navigated to the What is the company’s name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their company name")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.companyId),
-        PurchaserNameOfPurchaserPage.companyName2
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.companyId),
+        PurchaserNamePage.companyName2
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the link for entering Form of ID")
       PurchaserCheckYourAnswersPage.clickFormOfIDChange()
       Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
+      ConfirmPurchaserIdentityPage.verifyPageTitle(ConfirmPurchaserIdentityPage.pageTitle)
       When("the user selects the 'VAT registration number' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.vatRegistrationNumber)
+      ConfirmPurchaserIdentityPage.radioButton(ConfirmPurchaserIdentityPage.vatRegistrationNumber)
       And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      ConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the link for entering VAT registration number")
       PurchaserCheckYourAnswersPage.clickVATRegistrationNumberChange()
       Then("the user is navigated to the What is the purchaser's VAT Registration number page")
-      PurchaserVATRegistrationNumberPage.verifyPageTitle(PurchaserVATRegistrationNumberPage.pageTitle)
+      VATRegistrationNumberPage.verifyPageTitle(VATRegistrationNumberPage.pageTitle)
       When("the user enters their VAT registration number")
-      PurchaserVATRegistrationNumberPage.input(
-        By.id(PurchaserVATRegistrationNumberPage.vat),
-        PurchaserVATRegistrationNumberPage.VATNumber
+      VATRegistrationNumberPage.input(
+        By.id(VATRegistrationNumberPage.vat),
+        VATRegistrationNumberPage.VATNumber
       )
       And("clicks the Save and continue button")
-      PurchaserVATRegistrationNumberPage.saveAndContinue()
+      VATRegistrationNumberPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the link for Type of company")
       PurchaserCheckYourAnswersPage.clickTypeOfCompanyChange()
       Then("the user is navigated to the What type of company? page")
-      PurchaserTypeOfCompanyPage.verifyPageTitle(PurchaserTypeOfCompanyPage.pageTitle)
+      TypeOfCompanyPage.verifyPageTitle(TypeOfCompanyPage.pageTitle)
       When("the user selects 4 types of company")
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Bank, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Building_Association, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Insurance_Assurance_company, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Property_company, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Bank, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Building_Association, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Insurance_Assurance_company, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Property_company, true)
       And("clicks the Save and continue button")
-      PurchaserTypeOfCompanyPage.saveAndContinue()
+      TypeOfCompanyPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks the Save and continue button")
@@ -487,6 +469,16 @@ class PurchaserQuestionsSpec
       WhoIsTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
       Then("the user is navigated to the Purchaser Overview page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the 'Remove' link to remove a purchaser")
+      PurchaserOverviewPage.clickRemovePurchaser()
+      Then("the user is navigated to Are you sure you want to remove the purchaser page")
+      PurchaserRemovePage.verifyPageTitle(PurchaserRemovePage.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      PurchaserRemovePage.radioButton(PurchaserRemovePage.yes)
+      And("clicks the Save and continue button")
+      PurchaserOverviewPage.saveAndContinue()
+      Then("the user is navigated to the Purchaser Overview Page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserOverviewPage.radioButton(PurchaserOverviewPage.yes)
       And("clicks the Continue button")
@@ -495,9 +487,6 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      // User should be navigated to is XXX the surname of the purchaser page
-      // User clicks No radio button
-      // User clicks Save and Continue
       Then("the user is navigated to the Who is making the purchase page")
       PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'An Individual' radio button")
@@ -505,22 +494,22 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser’s full name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their first name, middle name, and surname")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.forenameId),
-        PurchaserNameOfPurchaserPage.forenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.forenameId),
+        PurchaserNamePage.forenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.middlenameId),
-        PurchaserNameOfPurchaserPage.middlenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.middlenameId),
+        PurchaserNamePage.middlenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.surnameId),
-        PurchaserNameOfPurchaserPage.surnameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.surnameId),
+        PurchaserNamePage.surnameInput
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")
@@ -533,17 +522,25 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
       PurchaserAndVendorConnectedPage.radioButton(PurchaserAndVendorConnectedPage.yes)
       And("clicks the Save and continue button")
       PurchaserAndVendorConnectedPage.saveAndContinue()
+      Then("the user is navigated to the Check your answers page")
+      PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
+      And("clicks the Save and continue button")
+      PurchaserCheckYourAnswersPage.saveAndContinue()
+      Then("the user is navigated to the Purchaser Overview page")
+      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
+      When("the user clicks the 'Change' link for Purchaser")
+      PurchaserOverviewPage.clickPurchaserChange()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
     }
@@ -560,11 +557,6 @@ class PurchaserQuestionsSpec
       PurchaserBeforeYouStartPage.verifyPageTitle(PurchaserBeforeYouStartPage.pageTitle)
       When("the user clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
-      /*Then("the user should be navigated to the confirm page when there isn't a full purchaser (no address line 1)")
-      PurchaserConfirmNameOfPurchaserPage.verifyPageTitle(PurchaserConfirmNameOfPurchaserPage.pageTitle)
-      And("the user clicks yes")
-      PurchaserConfirmNameOfPurchaserPage.radioButton(PurchaserConfirmNameOfPurchaserPage.no)
-      PurchaserConfirmNameOfPurchaserPage.saveAndContinue()*/
       Then("the user is navigated to the Who is making the purchase page")
       PurchaserWhoIsMakingThePurchasePage.verifyPageTitle(PurchaserWhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'A Company' radio button")
@@ -572,14 +564,14 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the What is the company's name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their company name")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.companyId),
-        PurchaserNameOfPurchaserPage.companyName2
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.companyId),
+        PurchaserNamePage.companyName2
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompany)
       When("the user clicks on the 'Enter the address manually' link")
@@ -592,41 +584,41 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add a phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'No' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.no)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
+      ConfirmPurchaserIdentityPage.verifyPageTitle(ConfirmPurchaserIdentityPage.pageTitle)
       When("the user selects the 'VAT registration number' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.vatRegistrationNumber)
+      ConfirmPurchaserIdentityPage.radioButton(ConfirmPurchaserIdentityPage.vatRegistrationNumber)
       And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      ConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser's VAT Registration number page")
-      PurchaserVATRegistrationNumberPage.verifyPageTitle(PurchaserVATRegistrationNumberPage.pageTitle)
+      VATRegistrationNumberPage.verifyPageTitle(VATRegistrationNumberPage.pageTitle)
       When("the user enters their VAT registration number")
-      PurchaserVATRegistrationNumberPage.input(
-        By.id(PurchaserVATRegistrationNumberPage.vat),
-        PurchaserVATRegistrationNumberPage.VATNumber
+      VATRegistrationNumberPage.input(
+        By.id(VATRegistrationNumberPage.vat),
+        VATRegistrationNumberPage.VATNumber
       )
       And("clicks the Save and continue button")
-      PurchaserVATRegistrationNumberPage.saveAndContinue()
+      VATRegistrationNumberPage.saveAndContinue()
       Then("the user is navigated to the What type of company? page")
-      PurchaserTypeOfCompanyPage.verifyPageTitle(PurchaserTypeOfCompanyPage.pageTitle)
+      TypeOfCompanyPage.verifyPageTitle(TypeOfCompanyPage.pageTitle)
       When("the user selects 4 types of company")
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Bank, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Building_Association, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Insurance_Assurance_company, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Property_company, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Bank, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Building_Association, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Insurance_Assurance_company, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Property_company, true)
       And("clicks the Save and continue button")
-      PurchaserTypeOfCompanyPage.saveAndContinue()
+      TypeOfCompanyPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -638,24 +630,24 @@ class PurchaserQuestionsSpec
       When("the user clicks on the 'Change' link for purchaser name")
       PurchaserCheckYourAnswersPage.clickPurchaserNameChange()
       Then("the user is navigated to the What is the company's name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user updates their company name")
-      PurchaserNameOfPurchaserPage.input(By.id(PurchaserNameOfPurchaserPage.companyId), "Updated Company Name")
+      PurchaserNamePage.input(By.id(PurchaserNamePage.companyId), PurchaserNamePage.companyName)
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for entering VAT registration number")
       PurchaserCheckYourAnswersPage.clickVATRegistrationNumberChange()
       Then("the user is navigated to the What is the purchaser's VAT Registration number page")
-      PurchaserVATRegistrationNumberPage.verifyPageTitle(PurchaserVATRegistrationNumberPage.pageTitle)
+      VATRegistrationNumberPage.verifyPageTitle(VATRegistrationNumberPage.pageTitle)
       When("the user updates their VAT registration number")
-      PurchaserVATRegistrationNumberPage.input(
-        By.id(PurchaserVATRegistrationNumberPage.vat),
-        PurchaserVATRegistrationNumberPage.VATNumber2
+      VATRegistrationNumberPage.input(
+        By.id(VATRegistrationNumberPage.vat),
+        VATRegistrationNumberPage.VATNumber2
       )
       And("clicks the Save and continue button")
-      PurchaserVATRegistrationNumberPage.saveAndContinue()
+      VATRegistrationNumberPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks the Save and continue button")
@@ -681,11 +673,11 @@ class PurchaserQuestionsSpec
       When("the user clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Confirm purchaser name page")
-      PurchaserConfirmNamePage.verifyPageTitle(PurchaserConfirmNamePage.pageTitle)
+      ConfirmPurchaserNamePage.verifyPageTitle(ConfirmPurchaserNamePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserConfirmNamePage.radioButton(PurchaserConfirmNamePage.yes)
+      ConfirmPurchaserNamePage.radioButton(ConfirmPurchaserNamePage.yes)
       And("clicks the Continue button")
-      PurchaserConfirmNamePage.saveAndContinue()
+      ConfirmPurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompanyStub)
       When("the user clicks on the 'Enter the address manually' link")
@@ -698,40 +690,40 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'No' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.no)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitleStub)
+      ConfirmPurchaserIdentityPage.verifyPageTitle(ConfirmPurchaserIdentityPage.pageTitleStub)
       When("the user selects the 'Corporation tax Unique Taxpayer Reference (UTR)' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.corporationTaxUTR)
+      ConfirmPurchaserIdentityPage.radioButton(ConfirmPurchaserIdentityPage.corporationTaxUTR)
       And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      ConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user is navigated to the enter Purchaser's Corporation Tax UTR page")
-      PurchaserCorporationTaxUTRPage.verifyPageTitle(PurchaserCorporationTaxUTRPage.pageTitle)
+      CorporationTaxUTRPage.verifyPageTitle(CorporationTaxUTRPage.pageTitle)
       When("the user inputs their company's Corporation tax Unique Taxpayer Reference (UTR)")
-      PurchaserCorporationTaxUTRPage.input(
-        By.id(PurchaserCorporationTaxUTRPage.corporationTaxUTR),
-        PurchaserCorporationTaxUTRPage.corporationTaxUTRInput
+      CorporationTaxUTRPage.input(
+        By.id(CorporationTaxUTRPage.corporationTaxUTR),
+        CorporationTaxUTRPage.corporationTaxUTRInput
       )
       And("clicks the Save and continue button")
-      PurchaserCorporationTaxUTRPage.saveAndContinue()
+      CorporationTaxUTRPage.saveAndContinue()
       Then("the user is navigated to the What type of company? page")
-      PurchaserTypeOfCompanyPage.verifyPageTitle(PurchaserTypeOfCompanyPage.pageTitle)
+      TypeOfCompanyPage.verifyPageTitle(TypeOfCompanyPage.pageTitle)
       When("the user selects 3 types of company")
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Public_corporation, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Central_Government, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Other_financial_institute, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Public_corporation, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Central_Government, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Other_financial_institute, true)
       And("clicks the Save and continue button")
-      PurchaserTypeOfCompanyPage.saveAndContinue()
+      TypeOfCompanyPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -743,28 +735,26 @@ class PurchaserQuestionsSpec
       When("the user clicks on the 'Change' link for Form of ID")
       PurchaserCheckYourAnswersPage.clickFormOfIDChange()
       Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitleStub)
+      ConfirmPurchaserIdentityPage.verifyPageTitle(ConfirmPurchaserIdentityPage.pageTitleStub)
       When("the user updates to 'Partnership Unique Taxpayer Reference (UTR)' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.partnershipUTR)
+      ConfirmPurchaserIdentityPage.radioButton(ConfirmPurchaserIdentityPage.partnershipUTR)
       And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      ConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user is navigated to the enter Purchaser's Partnership UTR page")
-      PurchaserPartnershipUTRPage.verifyPageTitle(PurchaserPartnershipUTRPage.pageTitle)
+      PartnershipUTRPage.verifyPageTitle(PartnershipUTRPage.pageTitle)
       When("the user inputs their company's Partnership Unique Taxpayer Reference (UTR)")
-      PurchaserPartnershipUTRPage.input(
-        By.id(PurchaserPartnershipUTRPage.purchaserUTRReference),
-        PurchaserPartnershipUTRPage.purchaserUTRInput
+      PartnershipUTRPage.input(
+        By.id(PartnershipUTRPage.purchaserUTRReference),
+        PartnershipUTRPage.purchaserUTRInput
       )
       And("clicks the Save and continue button")
-      PurchaserPartnershipUTRPage.saveAndContinue()
+      PartnershipUTRPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       And("clicks the Save and continue button")
       PurchaserCheckYourAnswersPage.saveAndContinue()
       Then("the user is navigated to the Purchaser Overview page")
       PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-      When("the user clicks the 'Change' link for Purchaser")
-      PurchaserOverviewPage.clickPurchaserChange()
     }
 
     Scenario(
@@ -786,14 +776,14 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the What is the company's name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their company name")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.companyId),
-        PurchaserNameOfPurchaserPage.companyName2
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.companyId),
+        PurchaserNamePage.companyName2
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompany)
       When("the user clicks on the 'Enter the address manually' link")
@@ -806,43 +796,43 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add a phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'No' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.no)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
+      ConfirmPurchaserIdentityPage.verifyPageTitle(ConfirmPurchaserIdentityPage.pageTitle)
       When("the user selects the 'Partnership Unique Taxpayer Reference (UTR)' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.partnershipUTR)
+      ConfirmPurchaserIdentityPage.radioButton(ConfirmPurchaserIdentityPage.partnershipUTR)
       And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      ConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user is navigated to the enter Purchaser's Partnership UTR page")
-      PurchaserPartnershipUTRPage.verifyPageTitle(PurchaserPartnershipUTRPage.pageTitle)
+      PartnershipUTRPage.verifyPageTitle(PartnershipUTRPage.pageTitle)
       When("the user inputs their company's Partnership Unique Taxpayer Reference (UTR)")
-      PurchaserPartnershipUTRPage.input(
-        By.id(PurchaserPartnershipUTRPage.purchaserUTRReference),
-        PurchaserPartnershipUTRPage.purchaserUTRInput
+      PartnershipUTRPage.input(
+        By.id(PartnershipUTRPage.purchaserUTRReference),
+        PartnershipUTRPage.purchaserUTRInput
       )
       And("clicks the Save and continue button")
-      PurchaserPartnershipUTRPage.saveAndContinue()
+      PartnershipUTRPage.saveAndContinue()
       Then("the user is navigated to the What type of company? page")
-      PurchaserTypeOfCompanyPage.verifyPageTitle(PurchaserTypeOfCompanyPage.pageTitle)
+      TypeOfCompanyPage.verifyPageTitle(TypeOfCompanyPage.pageTitle)
       When("the user selects 3 types of company")
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Local_authority, true)
-      PurchaserTypeOfCompanyPage.checkbox(
-        PurchaserTypeOfCompanyPage.Unincorporated_sole_trader_other_than_builder,
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Local_authority, true)
+      TypeOfCompanyPage.checkbox(
+        TypeOfCompanyPage.Unincorporated_sole_trader_other_than_builder,
         true
       )
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Superannuation_or_pension_fund, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Superannuation_or_pension_fund, true)
       And("clicks the Save and continue button")
-      PurchaserTypeOfCompanyPage.saveAndContinue()
+      TypeOfCompanyPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -854,38 +844,38 @@ class PurchaserQuestionsSpec
       When("the user clicks on the 'Change' link for Do you want to add phone number")
       PurchaserCheckYourAnswersPage.clickAddPhoneNumberChange()
       Then("the user is navigated to the Do you want to add phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'Yes' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.yes)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.yes)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the link for entering a phone number")
       PurchaserCheckYourAnswersPage.clickPurchaserPhoneNumberChange()
       Then("the user is navigated to the What is purchaser's phone number page")
-      PurchaserEnterPhoneNumberPage.verifyPageTitle(PurchaserEnterPhoneNumberPage.pageTitle)
+      EnterPurchaserPhoneNumberPage.verifyPageTitle(EnterPurchaserPhoneNumberPage.pageTitle)
       When("the user enters their phone number")
-      PurchaserEnterPhoneNumberPage.input(
-        By.id(PurchaserEnterPhoneNumberPage.phoneNumberInputField),
-        PurchaserEnterPhoneNumberPage.phoneNumberValue
+      EnterPurchaserPhoneNumberPage.input(
+        By.id(EnterPurchaserPhoneNumberPage.phoneNumberInputField),
+        EnterPurchaserPhoneNumberPage.phoneNumberValue
       )
       And("clicks the Save and continue button")
-      PurchaserEnterPhoneNumberPage.saveAndContinue()
+      EnterPurchaserPhoneNumberPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for Type of company")
       PurchaserCheckYourAnswersPage.clickTypeOfCompanyChange()
       Then("the user is navigated to the What type of company? page")
-      PurchaserTypeOfCompanyPage.verifyPageTitle(PurchaserTypeOfCompanyPage.pageTitle)
+      TypeOfCompanyPage.verifyPageTitle(TypeOfCompanyPage.pageTitle)
       When("the user updates their types of company")
-      PurchaserTypeOfCompanyPage.checkbox(
-        PurchaserTypeOfCompanyPage.Unincorporated_sole_trader_other_than_builder,
+      TypeOfCompanyPage.checkbox(
+        TypeOfCompanyPage.Unincorporated_sole_trader_other_than_builder,
         false
       )
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Superannuation_or_pension_fund, false)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Superannuation_or_pension_fund, false)
       And("clicks the Save and continue button")
-      PurchaserTypeOfCompanyPage.saveAndContinue()
+      TypeOfCompanyPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       And("clicks the Save and continue button")
@@ -917,14 +907,14 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserWhoIsMakingThePurchasePage.saveAndContinue()
       Then("the user is navigated to the What is the company's name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their company name")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.companyId),
-        PurchaserNameOfPurchaserPage.companyName2
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.companyId),
+        PurchaserNamePage.companyName2
       )
       And("clicks the Save and continue button")
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompany)
       When("the user clicks on the 'Enter the address manually' link")
@@ -937,54 +927,54 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add a phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'Yes' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.yes)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.yes)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the What is purchaser's phone number page")
-      PurchaserEnterPhoneNumberPage.verifyPageTitle(PurchaserEnterPhoneNumberPage.pageTitle)
+      EnterPurchaserPhoneNumberPage.verifyPageTitle(EnterPurchaserPhoneNumberPage.pageTitle)
       When("the user enters their phone number")
-      PurchaserEnterPhoneNumberPage.input(
-        By.id(PurchaserEnterPhoneNumberPage.phoneNumberInputField),
-        PurchaserEnterPhoneNumberPage.phoneNumberValue
+      EnterPurchaserPhoneNumberPage.input(
+        By.id(EnterPurchaserPhoneNumberPage.phoneNumberInputField),
+        EnterPurchaserPhoneNumberPage.phoneNumberValue
       )
       And("clicks the Save and continue button")
-      PurchaserEnterPhoneNumberPage.saveAndContinue()
+      EnterPurchaserPhoneNumberPage.saveAndContinue()
       Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitle)
+      ConfirmPurchaserIdentityPage.verifyPageTitle(ConfirmPurchaserIdentityPage.pageTitle)
       When("the user selects the 'Another form of ID' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.anotherFormOfID)
+      ConfirmPurchaserIdentityPage.radioButton(ConfirmPurchaserIdentityPage.anotherFormOfID)
       And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      ConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user is navigated to the Provide a Form of ID Company page")
-      PurchaserFormOfIDCompanyPage.verifyPageTitle(PurchaserFormOfIDCompanyPage.pageTitle)
+      FormOfIDCompanyPage.verifyPageTitle(FormOfIDCompanyPage.pageTitle)
       When("the user inputs their ID number or reference")
-      PurchaserFormOfIDCompanyPage.input(
-        By.id(PurchaserFormOfIDCompanyPage.idNumberOrReference),
-        PurchaserFormOfIDCompanyPage.idNumberOrReferenceInput
+      FormOfIDCompanyPage.input(
+        By.id(FormOfIDCompanyPage.idNumberOrReference),
+        FormOfIDCompanyPage.idNumberOrReferenceInput
       )
       And("their Country of issue")
-      PurchaserFormOfIDCompanyPage.input(
-        By.id(PurchaserFormOfIDCompanyPage.countryOfIssue),
-        PurchaserFormOfIDCompanyPage.countryOfIssueInput
+      FormOfIDCompanyPage.input(
+        By.id(FormOfIDCompanyPage.countryOfIssue),
+        FormOfIDCompanyPage.countryOfIssueInput
       )
       And("clicks the Save and continue button")
-      PurchaserFormOfIDCompanyPage.saveAndContinue()
+      FormOfIDCompanyPage.saveAndContinue()
       Then("the user is navigated to the What type of company? page")
-      PurchaserTypeOfCompanyPage.verifyPageTitle(PurchaserTypeOfCompanyPage.pageTitle)
+      TypeOfCompanyPage.verifyPageTitle(TypeOfCompanyPage.pageTitle)
       When("the user selects 3 types of company")
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Unincorporated_builder, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Partnership, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Insurance_Assurance_company, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Unincorporated_builder, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Partnership, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Insurance_Assurance_company, true)
       And("clicks the Save and continue button")
-      PurchaserTypeOfCompanyPage.saveAndContinue()
+      TypeOfCompanyPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -996,11 +986,11 @@ class PurchaserQuestionsSpec
       And("the user clicks on the 'Change' link for Acting as a Trustee")
       PurchaserCheckYourAnswersPage.clickIsCompanyActingAsTrusteeChange()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'No' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.no)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.no)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for Are the purchaser and vendor connected")
@@ -1036,11 +1026,11 @@ class PurchaserQuestionsSpec
       When("the user clicks the Continue button")
       PurchaserBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Confirm purchaser name page")
-      PurchaserConfirmNamePage.verifyPageTitle(PurchaserConfirmNamePage.pageTitle)
+      ConfirmPurchaserNamePage.verifyPageTitle(ConfirmPurchaserNamePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserConfirmNamePage.radioButton(PurchaserConfirmNamePage.yes)
+      ConfirmPurchaserNamePage.radioButton(ConfirmPurchaserNamePage.yes)
       And("clicks the Continue button")
-      PurchaserConfirmNamePage.saveAndContinue()
+      ConfirmPurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Address lookup page")
       PurchaserAddressPage.verifyPageTitle(PurchaserAddressPage.pageTitleCompanyStub)
       When("the user clicks on the 'Enter the address manually' link")
@@ -1053,39 +1043,39 @@ class PurchaserQuestionsSpec
       When("the user clicks the Confirm address button")
       PurchaserAddressPage.clickContinueButton()
       Then("the user is navigated to the Do you want to add phone number? page")
-      DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
+      AddPurchaserPhoneNumber.verifyPageTitle(AddPurchaserPhoneNumber.pageTitle)
       When("the user selects the 'No' radio button")
-      DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
+      AddPurchaserPhoneNumber.radioButton(AddPurchaserPhoneNumber.no)
       And("clicks the Save and continue button")
-      DoesPurchaserHavePhoneNumber.saveAndContinue()
+      AddPurchaserPhoneNumber.saveAndContinue()
       Then("the user is navigated to the Confirm Purchaser Identity page")
-      PurchaserConfirmPurchaserIdentityPage.verifyPageTitle(PurchaserConfirmPurchaserIdentityPage.pageTitleStub)
+      ConfirmPurchaserIdentityPage.verifyPageTitle(ConfirmPurchaserIdentityPage.pageTitleStub)
       When("the user selects the 'VAT registration number' radio button")
-      PurchaserConfirmPurchaserIdentityPage.radioButton(PurchaserConfirmPurchaserIdentityPage.vatRegistrationNumber)
+      ConfirmPurchaserIdentityPage.radioButton(ConfirmPurchaserIdentityPage.vatRegistrationNumber)
       And("clicks the Save and continue button")
-      PurchaserConfirmPurchaserIdentityPage.saveAndContinue()
+      ConfirmPurchaserIdentityPage.saveAndContinue()
       Then("the user is navigated to the What is the purchaser's VAT Registration number page")
-      PurchaserVATRegistrationNumberPage.verifyPageTitle(PurchaserVATRegistrationNumberPage.pageTitle)
+      VATRegistrationNumberPage.verifyPageTitle(VATRegistrationNumberPage.pageTitle)
       When("the user enters their VAT registration number")
-      PurchaserVATRegistrationNumberPage.input(
-        By.id(PurchaserVATRegistrationNumberPage.vat),
-        PurchaserVATRegistrationNumberPage.VATNumber
+      VATRegistrationNumberPage.input(
+        By.id(VATRegistrationNumberPage.vat),
+        VATRegistrationNumberPage.VATNumber
       )
       And("clicks the Save and continue button")
-      PurchaserVATRegistrationNumberPage.saveAndContinue()
+      VATRegistrationNumberPage.saveAndContinue()
       Then("the user is navigated to the What type of company? page")
-      PurchaserTypeOfCompanyPage.verifyPageTitle(PurchaserTypeOfCompanyPage.pageTitle)
+      TypeOfCompanyPage.verifyPageTitle(TypeOfCompanyPage.pageTitle)
       When("the user selects 2 types of company")
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Bank, true)
-      PurchaserTypeOfCompanyPage.checkbox(PurchaserTypeOfCompanyPage.Building_Association, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Bank, true)
+      TypeOfCompanyPage.checkbox(TypeOfCompanyPage.Building_Association, true)
       And("clicks the Save and continue button")
-      PurchaserTypeOfCompanyPage.saveAndContinue()
+      TypeOfCompanyPage.saveAndContinue()
       Then("the user is navigated to is the Purchaser Acting as a Trustee? page")
-      PurchaserActingAsATrusteePage.verifyPageTitle(PurchaserActingAsATrusteePage.pageTitle)
+      ActingAsATrusteePage.verifyPageTitle(ActingAsATrusteePage.pageTitle)
       When("the user selects the 'Yes' radio button")
-      PurchaserActingAsATrusteePage.radioButton(PurchaserActingAsATrusteePage.yes)
+      ActingAsATrusteePage.radioButton(ActingAsATrusteePage.yes)
       And("clicks the Save and continue button")
-      PurchaserActingAsATrusteePage.saveAndContinue()
+      ActingAsATrusteePage.saveAndContinue()
       Then("the user is navigated to the Are the purchaser and vendor connected? page")
       PurchaserAndVendorConnectedPage.verifyPageTitle(PurchaserAndVendorConnectedPage.pageTitle)
       When("the user selects the 'Yes' radio button")
@@ -1107,87 +1097,58 @@ class PurchaserQuestionsSpec
       When("the user clicks on the link for entering the purchaser's full name")
       PurchaserCheckYourAnswersPage.clickPurchaserNameChange()
       Then("the user is navigated to the What is the purchaser’s full name? page")
-      PurchaserNameOfPurchaserPage.verifyPageTitle(PurchaserNameOfPurchaserPage.pageTitle)
+      PurchaserNamePage.verifyPageTitle(PurchaserNamePage.pageTitle)
       When("the user inputs their first name, middle name, and surname")
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.forenameId),
-        PurchaserNameOfPurchaserPage.forenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.forenameId),
+        PurchaserNamePage.forenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.middlenameId),
-        PurchaserNameOfPurchaserPage.middlenameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.middlenameId),
+        PurchaserNamePage.middlenameInput
       )
-      PurchaserNameOfPurchaserPage.input(
-        By.id(PurchaserNameOfPurchaserPage.surnameId),
-        PurchaserNameOfPurchaserPage.surnameInput
+      PurchaserNamePage.input(
+        By.id(PurchaserNamePage.surnameId),
+        PurchaserNamePage.surnameInput
       )
-      PurchaserNameOfPurchaserPage.saveAndContinue()
+      PurchaserNamePage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the 'Change' link for Does the Purchaser have a National Insurance number?")
       PurchaserCheckYourAnswersPage.clickDoPurchaserHaveNINumberChange()
       Then("the user is navigated to the Does the Purchaser have a National Insurance number? page")
-      DoesPurchaserHaveNI.verifyPageTitle(DoesPurchaserHaveNI.pageTitle)
+      AddPurchaserNationalInsuranceNumber.verifyPageTitle(AddPurchaserNationalInsuranceNumber.pageTitle)
       When("the user selects the 'Yes' radio button")
-      DoesPurchaserHaveNI.radioButton(DoesPurchaserHaveNI.yes)
+      AddPurchaserNationalInsuranceNumber.radioButton(AddPurchaserNationalInsuranceNumber.yes)
       And("clicks the Save and continue button")
-      DoesPurchaserHaveNI.saveAndContinue()
+      AddPurchaserNationalInsuranceNumber.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the link for entering National Insurance number")
       PurchaserCheckYourAnswersPage.clickPurchaserNINumberChange()
       Then("the user is navigated to the What is the Purchaser's national insurance number? page")
-      PurchaserEnterNINumberPage.verifyPageTitle(PurchaserEnterNINumberPage.pageTitle)
+      EnterPurchaserNationalInsuranceNumberPage.verifyPageTitle(EnterPurchaserNationalInsuranceNumberPage.pageTitle)
       When("the user inputs a National Insurance Number")
-      PurchaserEnterNINumberPage.input(By.id(PurchaserEnterNINumberPage.Nino), PurchaserEnterNINumberPage.NinoValue2)
+      EnterPurchaserNationalInsuranceNumberPage.input(
+        By.id(EnterPurchaserNationalInsuranceNumberPage.Nino),
+        EnterPurchaserNationalInsuranceNumberPage.NinoValue2
+      )
       And("clicks the Save and continue button")
-      PurchaserEnterNINumberPage.saveAndContinue()
+      EnterPurchaserNationalInsuranceNumberPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       When("the user clicks on the link for entering Date of Birth")
       PurchaserCheckYourAnswersPage.clickPurchaserDOBChange()
       Then("User should be navigated to purchaser date of birth page")
-      PurchaserDateOfBirthPage.verifyPageTitle(PurchaserDateOfBirthPage.pageTitle)
+      DateOfBirthPage.verifyPageTitle(DateOfBirthPage.pageTitle)
       When("the user inputs their Date of Birth")
-      PurchaserDateOfBirthPage.enterDateOfBirth()
+      DateOfBirthPage.enterDateOfBirth()
       And("clicks the Save and continue button")
-      PurchaserDateOfBirthPage.saveAndContinue()
+      DateOfBirthPage.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswersPage.verifyPageTitle(PurchaserCheckYourAnswersPage.pageTitle)
       And("clicks the Save and continue button")
       PurchaserCheckYourAnswersPage.saveAndContinue()
-    }
-
-    Scenario(
-      "Purchaser Question user journey for removing purchaser with 97 purchasers 1 vendor stub data",
-      PurchaserJourney
-    ) {
-      Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("97-purchasers-1-vendor"))
-      When("the user clicks on the 'Purchaser Questions' link")
-      WhoIsTheVendorPage.clickLinkById("task-list-link-purchaser-questions")
-      Then("the user is navigated to the Purchaser Overview page")
-      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-      When("the user clicks the 'Remove' link to remove a purchaser")
-      PurchaserOverviewPage.clickRemovePurchaser()
-      Then("the user is navigated to Are you sure you want to remove the purchaser page")
-      PurchaserRemovePage.verifyPageTitle(PurchaserRemovePage.pageTitle)
-      When("the user selects the 'No' radio button")
-      PurchaserRemovePage.radioButton(PurchaserRemovePage.no)
-      And("clicks the Save and continue button")
-      PurchaserOverviewPage.saveAndContinue()
-      Then("the user is navigated to the Purchaser Overview Page")
-      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
-      When("The user clicks the 'Remove' link to remove a purchaser")
-      PurchaserOverviewPage.clickRemovePurchaser()
-      Then("the user is navigated to Are you sure you want to remove the purchaser page")
-      PurchaserRemovePage.verifyPageTitle(PurchaserRemovePage.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      PurchaserRemovePage.radioButton(PurchaserRemovePage.yes)
-      And("clicks the Save and continue button")
-      PurchaserOverviewPage.saveAndContinue()
-      Then("the user is navigated to the Purchaser Overview Page")
-      PurchaserOverviewPage.verifyPageTitle(PurchaserOverviewPage.pageTitle)
     }
   }
 }

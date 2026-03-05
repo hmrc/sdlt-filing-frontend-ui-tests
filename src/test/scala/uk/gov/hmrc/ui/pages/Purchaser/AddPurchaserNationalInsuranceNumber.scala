@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserActingAsATrusteePage extends BasePage {
+object AddPurchaserNationalInsuranceNumber extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/acting-as-a-trustee"
+  override def pageUrl: String = "about-the-purchaser/add-national-insurance-number"
 
   override def pageTitle: String =
-    "Is the purchaser acting as a trustee? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Does the purchaser have a National Insurance number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value_0"
 
   def no: String = "#value_1"
+
 }

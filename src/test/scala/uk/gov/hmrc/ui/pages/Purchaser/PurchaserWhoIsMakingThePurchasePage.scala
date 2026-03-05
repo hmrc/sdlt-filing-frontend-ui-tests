@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object DoesPurchaserHaveNI extends BasePage {
+object PurchaserWhoIsMakingThePurchasePage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/add-national-insurance-number"
+  override def pageUrl: String = "about-the-purchaser/who-is-making-the-purchase"
 
-  override def pageTitle: String =
-    "Does the purchaser have a National Insurance number? - About the purchaser - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Who is making the purchase? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value_0"
+  def company: String = "#value_0"
 
-  def no: String = "#value_1"
+  def individual: String = "#value_1"
 
 }

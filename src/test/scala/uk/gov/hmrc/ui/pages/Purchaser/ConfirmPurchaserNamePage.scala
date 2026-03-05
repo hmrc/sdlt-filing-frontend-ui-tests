@@ -14,26 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Preliminary
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchasersNamePage extends BasePage {
+object ConfirmPurchaserNamePage extends BasePage {
 
-  override def pageUrl: String = "preliminary-questions/purchaser-name"
+  override def pageUrl: String = "about-the-purchaser/confirm-purchaser-name"
 
   override def pageTitle: String =
-    "What is the purchaser’s surname? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+    "Is this the name of the purchaser? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def pageTitleCompany: String = "What is the company’s name? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+  def yes: String = "#value_0"
 
-  def purchasersSurname: String = "purchaserSurnameOrCompanyName"
+  def no: String = "#value_1"
 
-  def purchasersSurnameInput: String = "Test Sname"
-
-  def purchasersSurnameCYAInput: String = "Test Surname"
-
-  def companyName: String = "purchaserSurnameOrCompanyName"
-
-  def companyNameInput: String = "Test Company"
 }

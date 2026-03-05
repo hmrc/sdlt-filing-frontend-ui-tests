@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserPartnershipUTRPage extends BasePage {
+object ActingAsATrusteePage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/partnership-utr"
+  override def pageUrl: String = "about-the-purchaser/acting-as-a-trustee"
 
   override def pageTitle: String =
-    "What is the purchaser’s Partnership Unique Taxpayer Reference (UTR)? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Is the purchaser acting as a trustee? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def purchaserUTRReference = "partnershipUniqueTaxpayerReference"
+  def yes: String = "#value_0"
 
-  def purchaserUTRInput = "1111111111"
-
+  def no: String = "#value_1"
 }

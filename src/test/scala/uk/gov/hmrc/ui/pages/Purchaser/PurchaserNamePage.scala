@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserNameOfPurchaserPage extends BasePage {
+object PurchaserNamePage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/purchaser-name "
+  override def pageUrl: String = "about-the-purchaser/purchaser-name"
 
   override def pageTitle: String = "What is the purchaser’s name? - About the purchaser - Stamp Taxes Online - GOV.UK"
 

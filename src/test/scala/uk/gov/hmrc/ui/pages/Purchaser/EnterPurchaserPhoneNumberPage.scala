@@ -14,14 +14,18 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserBeforeYouStartPage extends BasePage {
+object EnterPurchaserPhoneNumberPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/before-you-start"
+  override def pageUrl: String = "about-the-purchaser/enter-purchaser-phone-number"
 
-  override def pageTitle: String = "Before you start - About the purchaser - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "What is the purchaser’s phone number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
+  def phoneNumberInputField     = "value"
+  def phoneNumberValue: String  = "01234567890"
+  def phoneNumberValue2: String = "07122256789"
 }

@@ -14,24 +14,20 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
-import org.openqa.selenium.By
 
-object PurchaserDateOfBirthPage extends BasePage {
+object VATRegistrationNumberPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchaser/date-of-birth "
+  override def pageUrl: String = "about-the-purchaser/vat-registration-number"
 
   override def pageTitle: String =
-    "What is the purchaser’s date of birth? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s VAT registration number? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def enterDateOfBirth(): Unit = inputDateMonthAndYear(
-    By.id("value.day"),
-    By.id("value.month"),
-    By.id("value.year"),
-    "10",
-    "10",
-    "1999"
-  )
+  def vat: String = "registrationNumber"
+
+  def VATNumber: String = "123456782"
+
+  def VATNumber2: String = "069425349"
 }

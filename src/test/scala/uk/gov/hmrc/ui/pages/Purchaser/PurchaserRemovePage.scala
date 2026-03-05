@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAndVendorConnectedPage extends BasePage {
+object PurchaserRemovePage extends BasePage {
 
-  override def pageUrl: String =
-    "about-the-purchaser/purchaser-and-vendor-connected"
+  override def pageUrl: String = "about-the-purchaser/remove-purchaser"
 
   override def pageTitle: String =
-    "Are the purchaser and the vendor connected? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Are you sure you want to remove the purchaser? – About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value_0"
 

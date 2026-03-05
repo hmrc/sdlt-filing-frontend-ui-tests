@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserTypeOfCompanyPage extends BasePage {
+object TypeOfCompanyPage extends BasePage {
 
   override def pageUrl: String = "about-the-purchaser/type-of-company"
 

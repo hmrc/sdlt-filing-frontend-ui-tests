@@ -47,20 +47,20 @@ class e2eSpec
       And("clicks the Save and continue button")
       PreliminaryBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to the Who Is Making The Purchase page")
-      WhoIsMakingThePurchasePage.verifyPageTitle(WhoIsMakingThePurchasePage.pageTitle)
+      PreliminaryWhoIsMakingThePurchasePage.verifyPageTitle(PreliminaryWhoIsMakingThePurchasePage.pageTitle)
       When("the user selects the 'A Company' radio button")
-      WhoIsMakingThePurchasePage.radioButton(WhoIsMakingThePurchasePage.company)
+      PreliminaryWhoIsMakingThePurchasePage.radioButton(PreliminaryWhoIsMakingThePurchasePage.company)
       And("clicks the Save and continue button")
-      WhoIsMakingThePurchasePage.saveAndContinue()
-      Then("the user is navigated to the Purchasers Name page")
-      PurchasersNamePage.verifyPageTitle(PurchasersNamePage.pageTitleCompany)
+      PreliminaryWhoIsMakingThePurchasePage.saveAndContinue()
+      Then("the user is navigated to the Purchaser Name page")
+      PreliminaryPurchaserNamePage.verifyPageTitle(PreliminaryPurchaserNamePage.pageTitleCompany)
       When("the user inputs their company name")
-      PurchasersNamePage.input(
-        By.id(PurchasersNamePage.companyName),
-        PurchasersNamePage.companyNameInput
+      PreliminaryPurchaserNamePage.input(
+        By.id(PreliminaryPurchaserNamePage.companyName),
+        PreliminaryPurchaserNamePage.companyNameInput
       )
       And("clicks the Save and continue button")
-      PurchasersNamePage.clickSubmitButton()
+      PreliminaryPurchaserNamePage.clickSubmitButton()
       Then("the user is navigated to the Property Address page")
       PreliminaryPropertyAddressPage.verifyPageTitle(PreliminaryPropertyAddressPage.pageTitle)
       When("the user clicks on the 'Enter the address manually' link")

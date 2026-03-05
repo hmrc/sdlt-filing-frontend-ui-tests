@@ -14,17 +14,25 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Preliminary
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object WhoIsMakingThePurchasePage extends BasePage {
+object FormOfIDIndividualPage extends BasePage {
 
-  override def pageUrl: String = "preliminary-questions/who-is-making-the-purchase"
+  override def pageUrl: String = "about-the-purchaser/form-of-id-individual"
 
-  override def pageTitle: String = "Who is making the purchase? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Provide a form of ID for the purchaser - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def company: String = "#value_0"
+  def purchaserIdNumberOrReference: String = "idNumberOrReference"
 
-  def individual: String = "#value_1"
+  def idNumberOrReferenceInput: String = "1234567890"
+
+  def idNumberOrReferenceInput2: String = "UPDATEDID22345"
+
+  def purchaserCountryIssued: String = "countryIssued"
+
+  def countryIssuedInput: String = "country"
+
 }

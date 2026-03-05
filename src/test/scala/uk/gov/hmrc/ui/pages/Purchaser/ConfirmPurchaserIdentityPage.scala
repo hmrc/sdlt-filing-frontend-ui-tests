@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserConfirmPurchaserIdentityPage extends BasePage {
+object ConfirmPurchaserIdentityPage extends BasePage {
 
   override def pageUrl: String = "about-the-purchaser/confirm-purchaser-identity"
 
   override def pageTitle: String =
-    s"What information can you provide about ${PurchaserNameOfPurchaserPage.purchaserNameCompany}? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"What information can you provide about ${PurchaserNamePage.purchaserNameCompany}? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def pageTitleStub: String =
-    s"What information can you provide about ${PurchaserNameOfPurchaserPage.purchaserNameCompanyStub}? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    s"What information can you provide about ${PurchaserNamePage.purchaserNameCompanyStub}? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def vatRegistrationNumber: String = "#value_0"
 

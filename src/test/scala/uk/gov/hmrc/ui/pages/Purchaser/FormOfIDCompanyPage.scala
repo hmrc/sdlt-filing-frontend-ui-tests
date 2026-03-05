@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.purchaser
+package uk.gov.hmrc.ui.pages.Purchaser
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserEnterNINumberPage extends BasePage {
+object FormOfIDCompanyPage extends BasePage {
 
-  override def pageUrl: String = "stamp-duty-land-tax-filing/about-the-purchaser/enter-national-insurance-number"
+  override def pageUrl: String = "about-the-purchaser/form-of-id-company "
 
   override def pageTitle: String =
-    "What is the purchaser’s National Insurance number? - About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Provide a form of ID for the purchaser - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def Nino: String = "nationalInsuranceNumber"
+  def idNumberOrReference: String = "referenceId"
 
-  def NinoValue: String = "AA123456A"
+  def idNumberOrReferenceInput: String = "4857354921"
 
-  def NinoValue2: String = "NJ123456C"
+  def countryOfIssue: String = "countryIssued"
+
+  def countryOfIssueInput: String = "England"
 
 }
