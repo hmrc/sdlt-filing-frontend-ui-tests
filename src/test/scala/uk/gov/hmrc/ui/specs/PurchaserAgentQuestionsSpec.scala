@@ -27,7 +27,7 @@ import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
 
-class PurchaserAgentSpec
+class PurchaserAgentQuestionsSpec
     extends AnyFeatureSpec
     with BaseSpec
     with GivenWhenThen

@@ -36,6 +36,7 @@ object PurchaserNamePage extends BasePage {
   def forenameInput: String   = "forename1"
   def middlenameInput: String = "forename2"
   def surnameInput: String    = "surname"
+  def surnameInput2: String   = "surname2"
 
   def companyName: String  = "purchaserSurnameOrCompanyName"
   def companyName2: String = "Company Name"
