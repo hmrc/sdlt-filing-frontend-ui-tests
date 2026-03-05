@@ -18,14 +18,14 @@ package uk.gov.hmrc.ui.pages.PurchaserAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAgentName extends BasePage {
+object SelectPurchaserAgentPage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchasers-agent/agent-name"
+  override def pageUrl: String = "about-the-purchasers-agent/select-agent"
 
   override def pageTitle: String =
-    "What is the agent’s name? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    "Select the purchaser’s agent - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
-  def agentName: String       = "value"
-  def agentNameInput: String  = "TestName Test"
-  def agentNameInput2: String = "Agent Name"
+  def addNewAgent: String = "input[value=\"addNewAgent\"]"
+  def selectAgent: String = "#value"
+
 }

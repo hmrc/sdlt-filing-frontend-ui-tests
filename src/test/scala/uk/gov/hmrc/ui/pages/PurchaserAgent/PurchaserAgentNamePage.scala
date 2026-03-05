@@ -18,14 +18,14 @@ package uk.gov.hmrc.ui.pages.PurchaserAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAgentAddReferencePage extends BasePage {
+object PurchaserAgentNamePage extends BasePage {
 
-  override def pageUrl: String = "about-the-purchasers-agent/add-agent-reference-number"
+  override def pageUrl: String = "about-the-purchasers-agent/agent-name"
 
   override def pageTitle: String =
-    "Do you want to add a reference for this return? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    "What is the agent’s name? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
-
-  def no: String = "#value-2"
+  def agentName: String       = "value"
+  def agentNameInput: String  = "TestName Test"
+  def agentNameInput2: String = "Agent Name"
 }

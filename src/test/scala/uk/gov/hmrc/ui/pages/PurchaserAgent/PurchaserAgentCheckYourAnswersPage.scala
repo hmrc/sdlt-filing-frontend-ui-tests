@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.pages.PurchaserAgent
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAgentCheckYourAnswers extends BasePage {
+object PurchaserAgentCheckYourAnswersPage extends BasePage {
 
   override def pageUrl: String = "about-the-purchasers-agent/check-answers"
 

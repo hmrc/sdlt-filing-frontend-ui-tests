@@ -40,7 +40,7 @@ class PurchaserQuestionsSpec
 
   Feature("SDLT Filing Frontend Purchaser Questions") {
     Scenario(
-      "Complete the Purchaser Questions user journey as an Individual with no purchaser stub data",
+      "Complete the Purchaser Questions journey as an Individual and changed to a Company with no purchaser stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -227,7 +227,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as an Individual with no National Insurance Number and no purchaser stub data",
+      "Complete the Purchaser Questions journey as an Individual with no National Insurance Number and no purchaser stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -369,7 +369,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Full Purchaser Questions user journey as a Individual with full purchaser with address line 1 stub data",
+      "Complete the Full Purchaser Questions journey as an Individual with full purchaser with address line 1 stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -455,7 +455,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey as a Company with VAT ID and changes Form of Id no purchaser stub data",
+      "Complete the Purchaser Questions journey as a Company and changing all forms of id with no purchaser stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
@@ -683,7 +683,7 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Complete the Purchaser Questions user journey for additional purchaser as a company and changing to individual with incomplete purchaser stub data",
+      "Complete the Purchaser Questions journey as a Company and changed to an Individual with incomplete purchaser stub data",
       PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")

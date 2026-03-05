@@ -18,15 +18,19 @@ package uk.gov.hmrc.ui.pages.PurchaserAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAgentCorrespondencePage extends BasePage {
+object PurchaserAgentEnterContactDetailsPage extends BasePage {
 
-  override def pageUrl: String =
-    "about-the-purchasers-agent/agent-authorised-for-correspondence"
+  override def pageUrl: String = "about-the-purchasers-agent/enter-agent-contact-details"
 
   override def pageTitle: String =
-    "Is the agent authorised to handle correspondence on behalf of the purchaser? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
+    "What are the agent’s contact details? - About the purchaser’s agent - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value_0"
+  def phoneNumber: String = "phoneNumber"
 
-  def no: String = "#value_1"
+  def phoneNumberInput: String = "1234567890"
+
+  def emailAddress: String = "emailAddress"
+
+  def emailAddressInput: String = "TestAddress@email.com"
+
 }

@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.PurchaserAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object PurchaserAgentRemovePage extends BasePage {
+object RemovePurchaserAgentPage extends BasePage {
 
   override def pageUrl: String = "about-the-purchasers-agent/remove-purchasers-agent"
 

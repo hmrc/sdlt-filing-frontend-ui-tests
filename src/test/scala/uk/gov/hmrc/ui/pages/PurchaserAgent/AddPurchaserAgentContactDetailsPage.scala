@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.PurchaserAgent
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object DoesPurchaserAgentHaveContactDetailsPage extends BasePage {
+object AddPurchaserAgentContactDetailsPage extends BasePage {
 
   override def pageUrl: String = "about-the-purchasers-agent/add-agent-contact-details"
 
