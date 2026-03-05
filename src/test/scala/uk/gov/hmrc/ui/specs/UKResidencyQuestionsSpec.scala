@@ -26,6 +26,7 @@ import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
+
 class UKResidencyQuestionsSpec
     extends AnyFeatureSpec
     with BaseSpec
@@ -56,9 +57,17 @@ class UKResidencyQuestionsSpec
 //      Then ("the user is navigated to Residency Status page")
 //      When ("the user selects Yes radio button")
 //      And ("clicks on Save & Continue button")
-//      Then("the user is navigated to the Crown Employment Relief page")
-//      When("the user select Yes radio button")
+      // ******Remove below lines when navigation is ready**********
+      CrownEmploymentReliefPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-UK-residency/crown-employment-relief"
+      )
+      Then("the user is navigated to the Crown Employment Relief page")
+      CrownEmploymentReliefPage.verifyPageTitle(CrownEmploymentReliefPage.pageTitle)
+      When("the user select Yes radio button")
+      CrownEmploymentReliefPage.radioButton(CrownEmploymentReliefPage.yes)
+      // ******Uncomment below 2 lines when navigation is ready**********
 //      And ("clicks on Save & Continue button")
+      // CrownEmploymentReliefPage.saveAndContinue()
 //      Then ("the user is navigated to CYA page")
 
     }
@@ -109,9 +118,17 @@ class UKResidencyQuestionsSpec
       //      Then ("the user is navigated to Close Companies page")
       //      When ("the user selects Yes radio button")
       //      And ("clicks on Save & Continue button")
-      //      Then("the user is navigated to the Crown Employment Relief page")
-      //      When("the user select Yes radio button")
+      // ******Remove below lines when navigation is ready**********
+      CrownEmploymentReliefPage.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-UK-residency/crown-employment-relief"
+      )
+      Then("the user is navigated to the Crown Employment Relief page")
+      CrownEmploymentReliefPage.verifyPageTitle(CrownEmploymentReliefPage.pageTitle)
+      When("the user select No radio button")
+      CrownEmploymentReliefPage.radioButton(CrownEmploymentReliefPage.no)
+      // ******Uncomment below 2 lines when navigation is ready**********
       //      And ("clicks on Save & Continue button")
+      // CrownEmploymentReliefPage.saveAndContinue()
       //      Then ("the user is navigated to CYA page")
 
     }
