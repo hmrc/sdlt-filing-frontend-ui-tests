@@ -25,18 +25,16 @@ object PurchaserOverview extends BasePage {
 
   override def pageTitle: String = "Purchaser overview - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  val purchaserChange =
-    "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/change-purchaser/221110169']"
+  val purchaserChange: By = By.xpath("(//a[contains(@href, '/change-purchaser/')])[1]")
 
-  val PurchaserRemoveLink: String =
-    "a[href= '/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-overview/remove-purchaser/221110169']"
+  val PurchaserRemoveLink: By = By.xpath("(//a[contains(@href, '/remove-purchaser/')])[1]")
 
   def yes: String = "#value"
 
   def no: String = "#value-no"
 
-  def clickPurchaserChange(): Unit = click(By.cssSelector(purchaserChange))
+  def clickPurchaserChange(): Unit = click(purchaserChange)
 
-  def clickRemovePurchaser(): Unit = click(By.cssSelector(PurchaserRemoveLink))
+  def clickRemovePurchaser(): Unit = click(PurchaserRemoveLink)
 
 }
