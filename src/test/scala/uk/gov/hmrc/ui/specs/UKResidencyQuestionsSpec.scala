@@ -57,13 +57,8 @@ class UKResidencyQuestionsSpec
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
       When("the user selects Yes radio button")
       ResidencyStatus.radioButton(ResidencyStatus.yes)
-      // ****************Uncomment below 2 lines once navigation is ready*********
-      //      And ("clicks on Save & Continue button")
-      // ResidencyStatus.saveAndContinue()
-    // ******Remove below lines when navigation is ready**********
-      CrownEmploymentRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-UK-residency/crown-employment-relief"
-      )
+      And("clicks on Save & Continue button")
+      ResidencyStatus.saveAndContinue()
       Then("the user is navigated to the Crown Employment Relief page")
       CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
       When("the user select Yes radio button")
@@ -119,9 +114,6 @@ class UKResidencyQuestionsSpec
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
       And("the user click on Continue button")
       UKResidencyBeforeYouStart.saveAndContinue()
-      //      Then ("the user is navigated to Residency Status page")
-      //      When ("the user selects Yes radio button")
-      UKResidencyBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to Residency Status page")
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
       When("the user selects Yes radio button")
@@ -164,9 +156,6 @@ class UKResidencyQuestionsSpec
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
       And("the user click on Continue button")
       UKResidencyBeforeYouStart.saveAndContinue()
-      //      Then ("the user is navigated to Residency Status page")
-      //      When ("the user selects No radio button")
-      UKResidencyBeforeYouStartPage.saveAndContinue()
       Then("the user is navigated to Residency Status page")
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
       When("the user selects No radio button")
