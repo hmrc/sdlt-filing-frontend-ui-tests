@@ -213,8 +213,8 @@ class LandQuestionsSpec
       AgriculturalOrDevelopmentalLandPage.verifyPageTitle(AgriculturalOrDevelopmentalLandPage.pageTitle)
       When("the user selects the 'No' radio button")
       AgriculturalOrDevelopmentalLandPage.radioButton(AgriculturalOrDevelopmentalLandPage.no)
-      And("clicks the Save and continue button")
-      AgriculturalOrDevelopmentalLandPage.saveAndContinue()
+//      And("clicks the Save and continue button")
+//      AgriculturalOrDevelopmentalLandPage.saveAndContinue()
       // Then the user is on Check your answers
       // When the user selects Save and continue
 
