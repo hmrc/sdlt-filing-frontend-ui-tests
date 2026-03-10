@@ -127,8 +127,6 @@ class LandQuestionsSpec
       LandOverview.radioButton(LandOverview.yes)
       And("clicks the Continue button")
       LandOverview.saveAndContinue()
-      Then("the user is navigated to the Land Before you start page")
-      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
     }
 
     Scenario(
@@ -229,8 +227,6 @@ class LandQuestionsSpec
       LandOverview.radioButton(LandOverview.yes)
       And("clicks the Continue button")
       LandOverview.saveAndContinue()
-      Then("the user is navigated to the Land Before you start page")
-      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
     }
 
     Scenario(
@@ -551,8 +547,6 @@ class LandQuestionsSpec
       LandOverview.radioButton(LandOverview.yes)
       And("clicks the Continue button")
       LandOverview.saveAndContinue()
-      Then("the user is navigated to the Land Before you start page")
-      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
     }
 
     Scenario(

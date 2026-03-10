@@ -29,13 +29,13 @@ object LandOverview extends BasePage {
 
   def no: String = "#value-no"
 
-  val landChange =
-    "a[href ='/stamp-duty-land-tax-filing/about-the-land/land-or-property-overview/change-land/LND001']"
+  val landChange: By =
+    By.xpath("(//a[contains(@href, '/change-land/')])[1]")
 
-  val landRemove =
-    "a[href ='/stamp-duty-land-tax-filing/about-the-land/land-or-property-overview/remove-land/LND001']"
+  val landRemove: By =
+    By.xpath("(//a[contains(@href, '/remove-land/')])[1]")
 
-  def clickLandChange(): Unit = click(By.cssSelector(landChange))
+  def clickLandChange(): Unit = click(landChange)
 
-  def clickLandRemove(): Unit = click(By.cssSelector(landRemove))
+  def clickLandRemove(): Unit = click(landRemove)
 }
