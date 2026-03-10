@@ -117,7 +117,18 @@ class LandQuestionsSpec
 
       // Then the user is on Check your answers
       // When the user selects Save and continue
-      // Then the user is on the Overview page
+
+      Then("the user is navigated to the Land Overview page")
+      LandOverview.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/land-or-property-overview"
+      )
+      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandOverview.radioButton(LandOverview.yes)
+      And("clicks the Continue button")
+      LandOverview.saveAndContinue()
+      Then("the user is navigated to the Land Before you start page")
+      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
     }
 
     Scenario(
@@ -208,7 +219,18 @@ class LandQuestionsSpec
       AgriculturalOrDevelopmentalLandPage.saveAndContinue()
       // Then the user is on Check your answers
       // When the user selects Save and continue
-      // Then the user is on the Overview page
+
+      Then("the user is navigated to the Land Overview page")
+      LandOverview.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/land-or-property-overview"
+      )
+      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandOverview.radioButton(LandOverview.yes)
+      And("clicks the Continue button")
+      LandOverview.saveAndContinue()
+      Then("the user is navigated to the Land Before you start page")
+      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
     }
 
     Scenario(
@@ -519,7 +541,18 @@ class LandQuestionsSpec
 
       // Then the user is on Check your answers
       // When the user selects Save and continue
-      // Then the user is on the Overview page
+
+      Then("the user is navigated to the Land Overview page")
+      LandOverview.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/land-or-property-overview"
+      )
+      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandOverview.radioButton(LandOverview.yes)
+      And("clicks the Continue button")
+      LandOverview.saveAndContinue()
+      Then("the user is navigated to the Land Before you start page")
+      LandBeforeYouStartPage.verifyPageTitle(LandBeforeYouStartPage.pageTitle)
     }
 
     Scenario(
@@ -534,30 +567,30 @@ class LandQuestionsSpec
       )
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
-      // Then("the user should be navigated to the Land Overview Page")
-      // When the user clicks remove link and selects no in next page
-      Then("the user is navigation to remove land page")
-      LandRemove.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/remove-land-or-property"
-      )
+      Then("the user is navigated to the Land Overview page")
+      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+      When("the user clicks the 'Remove' link to remove land")
+      LandOverview.clickLandRemove()
+      Then("the user is navigated to remove land page")
       LandRemove.verifyPageTitle(LandRemove.pageTitle)
-      When("the user selects no radio button")
-      LandRemove.radioButton(LandRemove.no)
-      And("clicks Save & Continue")
-//      *****enable below lines once overview page is ready*****
-      // LandRemove.saveAndContinue()
-      // Then the user is naviagated back to Overview page
-      // When the user click remove link and select yes in next page
-      Then("the user is navigation to remove land page")
-      LandRemove.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/remove-land-or-property"
-      )
-      LandRemove.verifyPageTitle(LandRemove.pageTitle)
+// Uncomment below
+//      When("the user selects no radio button")
+//      LandRemove.radioButton(LandRemove.no)
+//      And("clicks Save & Continue")
+//      LandRemove.saveAndContinue()
+//      Then("the user is navigated to the Land Overview page")
+//      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+//      When("the user clicks the 'Remove' link to remove land")
+//      LandOverview.clickLandRemove()
+//      Then("the user is navigated to remove land page")
+//      LandRemove.verifyPageTitle(LandRemove.pageTitle)
       When("the user selects yes radio button")
       LandRemove.radioButton(LandRemove.yes)
       And("clicks Save & Continue")
       LandRemove.saveAndContinue()
-      // Then the user is navigated to Overview page with the removed banner
+      // Uncomment below
+//      Then("the user is navigated to the Land Overview page")
+//      LandOverview.verifyPageTitle(LandOverview.pageTitle)
     }
   }
 }
