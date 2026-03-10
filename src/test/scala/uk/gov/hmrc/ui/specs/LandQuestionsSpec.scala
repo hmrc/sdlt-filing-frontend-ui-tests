@@ -521,5 +521,43 @@ class LandQuestionsSpec
       // When the user selects Save and continue
       // Then the user is on the Overview page
     }
+
+    Scenario(
+      "Validating the overview, update and removing functionality of a Land",
+      LandJourney
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(
+        HASDIRECT,
+        Organisation,
+        returnId = Some("full-purchaser-with-agent-land-transaction-uk-authcodes")
+      )
+      When("the user clicks on the 'Land Questions' link")
+      LandBeforeYouStartPage.clickLinkById("task-list-link-land-questions")
+      // Then("the user should be navigated to the Land Overview Page")
+      // When the user clicks remove link and selects no in next page
+      Then("the user is navigation to remove land page")
+      LandRemove.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/remove-land-or-property"
+      )
+      LandRemove.verifyPageTitle(LandRemove.pageTitle)
+      When("the user selects no radio button")
+      LandRemove.radioButton(LandRemove.no)
+      And("clicks Save & Continue")
+//      *****enable below lines once overview page is ready*****
+      // LandRemove.saveAndContinue()
+      // Then the user is naviagated back to Overview page
+      // When the user click remove link and select yes in next page
+      Then("the user is navigation to remove land page")
+      LandRemove.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/remove-land-or-property"
+      )
+      LandRemove.verifyPageTitle(LandRemove.pageTitle)
+      When("the user selects yes radio button")
+      LandRemove.radioButton(LandRemove.yes)
+      And("clicks Save & Continue")
+      LandRemove.saveAndContinue()
+      // Then the user is navigated to Overview page with the removed banner
+    }
   }
 }
