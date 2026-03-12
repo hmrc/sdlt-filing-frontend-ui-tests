@@ -20,10 +20,10 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object ResidencyStatus extends BasePage {
 
-  override def pageUrl: String = "about-UK-residency/non-UK-resident-purchaser"
+  override def pageUrl: String = "about-UK-residency/residency-status"
 
   override def pageTitle: String =
-    "Are any of the purchasers non-UK residents? - About UK residency - Stamp Taxes Online - GOV.UK"
+    "Residency status - About UK residency - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
