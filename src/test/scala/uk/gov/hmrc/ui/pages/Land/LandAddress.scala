@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.pages.Land
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object LandAddressPage extends BasePage {
+object LandAddress extends BasePage {
 
   override def pageUrl: String = "about-the-land/land-address-lookup"
 

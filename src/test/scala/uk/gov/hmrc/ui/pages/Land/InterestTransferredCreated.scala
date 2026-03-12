@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object InterestTransferredCreatedPage extends BasePage {
+object InterestTransferredCreated extends BasePage {
 
   override def pageUrl: String = "about-the-land/interest-transferred-or-created "
 

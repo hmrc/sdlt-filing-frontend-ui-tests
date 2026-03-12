@@ -16,24 +16,12 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AreaOfTheLandPage extends BasePage {
+object LandBeforeYouStart extends BasePage {
 
-  override def pageUrl: String = "about-the-land/enter-area-of-land"
+  override def pageUrl: String = "about-the-land/before-you-start"
 
-  override def pageTitle: String = "What is the area of land? - About the land - Stamp Taxes Online - GOV.UK"
-
-  val headerSquareMetre: By =
-    By.xpath("""//label[normalize-space(.)='What is the area of the land in square metres?']""")
-
-  val headerHectares: By = By.xpath("""//label[normalize-space(.)='What is the area of the land in hectares?']""")
-
-  def area: String = "value"
-
-  def areaHectares: String = "413.245"
-
-  def areaSquareMetres: String = "413"
+  override def pageTitle: String = "Before you start - About the land - Stamp Taxes Online - GOV.UK"
 
 }

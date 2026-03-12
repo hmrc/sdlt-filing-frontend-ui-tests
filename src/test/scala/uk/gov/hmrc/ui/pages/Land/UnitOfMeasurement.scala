@@ -18,10 +18,15 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object LandBeforeYouStartPage extends BasePage {
+object UnitOfMeasurement extends BasePage {
 
-  override def pageUrl: String = "about-the-land/before-you-start"
+  override def pageUrl: String = "about-the-land/unit-of-measurement"
 
-  override def pageTitle: String = "Before you start - About the land - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Select one unit of measurement for the area of land - About the land - Stamp Taxes Online - GOV.UK"
+
+  def hectares: String = "#value_0"
+
+  def squareMetres: String = "#value_1"
 
 }
