@@ -18,12 +18,11 @@ package uk.gov.hmrc.ui.pages.UKResidency
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ResidencyStatus extends BasePage {
+object CloseCompaniesPage extends BasePage {
 
-  override def pageUrl: String = "about-UK-residency/residency-status"
+  override def pageUrl: String = "about-UK-residency/close-companies"
 
-  override def pageTitle: String =
-    "Residency status - About UK residency - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Close companies - About UK residency - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
