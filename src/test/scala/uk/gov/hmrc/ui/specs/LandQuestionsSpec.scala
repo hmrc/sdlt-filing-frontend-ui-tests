@@ -23,7 +23,6 @@ import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.Land.*
-import uk.gov.hmrc.ui.pages.Vendor.WhoIsTheVendor
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -196,7 +195,7 @@ class LandQuestionsSpec
 
     Scenario(
       "Complete the Land Questions user journey with Mixed property with mineral rights routes to agricultural land question and exits without land details",
-      LandJourney
+      wip
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
@@ -278,15 +277,76 @@ class LandQuestionsSpec
       AgriculturalOrDevelopmentalLand.verifyPageTitle(AgriculturalOrDevelopmentalLand.pageTitle)
       When("the user selects the 'No' radio button")
       AgriculturalOrDevelopmentalLand.radioButton(AgriculturalOrDevelopmentalLand.no)
-      //      And("clicks the Save and continue button")
-      //      AgriculturalOrDevelopmentalLand.saveAndContinue()
-      // Then the user is on Check your answers
-      // When the user selects Save and continue
+      And("clicks the Save and continue button")
+      AgriculturalOrDevelopmentalLand.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Do you have an NLPG UPRN for the land or property?")
+      LandCheckYourAnswers.clickDoYouHaveNLPGUPRN()
+      Then("the user should be navigated to Do you have an NLPG UPRN for the land or property ? page")
+      DoYouHaveNLPG.verifyPageTitle(DoYouHaveNLPG.pageTitle)
+      And("selects 'Yes' for having NLPG UPRN")
+      DoYouHaveNLPG.radioButton(DoYouHaveNLPG.yes)
+      And("clicks the Save and continue button")
+      DoYouHaveNLPG.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the link to add NLPG UPRN")
+      LandCheckYourAnswers.clickEnterNLPGUPRN()
+      Then("the user should be navigated to What is the NLPG UPRN for the land or property page")
+      NLPGUPRN.verifyPageTitle(NLPGUPRN.pageTitle)
+      When("the user enters a valid NLPG UPRN ")
+      NLPGUPRN.input(By.id(NLPGUPRN.nlpg_uprn), NLPGUPRN.nlpg_uprnInput)
+      And("clicks the Save and continue button")
+      NLPGUPRN.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for sending plan by post")
+      LandCheckYourAnswers.clickSendingPlanByPost()
+      Then("the user should be navigated to the Sending Plan By Post page")
+      LandSendingPlanByPost.verifyPageTitle(LandSendingPlanByPost.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      LandSendingPlanByPost.radioButton(LandSendingPlanByPost.yes)
+      And("clicks the Save and continue button")
+      LandSendingPlanByPost.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Minerals or Mineral rights")
+      LandCheckYourAnswers.clickMineralsOrMineralRights()
+      Then("the user should be navigated to the Land Minerals Or Mineral Rights page")
+      LandMineralsOrMineralRights.verifyPageTitle(LandMineralsOrMineralRights.pageTitle)
+      When("the user selects the 'No' radio button")
+      LandMineralsOrMineralRights.radioButton(LandMineralsOrMineralRights.no)
+      And("clicks the Save and continue button")
+      LandMineralsOrMineralRights.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Agricultural or Developmental land")
+      LandCheckYourAnswers.clickAgriculturalOrDevelopmentalLand()
+      Then("the user should be navigated to Agricultural Or Developmental Land Page")
+      AgriculturalOrDevelopmentalLand.verifyPageTitle(AgriculturalOrDevelopmentalLand.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      AgriculturalOrDevelopmentalLand.radioButton(AgriculturalOrDevelopmentalLand.no)
+      And("clicks the Save and continue button")
+      AgriculturalOrDevelopmentalLand.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Do you know the area of the land page")
+      LandCheckYourAnswers.clickDoYouKnowAreaOfLand()
+      Then("the user should be navigated to Do you know the area of the land page")
+      DoYouKnowLandArea.verifyPageTitle(DoYouKnowLandArea.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      DoYouKnowLandArea.radioButton(DoYouKnowLandArea.yes)
+      And("clicks the Save and continue button")
+      DoYouKnowLandArea.saveAndContinue()
+      Then("the user is navigated back to Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
 
+
+
+      When("the user selects Save and continue")
+      LandCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Land Overview page")
-      LandOverview.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/land-or-property-overview"
-      )
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
       When("the user selects the 'Yes' radio button")
       LandOverview.radioButton(LandOverview.yes)
