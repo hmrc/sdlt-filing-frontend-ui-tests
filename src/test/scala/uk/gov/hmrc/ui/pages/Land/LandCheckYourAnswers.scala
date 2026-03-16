@@ -56,7 +56,7 @@ object LandCheckYourAnswers extends BasePage {
   val agriculturalOrDevelopmentalLand =
     "a[href='/stamp-duty-land-tax-filing/about-the-land/agricultural-or-developmental-land/change']"
 
-  val doYouKnowAreaOfLand = "a[href='/stamp-duty-land-tax-filing/about-the-land/do-you-know-area-of-land/change']"
+  val doYouKnowAreaOfLand = "a[href='/stamp-duty-land-tax-filing/about-the-land/add-area-of-land/change']"
 
   val areaOfLand = "a[href='/stamp-duty-land-tax-filing/about-the-land/unit-of-measurement/change']"
 
