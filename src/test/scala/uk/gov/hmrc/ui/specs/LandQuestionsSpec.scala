@@ -44,7 +44,7 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -188,7 +188,7 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -323,7 +323,7 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -425,7 +425,7 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
