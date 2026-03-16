@@ -58,9 +58,7 @@ object LandCheckYourAnswers extends BasePage {
 
   val doYouKnowAreaOfLand = "a[href='/stamp-duty-land-tax-filing/about-the-land/do-you-know-area-of-land/change']"
 
-  val areaOfLand = "a[href='/stamp-duty-land-tax-filing/about-the-land/enter-area-of-land/change']"
-
-  val measurementOfArea = "a[href=' ']"
+  val areaOfLand = "a[href='/stamp-duty-land-tax-filing/about-the-land/unit-of-measurement/change']"
 
   def clickTypeOfPropertyChange(): Unit = click(By.cssSelector(typeOfPropertyChange))
 
@@ -89,7 +87,5 @@ object LandCheckYourAnswers extends BasePage {
   def clickDoYouKnowAreaOfLand(): Unit = click(By.cssSelector(doYouKnowAreaOfLand))
 
   def clickAreaOfLand(): Unit = click(By.cssSelector(areaOfLand))
-
-  def clickMeasurementOfArea(): Unit = click(By.cssSelector(measurementOfArea))
 
 }

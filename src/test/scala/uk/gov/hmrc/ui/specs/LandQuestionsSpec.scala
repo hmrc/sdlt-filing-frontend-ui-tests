@@ -41,10 +41,10 @@ class LandQuestionsSpec
 
     Scenario(
       "Complete the Land Questions user journey address lookup used, unregistered with Land Registry, no UPRN (Title and UPRN skipped)",
-      wip
+      LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -113,16 +113,6 @@ class LandQuestionsSpec
       LandMineralsOrMineralRights.radioButton(LandMineralsOrMineralRights.no)
       And("clicks the Save and continue button")
       LandMineralsOrMineralRights.saveAndContinue()
-      Then("the user is on Check your answers page")
-      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for type of property")
-      LandCheckYourAnswers.clickTypeOfPropertyChange()
-      Then("the user should be navigated to What is the type of property")
-      TypeOfProperty.verifyPageTitle(TypeOfProperty.pageTitle)
-      And("the user selects the 'Residential' radio button")
-      TypeOfProperty.radioButton(TypeOfProperty.residential)
-      And("clicks the Save and continue button")
-      TypeOfProperty.saveAndContinue()
       Then("the user is on Check your answers page")
       LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
       When("the user clicks the 'Change' link for Interest transferred or created")
@@ -195,10 +185,10 @@ class LandQuestionsSpec
 
     Scenario(
       "Complete the Land Questions user journey with Mixed property with mineral rights routes to agricultural land question and exits without land details",
-      wip
+      LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -321,37 +311,11 @@ class LandQuestionsSpec
       LandMineralsOrMineralRights.saveAndContinue()
       Then("the user is on Check your answers page")
       LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Agricultural or Developmental land")
-      LandCheckYourAnswers.clickAgriculturalOrDevelopmentalLand()
-      Then("the user should be navigated to Agricultural Or Developmental Land Page")
-      AgriculturalOrDevelopmentalLand.verifyPageTitle(AgriculturalOrDevelopmentalLand.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      AgriculturalOrDevelopmentalLand.radioButton(AgriculturalOrDevelopmentalLand.no)
-      And("clicks the Save and continue button")
-      AgriculturalOrDevelopmentalLand.saveAndContinue()
-      Then("the user is on Check your answers page")
-      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Do you know the area of the land page")
-      LandCheckYourAnswers.clickDoYouKnowAreaOfLand()
-      Then("the user should be navigated to Do you know the area of the land page")
-      DoYouKnowLandArea.verifyPageTitle(DoYouKnowLandArea.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      DoYouKnowLandArea.radioButton(DoYouKnowLandArea.yes)
-      And("clicks the Save and continue button")
-      DoYouKnowLandArea.saveAndContinue()
-      Then("the user is navigated back to Check your answers page")
-      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
-
-
 
       When("the user selects Save and continue")
       LandCheckYourAnswers.saveAndContinue()
       Then("the user is navigated to the Land Overview page")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      LandOverview.radioButton(LandOverview.yes)
-      And("clicks the Continue button")
-      LandOverview.saveAndContinue()
     }
 
     Scenario(
@@ -359,7 +323,7 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -452,7 +416,8 @@ class LandQuestionsSpec
       AddAreaOfTheLand.radioButton(AddAreaOfTheLand.no)
       And("click Save and Continue")
       AddAreaOfTheLand.saveAndContinue()
-      // Then("the user navigated to CYA page")
+      Then("the user navigated to CYA page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
     }
 
     Scenario(
@@ -460,7 +425,7 @@ class LandQuestionsSpec
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -570,14 +535,16 @@ class LandQuestionsSpec
       AreaOfTheLand.input(By.id(AreaOfTheLand.area), AreaOfTheLand.areaHectares)
       And("The user selects save and continue")
       AreaOfTheLand.saveAndContinue()
-      // Then("the user navigated to CYA page")
+      Then("the user navigated to CYA page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
     }
+
     Scenario(
       "Complete the Land Questions user journey Address confirmed, registered with Land Registry, UPRN available (Title and UPRN captured)",
       LandJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("5-lands"))
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page")
@@ -656,22 +623,60 @@ class LandQuestionsSpec
       LandMineralsOrMineralRights.verifyPageTitle(LandMineralsOrMineralRights.pageTitle)
       When("the user selects the 'No' radio button")
       LandMineralsOrMineralRights.radioButton(LandMineralsOrMineralRights.no)
-      // uncomment next two lines when navigation to the next page is ready
-      // And("clicks the Save and continue button")
-      // LandMineralsOrMineralRights.saveAndContinue()
-
-      // Then the user is on Check your answers
-      // When the user selects Save and continue
-
-      Then("the user is navigated to the Land Overview page")
-      LandOverview.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-land/land-or-property-overview"
-      )
-      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+      And("clicks the Save and continue button")
+      LandMineralsOrMineralRights.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for type of property")
+      LandCheckYourAnswers.clickTypeOfPropertyChange()
+      Then("the user should be navigated to What is the type of property")
+      TypeOfProperty.verifyPageTitle(TypeOfProperty.pageTitle)
+      And("the user selects the 'Mixed' radio button")
+      TypeOfProperty.radioButton(TypeOfProperty.residential)
+      And("clicks the Save and continue button")
+      TypeOfProperty.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Agricultural or Developmental land")
+      LandCheckYourAnswers.clickAgriculturalOrDevelopmentalLand()
+      Then("the user should be navigated to Agricultural Or Developmental Land Page")
+      AgriculturalOrDevelopmentalLand.verifyPageTitle(AgriculturalOrDevelopmentalLand.pageTitle)
       When("the user selects the 'Yes' radio button")
-      LandOverview.radioButton(LandOverview.yes)
-      And("clicks the Continue button")
-      LandOverview.saveAndContinue()
+      AgriculturalOrDevelopmentalLand.radioButton(AgriculturalOrDevelopmentalLand.no)
+      And("clicks the Save and continue button")
+      AgriculturalOrDevelopmentalLand.saveAndContinue()
+      Then("the user is on Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Do you know the area of the land page")
+      LandCheckYourAnswers.clickDoYouKnowAreaOfLand()
+      Then("the user should be navigated to Do you know the area of the land page")
+      AddAreaOfTheLand.verifyPageTitle(AddAreaOfTheLand.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      AddAreaOfTheLand.radioButton(AddAreaOfTheLand.yes)
+      And("clicks the Save and continue button")
+      AddAreaOfTheLand.saveAndContinue()
+      Then("the user is navigated back to Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Enter the area of the land page")
+      LandCheckYourAnswers.clickAreaOfLand()
+      Then("the user should be navigated to select one unit of measurement for the area of land page")
+      UnitOfMeasurement.verifyPageTitle(UnitOfMeasurement.pageTitle)
+      When("the user selects 'hectares' as unit of measurement")
+      UnitOfMeasurement.radioButton(UnitOfMeasurement.hectares)
+      And("The user selects save and continue")
+      UnitOfMeasurement.saveAndContinue()
+      Then("User is navigated to area of the land in hectares page")
+      AreaOfTheLand.verifyPageTitle(AreaOfTheLand.pageTitle)
+      When("the user enters area in hectares")
+      AreaOfTheLand.input(By.id(AreaOfTheLand.area), AreaOfTheLand.areaHectares)
+      And("The user selects save and continue")
+      AreaOfTheLand.saveAndContinue()
+      Then("the user is navigated back to Check your answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
+      When("the user selects Save and continue")
+      LandCheckYourAnswers.saveAndContinue()
+      Then("the user is navigated to the Land Overview page")
+      LandOverview.verifyPageTitle(LandOverview.pageTitle)
     }
 
     Scenario(
@@ -682,7 +687,7 @@ class LandQuestionsSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("full-purchaser-with-agent-land-transaction-uk-authcodes")
+        returnId = Some("5-lands")
       )
       When("the user clicks on the 'Land Questions' link")
       LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
