@@ -97,7 +97,6 @@ class UKResidencyQuestionsSpec
 
     }
 
-    // Stub data for scenario should be changed later to a company type purchaser
     Scenario(
       "Complete the UK Residency Questions where Purchaser is a Company having non-uk residents and non-uk close companies",
       UKResidencyJourney
@@ -106,7 +105,7 @@ class UKResidencyQuestionsSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("individual-purchaser-with-agents-full-land-residential")
+        returnId = Some("company-purchaser-with-agents-full-land-residential")
       )
       When("the user clicks on the 'UK Residency Questions' link")
       UKResidencyBeforeYouStart.clickLinkById("task-list-link-uk-residency-questions")
@@ -118,16 +117,14 @@ class UKResidencyQuestionsSpec
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
       When("the user selects Yes radio button")
       ResidencyStatus.radioButton(ResidencyStatus.yes)
-      // ****************Uncomment below 2 lines once navigation is ready*********
-      //      And ("clicks on Save & Continue button")
-      // ResidencyStatus.saveAndContinue()
-      //      Then ("the user is navigated to Close Companies page")
-      //      When ("the user selects Yes radio button")
-      //      And ("clicks on Save & Continue button")
-      // ******Remove below lines when navigation is ready**********
-      CrownEmploymentRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-UK-residency/crown-employment-relief"
-      )
+      And("clicks on Save & Continue button")
+      ResidencyStatus.saveAndContinue()
+      Then("the user is navigated to Close Companies page")
+      CloseCompaniesPage.verifyPageTitle(CloseCompaniesPage.pageTitle)
+      When("the user selects Yes radio button")
+      CloseCompaniesPage.radioButton(CloseCompaniesPage.yes)
+      And("clicks on Save & Continue button")
+      CloseCompaniesPage.saveAndContinue()
       Then("the user is navigated to the Crown Employment Relief page")
       CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
       When("the user select No radio button")
@@ -139,7 +136,6 @@ class UKResidencyQuestionsSpec
 
     }
 
-    // Stub data for scenario should be changed later to a company type purchaser
     Scenario(
       "Complete the UK Residency Questions where Purchaser is a Company having uk residents and no non-uk residents in close companies",
       UKResidencyJourney
@@ -148,7 +144,7 @@ class UKResidencyQuestionsSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("individual-purchaser-with-agents-full-land-residential")
+        returnId = Some("company-purchaser-with-agents-full-land-residential")
       )
       When("the user clicks on the 'UK Residency Questions' link")
       UKResidencyBeforeYouStart.clickLinkById("task-list-link-uk-residency-questions")
@@ -160,12 +156,14 @@ class UKResidencyQuestionsSpec
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
       When("the user selects No radio button")
       ResidencyStatus.radioButton(ResidencyStatus.no)
-      // ****************Uncomment below 2 lines once navigation is ready*********
-      //      And ("clicks on Save & Continue button")
-      // ResidencyStatus.saveAndContinue()
-      //      Then ("the user is navigated to Close Companies page")
-      //      When ("the user selects No radio button")
-      //      And ("clicks on Save & Continue button")
+      And("clicks on Save & Continue button")
+      ResidencyStatus.saveAndContinue()
+      Then("the user is navigated to Close Companies page")
+      CloseCompaniesPage.verifyPageTitle(CloseCompaniesPage.pageTitle)
+      When("the user selects No radio button")
+      CloseCompaniesPage.radioButton(CloseCompaniesPage.no)
+      And("clicks on Save & Continue button")
+      CloseCompaniesPage.saveAndContinue()
       //      Then ("the user is navigated to CYA page")
 
     }
