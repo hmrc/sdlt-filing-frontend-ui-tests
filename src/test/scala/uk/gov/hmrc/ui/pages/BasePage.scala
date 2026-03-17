@@ -24,7 +24,7 @@ import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.selenium.component.PageObject
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.ui.driver.BrowserDriver
-
+import scala.jdk.CollectionConverters._
 import java.time.Duration
 
 trait BasePage extends PageObject with Eventually with Matchers with LazyLogging with BrowserDriver {
@@ -184,4 +184,18 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     assert(element.isDisplayed, s"Element with selector $selector is not displayed.")
   }
 
+  def switchToNewTabAndValidateTitle(expectedTitleContains: String)(implicit driver: WebDriver): Unit = {
+    val wait = new WebDriverWait(driver, Duration.ofSeconds(20))
+    wait.until(ExpectedConditions.numberOfWindowsToBe(2))
+
+    val handles = driver.getWindowHandles.asScala.toList
+    val parent  = driver.getWindowHandle
+    val newTab  = handles.filterNot(_ == parent).head
+    driver.switchTo().window(newTab)
+
+    wait.until(ExpectedConditions.titleContains(expectedTitleContains))
+
+    driver.close()
+    driver.switchTo().window(parent)
+  }
 }
