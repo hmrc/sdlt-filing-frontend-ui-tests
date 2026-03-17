@@ -18,16 +18,15 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object LocalAuthorityCodePage extends BasePage {
+object NLPGUPRN extends BasePage {
 
-  override def pageUrl: String = "about-the-land/local-authority-code"
+  override def pageUrl: String = "about-the-land/enter-NLPG-UPRN"
 
   override def pageTitle: String =
-    "What is the local authority code? - About the land - Stamp Taxes Online - GOV.UK"
+    "What is the NLPG UPRN for the land or property? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def localAuthCode: String = "value"
+  def nlpg_uprn: String = "value"
 
-  def localAuthCodeInput: String      = "4215"
-  def welshLocalAuthCodeInput: String = "6805"
+  def nlpg_uprnInput: String = "NI00045"
 
 }

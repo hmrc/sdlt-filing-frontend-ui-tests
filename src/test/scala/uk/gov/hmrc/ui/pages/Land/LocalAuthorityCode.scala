@@ -18,15 +18,16 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AgriculturalOrDevelopmentalLandPage extends BasePage {
+object LocalAuthorityCode extends BasePage {
 
-  override def pageUrl: String = "about-the-land/agricultural-or-developmental-land"
+  override def pageUrl: String = "about-the-land/local-authority-code"
 
   override def pageTitle: String =
-    "Agricultural or developmental land - About the land - Stamp Taxes Online - GOV.UK"
+    "What is the local authority code? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  def localAuthCode: String = "value"
 
-  def no: String = "#value-2"
+  def localAuthCodeInput: String      = "4215"
+  def welshLocalAuthCodeInput: String = "6805"
 
 }

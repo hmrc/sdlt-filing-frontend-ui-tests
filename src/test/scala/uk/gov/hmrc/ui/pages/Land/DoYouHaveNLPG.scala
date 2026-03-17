@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object UnitOfMeasurementPage extends BasePage {
+object DoYouHaveNLPG extends BasePage {
 
-  override def pageUrl: String = "about-the-land/unit-of-measurement"
+  override def pageUrl: String = "about-the-land/add-NLPG-UPRN"
 
   override def pageTitle: String =
-    "Select one unit of measurement for the area of land - About the land - Stamp Taxes Online - GOV.UK"
+    "Do you have an NLPG UPRN for the land or property? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def hectares: String = "#value_0"
+  def yes: String = "#value"
 
-  def squareMetres: String = "#value_1"
+  def no: String = "#value-2"
 
 }

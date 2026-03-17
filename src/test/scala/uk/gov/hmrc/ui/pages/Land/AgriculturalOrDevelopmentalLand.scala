@@ -18,18 +18,15 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TypeOfPropertyPage extends BasePage {
+object AgriculturalOrDevelopmentalLand extends BasePage {
 
-  override def pageUrl: String = "about-the-land/type-of-property"
+  override def pageUrl: String = "about-the-land/agricultural-or-developmental-land"
 
   override def pageTitle: String =
-    "What is the type of property? - About the land - Stamp Taxes Online - GOV.UK"
+    "Agricultural or developmental land - About the land - Stamp Taxes Online - GOV.UK"
 
-  def residential: String = "#value_0"
+  def yes: String = "#value"
 
-  def mixed: String = "#value_1"
+  def no: String = "#value-2"
 
-  def non_residential: String = "#value_2"
-
-  def additional_residential: String = "#value_3"
 }

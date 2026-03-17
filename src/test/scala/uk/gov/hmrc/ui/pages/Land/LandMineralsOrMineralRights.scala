@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object LandMineralsOrMineralRightsPage extends BasePage {
+object LandMineralsOrMineralRights extends BasePage {
 
   override def pageUrl: String = "about-the-land/minerals-or-mineral-rights"
 
