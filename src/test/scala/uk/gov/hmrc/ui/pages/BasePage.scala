@@ -24,8 +24,10 @@ import org.scalatest.matchers.must.Matchers
 import uk.gov.hmrc.selenium.component.PageObject
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.ui.driver.BrowserDriver
-import scala.jdk.CollectionConverters._
+
+import scala.jdk.CollectionConverters.*
 import java.time.Duration
+import scala.runtime.stdLibPatches.Predef.assert
 
 trait BasePage extends PageObject with Eventually with Matchers with LazyLogging with BrowserDriver {
 
@@ -41,11 +43,12 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     val btnContinue        = ".govuk-button"
     val lnkBack            = "Back"
     val btnSubmit          = ".govuk-button"
-    val continueButton     = By.cssSelector("#continue")
+    val continueButton: By = By.cssSelector("#continue")
     val lnkHeader          = ".govuk-header__link.govuk-header__service-name"
     val rdoYes             = "#value_0"
     val rdoNo              = "#value_1"
     val txtFileName        = ".govuk-body"
+    val paragraphText      = By.ByClassName("govuk-body")
     val txtBannerTitle     = "#govuk-notification-banner-title"
     val lnkRemoveFile      = "dd[class='govuk-summary-list__actions'] a[class='govuk-link']"
     val txtMonth: By       = By.ById("value.month")
@@ -105,23 +108,33 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
   }
 
   /** Specific actions */
-  def clickSubmitButton(): Unit   = click(By.cssSelector(Locators.btnSubmit))
+  def clickSubmitButton(): Unit = click(By.cssSelector(Locators.btnSubmit))
+
   def clickContinueButton(): Unit = click(Locators.continueButton)
-  def clickBackLink(): Unit       = click(By.linkText(Locators.lnkBack))
-  def saveAndContinue(): Unit     = click(By.cssSelector(Locators.btnContinue))
-  def acceptAndContinue(): Unit   = click(By.cssSelector(Locators.btnContinue))
-  def header(): Unit              = click(By.cssSelector(Locators.lnkHeader))
-  def removeFile(): Unit          = click(By.cssSelector(Locators.lnkRemoveFile))
+
+  def clickBackLink(): Unit = click(By.linkText(Locators.lnkBack))
+
+  def saveAndContinue(): Unit = click(By.cssSelector(Locators.btnContinue))
+
+  def acceptAndContinue(): Unit = click(By.cssSelector(Locators.btnContinue))
+
+  def header(): Unit = click(By.cssSelector(Locators.lnkHeader))
+
+  def removeFile(): Unit = click(By.cssSelector(Locators.lnkRemoveFile))
 
   /** Navigation methods */
   def navigateToPage(url: String): Unit = driver.navigate().to(url)
-  def navigateBackToPage(): Unit        = driver.navigate().back()
+
+  def navigateBackToPage(): Unit = driver.navigate().back()
 
   /** Page validation methods */
-  def isCurrentPage: Boolean         = pageTitle.startsWith(getPageTitle)
-  def isCurrentUrl: Boolean          = getCurrentUrlInBrowser.contains(pageUrl)
+  def isCurrentPage: Boolean = pageTitle.startsWith(getPageTitle)
+
+  def isCurrentUrl: Boolean = getCurrentUrlInBrowser.contains(pageUrl)
+
   def getCurrentUrlInBrowser: String = driver.getCurrentUrl
-  def getPageTitle: String           = driver.getTitle
+
+  def getPageTitle: String = driver.getTitle
 
   /** Wait for page to load */
   def waitForPage(): Unit = fluentWait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("footer")))
@@ -198,4 +211,20 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     driver.close()
     driver.switchTo().window(parent)
   }
+
+  def verifyPageText(expectedText: String, index: Int = 0): Unit = {
+    waitForVisibilityOfElement(Locators.paragraphText)
+    val elements   = driver.findElements(Locators.paragraphText)
+    assert(
+      index < elements.size(),
+      s"Index $index is out of range."
+    )
+    val actualText = elements.get(index).getText
+    assert(
+      actualText == expectedText,
+      s"Page text mismatch at index $index! Expected: $expectedText, Actual: $actualText"
+    )
+    println("Actual page text is: " + actualText)
+  }
+
 }
