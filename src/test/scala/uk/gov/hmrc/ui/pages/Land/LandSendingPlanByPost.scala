@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
 object LandSendingPlanByPost extends BasePage {
@@ -28,4 +29,10 @@ object LandSendingPlanByPost extends BasePage {
   def yes: String = "#value"
 
   def no: String = "#value-2"
+
+  def clickDropdownText(): Unit = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
+
+  def dropdownText: String =
+    "The plan should indicate the scale used or be endorsed as ‘Not to Scale’. It must also show the return’s reference number, a description of the land and the local authority code."
+
 }

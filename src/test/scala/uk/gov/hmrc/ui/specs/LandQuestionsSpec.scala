@@ -26,6 +26,7 @@ import uk.gov.hmrc.ui.pages.Land.*
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import uk.gov.hmrc.selenium.webdriver.Driver.instance
 
 class LandQuestionsSpec
     extends AnyFeatureSpec
@@ -82,6 +83,8 @@ class LandQuestionsSpec
       LandAddress.clickContinueButton()
       Then("the user is on What is the local authority code")
       LocalAuthorityCode.verifyPageTitle(LocalAuthorityCode.pageTitle)
+      And("the user clicks on the link list of local auth codes")
+      LocalAuthorityCode.validateListOfLocalAuthCodeLink()
       And("the user enters a valid local authority code")
       LocalAuthorityCode.input(
         By.id(LocalAuthorityCode.localAuthCode),
@@ -103,6 +106,10 @@ class LandQuestionsSpec
       DoYouHaveNLPG.saveAndContinue()
       Then("the user is navigated to the Sending Plan By Post page")
       LandSendingPlanByPost.verifyPageTitle(LandSendingPlanByPost.pageTitle)
+      When("The user clicks the dropdown window")
+      LandSendingPlanByPost.clickDropdownText()
+      And("The dropdown text appears")
+      LandSendingPlanByPost.verifyPageText(LandSendingPlanByPost.dropdownText, 1)
       When("the user selects the 'Yes' radio button")
       LandSendingPlanByPost.radioButton(LandSendingPlanByPost.yes)
       And("clicks the Save and continue button")

@@ -55,6 +55,8 @@ class UKResidencyQuestionsSpec
       UKResidencyBeforeYouStart.saveAndContinue()
       Then("the user is navigated to Residency Status page")
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
+      And("The user clicks the Residency Status link")
+      ResidencyStatus.clickResidencyStatusLink()
       When("the user selects Yes radio button")
       ResidencyStatus.radioButton(ResidencyStatus.yes)
       And("clicks on Save & Continue button")

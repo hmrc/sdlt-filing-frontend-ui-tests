@@ -16,18 +16,25 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
+import org.openqa.selenium.WebDriver
 
 object LocalAuthorityCode extends BasePage {
 
   override def pageUrl: String = "about-the-land/local-authority-code"
 
-  override def pageTitle: String =
-    "What is the local authority code? - About the land - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "What is the local authority code? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def localAuthCode: String = "value"
+  def localAuthCode: String          = "value"
+  def clickLocalAuthCodeLink(): Unit = click(By.xpath("//a[contains(@href,'sdltm62320')]"))
 
   def localAuthCodeInput: String      = "4215"
   def welshLocalAuthCodeInput: String = "6805"
+
+  def validateListOfLocalAuthCodeLink()(implicit driver: WebDriver): Unit = {
+    clickLocalAuthCodeLink()
+    switchToNewTabAndValidateTitle("SDLTM62320")
+  }
 
 }

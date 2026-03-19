@@ -17,6 +17,7 @@
 package uk.gov.hmrc.ui.pages.UKResidency
 
 import uk.gov.hmrc.ui.pages.BasePage
+import org.openqa.selenium.{By, WebDriver}
 
 object ResidencyStatus extends BasePage {
 
@@ -29,4 +30,12 @@ object ResidencyStatus extends BasePage {
 
   def no: String = "#value-2"
 
+  def clickResidencyStatusLink(): Unit = click(
+    By.xpath("//a[contains(@href,'rates-of-stamp-duty-land-tax-for-non-uk-residents')]")
+  )
+
+  def validateListOfResidencyStatusLink()(implicit driver: WebDriver): Unit = {
+    clickResidencyStatusLink()
+    switchToNewTabAndValidateTitle("rates-of-stamp-duty-land-tax-for-non-uk-residents")
+  }
 }
