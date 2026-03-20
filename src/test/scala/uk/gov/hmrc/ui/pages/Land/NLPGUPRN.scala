@@ -25,8 +25,8 @@ object NLPGUPRN extends BasePage {
   override def pageTitle: String =
     "What is the NLPG UPRN for the land or property? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def nlpg_uprn: String = "value"
+  val nlpg_uprn: String = "value"
 
-  def nlpg_uprnInput: String = "NI00045"
+  val nlpg_uprnInput: String = "NI00045"
 
 }

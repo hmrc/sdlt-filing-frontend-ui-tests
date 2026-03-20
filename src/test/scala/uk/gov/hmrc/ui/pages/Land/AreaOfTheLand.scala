@@ -30,10 +30,10 @@ object AreaOfTheLand extends BasePage {
 
   val headerHectares: By = By.xpath("""//label[normalize-space(.)='What is the area of the land in hectares?']""")
 
-  def area: String = "value"
+  val area: String = "value"
 
-  def areaHectares: String = "413.245"
+  val areaHectares: String = "413.245"
 
-  def areaSquareMetres: String = "413"
+  val areaSquareMetres: String = "413"
 
 }

@@ -27,7 +27,6 @@ import uk.gov.hmrc.ui.driver.BrowserDriver
 
 import scala.jdk.CollectionConverters.*
 import java.time.Duration
-import scala.runtime.stdLibPatches.Predef.assert
 
 trait BasePage extends PageObject with Eventually with Matchers with LazyLogging with BrowserDriver {
 

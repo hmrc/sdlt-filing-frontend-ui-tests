@@ -24,13 +24,14 @@ object LocalAuthorityCode extends BasePage {
 
   override def pageUrl: String = "about-the-land/local-authority-code"
 
-  override def pageTitle: String = "What is the local authority code? - About the land - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "What is the local authority code? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def localAuthCode: String          = "value"
   def clickLocalAuthCodeLink(): Unit = click(By.xpath("//a[contains(@href,'sdltm62320')]"))
+  val localAuthCode: String          = "value"
 
-  def localAuthCodeInput: String      = "4215"
-  def welshLocalAuthCodeInput: String = "6805"
+  val localAuthCodeInput: String      = "4215"
+  val welshLocalAuthCodeInput: String = "6805"
 
   def validateListOfLocalAuthCodeLink()(implicit driver: WebDriver): Unit = {
     clickLocalAuthCodeLink()

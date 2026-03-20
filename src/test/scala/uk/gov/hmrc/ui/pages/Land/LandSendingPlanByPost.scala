@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
+import org.openqa.selenium.By
 
 object LandSendingPlanByPost extends BasePage {
 
@@ -26,9 +26,9 @@ object LandSendingPlanByPost extends BasePage {
   override def pageTitle: String =
     "Sending a plan by post - About the land - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  val yes: String = "#value"
 
-  def no: String = "#value-2"
+  val no: String = "#value-2"
 
   def clickDropdownText(): Unit = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
 
