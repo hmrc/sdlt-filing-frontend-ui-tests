@@ -39,211 +39,231 @@ class VendorAgentQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Vendor Questions") {
+
     Scenario(
       "Complete the Vendor Agent journey with contact details and reference information",
       VendorAgentJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
-      When("the user clicks on the 'Vendor Agent Questions' link")
+
+      When("the user opens the vendor agent questions")
       WhoIsTheVendor.clickLinkById("task-list-link-vendor-agent-questions")
-      Then("the user is navigated to the Vendor Agent Before You Start page")
+
+      Then("the Vendor Agent Before You Start page is displayed")
       VendorAgentBeforeYouStart.verifyPageTitle(VendorAgentBeforeYouStart.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user starts the vendor agent questions journey")
       VendorAgentBeforeYouStart.radioButton(VendorAgentBeforeYouStart.yes)
-      And("clicks the Save and continue button")
       VendorAgentBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Name page")
+
+      Then("the Vendor Agent Name page is displayed")
       VendorAgentName.verifyPageTitle(VendorAgentName.pageTitle)
-      When("the user inputs their Vendor Agent's name")
+
+      When("the user inputs the vendor agent name")
       VendorAgentName.input(
         By.id(VendorAgentName.agentName),
         VendorAgentName.agentNameInput
       )
-      And("clicks the Save and continue button")
       VendorAgentName.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Address page")
+
+      Then("the Vendor Agent Address page is displayed")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.pageTitle)
-      When("the user clicks on the 'Enter the address manually' link")
+
+      When("the user enters the vendor agent address manually")
       VendorAgentAddress.clickAddressManually()
-      And("enters their address manually")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.editPageTitleAgent)
       VendorAgentAddress.enterAddressManually("523", "AGC", "TE12 1TS")
-      Then("the user is navigated to the Vendor Agent Address page to 'Review and confirm' the address")
+
+      Then("the Confirm Vendor Agent Property Address page is displayed")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.confirmPageTitleAgent)
-      When("the user clicks the Confirm address button")
+
+      When("the user confirms the address")
       VendorPropertyAddress.clickContinueButton()
-      Then("the user is navigated to the Add Agent Contact Details page")
+
+      Then("the Add Agent Contact Details page is displayed")
       AddVendorAgentContactDetails.verifyPageTitle(AddVendorAgentContactDetails.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user chooses to add contact details")
       AddVendorAgentContactDetails.radioButton(AddVendorAgentContactDetails.yes)
-      And("clicks the Save and continue button")
       AddVendorAgentContactDetails.saveAndContinue()
-      Then("the user is navigated to the Enter Agent Contact Details page")
+
+      Then("the Enter Agent Contact Details page is displayed")
       VendorAgentEnterContactDetails.verifyPageTitle(VendorAgentEnterContactDetails.pageTitle)
-      When("the user inputs their phone number")
+
+      When("the user enters a phone number")
       VendorAgentEnterContactDetails.input(
         By.id(VendorAgentEnterContactDetails.phoneNumber),
         VendorAgentEnterContactDetails.phoneNumberInput
       )
-      And("inputs their email address")
+      And("and email address")
       VendorAgentEnterContactDetails.input(
         By.id(VendorAgentEnterContactDetails.emailAddress),
         VendorAgentEnterContactDetails.emailAddressInput
       )
-      And("clicks the Save and continue button")
       VendorAgentEnterContactDetails.saveAndContinue()
-      Then("the user is navigated to Add Agent Reference Number page")
+
+      Then("the Add Agent Reference Number page is displayed")
       AddVendorAgentReferenceNumber.verifyPageTitle(AddVendorAgentReferenceNumber.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user chooses to add a reference number")
       AddVendorAgentReferenceNumber.radioButton(AddVendorAgentReferenceNumber.yes)
-      And("clicks the Save and continue button")
       AddVendorAgentReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Enter Agent Reference Number page")
+
+      Then("the Enter Agent Reference Number page is displayed")
       VendorAgentEnterReferenceNumber.verifyPageTitle(VendorAgentEnterReferenceNumber.pageTitle)
-      When("the user enters their agent reference number")
+
+      When("the user enters an agent reference number")
       VendorAgentEnterReferenceNumber.input(
         By.id(VendorAgentEnterReferenceNumber.agentReference),
         VendorAgentEnterReferenceNumber.agentReferenceNumber
       )
-      And("clicks the Save and continue button")
       VendorAgentEnterReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent Check Your Answers page is displayed")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the Save and continue button")
+
+      When("the user submits the vendor agent questions")
       VendorAgentCheckYourAnswers.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Overview page")
+
+      Then("the Vendor Agent Overview page is displayed")
       VendorAgentOverview.verifyPageTitle(VendorAgentOverview.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user adds a vendor agent")
       VendorAgentOverview.radioButton(VendorAgentOverview.yes)
-      And("clicks the Save and continue button")
       VendorAgentOverview.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Name page")
+
+      Then("the Vendor Agent Name page is displayed")
       VendorAgentName.verifyPageTitle(VendorAgentName.pageTitle)
     }
 
     Scenario(
-      "Complete the Vendor Agent journey with no contact details and reference information",
+      "Complete the Vendor Agent journey without contact details and reference information",
       VendorAgentJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
-      When("the user clicks on the 'Vendor Agent Questions' link")
+
+      When("the user opens the vendor agent questions")
       WhoIsTheVendor.clickLinkById("task-list-link-vendor-agent-questions")
-      Then("the user is navigated to the Vendor Agent Before You Start page")
+
+      Then("the Vendor Agent Before You Start page is displayed")
       VendorAgentBeforeYouStart.verifyPageTitle(VendorAgentBeforeYouStart.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user starts the vendor agent questions journey")
       VendorAgentBeforeYouStart.radioButton(VendorAgentBeforeYouStart.yes)
-      And("clicks the Save and continue button")
       VendorAgentBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Name page")
+
+      Then("the Vendor Agent Name page is displayed")
       VendorAgentName.verifyPageTitle(VendorAgentName.pageTitle)
-      When("the user inputs their Vendor Agent's name")
+
+      When("the user inputs the vendor agent name")
       VendorAgentName.input(
         By.id(VendorAgentName.agentName),
         VendorAgentName.agentNameInput
       )
-      And("clicks the Save and continue button")
       VendorAgentName.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Address page")
+
+      Then("the Vendor Agent Address page is displayed")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.pageTitle)
-      When("the user clicks on the 'Enter the address manually' link")
+
+      When("the user enters the vendor address manually")
       VendorAgentAddress.clickAddressManually()
-      And("enters their address manually")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.editPageTitleAgent)
       VendorAgentAddress.enterAddressManually("523", "AGC", "TE12 1TS")
-      Then("the user is navigated to the Vendor Agent Address page to 'Review and confirm' the address")
+
+      Then("the Confirm Vendor Property Address page is displayed")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.confirmPageTitleAgent)
-      When("the user clicks the Confirm address button")
+
+      When("the user confirms the address")
       VendorPropertyAddress.clickContinueButton()
-      Then("the user is navigated to the Add Agent Contact Details page")
+
+      Then("the Add Agent Contact Details page is displayed")
       AddVendorAgentContactDetails.verifyPageTitle(AddVendorAgentContactDetails.pageTitle)
-      When("the user selects the 'No' radio button")
+
+      When("the user chooses not to add contact details")
       AddVendorAgentContactDetails.radioButton(AddVendorAgentContactDetails.no)
-      And("clicks the Save and continue button")
       AddVendorAgentContactDetails.saveAndContinue()
-      Then("the user is navigated to Add Agent Reference Number page")
+
+      Then("the Add Agent Reference Number page is displayed")
       AddVendorAgentReferenceNumber.verifyPageTitle(AddVendorAgentReferenceNumber.pageTitle)
-      When("the user selects the 'No' radio button")
+
+      When("the user chooses not to add a reference number")
       AddVendorAgentReferenceNumber.radioButton(AddVendorAgentReferenceNumber.no)
-      And("clicks the Save and continue button")
       AddVendorAgentReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent Check Your Answers page is displayed")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Agent name")
+
+      When("the user updates the vendor agent name")
       VendorAgentCheckYourAnswers.clickVendorAgentNameChange()
-      Then("the user is navigated to the Vendor Agent Name page")
       VendorAgentName.verifyPageTitle(VendorAgentName.pageTitle)
-      When("the user updates their agent's name")
       VendorAgentName.input(By.id(VendorAgentName.agentName), VendorAgentName.agentNameInput2)
-      And("clicks the Save and continue button")
       VendorAgentName.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent name is updated on the Check Your Answers page")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Agent Address")
+
+      When("the user updates the vendor agent address")
       VendorAgentCheckYourAnswers.clickVendorAgentAddressChange()
-      Then("the user is navigated to the Vendor Agent Address page")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.pageTitle2)
-      When("the user clicks on the 'Enter the address manually' link")
       VendorAgentAddress.clickAddressManually()
-      And("enters their updated address manually")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.editPageTitleAgent2)
       VendorAgentAddress.enterAddressManually("123", "TEST", "ZZ11 1ZZ")
-      Then("the user is navigated to the Vendor Agent Address page to 'Review and confirm' the address")
       VendorAgentAddress.verifyPageTitle(VendorAgentAddress.confirmPageTitleAgent2)
-      When("the user clicks the Confirm address button")
       VendorAgentAddress.clickContinueButton()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent address is updated on the Check Your Answers page")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Do you want to add contact details")
+
+      When("the user chooses to add contact details")
       VendorAgentCheckYourAnswers.clickAddAgentContactDetailsChange()
-      Then("the user is navigated to the Add Agent Contact Details page")
       AddVendorAgentContactDetails.verifyPageTitle(AddVendorAgentContactDetails.pageTitle)
-      When("the user selects the 'Yes' radio button")
       AddVendorAgentContactDetails.radioButton(AddVendorAgentContactDetails.yes)
-      And("clicks the Save and continue button")
       AddVendorAgentContactDetails.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent contact details are updated on the Check Your Answers page")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Enter Agent Contact details")
+
+      When("the user enters the contact details")
       VendorAgentCheckYourAnswers.clickVendorAgentContactDetailsChange()
-      Then("the user is navigated to the Enter Agent Contact Details page")
       VendorAgentEnterContactDetails.verifyPageTitle(VendorAgentEnterContactDetails.pageTitle)
-      When("the user updates their phone number")
       VendorAgentEnterContactDetails.input(
         By.id(VendorAgentEnterContactDetails.phoneNumber),
         VendorAgentEnterContactDetails.phoneNumberInput
       )
-      And("the user clicks the Save and continue button")
       VendorAgentEnterContactDetails.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent contact details are updated on the Check Your Answers page")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Do you want to add a reference")
+
+      When("the user chooses to add a reference number")
       VendorAgentCheckYourAnswers.clickDoYouWantToAddReferenceChange()
-      Then("the user is navigated to Add Agent Reference Number page")
       AddVendorAgentReferenceNumber.verifyPageTitle(AddVendorAgentReferenceNumber.pageTitle)
-      When("the user selects the 'Yes' radio button")
       AddVendorAgentReferenceNumber.radioButton(AddVendorAgentReferenceNumber.yes)
-      And("clicks the Save and continue button")
       AddVendorAgentReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent reference number is updated on the Check Your Answers page")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Enter Agent Reference Number")
+
+      When("the user enters the reference number")
       VendorAgentCheckYourAnswers.clickVendorAgentReferenceNumberChange()
-      Then("the user is navigated to the Enter Agent Reference Number page")
       VendorAgentEnterReferenceNumber.verifyPageTitle(VendorAgentEnterReferenceNumber.pageTitle)
-      When("the user enters their agent reference number")
       VendorAgentEnterReferenceNumber.input(
         By.id(VendorAgentEnterReferenceNumber.agentReference),
         VendorAgentEnterReferenceNumber.agentReferenceNumber2
       )
-      And("clicks the Save and continue button")
       VendorAgentEnterReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent Check Your Answers page is displayed")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the Save and continue button")
+
+      When("the user submits the vendor agent questions")
       VendorAgentCheckYourAnswers.saveAndContinue()
-      Then("User should be navigated to Vendor Agent's overview page")
+
+      Then("the Vendor Agent Overview page is displayed")
       VendorAgentOverview.verifyPageTitle(VendorAgentOverview.pageTitle)
     }
 
@@ -251,25 +271,33 @@ class VendorAgentQuestionsSpec
       "Begin the Vendor Agent journey and remove a vendor agent",
       VendorAgentJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
-      When("the user clicks on the 'Vendor Agent Questions' link")
+
+      When("the user opens the vendor agent questions")
       WhoIsTheVendor.clickLinkById("task-list-link-vendor-agent-questions")
-      Then("the user is navigated to the Vendor Agent Overview page")
+
+      Then("the Vendor Agent Overview page is displayed")
       VendorAgentOverview.verifyPageTitle(VendorAgentOverview.pageTitle)
-      When("the user clicks the 'Remove' link to remove a vendor agent")
+
+      When("the user removes an existing vendor")
       VendorAgentOverview.clickVendorAgentRemove()
-      Then("the user is navigated to Are you sure you want to remove the vendor agent page")
+
+      Then("the Remove Vendor Agent page is displayed")
       RemoveVendorAgent.verifyPageTitle(RemoveVendorAgent.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user confirms the vendor agent removal")
       RemoveVendorAgent.radioButton(RemoveVendorAgent.yes)
-      And("clicks the Save and continue button")
       RemoveVendorAgent.saveAndContinue()
-      Then("the user is navigated to the Vendor Agent Overview page")
+
+      Then("the Vendor Agent Overview page is displayed")
       VendorAgentOverview.verifyPageTitle(VendorAgentOverview.pageTitle)
-      When("the user clicks the 'Change' link to amend a vendor agent's details")
+
+      When("the user edits the Vendor Agent details")
       VendorAgentOverview.clickVendorAgentChange()
-      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+
+      Then("the Vendor Agent Check Your Answers page is displayed")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
     }
   }
