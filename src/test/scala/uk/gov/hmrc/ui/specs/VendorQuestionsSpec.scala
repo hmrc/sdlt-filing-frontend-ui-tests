@@ -38,136 +38,161 @@ class VendorQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Vendor Questions") {
+
     Scenario(
-      "Complete the Vendor Questions user journey as a Company",
+      "Complete the Vendor Questions journey as a Company",
       VendorJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
-      When("the user clicks on the 'Vendor Questions' link")
+
+      When("the user opens the vendor questions")
       WhoIsTheVendor.clickLinkById("task-list-link-vendor-questions")
-      Then("the user is navigated to the Vendor Overview page")
+
+      Then("the Vendor Overview page is displayed")
       VendorOverview.verifyPageTitle(VendorOverview.pageTitle)
-      When("the user clicks the 'Remove' link to remove a vendor")
+
+      When("the user removes an existing vendor")
       VendorOverview.clickRemoveVendor()
-      Then("the user is navigated to the Remove Vendor page")
+
+      Then("the Remove Vendor page is displayed")
       RemoveVendor.verifyPageTitle(RemoveVendor.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user confirms the vendor's removal")
       RemoveVendor.radioButton(RemoveVendor.yes)
-      And("clicks the Save and continue button")
       RemoveVendor.saveAndContinue()
-      Then("the user is navigated to the Vendor Overview page")
+
+      Then("the Vendor Overview page is displayed")
       VendorOverview.verifyPageTitle(VendorOverview.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user adds a vendor")
       VendorOverview.radioButton(VendorOverview.yes)
-      And("clicks the Continue button")
       VendorOverview.saveAndContinue()
-      Then("the user is navigated to the Vendor Before You Start page")
+
+      Then("the Vendor Before You Start page is displayed")
       VendorBeforeYouStart.verifyPageTitle(VendorBeforeYouStart.pageTitle)
-      When("the user clicks the Continue button")
+
+      When("the user continues the journey")
       VendorBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to the Who Is The Vendor page")
+
+      Then("the Who Is The Vendor page is displayed")
       WhoIsTheVendor.verifyPageTitle(WhoIsTheVendor.pageTitle)
-      When("the user selects the 'A Company' radio button")
+
+      When("the user selects Company as the vendor type")
       WhoIsTheVendor.radioButton(WhoIsTheVendor.company)
-      And("clicks the Save and continue button")
       WhoIsTheVendor.saveAndContinue()
-      Then("the user is navigated to the Vendor Name page")
+
+      Then("the Vendor Name page is displayed")
       WhoIsTheVendor.verifyPageTitle(VendorName.pageTitleCompany)
-      When("the user inputs their company name")
+
+      When("the user enters the company name")
       VendorName.input(
         By.id(VendorName.companyName),
         VendorName.companyNameInput
       )
-      And("clicks the Save and continue button")
       VendorName.saveAndContinue()
-      Then("the user is navigated to the Confirm Vendors Address page")
+
+      Then("the Confirm Vendors Address page is displayed")
       ConfirmVendorsAddress.verifyPageTitle(ConfirmVendorsAddress.pageTitle)
-      When("the user selects the 'No' radio button")
+
+      When("the user chooses to enter the address manually")
       ConfirmVendorsAddress.radioButton(ConfirmVendorsAddress.no)
-      And("clicks the Save and continue button")
       ConfirmVendorsAddress.saveAndContinue()
-      Then("the user is navigated to the Vendor Property Address page")
+
+      Then("the Vendor Property Address page is displayed")
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.pageTitle)
-      When("the user clicks on the 'Enter the address manually' link")
+
+      When("the user enters the vendor address manually")
       VendorPropertyAddress.clickAddressManually()
-      And("enters their address manually")
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.editPageTitleBusiness)
       VendorPropertyAddress.enterAddressManually("523", "AGC", "TE11 1TS")
-      Then("the user is navigated to the Vendor Property Address page to 'Review and confirm' the address")
+
+      Then("the Confirm Vendor Property Address page is displayed")
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.confirmPageTitleBusiness)
-      When("the user clicks the Confirm address button")
+
+      When("the user confirms the address")
       VendorPropertyAddress.clickContinueButton()
-      Then("the user is navigated to the Vendor Check Your Answers page")
+
+      Then("the Vendor Check Your Answers page is displayed")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Vendor type")
+
+      When("the user changes the vendor type to Individual")
       VendorCheckYourAnswers.clickVendorTypeChange()
-      Then("the user is navigated to the Who Is The Vendor page")
       WhoIsTheVendor.verifyPageTitle(WhoIsTheVendor.pageTitle)
-      When("the user selects the 'An Individual' radio button")
       WhoIsTheVendor.radioButton(WhoIsTheVendor.individual)
-      And("clicks the Save and continue button")
       WhoIsTheVendor.saveAndContinue()
-      Then("the user is navigated to the Vendor Check Your Answers page")
+
+      Then("the Vendor Check Your Answers page is displayed")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Vendor Name")
+
+      When("the user changes the vendor name")
       VendorCheckYourAnswers.clickVendorNameChange()
-      Then("the user is navigated to Vendor Name page")
+
+      Then("the Vendor Name page is displayed")
       VendorName.verifyPageTitle(VendorName.pageTitle)
-      When("the user updates their surname")
+
+      When("the user enters the individual's name")
       VendorName.vendorFullNameInput()
-      And("clicks the Save and continue button")
       VendorName.saveAndContinue()
-      Then("the user is navigated to the Vendor Check Your Answers page")
+
+      Then("the Vendor Check Your Answers page is displayed")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Vendor address")
+
+      When("the user changes the vendor address")
       VendorCheckYourAnswers.clickVendorAddressChange()
-      Then("the user is navigated to the Vendor Address page")
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.PageTitleIndividual)
-      When("the user clicks on the 'Enter the address manually' link")
       VendorPropertyAddress.clickAddressManually()
-      And("enters their address manually")
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.editPageTitleIndividual)
       VendorPropertyAddress.enterAddressManually("123", "TEST", "ZZ11 1ZZ")
-      Then("the user is navigated to the Property Address page to 'Review and confirm' the address")
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.confirmPageTitleIndividual)
-      And("clicks the Confirm address button")
       VendorPropertyAddress.clickContinueButton()
-      Then("the user is navigated to the Check Your Answers page")
+
+      Then("the Vendor Check Your Answers page is displayed")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
-      When("the user clicks the Save and continue button")
+
+      When("the user submit the vendor questions")
       VendorCheckYourAnswers.saveAndContinue()
-      Then("the user is navigated to the Vendor Overview page")
+
+      Then("the Vendor Overview page is displayed")
       VendorOverview.verifyPageTitle(VendorOverview.pageTitle)
     }
 
     Scenario(
-      "Complete the Vendor Questions user journey as an Individual",
+      "Complete the Vendor Questions journey as an Individual",
       VendorJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
-      When("the user clicks on the 'Vendor Questions' link")
+
+      When("the user opens the vendor questions")
       WhoIsTheVendor.clickLinkById("task-list-link-vendor-questions")
-      Then("the user is navigated to the Vendor Overview page")
+
+      Then("the Vendor Overview page is displayed")
       VendorOverview.verifyPageTitle(VendorOverview.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user adds a vendor")
       VendorOverview.radioButton(VendorOverview.yes)
-      And("clicks the Continue button")
       VendorOverview.saveAndContinue()
-      Then("the user is navigated to the Vendor Before You Start page")
+
+      Then("the Before You Start page is displayed")
       VendorBeforeYouStart.verifyPageTitle(VendorBeforeYouStart.pageTitle)
-      When("the user clicks the Continue button")
+
+      When("the user continues the journey")
       VendorBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to the Who Is The Vendor page")
+
+      Then("the Who Is The Vendor page is displayed")
       WhoIsTheVendor.verifyPageTitle(WhoIsTheVendor.pageTitle)
-      When("the user selects the 'An Individual' radio button")
+
+      When("the user selects Individual as the vendor type")
       WhoIsTheVendor.radioButton(WhoIsTheVendor.individual)
-      And("clicks the Save and continue button")
       WhoIsTheVendor.saveAndContinue()
-      Then("the user is navigated to the Vendor Name page")
+
+      Then("the Vendor Name page is displayed")
       WhoIsTheVendor.verifyPageTitle(VendorName.pageTitle)
-      When("the user inputs their first name, middle name, and surname")
+
+      When("the user enters the vendor name")
       VendorName.input(
         By.id(VendorName.forename),
         VendorName.forenameInput
@@ -180,15 +205,16 @@ class VendorQuestionsSpec
         By.id(VendorName.surname),
         VendorName.surnameInput
       )
-      And("clicks the Save and continue button")
       VendorName.saveAndContinue()
-      Then("the user is navigated to the Confirm Vendors Address page")
+
+      Then("the Confirm Vendors Address page is displayed")
       ConfirmVendorsAddress.verifyPageTitle(ConfirmVendorsAddress.pageTitleIndividual)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user confirms the address")
       ConfirmVendorsAddress.radioButton(ConfirmVendorsAddress.yes)
-      And("clicks the Save and continue button")
       ConfirmVendorsAddress.saveAndContinue()
-      Then("the user is navigated to the Vendor Check Your Answers page")
+
+      Then("the Check Your Answers page is displayed")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
     }
   }
