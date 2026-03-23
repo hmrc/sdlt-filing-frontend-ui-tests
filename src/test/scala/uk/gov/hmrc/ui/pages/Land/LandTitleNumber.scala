@@ -25,8 +25,8 @@ object LandTitleNumber extends BasePage {
   override def pageTitle: String =
     "Title number for the land or property - About the land - Stamp Taxes Online - GOV.UK"
 
-  def landTitleNumber: String = "value"
+  val landTitleNumber: String = "value"
 
-  def landTitleNumberInput: String = "TGL312172"
+  val landTitleNumberInput: String = "TGL312172"
 
 }

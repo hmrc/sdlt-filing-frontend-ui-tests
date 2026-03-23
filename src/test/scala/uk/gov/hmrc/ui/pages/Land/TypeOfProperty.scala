@@ -25,11 +25,11 @@ object TypeOfProperty extends BasePage {
   override def pageTitle: String =
     "What is the type of property? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def residential: String = "#value_0"
+  val residential: String = "#value_0"
 
-  def mixed: String = "#value_1"
+  val mixed: String = "#value_1"
 
-  def non_residential: String = "#value_2"
+  val non_residential: String = "#value_2"
 
-  def additional_residential: String = "#value_3"
+  val additional_residential: String = "#value_3"
 }

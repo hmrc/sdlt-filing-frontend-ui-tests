@@ -25,9 +25,13 @@ object LandOverview extends BasePage {
 
   override def pageTitle: String = "Land or property overview - About the land - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  val yes: String = "#value"
 
-  def no: String = "#value-no"
+  val no: String = "#value-no"
+
+  val updateBanner: By = By.xpath("//h3[contains(normalize-space(),'You have updated')]")
+
+  val removeBanner: By = By.xpath("//h3[contains(normalize-space(),'You have removed')]")
 
   val landChange: By =
     By.xpath("(//a[contains(@href, '/change-land/')])[1]")
@@ -38,4 +42,5 @@ object LandOverview extends BasePage {
   def clickLandChange(): Unit = click(landChange)
 
   def clickLandRemove(): Unit = click(landRemove)
+
 }

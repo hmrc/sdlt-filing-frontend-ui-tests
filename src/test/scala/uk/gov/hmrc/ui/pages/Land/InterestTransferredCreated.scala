@@ -24,18 +24,18 @@ object InterestTransferredCreated extends BasePage {
 
   override def pageTitle: String = "Interest transferred or created - About the land - Stamp Taxes Online - GOV.UK"
 
-  def FG: String = "#value_0"
+  val FG: String = "#value_0"
 
-  def FP: String = "#value_1"
+  val FP: String = "#value_1"
 
-  def FT: String = "#value_2"
+  val FT: String = "#value_2"
 
-  def LG: String = "#value_3"
+  val LG: String = "#value_3"
 
-  def LP: String = "#value_4"
+  val LP: String = "#value_4"
 
-  def LT: String = "#value_5"
+  val LT: String = "#value_5"
 
-  def OT: String = "#value_6"
+  val OT: String = "#value_6"
 
 }

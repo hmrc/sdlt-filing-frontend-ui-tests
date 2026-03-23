@@ -25,8 +25,8 @@ object HM_LandRegistration extends BasePage {
   override def pageTitle: String =
     "Is the land or property registered with HM Land Registry? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  val yes: String = "#value"
 
-  def no: String = "#value-2"
+  val no: String = "#value-2"
 
 }
