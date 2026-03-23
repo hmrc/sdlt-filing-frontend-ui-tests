@@ -227,6 +227,18 @@ class VendorAgentQuestionsSpec
       Then("the Vendor Agent contact details are updated on the Check Your Answers page")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
 
+      When("the user enters the contact details")
+      VendorAgentCheckYourAnswers.clickVendorAgentContactDetailsChange()
+      VendorAgentEnterContactDetails.verifyPageTitle(VendorAgentEnterContactDetails.pageTitle)
+      VendorAgentEnterContactDetails.input(
+        By.id(VendorAgentEnterContactDetails.phoneNumber),
+        VendorAgentEnterContactDetails.phoneNumberInput
+      )
+      VendorAgentEnterContactDetails.saveAndContinue()
+
+      Then("the Vendor Agent contact details are updated on the Check Your Answers page")
+      VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
+
       When("the user chooses to add a reference number")
       VendorAgentCheckYourAnswers.clickDoYouWantToAddReferenceChange()
       AddVendorAgentReferenceNumber.verifyPageTitle(AddVendorAgentReferenceNumber.pageTitle)
