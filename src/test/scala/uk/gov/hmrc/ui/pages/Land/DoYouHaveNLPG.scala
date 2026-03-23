@@ -25,8 +25,8 @@ object DoYouHaveNLPG extends BasePage {
   override def pageTitle: String =
     "Do you have an NLPG UPRN for the land or property? - About the land - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  val yes: String = "#value"
 
-  def no: String = "#value-2"
+  val no: String = "#value-2"
 
 }

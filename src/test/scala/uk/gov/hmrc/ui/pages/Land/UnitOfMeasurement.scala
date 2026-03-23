@@ -25,8 +25,8 @@ object UnitOfMeasurement extends BasePage {
   override def pageTitle: String =
     "Select one unit of measurement for the area of land - About the land - Stamp Taxes Online - GOV.UK"
 
-  def hectares: String = "#value_0"
+  val hectares: String = "#value_0"
 
-  def squareMetres: String = "#value_1"
+  val squareMetres: String = "#value_1"
 
 }
