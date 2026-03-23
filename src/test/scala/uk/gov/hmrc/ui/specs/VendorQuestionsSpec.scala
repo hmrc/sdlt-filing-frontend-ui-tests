@@ -59,7 +59,7 @@ class VendorQuestionsSpec
       Then("the Remove Vendor page is displayed")
       RemoveVendor.verifyPageTitle(RemoveVendor.pageTitle)
 
-      When("the user confirms the vendor's removal")
+      When("the user confirms the vendor removal")
       RemoveVendor.radioButton(RemoveVendor.yes)
       RemoveVendor.saveAndContinue()
 
@@ -73,7 +73,7 @@ class VendorQuestionsSpec
       Then("the Vendor Before You Start page is displayed")
       VendorBeforeYouStart.verifyPageTitle(VendorBeforeYouStart.pageTitle)
 
-      When("the user continues the journey")
+      When("the user starts the vendor questions journey")
       VendorBeforeYouStart.saveAndContinue()
 
       Then("the Who Is The Vendor page is displayed")
@@ -117,29 +117,29 @@ class VendorQuestionsSpec
       Then("the Vendor Check Your Answers page is displayed")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
 
-      When("the user changes the vendor type to Individual")
+      When("the user updates the vendor type to Individual")
       VendorCheckYourAnswers.clickVendorTypeChange()
       WhoIsTheVendor.verifyPageTitle(WhoIsTheVendor.pageTitle)
       WhoIsTheVendor.radioButton(WhoIsTheVendor.individual)
       WhoIsTheVendor.saveAndContinue()
 
-      Then("the Vendor Check Your Answers page is displayed")
+      Then("the Vendor type is updated on the Check Your Answers page")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
 
-      When("the user changes the vendor name")
+      When("the user updates the vendor name")
       VendorCheckYourAnswers.clickVendorNameChange()
 
       Then("the Vendor Name page is displayed")
       VendorName.verifyPageTitle(VendorName.pageTitle)
 
-      When("the user enters the individual's name")
+      When("the user enters the vendor name")
       VendorName.vendorFullNameInput()
       VendorName.saveAndContinue()
 
-      Then("the Vendor Check Your Answers page is displayed")
+      Then("the Vendor name is updated on the Check Your Answers page")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
 
-      When("the user changes the vendor address")
+      When("the user updates the vendor address")
       VendorCheckYourAnswers.clickVendorAddressChange()
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.PageTitleIndividual)
       VendorPropertyAddress.clickAddressManually()
@@ -148,10 +148,10 @@ class VendorQuestionsSpec
       VendorPropertyAddress.verifyPageTitle(VendorPropertyAddress.confirmPageTitleIndividual)
       VendorPropertyAddress.clickContinueButton()
 
-      Then("the Vendor Check Your Answers page is displayed")
+      Then("the Vendor address is updated on the Check Your Answers page")
       VendorCheckYourAnswers.verifyPageTitle(VendorCheckYourAnswers.pageTitle)
 
-      When("the user submit the vendor questions")
+      When("the user submits the vendor questions")
       VendorCheckYourAnswers.saveAndContinue()
 
       Then("the Vendor Overview page is displayed")
@@ -179,7 +179,7 @@ class VendorQuestionsSpec
       Then("the Before You Start page is displayed")
       VendorBeforeYouStart.verifyPageTitle(VendorBeforeYouStart.pageTitle)
 
-      When("the user continues the journey")
+      When("the user starts the vendor questions journey")
       VendorBeforeYouStart.saveAndContinue()
 
       Then("the Who Is The Vendor page is displayed")
