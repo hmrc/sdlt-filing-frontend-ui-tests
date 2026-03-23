@@ -205,6 +205,19 @@ class VendorAgentQuestionsSpec
       AddVendorAgentContactDetails.saveAndContinue()
       Then("the user is navigated to the Vendor Agent Check Your Answers page")
       VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
+      When("the user clicks the 'Change' link for Enter Agent Contact details")
+      VendorAgentCheckYourAnswers.clickVendorAgentContactDetailsChange()
+      Then("the user is navigated to the Enter Agent Contact Details page")
+      VendorAgentEnterContactDetails.verifyPageTitle(VendorAgentEnterContactDetails.pageTitle)
+      When("the user updates their phone number")
+      VendorAgentEnterContactDetails.input(
+        By.id(VendorAgentEnterContactDetails.phoneNumber),
+        VendorAgentEnterContactDetails.phoneNumberInput
+      )
+      And("the user clicks the Save and continue button")
+      VendorAgentEnterContactDetails.saveAndContinue()
+      Then("the user is navigated to the Vendor Agent Check Your Answers page")
+      VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
       When("the user clicks the 'Change' link for Do you want to add a reference")
       VendorAgentCheckYourAnswers.clickDoYouWantToAddReferenceChange()
       Then("the user is navigated to Add Agent Reference Number page")
