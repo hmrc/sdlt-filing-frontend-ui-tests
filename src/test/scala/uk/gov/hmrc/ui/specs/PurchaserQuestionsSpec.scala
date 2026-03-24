@@ -822,7 +822,7 @@ class PurchaserQuestionsSpec
 
     Scenario(
       "Begin the Purchaser Journey with two purchasers and change the lead purchaser",
-      wip
+      PurchaserJourney
     ) {
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("2-purchasers-company"))
