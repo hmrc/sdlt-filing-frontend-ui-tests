@@ -29,12 +29,14 @@ object PurchaserOverview extends BasePage {
 
   val PurchaserRemoveLink: By = By.xpath("(//a[contains(@href, '/remove-purchaser/')])[1]")
 
+  val mainPurchaserChangeLink: By = By.xpath("//a[contains(@href, '/change-purchaser-1')]")
+
   def yes: String = "#value"
 
   def no: String = "#value-no"
 
-  def clickPurchaserChange(): Unit = click(purchaserChange)
-
-  def clickRemovePurchaser(): Unit = click(PurchaserRemoveLink)
+  def clickPurchaserChange(): Unit     = click(purchaserChange)
+  def clickMainPurchaserChange(): Unit = click(mainPurchaserChangeLink)
+  def clickRemovePurchaser(): Unit     = click(PurchaserRemoveLink)
 
 }

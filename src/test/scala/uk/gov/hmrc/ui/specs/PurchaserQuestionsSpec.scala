@@ -832,5 +832,25 @@ class PurchaserQuestionsSpec
       And("clicks the Save and continue button")
       PurchaserCheckYourAnswers.saveAndContinue()
     }
+
+    Scenario(
+      "Begin the Purchaser Journey with two purchasers and change the lead purchaser",
+      PurchaserJourney
+    ) {
+      Given("the user logs in through the Authority Wizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("2-purchasers-company"))
+      When("the user clicks on the 'Purchaser Questions' link")
+      WhoIsTheVendor.clickLinkById("task-list-link-purchaser-questions")
+      Then("the user is navigated to the Purchaser Overview Page")
+      PurchaserOverview.verifyPageTitle(PurchaserOverview.pageTitle)
+      And("The user clicks the change main purchaser link")
+      PurchaserOverview.clickMainPurchaserChange()
+      Then("The user is navigated to the Change Purchaser page")
+      ChangePurchaser.verifyPageTitle(ChangePurchaser.pageTitle)
+      And("User clicks which purchaser to change")
+      ChangePurchaser.radioButton(ChangePurchaser.secondPurchaser)
+      And("clicks save and continue")
+      ChangePurchaser.saveAndContinue()
+    }
   }
 }
