@@ -48,7 +48,7 @@ class LandQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
 
       When("the user clicks on the 'Land Questions' link")
-      LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
+      ReturnTaskList.clickLinkById("task-list-link-land-questions")
       Then("the user should be navigated to the Land Before you start page page and clicks continue")
       LandBeforeYouStart.verifyPageTitle(LandBeforeYouStart.pageTitle)
       LandBeforeYouStart.saveAndContinue()
@@ -208,7 +208,7 @@ class LandQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("1-land-residential-property-type"))
 
       When("the user clicks on the 'Land Questions' link")
-      LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
+      ReturnTaskList.clickLinkById("task-list-link-land-questions")
       Then("the user is navigated to the Land Overview page")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
 
@@ -381,7 +381,7 @@ class LandQuestionsSpec
       )
 
       When("the user clicks on the 'Land Questions' link")
-      LandBeforeYouStart.clickLinkById("task-list-link-land-questions")
+      ReturnTaskList.clickLinkById("task-list-link-land-questions")
       Then("the user is navigated to the Land Overview page")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
 

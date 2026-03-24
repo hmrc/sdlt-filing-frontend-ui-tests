@@ -22,7 +22,7 @@ object DoYouKnowTypeOfCompany extends BasePage {
   override def pageUrl: String = "about-the-purchaser/add-type-of-company"
 
   override def pageTitle: String =
-    "Do you know what type of company the purchaser is? – About the purchaser - Stamp Taxes Online - GOV.UK"
+    "Do you know what type of company the purchaser is? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   val yes: String = "#value"
 

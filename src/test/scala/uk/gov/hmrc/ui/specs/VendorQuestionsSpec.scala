@@ -48,7 +48,7 @@ class VendorQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
 
       When("the user opens the vendor questions")
-      WhoIsTheVendor.clickLinkById("task-list-link-vendor-questions")
+      ReturnTaskList.clickLinkById("task-list-link-vendor-questions")
 
       Then("the Vendor Overview page is displayed")
       VendorOverview.verifyPageTitle(VendorOverview.pageTitle)
@@ -167,7 +167,7 @@ class VendorQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
 
       When("the user opens the vendor questions")
-      WhoIsTheVendor.clickLinkById("task-list-link-vendor-questions")
+      ReturnTaskList.clickLinkById("task-list-link-vendor-questions")
 
       Then("the Vendor Overview page is displayed")
       VendorOverview.verifyPageTitle(VendorOverview.pageTitle)
