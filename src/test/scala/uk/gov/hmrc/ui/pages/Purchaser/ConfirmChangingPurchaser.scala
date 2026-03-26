@@ -22,7 +22,8 @@ object ConfirmChangingPurchaser extends BasePage {
 
   override def pageUrl: String = "about-the-purchaser/confirm-changing-purchaser-1"
 
-  override def pageTitle: String = "Are you sure you want to change purchaser 1? - About the purchaser - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Are you sure you want to change purchaser 1? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
