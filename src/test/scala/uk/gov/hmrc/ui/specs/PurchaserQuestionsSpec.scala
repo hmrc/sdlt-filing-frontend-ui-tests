@@ -206,7 +206,17 @@ class PurchaserQuestionsSpec
       VATRegistrationNumber.saveAndContinue()
       Then("the user is navigated to the Check your answers page")
       PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-      When("the user clicks on the link for Type of company")
+      When("the user clicks on the 'Change' link for do you know type of company")
+      PurchaserCheckYourAnswers.clickDoYouKnowCompanyNameChange()
+      Then("the user is navigated to the Do you know what type of company page")
+      DoYouKnowTypeOfCompany.verifyPageTitle(DoYouKnowTypeOfCompany.pageTitle)
+      When("the user selects the 'Yes' radio button")
+      DoYouKnowTypeOfCompany.radioButton(DoYouKnowTypeOfCompany.yes)
+      And("clicks the Save and continue button")
+      DoYouKnowTypeOfCompany.saveAndContinue()
+      Then("the user is navigated to the Check your answers page")
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+      When("the user clicks on the link for entering type of company")
       PurchaserCheckYourAnswers.clickTypeOfCompanyChange()
       Then("the user is navigated to the What type of company? page")
       TypeOfCompany.verifyPageTitle(TypeOfCompany.pageTitle)
@@ -652,9 +662,9 @@ class PurchaserQuestionsSpec
       When("the user updates their types of company")
       TypeOfCompany.checkbox(
         TypeOfCompany.Unincorporated_sole_trader_other_than_builder,
-        false
+        true
       )
-      TypeOfCompany.checkbox(TypeOfCompany.Superannuation_or_pension_fund, false)
+      TypeOfCompany.checkbox(TypeOfCompany.Superannuation_or_pension_fund, true)
       And("clicks the Save and continue button")
       TypeOfCompany.saveAndContinue()
       Then("the user is navigated to the Check your answers page")

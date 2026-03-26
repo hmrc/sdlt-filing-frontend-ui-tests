@@ -197,7 +197,7 @@ class LandQuestionsSpec
       LandOverview.radioButton(LandOverview.no)
       LandOverview.saveAndContinue()
       Then("the user is navigated to return task list page")
-      ReturnTaskListPage.verifyPageTitle(ReturnTaskListPage.pageTitle)
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
 
     Scenario(
