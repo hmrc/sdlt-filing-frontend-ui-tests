@@ -83,7 +83,7 @@ class e2eSpec
       PreliminaryCheckYourAnswers.saveAndContinue()
 
       Then("the user is navigated to the Return Task List page")
-      ReturnTaskListPage.verifyPageTitle(ReturnTaskListPage.pageTitle)
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
       When("the user clicks on the 'Vendor Questions' link")
       WhoIsTheVendor.clickLinkById("task-list-link-vendor-questions")
       Then("the user is navigated to the Vendor Overview page")

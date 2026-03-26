@@ -45,7 +45,7 @@ class PurchaserAgentQuestionsSpec
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
       When("the user clicks on the 'Purchaser Agent Questions' link")
-      PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-purchaser-agent-questions")
+      ReturnTaskList.clickLinkById("task-list-link-purchaser-agent-questions")
       Then("the user is navigated to the Before You Start page")
       PurchaserAgentBeforeYouStart.verifyPageTitle(PurchaserAgentBeforeYouStart.pageTitle)
       When("the user selects the 'Yes' radio button")
