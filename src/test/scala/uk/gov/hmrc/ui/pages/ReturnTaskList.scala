@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.ui.pages
 
-object ReturnTaskListPage extends BasePage {
+object ReturnTaskList extends BasePage {
 
   override def pageUrl: String = "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=123456"
 

@@ -64,6 +64,8 @@ object PurchaserCheckYourAnswers extends BasePage {
   val areCompanyAndVendorConnected =
     "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/purchaser-and-vendor-connected/change']"
 
+  val doYouKnowTypeOfCompany = "a[href ='/stamp-duty-land-tax-filing/about-the-purchaser/add-type-of-company/change']"
+
   def clickPurchaserNameChange(): Unit = click(By.cssSelector(purchaserNameChange))
 
   def clickPurchaserTypeChange(): Unit = click(By.cssSelector(purchaserTypeChange))
@@ -95,4 +97,6 @@ object PurchaserCheckYourAnswers extends BasePage {
   def clickIsCompanyActingAsTrusteeChange(): Unit = click(By.cssSelector(isCompanyActingAsTrustee))
 
   def clickAreCompanyAndVendorConnectedChange(): Unit = click(By.cssSelector(areCompanyAndVendorConnected))
+
+  def clickDoYouKnowCompanyNameChange(): Unit = click(By.cssSelector(doYouKnowTypeOfCompany))
 }
