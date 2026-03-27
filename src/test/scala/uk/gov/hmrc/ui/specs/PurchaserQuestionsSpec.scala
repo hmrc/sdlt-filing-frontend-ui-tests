@@ -844,23 +844,44 @@ class PurchaserQuestionsSpec
     }
 
     Scenario(
-      "Begin the Purchaser Journey with two purchasers and change the lead purchaser",
+      "Begin the Purchaser Journey and change the lead purchaser",
       PurchaserJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("2-purchasers-company"))
-      When("the user clicks on the 'Purchaser Questions' link")
+
+      When("the user opens the purchaser questions")
       WhoIsTheVendor.clickLinkById("task-list-link-purchaser-questions")
-      Then("the user is navigated to the Purchaser Overview Page")
+
+      Then("the Purchaser Overview page is displayed")
       PurchaserOverview.verifyPageTitle(PurchaserOverview.pageTitle)
-      And("The user clicks the change main purchaser link")
+
+      When("the user changes the main purchaser")
       PurchaserOverview.clickMainPurchaserChange()
-      Then("The user is navigated to the Change Purchaser page")
+
+      Then("the Change Purchaser page is displayed")
       ChangePurchaser.verifyPageTitle(ChangePurchaser.pageTitle)
-      And("User clicks which purchaser to change")
+
+      When("the user clicks which purchaser to change")
       ChangePurchaser.radioButton(ChangePurchaser.secondPurchaser)
-      And("clicks save and continue")
       ChangePurchaser.saveAndContinue()
+
+      Then("the Confirm Changing Purchaser page is displayed")
+      ConfirmChangingPurchaser.verifyPageTitle(ConfirmChangingPurchaser.pageTitle)
+
+      When("the user confirms the purchaser change")
+      ConfirmChangingPurchaser.radioButton(ConfirmChangingPurchaser.yes)
+      ConfirmChangingPurchaser.saveAndContinue()
+
+      Then("the Purchaser Check your answers page is displayed")
+      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
+
+      When("the user submits the purchaser questions")
+      PurchaserCheckYourAnswers.saveAndContinue()
+
+      Then("the Purchaser Overview page is displayed")
+      PurchaserOverview.verifyPageTitle(PurchaserOverview.pageTitle)
     }
   }
 }

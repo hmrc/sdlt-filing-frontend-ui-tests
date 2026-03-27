@@ -97,7 +97,7 @@ class VendorAgentQuestionsSpec
         By.id(VendorAgentEnterContactDetails.phoneNumber),
         VendorAgentEnterContactDetails.phoneNumberInput
       )
-      And("and email address")
+      And("email address")
       VendorAgentEnterContactDetails.input(
         By.id(VendorAgentEnterContactDetails.emailAddress),
         VendorAgentEnterContactDetails.emailAddressInput
