@@ -23,7 +23,7 @@ object PreliminaryPurchaserName extends BasePage {
   override def pageUrl: String = "preliminary-questions/purchaser-name"
 
   override def pageTitle: String =
-    "What is the purchaser’s surname? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+    "What is the purchaser’s last name? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
   def pageTitleCompany: String = "What is the company’s name? - Preliminary questions - Stamp Taxes Online - GOV.UK"
 
