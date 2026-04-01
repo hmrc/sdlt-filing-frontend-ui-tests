@@ -124,7 +124,7 @@ class PreliminaryQuestionsSpec
       PreliminaryJourney
     ) {
 
-      Given("the user logs in through the Authority Wizard page and the Who Is Making The Purchase page is displayed")
+      Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation)
 
       Then("the Preliminary Before You Start page is displayed")
