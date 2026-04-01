@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.ui.pages.Purchaser
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
 object ChangePurchaser extends BasePage {
