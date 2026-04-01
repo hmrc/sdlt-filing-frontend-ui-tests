@@ -22,7 +22,7 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.Preliminary.*
-import uk.gov.hmrc.ui.pages.AuthWizard
+import uk.gov.hmrc.ui.pages.{AuthWizard, ReturnTaskList}
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
@@ -111,6 +111,12 @@ class PreliminaryQuestionsSpec
 
       Then("the Transaction Type is updated on the Check Your Answers page")
       PreliminaryCheckYourAnswers.verifyPageTitle(PreliminaryCheckYourAnswers.pageTitle)
+
+      When("the user submits the preliminary questions")
+      PreliminaryCheckYourAnswers.saveAndContinue()
+
+      Then("the Return Task List page is displayed")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
 
     Scenario(
@@ -118,7 +124,7 @@ class PreliminaryQuestionsSpec
       PreliminaryJourney
     ) {
 
-      Given("the user logs in through the Authority Wizard page")
+      Given("the user logs in through the Authority Wizard page and the Who Is Making The Purchase page is displayed")
       AuthWizard.login(HASDIRECT, Organisation)
 
       Then("the Preliminary Before You Start page is displayed")

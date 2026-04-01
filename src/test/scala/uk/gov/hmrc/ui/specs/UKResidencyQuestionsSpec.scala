@@ -37,137 +37,167 @@ class UKResidencyQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend About The UK Residency Questions") {
+
     Scenario(
-      "Complete the UK Residency Questions for an Individual Purchaser having non-uk residents",
+      "Complete the UK Residency Questions journey for individual non‑UK resident purchasers",
       UKResidencyJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(
         HASDIRECT,
         Organisation,
         returnId = Some("individual-purchaser-with-agents-full-land-residential")
       )
-      When("the user clicks on the 'UK Residency Questions' link")
+
+      When("the user opens the uk residency questions")
       ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
-      Then("the user should be navigated to the UK Residency Before you start page page")
+
+      Then("the UK Residency Before you start page is displayed")
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
-      And("the user click on Continue button")
+
+      When("the user starts the uk residency questions journey")
       UKResidencyBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to Residency Status page")
+
+      Then("the Residency Status page is displayed")
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
-      And("The user clicks the Residency Status link")
       ResidencyStatus.clickResidencyStatusLink()
-      When("the user selects Yes radio button")
-      ResidencyStatus.radioButton(ResidencyStatus.yes)
-      And("clicks on Save & Continue button")
-      ResidencyStatus.saveAndContinue()
-      Then("the user is navigated to the Crown Employment Relief page")
-      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
-      When("the user select Yes radio button")
-      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
-      // ******Uncomment below 2 lines when navigation is ready**********
-//      And ("clicks on Save & Continue button")
-      // CrownEmploymentRelief.saveAndContinue()
-//      Then ("the user is navigated to CYA page")
 
+      When("the user confirms there are non-UK resident purchasers")
+      ResidencyStatus.radioButton(ResidencyStatus.yes)
+      ResidencyStatus.saveAndContinue()
+
+      Then("the Crown Employment Relief page is displayed")
+      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
+
+      When("the user confirms there are purchasers claiming Crown Employment relief")
+      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
+      // ******Uncomment below 3 lines when navigation is ready**********
+      // CrownEmploymentRelief.saveAndContinue()
+
+      // Then ("the UK Residency Check Your Answers page is displayed")
+      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
     }
 
     Scenario(
-      "Complete the UK Residency Questions for an Individual Purchaser having only uk residents",
+      "Complete the UK Residency Questions journey for individual purchaser UK residents",
       UKResidencyJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(
         HASDIRECT,
         Organisation,
         returnId = Some("individual-purchaser-with-agents-full-land-residential")
       )
-      When("the user clicks on the 'UK Residency Questions' link")
+
+      When("the user starts the uk residency questions journey")
       ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
-      Then("the user should be navigated to the UK Residency Before you start page page")
+
+      Then("the UK Residency Before you start page is displayed")
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
-      And("the user click on Continue button")
+
+      When("the user starts the uk residency questions journey")
       UKResidencyBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to Residency Status page")
+
+      Then("the Residency Status page is displayed")
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
-      When("the user selects No radio button")
+
+      When("the user confirms there are no non-UK resident purchasers")
       ResidencyStatus.radioButton(ResidencyStatus.no)
-      // ****************Uncomment below 2 lines once navigation is ready*********
-      //      And ("clicks on Save & Continue button")
+      // ****************Uncomment below 3 lines once navigation is ready*********
       // ResidencyStatus.saveAndContinue()
-      //      Then ("the user is navigated to CYA page")
+
+      // Then ("the UK Residency Check Your Answers page is displayed")
+      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
 
     }
 
     Scenario(
-      "Complete the UK Residency Questions where Purchaser is a Company having non-uk residents and non-uk close companies",
+      "Complete the UK Residency Questions journey for a purchaser company with non‑UK residents and non‑UK close companies",
       UKResidencyJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(
         HASDIRECT,
         Organisation,
         returnId = Some("company-purchaser-with-agents-full-land-residential")
       )
-      When("the user clicks on the 'UK Residency Questions' link")
+
+      When("the user starts the uk residency questions journey")
       ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
-      Then("the user should be navigated to the UK Residency Before you start page page")
+
+      Then("the UK Residency Before you start page is displayed")
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
-      And("the user click on Continue button")
+
+      When("the user starts the uk residency questions journey")
       UKResidencyBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to Residency Status page")
+
+      Then("the Residency Status page is displayed")
       ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
-      When("the user selects Yes radio button")
+
+      When("the user confirms there are non-UK resident purchasers")
       ResidencyStatus.radioButton(ResidencyStatus.yes)
-      And("clicks on Save & Continue button")
       ResidencyStatus.saveAndContinue()
-      Then("the user is navigated to Close Companies page")
+
+      Then("the Close Companies page is displayed")
       CloseCompaniesPage.verifyPageTitle(CloseCompaniesPage.pageTitle)
-      When("the user selects Yes radio button")
+
+      When("the user confirms that the purchaser is a UK close company controlled by non-UK residents")
       CloseCompaniesPage.radioButton(CloseCompaniesPage.yes)
-      And("clicks on Save & Continue button")
       CloseCompaniesPage.saveAndContinue()
-      Then("the user is navigated to the Crown Employment Relief page")
+
+      Then("the Crown Employment Relief page is displayed")
       CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
-      When("the user select No radio button")
+
+      When("the user confirms there are no purchasers claiming Crown Employment relief")
       CrownEmploymentRelief.radioButton(CrownEmploymentRelief.no)
       // ******Uncomment below 2 lines when navigation is ready**********
-      //      And ("clicks on Save & Continue button")
       // CrownEmploymentRelief.saveAndContinue()
-      //      Then ("the user is navigated to CYA page")
 
+      // Then ("the UK Residency Check Your Answers page is displayed")
+      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
     }
 
     Scenario(
-      "Complete the UK Residency Questions where Purchaser is a Company having uk residents and no non-uk residents in close companies",
+      "Complete the UK Residency Questions journey for a purchaser company with UK residents and UK close companies",
       UKResidencyJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(
         HASDIRECT,
         Organisation,
         returnId = Some("company-purchaser-with-agents-full-land-residential")
       )
-      When("the user clicks on the 'UK Residency Questions' link")
-      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
-      Then("the user should be navigated to the UK Residency Before you start page page")
-      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
-      And("the user click on Continue button")
-      UKResidencyBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to Residency Status page")
-      ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
-      When("the user selects No radio button")
-      ResidencyStatus.radioButton(ResidencyStatus.no)
-      And("clicks on Save & Continue button")
-      ResidencyStatus.saveAndContinue()
-      Then("the user is navigated to Close Companies page")
-      CloseCompaniesPage.verifyPageTitle(CloseCompaniesPage.pageTitle)
-      When("the user selects No radio button")
-      CloseCompaniesPage.radioButton(CloseCompaniesPage.no)
-      And("clicks on Save & Continue button")
-      CloseCompaniesPage.saveAndContinue()
-      //      Then ("the user is navigated to CYA page")
 
+      When("the user starts the uk residency questions journey")
+      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
+
+      Then("the UK Residency Before you start page is displayed")
+      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
+
+      When("the user starts the uk residency questions journey")
+      UKResidencyBeforeYouStart.saveAndContinue()
+
+      Then("the Residency Status page is displayed")
+      ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
+
+      When("the user confirms there are no non-UK resident purchasers")
+      ResidencyStatus.radioButton(ResidencyStatus.no)
+      ResidencyStatus.saveAndContinue()
+
+      Then("the Close Companies page is displayed")
+      CloseCompaniesPage.verifyPageTitle(CloseCompaniesPage.pageTitle)
+
+      When("the user confirms that the purchaser is not a UK close company controlled by non-UK residents")
+      CloseCompaniesPage.radioButton(CloseCompaniesPage.no)
+      // ******Uncomment below 3 lines when navigation is ready**********
+      // CloseCompaniesPage.saveAndContinue()
+
+      // Then ("the UK Residency Check Your Answers page is displayed")
+      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
     }
   }
 }
