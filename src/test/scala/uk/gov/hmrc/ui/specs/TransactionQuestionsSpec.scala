@@ -41,7 +41,7 @@ class TransactionQuestionsSpec
   Feature("SDLT Filing Frontend About The Transaction Questions") {
 
     Scenario(
-      "Complete the Transactions Questions user journey with grant of lease transaction type and reason for claiming relief is selected as charities"),
+      "Complete the Transactions Questions user journey with grant of lease transaction type and reason for claiming relief is selected as charities)",
       TransactionJourney
 
       /* user is on before you start page
