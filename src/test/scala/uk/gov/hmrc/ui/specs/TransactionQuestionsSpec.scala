@@ -41,9 +41,9 @@ class TransactionQuestionsSpec
   Feature("SDLT Filing Frontend About The Transaction Questions") {
 
     Scenario(
-      "Complete the Transactions Questions user journey with grant of lease transaction type and reason for claiming relief is selected as charities)",
+      "Complete the Transactions Questions user journey with grant of lease transaction type and reason for claiming relief is selected as charities",
       TransactionJourney
-
+    ){
       /* user is on before you start page
         user clicks on start now button
         user is navigated to confirm type of transaction page
@@ -95,7 +95,7 @@ class TransactionQuestionsSpec
     user selects yes radio button and continues
     user is navigated to CYA page and verifies the answers and submits
        */
-    )
+    
 
   }
 
