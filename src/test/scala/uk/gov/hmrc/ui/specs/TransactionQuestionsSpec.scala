@@ -29,7 +29,7 @@ import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 
 class TransactionQuestionsSpec
-  extends AnyFeatureSpec
+    extends AnyFeatureSpec
     with BaseSpec
     with GivenWhenThen
     with ShouldVerb
@@ -44,7 +44,7 @@ class TransactionQuestionsSpec
       "Complete the Transactions Questions user journey with grant of lease transaction type and reason for claiming relief is selected as charities)",
       TransactionJourney
 
-       /* user is on before you start page
+      /* user is on before you start page
         user clicks on start now button
         user is navigated to confirm type of transaction page
       user selects no radio button and continues
@@ -94,16 +94,16 @@ class TransactionQuestionsSpec
       user navigates to Exercising an option page
     user selects yes radio button and continues
     user is navigated to CYA page and verifies the answers and submits
-     */
+       */
     )
 
-    }
+  }
 
-    Scenario(
-      "Complete the Transactions Questions user journey with  transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
-      TransactionJourney
-    ) {
-     /* user is on before you start page
+  Scenario(
+    "Complete the Transactions Questions user journey with  transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
+    TransactionJourney
+  ) {
+    /* user is on before you start page
       user clicks on start now button
         user is navigated to confirm type of transaction page
         user selects no radio button and continues
