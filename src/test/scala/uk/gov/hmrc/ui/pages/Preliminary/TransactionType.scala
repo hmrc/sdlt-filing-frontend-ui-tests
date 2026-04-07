@@ -20,10 +20,13 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object TransactionType extends BasePage {
 
-  override def pageUrl: String = "preliminary-questions/transaction-type"
+  override def pageUrl: String   = "preliminary-questions/transaction-type"
+  def pageUrlTransaction: String = "about-the-transaction/type-of-transaction"
 
-  override def pageTitle: String =
+  override def pageTitle: String   =
     "What type of transaction is this? - Preliminary questions - Stamp Taxes Online - GOV.UK"
+  def pageTitleTransaction: String =
+    "What type of transaction is this? - About the transaction - Stamp Taxes Online - GOV.UK"
 
   def conveyance: String = "#value_0"
 
