@@ -181,7 +181,7 @@ class TransactionQuestionsSpec
       // Uncomment when next page is ready
       // EffectiveDateOfTransaction.saveAndContinue()
 
-      user is navigated to type of transaction page
+      /*  user is navigated to type of transaction page
         user selects Compensation trasfer or others  radio button and continues(LorA to F or O)
       user is navigated to Effective date of transaction page
       user enters effective date of transaction and continues */
