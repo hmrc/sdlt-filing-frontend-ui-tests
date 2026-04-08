@@ -73,20 +73,11 @@ class TransactionQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction"
       )
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
-
-      When("the user enters the effective date of transaction")
+      When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
-      // Uncomment when next page is ready
-      // EffectiveDateOfTransaction.saveAndContinue()
+      EffectiveDateOfTransaction.saveAndContinue()
 
-      /*
-    user is navigated to Effective date of transaction page
-    user enters effective date of transaction and continues */
       Then(" user is navigated to Do you Know Date of contract or conclusion of missives page")
-      // remove below line once navigation is ready
-      DoYouKnowDateOfContractOrConclusionOfMissives.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/add-date-of-contract"
-      )
       DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
         DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
       )
@@ -175,22 +166,11 @@ class TransactionQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction"
       )
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
-
-      When("the user enters the effective date of transaction")
+      When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
-      // Uncomment when next page is ready
-      // EffectiveDateOfTransaction.saveAndContinue()
-
-      /*  user is navigated to type of transaction page
-        user selects Compensation trasfer or others  radio button and continues(LorA to F or O)
-      user is navigated to Effective date of transaction page
-      user enters effective date of transaction and continues */
+      EffectiveDateOfTransaction.saveAndContinue()
 
       Then(" user is navigated to Do you Know Date of contract or conclusion of missives page")
-      // remove below line once navigation is ready
-      DoYouKnowDateOfContractOrConclusionOfMissives.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/add-date-of-contract"
-      )
       DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
         DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
       )
