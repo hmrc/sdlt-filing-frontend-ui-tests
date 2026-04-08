@@ -21,7 +21,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.Transaction.{ConfirmTheTransaction, DoYouKnowDateOfContractOrConclusionOfMissives, TransactionBeforeYouStart}
+import uk.gov.hmrc.ui.pages.Transaction.*
 import uk.gov.hmrc.ui.pages.Preliminary.TransactionType
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
@@ -43,6 +43,7 @@ class TransactionQuestionsSpec
       "Complete the Transactions Questions user journey with grant of lease transaction type and reason for claiming relief is selected as charities",
       TransactionJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
 
@@ -64,7 +65,20 @@ class TransactionQuestionsSpec
 
       When("the user selects Grant of Lease as the transaction type")
       TransactionType.radioButton(TransactionType.grantOfLease)
-      TransactionType.saveAndContinue()
+      // Uncomment when navigation to next page is ready
+      // TransactionType.saveAndContinue()
+
+      Then("the Effective Date of Transaction page is displayed")
+      EffectiveDateOfTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction"
+      )
+      EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
+
+      When("the user enters the effective date of transaction")
+      EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
+      // Uncomment when next page is ready
+      // EffectiveDateOfTransaction.saveAndContinue()
+
       /*
     user is navigated to Effective date of transaction page
     user enters effective date of transaction and continues */
@@ -128,6 +142,7 @@ class TransactionQuestionsSpec
       "Complete the Transactions Questions user journey with  transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
       TransactionJourney
     ) {
+
       Given("the user logs in through the Authority Wizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
 
@@ -149,8 +164,22 @@ class TransactionQuestionsSpec
 
       When("the user selects Conveyance as the transaction type")
       TransactionType.radioButton(TransactionType.conveyance)
-      TransactionType.saveAndContinue()
-      /*
+      // Uncomment when navigation to next page is ready
+      // TransactionType.saveAndContinue()
+
+      // user is navigated to type oftransaction page
+      // user selects Compensation trasfer or others radio button and continues (LorA to F or O)
+
+      Then("the Effective Date of Transaction page is displayed")
+      EffectiveDateOfTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction"
+      )
+      EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
+
+      When("the user enters the effective date of transaction")
+      EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
+      // Uncomment when next page is ready
+      // EffectiveDateOfTransaction.saveAndContinue()
 
       user is navigated to type of transaction page
         user selects Compensation trasfer or others  radio button and continues(LorA to F or O)
