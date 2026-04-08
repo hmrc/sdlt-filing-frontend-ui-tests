@@ -23,7 +23,8 @@ object EffectiveDateOfTransaction extends BasePage {
 
   override def pageUrl: String = "about-the-transaction/effective-date-of-transaction"
 
-  override def pageTitle: String = "Effective date of the transaction - About the transaction - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Effective date of the transaction - About the transaction - Stamp Taxes Online - GOV.UK"
 
   val day: String = "value.day"
 
