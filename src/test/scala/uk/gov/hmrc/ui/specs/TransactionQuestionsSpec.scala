@@ -21,7 +21,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.Transaction.{ConfirmTheTransaction, TransactionBeforeYouStart}
+import uk.gov.hmrc.ui.pages.Transaction.{ConfirmTheTransaction, DoYouKnowDateOfContractOrConclusionOfMissives, TransactionBeforeYouStart}
 import uk.gov.hmrc.ui.pages.Preliminary.TransactionType
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
@@ -67,10 +67,20 @@ class TransactionQuestionsSpec
       TransactionType.saveAndContinue()
       /*
     user is navigated to Effective date of transaction page
-    user enters effective date of transaction and continues
-      user is navigated to Date of contract or conclusion of missives page
-      User selects yes radio button and continues
-    user enters date of contract or conclusion of missives and continues
+    user enters effective date of transaction and continues */
+      Then(" user is navigated to Do you Know Date of contract or conclusion of missives page")
+      // remove below line once navigation is ready
+      DoYouKnowDateOfContractOrConclusionOfMissives.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/add-date-of-contract"
+      )
+      DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
+        DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
+      )
+      And("User selects yes radio button and continues")
+      DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
+      DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
+
+      /*      user enters date of contract or conclusion of missives and continues
       user navigates to Linked transactions page
       user selects yes radio button and continues
     user navigates to total consideration of all linked transactions page
@@ -145,10 +155,21 @@ class TransactionQuestionsSpec
       user is navigated to type of transaction page
         user selects Compensation trasfer or others  radio button and continues(LorA to F or O)
       user is navigated to Effective date of transaction page
-      user enters effective date of transaction and continues
-        user is navigated to Date of contract or conclusion of missives page
-        User selects yes radio button and continues
-      user enters date of contract or conclusion of missives and continues
+      user enters effective date of transaction and continues */
+
+      Then(" user is navigated to Do you Know Date of contract or conclusion of missives page")
+      // remove below line once navigation is ready
+      DoYouKnowDateOfContractOrConclusionOfMissives.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/add-date-of-contract"
+      )
+      DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
+        DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
+      )
+      And("User selects yes radio button and continues")
+      DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
+      DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
+
+      /* user enters date of contract or conclusion of missives and continues
       user navigated to total consideration of transaction page
         user enters total consideration of transaction amount and continues
       user is navigated to Is VAT included in the total consideration ? page
