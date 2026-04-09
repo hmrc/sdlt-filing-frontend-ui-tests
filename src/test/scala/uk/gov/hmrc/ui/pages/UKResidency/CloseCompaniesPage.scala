@@ -24,8 +24,8 @@ object CloseCompaniesPage extends BasePage {
 
   override def pageTitle: String = "Close companies - About UK residency - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  val yes: String = "#value"
 
-  def no: String = "#value-2"
+  val no: String = "#value-2"
 
 }

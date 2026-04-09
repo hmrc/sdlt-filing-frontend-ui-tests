@@ -26,9 +26,9 @@ object ResidencyStatus extends BasePage {
   override def pageTitle: String =
     "Residency status - About UK residency - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value"
+  val yes: String = "#value"
 
-  def no: String = "#value-2"
+  val no: String = "#value-2"
 
   def clickResidencyStatusLink(): Unit = click(
     By.xpath("//a[contains(@href,'rates-of-stamp-duty-land-tax-for-non-uk-residents')]")

@@ -72,45 +72,23 @@ class UKResidencyQuestionsSpec
 
       When("the user confirms there are purchasers claiming Crown Employment relief")
       CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
-      // ******Uncomment below 3 lines when navigation is ready**********
-      // CrownEmploymentRelief.saveAndContinue()
+      CrownEmploymentRelief.saveAndContinue()
 
-      // Then ("the UK Residency Check Your Answers page is displayed")
-      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
-    }
+      Then("the UK Residency Check Your Answers page is displayed")
+      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
 
-    Scenario(
-      "Complete the UK Residency Questions journey for individual purchaser UK residents",
-      UKResidencyJourney
-    ) {
+      When("the user clicks on change link and select no for claiming Crown Employment relief")
+      UKResidencyCheckYourAnswers.clickCrownEmploymentReliefChange()
+      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.no)
+      CrownEmploymentRelief.saveAndContinue()
 
-      Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(
-        HASDIRECT,
-        Organisation,
-        returnId = Some("individual-purchaser-with-agents-full-land-residential")
-      )
-
-      When("the user starts the uk residency questions journey")
-      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
-
-      Then("the UK Residency Before you start page is displayed")
-      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
-
-      When("the user starts the uk residency questions journey")
-      UKResidencyBeforeYouStart.saveAndContinue()
-
-      Then("the Residency Status page is displayed")
-      ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
-
-      When("the user confirms there are no non-UK resident purchasers")
+      And("the user clicks on change link and select no for non-UK resident purchasers")
+      UKResidencyCheckYourAnswers.clickResidencyStatusChange()
       ResidencyStatus.radioButton(ResidencyStatus.no)
-      // ****************Uncomment below 3 lines once navigation is ready*********
-      // ResidencyStatus.saveAndContinue()
+      ResidencyStatus.saveAndContinue()
 
-      // Then ("the UK Residency Check Your Answers page is displayed")
-      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
-
+      Then("the UK Residency Check Your Answers page is displayed")
+      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
     }
 
     Scenario(
@@ -153,11 +131,23 @@ class UKResidencyQuestionsSpec
 
       When("the user confirms there are no purchasers claiming Crown Employment relief")
       CrownEmploymentRelief.radioButton(CrownEmploymentRelief.no)
-      // ******Uncomment below 2 lines when navigation is ready**********
-      // CrownEmploymentRelief.saveAndContinue()
+      CrownEmploymentRelief.saveAndContinue()
 
-      // Then ("the UK Residency Check Your Answers page is displayed")
-      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
+      Then("the UK Residency Check Your Answers page is displayed")
+      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
+
+      When("the user clicks on change link and select yes for claiming Crown Employment relief")
+      UKResidencyCheckYourAnswers.clickCrownEmploymentReliefChange()
+      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
+      CrownEmploymentRelief.saveAndContinue()
+
+      And("the user clicks on change link and select no for close companies")
+      UKResidencyCheckYourAnswers.clickCloseCompaniesChange()
+      CloseCompaniesPage.radioButton(CloseCompaniesPage.yes)
+      CloseCompaniesPage.saveAndContinue()
+
+      Then("the UK Residency Check Your Answers page is displayed")
+      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
     }
 
     Scenario(
@@ -193,11 +183,10 @@ class UKResidencyQuestionsSpec
 
       When("the user confirms that the purchaser is not a UK close company controlled by non-UK residents")
       CloseCompaniesPage.radioButton(CloseCompaniesPage.no)
-      // ******Uncomment below 3 lines when navigation is ready**********
-      // CloseCompaniesPage.saveAndContinue()
+      CloseCompaniesPage.saveAndContinue()
 
-      // Then ("the UK Residency Check Your Answers page is displayed")
-      // UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
+      Then("the UK Residency Check Your Answers page is displayed")
+      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
     }
   }
 }
