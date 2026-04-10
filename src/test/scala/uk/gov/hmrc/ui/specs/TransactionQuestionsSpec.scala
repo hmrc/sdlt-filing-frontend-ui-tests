@@ -45,7 +45,7 @@ class TransactionQuestionsSpec
     ) {
 
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionF"))
 
       When("the user clicks on the 'Transaction Questions' link")
       ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
@@ -63,15 +63,16 @@ class TransactionQuestionsSpec
       Then("the Transaction Type page is displayed")
       TransactionType.verifyPageTitle(TransactionType.pageTitleTransaction)
 
-      When("the user selects Grant of Lease as the transaction type")
+      When("the user selects Grant of Lease as the transaction type and continues")
       TransactionType.radioButton(TransactionType.grantOfLease)
-      // Uncomment when navigation to next page is ready
-      // TransactionType.saveAndContinue()
+      TransactionType.saveAndContinue()
+      Then("the user navigates to confirming the change of transaction type page")
+      ConfirmChangeOfTransaction.verifyPageTitle(ConfirmChangeOfTransaction.pageTitle)
+      When("the user selects yes radio button and continues")
+      ConfirmChangeOfTransaction.radioButton(ConfirmChangeOfTransaction.yes)
+      ConfirmChangeOfTransaction.saveAndContinue()
 
       Then("the Effective Date of Transaction page is displayed")
-      EffectiveDateOfTransaction.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction"
-      )
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
       When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
@@ -135,7 +136,7 @@ class TransactionQuestionsSpec
     ) {
 
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL"))
 
       When("the user clicks on the 'Transaction Questions' link")
       ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
@@ -155,16 +156,14 @@ class TransactionQuestionsSpec
 
       When("the user selects Conveyance as the transaction type")
       TransactionType.radioButton(TransactionType.conveyance)
-      // Uncomment when navigation to next page is ready
-      // TransactionType.saveAndContinue()
-
-      // user is navigated to type oftransaction page
-      // user selects Compensation trasfer or others radio button and continues (LorA to F or O)
+      TransactionType.saveAndContinue()
+      Then("the user navigates to confirming the change of transaction type page")
+      ConfirmChangeOfTransaction.verifyPageTitle(ConfirmChangeOfTransaction.pageTitle)
+      When("the user selects yes radio button and continues")
+      ConfirmChangeOfTransaction.radioButton(ConfirmChangeOfTransaction.yes)
+      ConfirmChangeOfTransaction.saveAndContinue()
 
       Then("the Effective Date of Transaction page is displayed")
-      EffectiveDateOfTransaction.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction"
-      )
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
       When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
