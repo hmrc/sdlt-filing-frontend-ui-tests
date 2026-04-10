@@ -65,8 +65,7 @@ class TransactionQuestionsSpec
 
       When("the user selects Grant of Lease as the transaction type")
       TransactionType.radioButton(TransactionType.grantOfLease)
-      // Uncomment when navigation to next page is ready
-      // TransactionType.saveAndContinue()
+      TransactionType.saveAndContinue()
 
       Then("the Effective Date of Transaction page is displayed")
       EffectiveDateOfTransaction.navigateToPage(
@@ -85,7 +84,15 @@ class TransactionQuestionsSpec
       DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
       DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
 
-      /*      user enters date of contract or conclusion of missives and continues
+      Then("the Enter Date of Contract page is displayed")
+      EnterDateOfContract.verifyPageTitle(EnterDateOfContract.pageTitle)
+
+      When("the user enters the date of contract")
+      EnterDateOfContract.enterDateOfContract()
+      // Uncomment when navigation to next page is ready
+      // EnterDateOfContract.saveAndContinue()
+
+      /*
       user navigates to Linked transactions page
       user selects yes radio button and continues
     user navigates to total consideration of all linked transactions page
@@ -155,8 +162,7 @@ class TransactionQuestionsSpec
 
       When("the user selects Conveyance as the transaction type")
       TransactionType.radioButton(TransactionType.conveyance)
-      // Uncomment when navigation to next page is ready
-      // TransactionType.saveAndContinue()
+      TransactionType.saveAndContinue()
 
       // user is navigated to type oftransaction page
       // user selects Compensation trasfer or others radio button and continues (LorA to F or O)
@@ -178,7 +184,15 @@ class TransactionQuestionsSpec
       DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
       DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
 
-      /* user enters date of contract or conclusion of missives and continues
+      Then("the Enter Date of Contract page is displayed")
+      EnterDateOfContract.verifyPageTitle(EnterDateOfContract.pageTitle)
+
+      When("the user enters the date of contract")
+      EnterDateOfContract.enterDateOfContract()
+      // Uncomment when navigation to next page is ready
+      // EnterDateOfContract.saveAndContinue()
+
+      /*
       user navigated to total consideration of transaction page
         user enters total consideration of transaction amount and continues*/
       Then("the user is navigated to Is VAT included in the total consideration page")
