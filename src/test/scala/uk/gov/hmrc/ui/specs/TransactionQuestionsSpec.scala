@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import org.openqa.selenium.By
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
@@ -190,16 +191,19 @@ class TransactionQuestionsSpec
 
       When("the user enters the date of contract")
       EnterDateOfContract.enterDateOfContract()
-      // Uncomment when navigation to next page is ready
-      // EnterDateOfContract.saveAndContinue()
+      EnterDateOfContract.saveAndContinue()
 
-      /*
-      user navigated to total consideration of transaction page
-        user enters total consideration of transaction amount and continues*/
-      Then("the user is navigated to Is VAT included in the total consideration page")
-      IsVatIncludedInTotalConsideration.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/is-VAT-included"
+      Then("the Total Consideration Of Transaction page is displayed")
+      TotalConsiderationOfTransaction.verifyPageTitle(TotalConsiderationOfTransaction.pageTitle)
+
+      When("the user enters the total consideration")
+      TotalConsiderationOfTransaction.input(
+        By.id(TotalConsiderationOfTransaction.totalConsideration),
+        TotalConsiderationOfTransaction.totalConsiderationInput
       )
+      TotalConsiderationOfTransaction.saveAndContinue()
+
+      Then("the user is navigated to Is VAT included in the total consideration page")
       IsVatIncludedInTotalConsideration.verifyPageTitle(IsVatIncludedInTotalConsideration.pageTitle)
 
       When("the user selects yes radio button and continues")
