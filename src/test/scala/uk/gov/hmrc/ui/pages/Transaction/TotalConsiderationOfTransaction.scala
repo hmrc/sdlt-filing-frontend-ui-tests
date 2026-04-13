@@ -22,7 +22,8 @@ object TotalConsiderationOfTransaction extends BasePage {
 
   override def pageUrl: String = "about-the-transaction/total-consideration-of-transaction"
 
-  override def pageTitle: String = "Total consideration of the transaction - About the transaction - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Total consideration of the transaction - About the transaction - Stamp Taxes Online - GOV.UK"
 
   val totalConsideration: String = "value"
 
