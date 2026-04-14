@@ -47,7 +47,7 @@ class UKResidencyQuestionsSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("individual-purchaser-with-agents-full-land-residential")
+        returnId = Some("individual-purchaser-with-agents-full-land-residential-no-residency")
       )
 
       When("the user opens the uk residency questions")
@@ -100,7 +100,7 @@ class UKResidencyQuestionsSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("company-purchaser-with-agents-full-land-residential")
+        returnId = Some("company-purchaser-with-agents-full-land-residential-no-residency")
       )
 
       When("the user starts the uk residency questions journey")
@@ -159,7 +159,7 @@ class UKResidencyQuestionsSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("company-purchaser-with-agents-full-land-residential")
+        returnId = Some("company-purchaser-with-agents-full-land-residential-no-residency")
       )
 
       When("the user starts the uk residency questions journey")
