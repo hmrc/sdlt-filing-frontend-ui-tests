@@ -210,8 +210,18 @@ class TransactionQuestionsSpec
       IsVatIncludedInTotalConsideration.radioButton(IsVatIncludedInTotalConsideration.yes)
       IsVatIncludedInTotalConsideration.saveAndContinue()
 
-      /* user is navigated ro enter VAT amount page
-         user enters VAT amount and continues
+      // user is navigated ro enter VAT amount page
+      Then("the user is navigated to the Amount of VAT page")
+      AmountOfVAT.verifyPageTitle(AmountOfVAT.pageTitle)
+
+      When("the user enters the Amount Of VAT")
+      AmountOfVAT.input(
+        By.id(AmountOfVAT.totalAmountOfVAT),
+        AmountOfVAT.totalAmountOfVATInput
+      )
+      AmountOfVAT.saveAndContinue()
+
+      /* user enters VAT amount and continues
          user is navigated to forms of consideration page
          user selects check boxes and continues
          user navigates to Linked transactions page
