@@ -210,7 +210,6 @@ class TransactionQuestionsSpec
       IsVatIncludedInTotalConsideration.radioButton(IsVatIncludedInTotalConsideration.yes)
       IsVatIncludedInTotalConsideration.saveAndContinue()
 
-      // user is navigated ro enter VAT amount page
       Then("the user is navigated to the Amount of VAT page")
       AmountOfVAT.verifyPageTitle(AmountOfVAT.pageTitle)
 
@@ -221,8 +220,7 @@ class TransactionQuestionsSpec
       )
       AmountOfVAT.saveAndContinue()
 
-      /* user enters VAT amount and continues
-         user is navigated to forms of consideration page
+      /* user is navigated to forms of consideration page
          user selects check boxes and continues
          user navigates to Linked transactions page
          user selects yes radio button and continues
