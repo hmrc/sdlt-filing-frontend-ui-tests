@@ -37,7 +37,7 @@ class PurchaserAgentQuestionsSpec
     with Browser
     with ScreenshotOnFailure {
 
-  Feature("SDLT Filing Frontend Purchaser Agent Journey") {
+  Feature("SDLT Filing Frontend Purchaser Agent Questions") {
 
     Scenario(
       "Complete the Purchaser Agent questions by adding a new agent",
@@ -134,7 +134,7 @@ class PurchaserAgentQuestionsSpec
       Then("the PurchaserAgentCheckYourAnswers page is shown")
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
 
-      When("the user updates the purchaser agent contact details")
+      When("the user updates their answer to not add purchaser agent contact details")
       PurchaserAgentCheckYourAnswers.clickAddAgentContactDetailsChange()
       AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
       AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.no)
@@ -142,7 +142,7 @@ class PurchaserAgentQuestionsSpec
       Then("the PurchaserAgentCheckYourAnswers page is shown")
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
 
-      When("the user updates the purchaser agent reference number")
+      When("the user updates their answer to add a purchaser agent reference number")
       PurchaserAgentCheckYourAnswers.clickDoYouWantToAddReferenceChange()
       AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
       AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.yes)
@@ -169,17 +169,6 @@ class PurchaserAgentQuestionsSpec
       PurchaserAgentAuthorisedForCorrespondence.radioButton(PurchaserAgentAuthorisedForCorrespondence.no)
       PurchaserAgentAuthorisedForCorrespondence.saveAndContinue()
       Then("the PurchaserAgentCheckYourAnswers page is shown")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-
-      When("the user updates the purchaser agent contact details")
-      PurchaserAgentCheckYourAnswers.clickAddAgentContactDetailsChange()
-      Then("the AddPurchaserAgentContactDetails page is shown")
-      AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
-
-      When("the user confirms to not add purchaser agent contact details")
-      AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.no)
-      AddPurchaserAgentContactDetails.saveAndContinue()
-      Then("the AddPurchaserAgentContactDetails page is shown")
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
 
       When("the user submits the purchaser agent questions")
