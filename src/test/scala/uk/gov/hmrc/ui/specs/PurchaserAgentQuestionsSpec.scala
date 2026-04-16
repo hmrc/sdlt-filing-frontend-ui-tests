@@ -38,262 +38,157 @@ class PurchaserAgentQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Purchaser Agent Journey") {
-    Scenario(
-      "Complete the Purchaser Agent journey with no purchaser agents",
-      PurchaserAgentJourney
-    ) {
-      Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
-      When("the user clicks on the 'Purchaser Agent Questions' link")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-agent-questions")
-      Then("the user is navigated to the Before You Start page")
-      PurchaserAgentBeforeYouStart.verifyPageTitle(PurchaserAgentBeforeYouStart.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      PurchaserAgentBeforeYouStart.radioButton(PurchaserAgentBeforeYouStart.yes)
-      And("clicks the Continue button")
-      PurchaserAgentBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to the Select Purchaser Agent page")
-      SelectPurchaserAgent.verifyPageTitle(SelectPurchaserAgent.pageTitle)
-      When("the user selects 'Add a new agent for this return' radio button")
-      SelectPurchaserAgent.radioButton(SelectPurchaserAgent.addNewAgent)
-      And("clicks the Save and continue button")
-      SelectPurchaserAgent.saveAndContinue()
-      Then("the user is navigated to the Agent Name page")
-      PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
-      When("the user enters their Purchaser Agents name")
-      PurchaserAgentName.input(By.id(PurchaserAgentName.agentName), PurchaserAgentName.agentNameInput)
-      And("clicks the Save and continue button")
-      PurchaserAgentName.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent Address page")
-      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.pageTitle)
-      When("the user clicks on the 'Enter the address manually' link")
-      PurchaserAgentAddress.clickAddressManually()
-      And("enters their address manually")
-      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.editPageTitleAgent)
-      PurchaserAgentAddress.enterAddressManually("523", "AGC", "TE11 1TS")
-      Then("the user is navigated to the Purchaser Agent Address page to 'Review and confirm' the address")
-      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.confirmPageTitleAgent)
-      And("clicks the Confirm address button")
-      PurchaserAgentAddress.clickContinueButton()
-      Then("the user is navigated to the Add Purchaser Agent Contact Details page")
-      AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.yes)
-      And("clicks the Save and continue button")
-      AddPurchaserAgentContactDetails.saveAndContinue()
-      Then("the user is navigated to the Enter Agent Contact Details Page")
-      PurchaserAgentEnterContactDetails.verifyPageTitle(PurchaserAgentEnterContactDetails.pageTitle)
-      When("the user enters their Purchaser Agent's phone number")
-      PurchaserAgentEnterContactDetails.input(
-        By.id(PurchaserAgentEnterContactDetails.emailAddress),
-        PurchaserAgentEnterContactDetails.emailAddressInput
-      )
-      And("enters their Purchaser Agent's email address")
-      PurchaserAgentEnterContactDetails.input(
-        By.id(PurchaserAgentEnterContactDetails.phoneNumber),
-        PurchaserAgentEnterContactDetails.phoneNumberInput
-      )
-      And("clicks the Save and continue button")
-      PurchaserAgentEnterContactDetails.saveAndContinue()
-      Then("the user is navigated to the Add Agent Reference Number page")
-      AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
-      When("the user selects the 'No' radio button")
-      AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.no)
-      And("clicks the Save and continue button")
-      AddPurchaserAgentReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Is Purchaser Agent authorised For Correspondence Page")
-      PurchaserAgentAuthorisedForCorrespondence.verifyPageTitle(
-        PurchaserAgentAuthorisedForCorrespondence.pageTitle
-      )
-      When("the user selects the 'Yes' radio button")
-      PurchaserAgentAuthorisedForCorrespondence.radioButton(PurchaserAgentAuthorisedForCorrespondence.yes)
-      And("clicks the Save and continue button")
-      PurchaserAgentAuthorisedForCorrespondence.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Purchaser Agent's name")
-      PurchaserAgentCheckYourAnswers.clickPurchaserAgentNameChange()
-      Then("the user is navigated to the Purchaser Agent name page")
-      PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
-      When("the user updates their agent name details")
-      PurchaserAgentName.input(By.id(PurchaserAgentName.agentName), PurchaserAgentName.agentNameInput2)
-      And("clicks the Save and continue button")
-      PurchaserAgentName.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Purchaser Agent's address")
-      PurchaserAgentCheckYourAnswers.clickPurchaserAgentAddressChange()
-      Then("the user is navigated to the Purchaser Agent's address page")
-      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.pageTitle2)
-      When("the user clicks on the 'Enter the address manually' link")
-      PurchaserAgentAddress.clickAddressManually()
-      And("enters their updated address manually")
-      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.editPageTitleAgent2)
-      PurchaserAgentAddress.enterAddressManually("123", "TEST", "ZZ11 1ZZ")
-      Then("the user is navigated to the Purchaser Agent Address page to 'Review and confirm' the address")
-      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.confirmPageTitleAgent2)
-      And("clicks the Save and continue button")
-      PurchaserAgentAddress.clickContinueButton()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Do you want to add agent contact details")
-      PurchaserAgentCheckYourAnswers.clickAddAgentContactDetailsChange()
-      Then("the user is navigated to the Add Purchaser Agent Contact Details page")
-      AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
-      When("the user selects the 'No' radio button")
-      AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.no)
-      And("clicks the Save and continue button")
-      AddPurchaserAgentContactDetails.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Do you want to add a Reference Number")
-      PurchaserAgentCheckYourAnswers.clickDoYouWantToAddReferenceChange()
-      Then("the user is navigated to the Add Agent Reference Number page")
-      AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.yes)
-      And("clicks the Save and continue button")
-      AddPurchaserAgentReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Enter Agent Reference Number")
-      PurchaserAgentCheckYourAnswers.clickPurchaserAgentReferenceNumberChange()
-      Then("the user is navigated to Enter Agent Reference Number page")
-      PurchaserAgentEnterReferenceNumber.verifyPageTitle(PurchaserAgentEnterReferenceNumber.pageTitle)
-      When("the user enters their Agent Reference Number")
-      PurchaserAgentEnterReferenceNumber.input(
-        By.id(PurchaserAgentEnterReferenceNumber.purchaserReference),
-        PurchaserAgentEnterReferenceNumber.purchaserReferenceInput
-      )
-      And("clicks the Save and continue button")
-      PurchaserAgentEnterReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Is Agent authorised for Correspondence")
-      PurchaserAgentCheckYourAnswers.clickIsAgentAuthorizedForCorrespondenceChange()
-      Then("the user is navigated to the Is Purchaser Agent authorised For Correspondence Page")
-      PurchaserAgentAuthorisedForCorrespondence.verifyPageTitle(
-        PurchaserAgentAuthorisedForCorrespondence.pageTitle
-      )
-      When("the user selects the 'No' radio button")
-      PurchaserAgentAuthorisedForCorrespondence.radioButton(PurchaserAgentAuthorisedForCorrespondence.no)
-      And("clicks the Save and continue button")
-      PurchaserAgentAuthorisedForCorrespondence.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      And("clicks the save and continue button")
-      PurchaserAgentCheckYourAnswers.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent Overview page")
-      PurchaserAgentOverview.verifyPageTitle(PurchaserAgentOverview.pageTitle)
-      When("the user selects 'Yes' radio button")
-      PurchaserAgentOverview.radioButton(PurchaserAgentOverview.yes)
-      And("clicks the save and continue button")
-      PurchaserAgentOverview.saveAndContinue()
-    }
 
     Scenario(
-      "Complete the Purchaser Agent Journey with no contact details",
+      "Complete the Purchaser Agent questions by adding a new agent",
       PurchaserAgentJourney
     ) {
-      Given("the user logs in through the Authority Wizard page")
+
+      Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
-      When("the user clicks on the 'Purchaser Agent Questions' link")
-      PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-purchaser-agent-questions")
-      Then("the user is navigated to the Before You Start page")
+
+      When("the user opens the purchaser agent questions")
+      ReturnTaskList.clickLinkById("task-list-link-purchaser-agent-questions")
+      Then("the PurchaserAgentBeforeYouStart page is shown")
       PurchaserAgentBeforeYouStart.verifyPageTitle(PurchaserAgentBeforeYouStart.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user starts the purchaser agent questions")
       PurchaserAgentBeforeYouStart.radioButton(PurchaserAgentBeforeYouStart.yes)
-      And("clicks the Continue button")
       PurchaserAgentBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to the Select Purchaser Agent page")
+      Then("the SelectPurchaserAgent page is shown")
       SelectPurchaserAgent.verifyPageTitle(SelectPurchaserAgent.pageTitle)
-      When("the user selects 'Add a new agent for this return' radio button")
+
+      When("the user adds a new purchaser agent")
       SelectPurchaserAgent.radioButton(SelectPurchaserAgent.addNewAgent)
-      And("clicks the Save and continue button")
       SelectPurchaserAgent.saveAndContinue()
-      Then("the user is navigated to the Agent Name page")
+      Then("the PurchaserAgentName page is shown")
       PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
-      When("the user enters their Purchaser Agents name")
+
+      When("the user provides the purchaser agent name")
       PurchaserAgentName.input(By.id(PurchaserAgentName.agentName), PurchaserAgentName.agentNameInput)
-      And("clicks the Save and continue button")
       PurchaserAgentName.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent Address page")
+      Then("the PurchaserAgentAddress page is shown")
       PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.pageTitle)
-      When("the user clicks on the 'Enter the address manually' link")
+
+      When("the user enters the purchaser agent address manually")
       PurchaserAgentAddress.clickAddressManually()
-      And("enters their address manually")
       PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.editPageTitleAgent)
       PurchaserAgentAddress.enterAddressManually("523", "AGC", "TE11 1TS")
-      Then("the user is navigated to the Purchaser Agent Address page to 'Review and confirm' the address")
+      Then("the ConfirmPurchaserAgentAddress page is shown")
       PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.confirmPageTitleAgent)
-      And("clicks the Confirm address button")
+
+      When("the user confirms the purchaser agent address")
       PurchaserAgentAddress.clickContinueButton()
-      Then("the user is navigated to the Add Purchaser Agent Contact Details page")
+      Then("the AddPurchaserAgentContactDetails page is shown")
       AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
-      When("the user selects the 'No' radio button")
-      AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.no)
-      And("clicks the Save and continue button")
-      AddPurchaserAgentContactDetails.saveAndContinue()
-      Then("the user is navigated to the Add Agent Reference Number page")
-      AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
-      When("the user selects the 'Yes' radio button")
-      AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.yes)
-      And("clicks the Save and continue button")
-      AddPurchaserAgentReferenceNumber.saveAndContinue()
-      Then("the user is navigated to Enter Agent Reference Number page")
-      PurchaserAgentEnterReferenceNumber.verifyPageTitle(PurchaserAgentEnterReferenceNumber.pageTitle)
-      When("the user enters their Agent Reference Number")
-      PurchaserAgentEnterReferenceNumber.input(
-        By.id(PurchaserAgentEnterReferenceNumber.purchaserReference),
-        PurchaserAgentEnterReferenceNumber.purchaserReferenceInput
-      )
-      And("clicks the Save and continue button")
-      PurchaserAgentEnterReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Is Purchaser Agent authorised For Correspondence Page")
-      PurchaserAgentAuthorisedForCorrespondence.verifyPageTitle(
-        PurchaserAgentAuthorisedForCorrespondence.pageTitle
-      )
-      When("the user selects the 'Yes' radio button")
-      PurchaserAgentAuthorisedForCorrespondence.radioButton(PurchaserAgentAuthorisedForCorrespondence.no)
-      And("clicks the Save and continue button")
-      PurchaserAgentAuthorisedForCorrespondence.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Do you want to add agent contact details")
-      PurchaserAgentCheckYourAnswers.clickAddAgentContactDetailsChange()
-      Then("the user is navigated to the Add Purchaser Agent Contact Details page")
-      AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user confirms to add the purchaser agent contact details")
       AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.yes)
-      And("clicks the Save and continue button")
       AddPurchaserAgentContactDetails.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      When("the user clicks the 'Change' link for Enter Purchaser Agent Contact Details")
-      PurchaserAgentCheckYourAnswers.clickPurchaserAgentContactDetailsChange()
-      Then("the user is navigated to the Enter Agent Contact Details Page")
+      Then("the PurchaserAgentEnterAgentContactDetails page is shown")
       PurchaserAgentEnterContactDetails.verifyPageTitle(PurchaserAgentEnterContactDetails.pageTitle)
-      When("the user enters their Purchaser Agent's phone number")
+
+      When("the user enters the purchaser agent contact details")
       PurchaserAgentEnterContactDetails.input(
         By.id(PurchaserAgentEnterContactDetails.emailAddress),
         PurchaserAgentEnterContactDetails.emailAddressInput
       )
-      And("enters their Purchaser Agent's email address")
       PurchaserAgentEnterContactDetails.input(
         By.id(PurchaserAgentEnterContactDetails.phoneNumber),
         PurchaserAgentEnterContactDetails.phoneNumberInput
       )
-      And("clicks the Save and continue button")
       PurchaserAgentEnterContactDetails.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
+      Then("the AddPurchaserAgentReferenceNumber page is shown")
+      AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
+
+      When("the user confirms to not add the purchaser agent reference")
+      AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.no)
+      AddPurchaserAgentReferenceNumber.saveAndContinue()
+      Then("the PurchaserAgentAuthorisedForCorrespondence page is shown")
+      PurchaserAgentAuthorisedForCorrespondence.verifyPageTitle(
+        PurchaserAgentAuthorisedForCorrespondence.pageTitle
+      )
+
+      When("the user confirms the purchaser agent is authorised for correspondence")
+      PurchaserAgentAuthorisedForCorrespondence.radioButton(PurchaserAgentAuthorisedForCorrespondence.yes)
+      PurchaserAgentAuthorisedForCorrespondence.saveAndContinue()
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      And("clicks the save and continue button")
+
+      When("the user updates the purchaser agent name")
+      PurchaserAgentCheckYourAnswers.clickPurchaserAgentNameChange()
+      PurchaserAgentName.verifyPageTitle(PurchaserAgentName.pageTitle)
+      PurchaserAgentName.input(By.id(PurchaserAgentName.agentName), PurchaserAgentName.agentNameInput2)
+      PurchaserAgentName.saveAndContinue()
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+
+      When("the user updates the purchaser agent address")
+      PurchaserAgentCheckYourAnswers.clickPurchaserAgentAddressChange()
+      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.pageTitle2)
+      PurchaserAgentAddress.clickAddressManually()
+      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.editPageTitleAgent2)
+      PurchaserAgentAddress.enterAddressManually("123", "TEST", "ZZ11 1ZZ")
+      PurchaserAgentAddress.verifyPageTitle(PurchaserAgentAddress.confirmPageTitleAgent2)
+      PurchaserAgentAddress.clickContinueButton()
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+
+      When("the user updates the purchaser agent contact details")
+      PurchaserAgentCheckYourAnswers.clickAddAgentContactDetailsChange()
+      AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
+      AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.no)
+      AddPurchaserAgentContactDetails.saveAndContinue()
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+
+      When("the user updates the purchaser agent reference number")
+      PurchaserAgentCheckYourAnswers.clickDoYouWantToAddReferenceChange()
+      AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
+      AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.yes)
+      AddPurchaserAgentReferenceNumber.saveAndContinue()
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+
+      When("the user updates the purchaser agent reference number details")
+      PurchaserAgentCheckYourAnswers.clickPurchaserAgentReferenceNumberChange()
+      PurchaserAgentEnterReferenceNumber.verifyPageTitle(PurchaserAgentEnterReferenceNumber.pageTitle)
+      PurchaserAgentEnterReferenceNumber.input(
+        By.id(PurchaserAgentEnterReferenceNumber.purchaserReference),
+        PurchaserAgentEnterReferenceNumber.purchaserReferenceInput
+      )
+      PurchaserAgentEnterReferenceNumber.saveAndContinue()
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+
+      When("the user updates the purchaser agent authorised for correspondence details")
+      PurchaserAgentCheckYourAnswers.clickIsAgentAuthorizedForCorrespondenceChange()
+      PurchaserAgentAuthorisedForCorrespondence.verifyPageTitle(
+        PurchaserAgentAuthorisedForCorrespondence.pageTitle
+      )
+      PurchaserAgentAuthorisedForCorrespondence.radioButton(PurchaserAgentAuthorisedForCorrespondence.no)
+      PurchaserAgentAuthorisedForCorrespondence.saveAndContinue()
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+
+      When("the user updates the purchaser agent contact details")
+      PurchaserAgentCheckYourAnswers.clickAddAgentContactDetailsChange()
+      Then("the AddPurchaserAgentContactDetails page is shown")
+      AddPurchaserAgentContactDetails.verifyPageTitle(AddPurchaserAgentContactDetails.pageTitle)
+
+      When("the user confirms to not add purchaser agent contact details")
+      AddPurchaserAgentContactDetails.radioButton(AddPurchaserAgentContactDetails.no)
+      AddPurchaserAgentContactDetails.saveAndContinue()
+      Then("the AddPurchaserAgentContactDetails page is shown")
+      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
+
+      When("the user submits the purchaser agent questions")
       PurchaserAgentCheckYourAnswers.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent Overview page")
+      Then("the PurchaserAgentOverview page is shown")
       PurchaserAgentOverview.verifyPageTitle(PurchaserAgentOverview.pageTitle)
-      When("the user selects 'Yes' radio button")
+
+      When("the user starts another purchaser agent journey")
       PurchaserAgentOverview.radioButton(PurchaserAgentOverview.yes)
-      And("clicks the save and continue button")
       PurchaserAgentOverview.saveAndContinue()
     }
 
@@ -301,50 +196,53 @@ class PurchaserAgentQuestionsSpec
       "Complete the Purchaser Agent Journey for an existing agent",
       PurchaserAgentJourney
     ) {
-      Given("the user logs in through the Authority Wizard page")
+
+      Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
-      When("the user clicks on the 'Purchaser Agent Questions' link")
+
+      When("the user opens the purchaser agent questions")
       PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-purchaser-agent-questions")
-      Then("the user is navigated to the Before You Start page")
+      Then("the PurchaserAgentBeforeYouStart page is shown")
       PurchaserAgentBeforeYouStart.verifyPageTitle(PurchaserAgentBeforeYouStart.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user starts the purchaser agent questions")
       PurchaserAgentBeforeYouStart.radioButton(PurchaserAgentBeforeYouStart.yes)
-      And("clicks the Continue button")
       PurchaserAgentBeforeYouStart.saveAndContinue()
-      Then("the user is navigated to the Select Purchaser Agent page")
+      Then("the SelectPurchaserAgent page is shown")
       SelectPurchaserAgent.verifyPageTitle(SelectPurchaserAgent.pageTitle)
-      When("the user selects 'Smith & Partners LLP, London' radio button")
+
+      When("the user adds an existing agent")
       SelectPurchaserAgent.radioButton(SelectPurchaserAgent.selectAgent)
-      And("clicks the Save and continue button")
       SelectPurchaserAgent.saveAndContinue()
-      Then("the user is navigated to the Add Agent Reference Number page")
+      Then("the AddPurchaserAgentReferenceNumber page is shown")
       AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user confirms to add the purchaser agent reference")
       AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.yes)
-      And("clicks the Save and continue button")
       AddPurchaserAgentReferenceNumber.saveAndContinue()
-      Then("the user is navigated to Enter Agent Reference Number page")
+      Then("the PurchaserAgentEnterReferenceNumber page is shown")
       PurchaserAgentEnterReferenceNumber.verifyPageTitle(PurchaserAgentEnterReferenceNumber.pageTitle)
-      When("the user enters their Agent Reference Number")
+
+      When("the user enters the purchaser agent reference number")
       PurchaserAgentEnterReferenceNumber.input(
         By.id(PurchaserAgentEnterReferenceNumber.purchaserReference),
         PurchaserAgentEnterReferenceNumber.purchaserReferenceInput
       )
-      And("clicks the Save and continue button")
       PurchaserAgentEnterReferenceNumber.saveAndContinue()
-      Then("the user is navigated to the Is Purchaser Agent authorised For Correspondence Page")
+      Then("the PurchaserAgentAuthorisedForCorrespondence page is shown")
       PurchaserAgentAuthorisedForCorrespondence.verifyPageTitle(
         PurchaserAgentAuthorisedForCorrespondence.pageTitle
       )
-      When("the user selects the 'Yes' radio button")
+
+      When("the user confirms the purchaser agent is authorised for correspondence")
       PurchaserAgentAuthorisedForCorrespondence.radioButton(PurchaserAgentAuthorisedForCorrespondence.yes)
-      And("clicks the Save and continue button")
       PurchaserAgentAuthorisedForCorrespondence.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-      And("clicks the Save and continue button")
+
+      When("the user submits the purchaser agent questions")
       PurchaserAgentCheckYourAnswers.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent Overview page")
+      Then("the PurchaserAgentOverview page is shown")
       PurchaserAgentOverview.verifyPageTitle(PurchaserAgentOverview.pageTitle)
     }
 
@@ -352,25 +250,29 @@ class PurchaserAgentQuestionsSpec
       "Complete the Purchaser Agent Journey with a completed purchaser agent",
       PurchaserAgentJourney
     ) {
-      Given("the user logs in through the Authority Wizard page")
+
+      Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser-with-agent"))
-      When("the user clicks on the 'Purchaser Agent Questions' link")
+
+      When("the user opens the purchaser agent questions")
       PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-purchaser-agent-questions")
-      Then("the user is navigated to the Purchaser Agent Overview page")
+      Then("the PurchaserAgentOverview page is shown")
       PurchaserAgentOverview.verifyPageTitle(PurchaserAgentOverview.pageTitle)
-      When("the user clicks the 'Remove' link to remove a vendor")
+
+      When("the user removes an existing purchaser agent")
       PurchaserAgentOverview.clickPurchaserAgentRemove()
-      Then("the user is navigated to the Remove Vendor page")
+      Then("the RemovePurchaserAgent page is shown")
       RemovePurchaserAgent.verifyPageTitle(RemovePurchaserAgent.pageTitle)
-      When("the user selects the 'Yes' radio button")
+
+      When("the user confirms the purchaser agent removal")
       RemovePurchaserAgent.radioButton(RemovePurchaserAgent.yes)
-      And("clicks the Save and continue button")
       RemovePurchaserAgent.saveAndContinue()
-      Then("the user is navigated to the Purchaser Agent Overview page")
+      Then("the PurchaserAgentOverview page is shown")
       PurchaserAgentOverview.verifyPageTitle(PurchaserAgentOverview.pageTitle)
-      When("the user clicks the 'Change' link")
+
+      When("the user edits the purchaser agent details")
       PurchaserAgentOverview.clickPurchaserAgentChange()
-      Then("the user is navigated to the Purchaser Agent's Check Your Answers page")
+      Then("the PurchaserAgentCheckYourAnswers page is shown")
       PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
     }
   }
