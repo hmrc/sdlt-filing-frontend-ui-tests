@@ -20,7 +20,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object ConfirmChangeOfTransaction extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/add-registered-charity-number"
+  override def pageUrl: String = "about-the-transaction/changing-type-of-transaction"
 
   override def pageTitle: String =
     "Changing the type of transaction - About the transaction - Stamp Taxes Online - GOV.UK"
