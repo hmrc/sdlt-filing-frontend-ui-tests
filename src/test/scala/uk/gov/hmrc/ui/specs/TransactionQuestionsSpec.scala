@@ -103,10 +103,17 @@ class TransactionQuestionsSpec
       user is navigated to claiming relief page
     user selects yes radio button and continues
     user navigates to reason for claiming relief page
-          user selects charities radio button and continues
-          user is navigated to DO you know the charity 's registration number page
-      user selects yes radio button and continues
-    user enters charity registration number and continues
+          user selects charities radio button and continues*/
+      Then("user is navigated to Do you know the charity's registration number page")
+      // Remove below line when navigation is ready
+      DoYouKnowCharityRegistrationNumber.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/add-registered-charity-number"
+      )
+      DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
+      And("user selects yes radio button and continues")
+      DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
+      DoYouKnowCharityRegistrationNumber.saveAndContinue()
+      /*user enters charity registration number and continues
     user is navigated to Partial relief page
     user selects yes radio button and continues
     user is navigated to claiming partial relief page
