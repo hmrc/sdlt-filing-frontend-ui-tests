@@ -245,7 +245,8 @@ class e2eSpec
         PurchaserName.surnameInput
       )
       PurchaserName.saveAndContinue()
-      Then("the ConfirmPurchasersAddress page is shown")
+      Then("the PurchaserConfirmAddress page is shown")
+      PurchaserConfirmAddress.verifyPageTitle(PurchaserConfirmAddress.pageTitle)
 
       When("the user confirms the purchasers address")
       PurchaserConfirmAddress.radioButton(PurchaserConfirmAddress.yes)
