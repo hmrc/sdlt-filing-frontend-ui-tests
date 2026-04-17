@@ -92,16 +92,20 @@ class TransactionQuestionsSpec
 
       When("the user enters the date of contract")
       EnterDateOfContract.enterDateOfContract()
-      // Uncomment when navigation to next page is ready
-      // EnterDateOfContract.saveAndContinue()
+      EnterDateOfContract.saveAndContinue()
 
-      /*
-      user navigates to Linked transactions page
-      user selects yes radio button and continues
-    user navigates to total consideration of all linked transactions page
-      user enters the amount and continues
-      user is navigated to claiming relief page
-    user selects yes radio button and continues*/
+      Then("the Linked Transactions page is displayed")
+      LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
+
+      When("the user selects Yes")
+      LinkedTransaction.radioButton(LinkedTransaction.yes)
+      // Uncomment below line once navigation is ready
+      //      LinkedTransaction.saveAndContinue()
+
+      /* user navigates to total consideration of all linked transactions page
+         user enters the amount and continues
+         user is navigated to claiming relief page
+       user selects yes radio button and continues*/
 
       Then("user is navigated to reason for claiming relief page")
       ReasonForClaimingRelief.navigateToPage(
@@ -239,12 +243,19 @@ class TransactionQuestionsSpec
       FormsOfConsideration.checkbox(FormsOfConsideration.shares_quoted_company, true)
       FormsOfConsideration.checkbox(FormsOfConsideration.contingent, true)
       FormsOfConsideration.saveAndContinue()
-      /*  user navigates to Linked transactions page
-      user selects yes radio button and continues
-    user navigates to total consideration of all linked transactions page
-      user enters the amount and continues
-      user is navigated to claiming relief page
-    user selects yes radio button and continues*/
+
+      Then("the Linked Transactions page is displayed")
+      LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
+
+      When("the user selects Yes")
+      LinkedTransaction.radioButton(LinkedTransaction.yes)
+      // Uncomment below line once navigation is ready
+//      LinkedTransaction.saveAndContinue()
+
+      /*  user navigates to total consideration of all linked transactions page
+         user enters the amount and continues
+         user is navigated to claiming relief page
+       user selects yes radio button and continues*/
       Then("user is navigated to reason for claiming relief page")
       ReasonForClaimingRelief.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/reason-for-relief"
