@@ -245,7 +245,7 @@ class TransactionQuestionsSpec
       user enters the amount and continues
       user is navigated to claiming relief page
     user selects yes radio button and continues*/
- Then("user is navigated to reason for claiming relief page")
+      Then("user is navigated to reason for claiming relief page")
       ReasonForClaimingRelief.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/reason-for-relief"
       )
