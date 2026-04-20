@@ -92,8 +92,7 @@ class TransactionQuestionsSpec
 
       When("the user enters the date of contract")
       EnterDateOfContract.enterDateOfContract()
-      // Uncomment when navigation to next page is ready
-      // EnterDateOfContract.saveAndContinue()
+      EnterDateOfContract.saveAndContinue()
 
       /*
       user navigates to Linked transactions page
@@ -123,7 +122,28 @@ class TransactionQuestionsSpec
       // Remove below line when navigation is ready
       DoYouKnowCharityRegistrationNumber.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/add-registered-charity-number"
+      Then("the Linked Transactions page is displayed")
+      LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
+
+      When("the user selects Yes")
+      LinkedTransaction.radioButton(LinkedTransaction.yes)
+      // Uncomment below line once navigation is ready
+      //      LinkedTransaction.saveAndContinue()
+
+      /* user navigates to total consideration of all linked transactions page
+         user enters the amount and continues
+         user is navigated to claiming relief page
+       user selects yes radio button and continues*/
+
+      Then("user is navigated to reason for claiming relief page")
+      ReasonForClaimingRelief.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/reason-for-relief"
       )
+      ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
+      And("user selects charities radio button and continues")
+      ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.charitiesRelief)
+      ReasonForClaimingRelief.saveAndContinue()
+      Then("user is navigated to Do you know the charity's registration number page")
       DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
       And("user selects yes radio button and continues")
       DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
@@ -262,41 +282,67 @@ class TransactionQuestionsSpec
       TotalConsiderationOfLinkedTransaction.saveAndContinue()
 
       /*
+      Then("the user is navigated to Forms of Consideration")
+      FormsOfConsideration.verifyPageTitle(FormsOfConsideration.pageTitle)
+
+      When("the user selects options")
+      FormsOfConsideration.checkbox(FormsOfConsideration.cash, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.building_works, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.shares_quoted_company, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.contingent, true)
+      FormsOfConsideration.saveAndContinue()
+
+      Then("the Linked Transactions page is displayed")
+      LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
+
+      When("the user selects Yes")
+      LinkedTransaction.radioButton(LinkedTransaction.yes)
+      // Uncomment below line once navigation is ready
+//      LinkedTransaction.saveAndContinue()
+
+      /*  user navigates to total consideration of all linked transactions page
+         user enters the amount and continues
          user is navigated to claiming relief page
-       user selects yes radio button and continues
-       user navigates to reasonfor claiming relief page
-             user selects part exchange radio button and continues
-             user is navigated to DO you know the company CIS number page
-         user selects yes radio button and continues
-       user enters CIS number and continues
-       user is navigated to Partial relief page
-       user selects yes radio button and continues
-       user is navigated to claiming partial relief page
-         user enters the claimed amount and continues
-       user navigated to considerations effected by uncertain future events page
-         user selects yes radio button and continues
-       user is navigated to deferring payment page
-       user selects yes radio button and continues
-       user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
-       user selects checkboxes and continues
-       user is navigated to Sale of business page
-         user selects yes radio button and continues
-       user is navigated to what is included in sale of business page
-         user selects checkboxes and continues(select others option checkbox)
-       user is navigated to total consideration of all assets included in sale of business page
-       user enters the amount and continues
-         user is navigated to the CAP1 or NSBC page
-       user selects yes radio button and continues
-       user is navigated to restrictions convenants and conditions page
-       user selects yes radio button and continues
-       user is navigated to enter details of restrictions convenants and conditions page
-         user enters the details and continues
-         user is navigated to exchange or part exchange of land or property page
-       user selects yes radio button and continues
-       user is navigated to address flow and fills the details
-         user navigates to Exercising an option page
-       user selects yes radio button and continues
-       user is navigated to CYA page and verifies the answers and submits*/
+       user selects yes radio button and continues*/
+      Then("user is navigated to reason for claiming relief page")
+      ReasonForClaimingRelief.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/reason-for-relief"
+      )
+      ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
+      And("user selects charities radio button and continues")
+      ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
+      ReasonForClaimingRelief.saveAndContinue()
+      /*         user is navigated to DO you know the company CIS number page
+      user selects yes radio button and continues
+    user enters CIS number and continues
+    user is navigated to Partial relief page
+    user selects yes radio button and continues
+    user is navigated to claiming partial relief page
+      user enters the claimed amount and continues
+    user navigated to considerations effected by uncertain future events page
+      user selects yes radio button and continues
+    user is navigated to deferring payment page
+    user selects yes radio button and continues
+    user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
+    user selects checkboxes and continues
+    user is navigated to Sale of business page
+      user selects yes radio button and continues
+    user is navigated to what is included in sale of business page
+      user selects checkboxes and continues(select others option checkbox)
+    user is navigated to total consideration of all assets included in sale of business page
+    user enters the amount and continues
+      user is navigated to the CAP1 or NSBC page
+    user selects yes radio button and continues
+    user is navigated to restrictions convenants and conditions page
+    user selects yes radio button and continues
+    user is navigated to enter details of restrictions convenants and conditions page
+      user enters the details and continues
+      user is navigated to exchange or part exchange of land or property page
+    user selects yes radio button and continues
+    user is navigated to address flow and fills the details
+      user navigates to Exercising an option page
+    user selects yes radio button and continues
+    user is navigated to CYA page and verifies the answers and submits*/
     }
   }
 }
