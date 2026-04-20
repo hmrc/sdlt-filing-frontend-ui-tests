@@ -99,12 +99,19 @@ class TransactionQuestionsSpec
 
       When("the user selects Yes")
       LinkedTransaction.radioButton(LinkedTransaction.yes)
-      // Uncomment below line once navigation is ready
-      //      LinkedTransaction.saveAndContinue()
+      LinkedTransaction.saveAndContinue()
 
-      /* user navigates to total consideration of all linked transactions page
-         user enters the amount and continues
-         user is navigated to claiming relief page
+      Then("the user is navigated to the Total Consideration Of Linked Transactions Page")
+      TotalConsiderationOfLinkedTransaction.verifyPageTitle(AmountOfVAT.pageTitle)
+
+      When("the user enters the Total Consideration Of Linked Transactions ")
+      TotalConsiderationOfLinkedTransaction.input(
+        By.id(TotalConsiderationOfLinkedTransaction.totalConsiderationOfLT),
+        TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
+      )
+      TotalConsiderationOfLinkedTransaction.saveAndContinue()
+
+      /* user is navigated to claiming relief page
        user selects yes radio button and continues*/
 
       Then("user is navigated to reason for claiming relief page")
@@ -249,11 +256,19 @@ class TransactionQuestionsSpec
 
       When("the user selects Yes")
       LinkedTransaction.radioButton(LinkedTransaction.yes)
-      // Uncomment below line once navigation is ready
-//      LinkedTransaction.saveAndContinue()
+      LinkedTransaction.saveAndContinue()
 
-      /*  user navigates to total consideration of all linked transactions page
-         user enters the amount and continues
+      Then("the user is navigated to the Total Consideration Of Linked Transactions Page")
+      TotalConsiderationOfLinkedTransaction.verifyPageTitle(AmountOfVAT.pageTitle)
+
+      When("the user enters the Total Consideration Of Linked Transactions")
+      TotalConsiderationOfLinkedTransaction.input(
+        By.id(TotalConsiderationOfLinkedTransaction.totalConsiderationOfLT),
+        TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
+      )
+      TotalConsiderationOfLinkedTransaction.saveAndContinue()
+
+      /*
          user is navigated to claiming relief page
        user selects yes radio button and continues*/
       Then("user is navigated to reason for claiming relief page")
