@@ -98,8 +98,23 @@ class TransactionQuestionsSpec
       /*
       user navigates to Linked transactions page
       user selects yes radio button and continues
-    user navigates to total consideration of all linked transactions page
-      user enters the amount and continues
+       */
+
+      Then("the user is navigated to the Total Consideration of all Linked Transactions page")
+      // Remove below line when navigation is ready
+      TotalConsiderationOfLinkedTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/total-consideration-of-linked-transaction"
+      )
+      TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
+
+      When("the user enters the Amount Of Total Consideration of all Linked Transactions")
+      TotalConsiderationOfLinkedTransaction.input(
+        By.id(TotalConsiderationOfLinkedTransaction.totalConsiderationOfLT),
+        TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
+      )
+      TotalConsiderationOfLinkedTransaction.saveAndContinue()
+
+      /*
       user is navigated to claiming relief page
     user selects yes radio button and continues
     user navigates to reason for claiming relief page
@@ -231,8 +246,22 @@ class TransactionQuestionsSpec
          user selects check boxes and continues
          user navigates to Linked transactions page
          user selects yes radio button and continues
-       user navigates to total consideration of all linked transactions page
-         user enters the amount and continues
+       */
+      // Remove below line when navigation is ready
+      TotalConsiderationOfLinkedTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/total-consideration-of-linked-transaction"
+      )
+      Then("the user is navigated to the Total Consideration of all Linked Transactions page")
+      TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
+
+      When("the user enters the Amount Of Total Consideration of all Linked Transactions")
+      TotalConsiderationOfLinkedTransaction.input(
+        By.id(TotalConsiderationOfLinkedTransaction.totalConsiderationOfLT),
+        TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
+      )
+      TotalConsiderationOfLinkedTransaction.saveAndContinue()
+
+      /*
          user is navigated to claiming relief page
        user selects yes radio button and continues
        user navigates to reasonfor claiming relief page
