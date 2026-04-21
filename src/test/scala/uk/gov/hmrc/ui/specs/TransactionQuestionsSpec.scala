@@ -122,11 +122,18 @@ class TransactionQuestionsSpec
       ReasonForClaimingRelief.saveAndContinue()
       Then("user is navigated to Do you know the charity's registration number page")
       DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
-
       And("user selects yes radio button and continues")
       DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
       DoYouKnowCharityRegistrationNumber.saveAndContinue()
-      /*user enters charity registration number and continues
+      Then("user is navigated to enter charity registration number page")
+      EnterCharityRegistrationNumber.verifyPageTitle(EnterCharityRegistrationNumber.pageTitle)
+      When("user enters charity registration number and continues")
+      EnterCharityRegistrationNumber.input(
+        By.id(EnterCharityRegistrationNumber.charityRegistrationNumber),
+        EnterCharityRegistrationNumber.charityRegistrationNumberInput
+      )
+      EnterCharityRegistrationNumber.saveAndContinue()
+      /*
     user is navigated to Partial relief page
     user selects yes radio button and continues
     user is navigated to claiming partial relief page
