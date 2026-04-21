@@ -18,13 +18,15 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object LandMineralsOrMineralRights extends BasePage {
+object TitleNumber extends BasePage {
 
-  override def pageUrl: String = "about-the-land/minerals-or-mineral-rights"
+  override def pageUrl: String = "about-the-land/title-number"
 
-  override def pageTitle: String = "Minerals or mineral rights - About the land - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Title number for the land or property - About the land - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
+  val landTitleNumber: String = "value"
 
-  val no: String = "#value-2"
+  val landTitleNumberInput: String = "TGL312172"
+
 }

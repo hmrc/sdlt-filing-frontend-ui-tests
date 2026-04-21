@@ -18,24 +18,13 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object InterestTransferredCreated extends BasePage {
+object MineralsOrMineralRights extends BasePage {
 
-  override def pageUrl: String = "about-the-land/interest-transferred-or-created "
+  override def pageUrl: String = "about-the-land/minerals-or-mineral-rights"
 
-  override def pageTitle: String = "Interest transferred or created - About the land - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Minerals or mineral rights - About the land - Stamp Taxes Online - GOV.UK"
 
-  val FG: String = "#value_0"
+  val yes: String = "#value"
 
-  val FP: String = "#value_1"
-
-  val FT: String = "#value_2"
-
-  val LG: String = "#value_3"
-
-  val LP: String = "#value_4"
-
-  val LT: String = "#value_5"
-
-  val OT: String = "#value_6"
-
+  val no: String = "#value-2"
 }

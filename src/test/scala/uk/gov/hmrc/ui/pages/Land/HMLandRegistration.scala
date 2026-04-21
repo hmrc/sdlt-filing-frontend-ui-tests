@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Land
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object NLPGUPRN extends BasePage {
+object HMLandRegistration extends BasePage {
 
-  override def pageUrl: String = "about-the-land/enter-NLPG-UPRN"
+  override def pageUrl: String = "about-the-land/HM-land-registration"
 
   override def pageTitle: String =
-    "What is the NLPG UPRN for the land or property? - About the land - Stamp Taxes Online - GOV.UK"
+    "Is the land or property registered with HM Land Registry? - About the land - Stamp Taxes Online - GOV.UK"
 
-  val nlpg_uprn: String = "value"
+  val yes: String = "#value"
 
-  val nlpg_uprnInput: String = "NI00045"
+  val no: String = "#value-2"
 
 }

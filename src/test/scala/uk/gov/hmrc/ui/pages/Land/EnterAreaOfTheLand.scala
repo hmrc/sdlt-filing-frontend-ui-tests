@@ -16,23 +16,24 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
-import uk.gov.hmrc.ui.pages.BasePage
 import org.openqa.selenium.By
+import uk.gov.hmrc.ui.pages.BasePage
 
-object LandSendingPlanByPost extends BasePage {
+object EnterAreaOfTheLand extends BasePage {
 
-  override def pageUrl: String = "about-the-land/sending-plan-by-post"
+  override def pageUrl: String = "about-the-land/enter-area-of-land"
 
-  override def pageTitle: String =
-    "Sending a plan by post - About the land - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "What is the area of land? - About the land - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
+  val headerSquareMetre: By =
+    By.xpath("""//label[normalize-space(.)='What is the area of the land in square metres?']""")
 
-  val no: String = "#value-2"
+  val headerHectares: By = By.xpath("""//label[normalize-space(.)='What is the area of the land in hectares?']""")
 
-  def clickDropdownText(): Unit = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
+  val area: String = "value"
 
-  def dropdownText: String =
-    "The plan should indicate the scale used or be endorsed as ‘Not to Scale’. It must also show the return’s reference number, a description of the land and the local authority code."
+  val areaHectares: String = "413.245"
+
+  val areaSquareMetres: String = "413"
 
 }

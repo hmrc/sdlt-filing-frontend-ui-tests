@@ -16,24 +16,17 @@
 
 package uk.gov.hmrc.ui.pages.Land
 
-import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AreaOfTheLand extends BasePage {
+object AddNLPGUPRN extends BasePage {
 
-  override def pageUrl: String = "about-the-land/enter-area-of-land"
+  override def pageUrl: String = "about-the-land/add-NLPG-UPRN"
 
-  override def pageTitle: String = "What is the area of land? - About the land - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Do you have an NLPG UPRN for the land or property? - About the land - Stamp Taxes Online - GOV.UK"
 
-  val headerSquareMetre: By =
-    By.xpath("""//label[normalize-space(.)='What is the area of the land in square metres?']""")
+  val yes: String = "#value"
 
-  val headerHectares: By = By.xpath("""//label[normalize-space(.)='What is the area of the land in hectares?']""")
-
-  val area: String = "value"
-
-  val areaHectares: String = "413.245"
-
-  val areaSquareMetres: String = "413"
+  val no: String = "#value-2"
 
 }
