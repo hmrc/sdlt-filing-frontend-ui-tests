@@ -69,38 +69,36 @@ class TransactionQuestionsSpec
       TransactionType.saveAndContinue()
       Then("the user navigates to confirming the change of transaction type page")
       ConfirmChangeOfTransaction.verifyPageTitle(ConfirmChangeOfTransaction.pageTitle)
+
       When("the user selects yes radio button and continues")
       ConfirmChangeOfTransaction.radioButton(ConfirmChangeOfTransaction.yes)
       ConfirmChangeOfTransaction.saveAndContinue()
-
       Then("the Effective Date of Transaction page is displayed")
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
+
       When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
       EffectiveDateOfTransaction.saveAndContinue()
-
       Then(" user is navigated to Do you Know Date of contract or conclusion of missives page")
       DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
         DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
       )
-      And("User selects yes radio button and continues")
+
+      When("the user selects yes radio button and continues")
       DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
       DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
-
       Then("the Enter Date of Contract page is displayed")
       EnterDateOfContract.verifyPageTitle(EnterDateOfContract.pageTitle)
 
       When("the user enters the date of contract")
       EnterDateOfContract.enterDateOfContract()
       EnterDateOfContract.saveAndContinue()
-
       Then("the Linked Transactions page is displayed")
       LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
 
       When("the user selects Yes")
       LinkedTransaction.radioButton(LinkedTransaction.yes)
       LinkedTransaction.saveAndContinue()
-
       Then("the user is navigated to the Total Consideration Of Linked Transactions Page")
       TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
 
@@ -110,20 +108,21 @@ class TransactionQuestionsSpec
         TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
       )
       TotalConsiderationOfLinkedTransaction.saveAndContinue()
+      Then("the user is navigated to Claiming Relief page")
+      ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
 
-      /* user is navigated to claiming relief page
-       user selects yes radio button and continues*/
-
+      When("the user select Yes button amd continues")
+      ClaimingRelief.radioButton(ClaimingRelief.yes)
+      ClaimingRelief.saveAndContinue()
       Then("user is navigated to reason for claiming relief page")
-      ReasonForClaimingRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/reason-for-relief"
-      )
       ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
-      And("user selects charities radio button and continues")
+
+      When("user selects charities radio button and continues")
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.charitiesRelief)
       ReasonForClaimingRelief.saveAndContinue()
       Then("user is navigated to Do you know the charity's registration number page")
       DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
+
       And("user selects yes radio button and continues")
       DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
       DoYouKnowCharityRegistrationNumber.saveAndContinue()
@@ -189,31 +188,30 @@ class TransactionQuestionsSpec
       TransactionType.saveAndContinue()
       Then("the user navigates to confirming the change of transaction type page")
       ConfirmChangeOfTransaction.verifyPageTitle(ConfirmChangeOfTransaction.pageTitle)
+
       When("the user selects yes radio button and continues")
       ConfirmChangeOfTransaction.radioButton(ConfirmChangeOfTransaction.yes)
       ConfirmChangeOfTransaction.saveAndContinue()
-
       Then("the Effective Date of Transaction page is displayed")
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
+
       When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
       EffectiveDateOfTransaction.saveAndContinue()
-
       Then(" user is navigated to Do you Know Date of contract or conclusion of missives page")
       DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
         DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
       )
-      And("User selects yes radio button and continues")
+
+      When("the user selects yes radio button and continues")
       DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
       DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
-
       Then("the Enter Date of Contract page is displayed")
       EnterDateOfContract.verifyPageTitle(EnterDateOfContract.pageTitle)
 
       When("the user enters the date of contract")
       EnterDateOfContract.enterDateOfContract()
       EnterDateOfContract.saveAndContinue()
-
       Then("the Total Consideration Of Transaction page is displayed")
       TotalConsiderationOfTransaction.verifyPageTitle(TotalConsiderationOfTransaction.pageTitle)
 
@@ -223,14 +221,12 @@ class TransactionQuestionsSpec
         TotalConsiderationOfTransaction.totalConsiderationInput
       )
       TotalConsiderationOfTransaction.saveAndContinue()
-
       Then("the user is navigated to Is VAT included in the total consideration page")
       IsVatIncludedInTotalConsideration.verifyPageTitle(IsVatIncludedInTotalConsideration.pageTitle)
 
       When("the user selects yes radio button and continues")
       IsVatIncludedInTotalConsideration.radioButton(IsVatIncludedInTotalConsideration.yes)
       IsVatIncludedInTotalConsideration.saveAndContinue()
-
       Then("the user is navigated to the Amount of VAT page")
       AmountOfVAT.verifyPageTitle(AmountOfVAT.pageTitle)
 
@@ -240,7 +236,6 @@ class TransactionQuestionsSpec
         AmountOfVAT.totalAmountOfVATInput
       )
       AmountOfVAT.saveAndContinue()
-
       Then("the user is navigated to Forms of Consideration")
       FormsOfConsideration.verifyPageTitle(FormsOfConsideration.pageTitle)
 
@@ -250,14 +245,12 @@ class TransactionQuestionsSpec
       FormsOfConsideration.checkbox(FormsOfConsideration.shares_quoted_company, true)
       FormsOfConsideration.checkbox(FormsOfConsideration.contingent, true)
       FormsOfConsideration.saveAndContinue()
-
       Then("the Linked Transactions page is displayed")
       LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
 
-      When("the user selects Yes")
+      When("the user selects Yes and continues")
       LinkedTransaction.radioButton(LinkedTransaction.yes)
       LinkedTransaction.saveAndContinue()
-
       Then("the user is navigated to the Total Consideration Of Linked Transactions Page")
       TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
 
@@ -267,15 +260,15 @@ class TransactionQuestionsSpec
         TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
       )
       TotalConsiderationOfLinkedTransaction.saveAndContinue()
+      Then("the user is navigated to Claiming Relief page")
+      ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
 
-      /*
-         user is navigated to claiming relief page
-       user selects yes radio button and continues*/
+      When("the user select Yes button amd continues")
+      ClaimingRelief.radioButton(ClaimingRelief.yes)
+      ClaimingRelief.saveAndContinue()
       Then("user is navigated to reason for claiming relief page")
-      ReasonForClaimingRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/reason-for-relief"
-      )
       ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
+
       And("user selects charities radio button and continues")
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
       ReasonForClaimingRelief.saveAndContinue()
