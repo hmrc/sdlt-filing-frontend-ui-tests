@@ -111,7 +111,7 @@ class TransactionQuestionsSpec
       Then("the user is navigated to Claiming Relief page")
       ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
 
-      When("the user select Yes button amd continues")
+      When("the user select Yes button and continues")
       ClaimingRelief.radioButton(ClaimingRelief.yes)
       ClaimingRelief.saveAndContinue()
       Then("user is navigated to reason for claiming relief page")
@@ -126,10 +126,22 @@ class TransactionQuestionsSpec
       And("user selects yes radio button and continues")
       DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
       DoYouKnowCharityRegistrationNumber.saveAndContinue()
-      /*user enters charity registration number and continues
-    user is navigated to Partial relief page
-    user selects yes radio button and continues
-    user is navigated to claiming partial relief page
+
+      /* user is navigated to enter charity registration number page
+      user enters charity registration number and continues*/
+
+      Then("the user is navigated to the Partial Relief page")
+      // remove below line when navigation completed
+      PartialRelief.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/partial-relief"
+      )
+      PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
+
+      When("the user select Yes button and continues")
+      PartialRelief.radioButton(PartialRelief.yes)
+      PartialRelief.saveAndContinue()
+
+      /* user is navigated to claiming partial relief page
       user enters the claimed amount and continues
     user navigated to considerations effected by uncertain future events page
       user selects yes radio button and continues
@@ -263,7 +275,7 @@ class TransactionQuestionsSpec
       Then("the user is navigated to Claiming Relief page")
       ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
 
-      When("the user select Yes button amd continues")
+      When("the user select Yes button and continues")
       ClaimingRelief.radioButton(ClaimingRelief.yes)
       ClaimingRelief.saveAndContinue()
       Then("user is navigated to reason for claiming relief page")
@@ -274,11 +286,21 @@ class TransactionQuestionsSpec
       ReasonForClaimingRelief.saveAndContinue()
       /*         user is navigated to DO you know the company CIS number page
       user selects yes radio button and continues
-    user enters CIS number and continues
-    user is navigated to Partial relief page
-    user selects yes radio button and continues
-    user is navigated to claiming partial relief page
-      user enters the claimed amount and continues
+    user enters CIS number and continues */
+
+      Then("the user is navigated to the Partial Relief page")
+      // remove below line when navigation completed
+      PartialRelief.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/partial-relief"
+      )
+      PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
+
+      When("the user select Yes button and continues")
+      PartialRelief.radioButton(PartialRelief.yes)
+      PartialRelief.saveAndContinue()
+
+      /* user is navigated to claiming partial relief page
+     user enters the claimed amount and continues
     user navigated to considerations effected by uncertain future events page
       user selects yes radio button and continues
     user is navigated to deferring payment page
