@@ -102,7 +102,7 @@ class TransactionQuestionsSpec
       LinkedTransaction.saveAndContinue()
 
       Then("the user is navigated to the Total Consideration Of Linked Transactions Page")
-      TotalConsiderationOfLinkedTransaction.verifyPageTitle(AmountOfVAT.pageTitle)
+      TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
 
       When("the user enters the Total Consideration Of Linked Transactions ")
       TotalConsiderationOfLinkedTransaction.input(
@@ -259,7 +259,7 @@ class TransactionQuestionsSpec
       LinkedTransaction.saveAndContinue()
 
       Then("the user is navigated to the Total Consideration Of Linked Transactions Page")
-      TotalConsiderationOfLinkedTransaction.verifyPageTitle(AmountOfVAT.pageTitle)
+      TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
 
       When("the user enters the Total Consideration Of Linked Transactions")
       TotalConsiderationOfLinkedTransaction.input(
