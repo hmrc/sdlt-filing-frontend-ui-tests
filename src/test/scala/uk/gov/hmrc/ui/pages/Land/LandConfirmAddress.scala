@@ -25,8 +25,8 @@ object LandConfirmAddress extends BasePage {
   override def pageTitle: String =
     "Confirm the address of the land or property - About the land - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value_0"
+  val yes: String = "#value"
 
-  val no: String = "#value_1"
+  val no: String = "#value-2"
 
 }
