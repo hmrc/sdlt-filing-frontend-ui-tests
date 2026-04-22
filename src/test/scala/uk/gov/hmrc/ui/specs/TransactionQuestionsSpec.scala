@@ -126,15 +126,16 @@ class TransactionQuestionsSpec
       And("user selects yes radio button and continues")
       DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
       DoYouKnowCharityRegistrationNumber.saveAndContinue()
-
-      /* user is navigated to enter charity registration number page
-      user enters charity registration number and continues*/
+      Then("user is navigated to enter charity registration number page")
+      EnterCharityRegistrationNumber.verifyPageTitle(EnterCharityRegistrationNumber.pageTitle)
+      When("user enters charity registration number and continues")
+      EnterCharityRegistrationNumber.input(
+        By.id(EnterCharityRegistrationNumber.charityRegistrationNumber),
+        EnterCharityRegistrationNumber.charityRegistrationNumberInput
+      )
+      EnterCharityRegistrationNumber.saveAndContinue()
 
       Then("the user is navigated to the Partial Relief page")
-      // remove below line when navigation completed
-      PartialRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/partial-relief"
-      )
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
       When("the user select Yes button and continues")
@@ -142,31 +143,31 @@ class TransactionQuestionsSpec
       PartialRelief.saveAndContinue()
 
       /* user is navigated to claiming partial relief page
-      user enters the claimed amount and continues
-    user navigated to considerations effected by uncertain future events page
-      user selects yes radio button and continues
-    user is navigated to deferring payment page
-    user selects yes radio button and continues
-    user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
-    user selects checkboxes and continues
-    user is navigated to Sale of business page
-      user selects yes radio button and continues
-    user is navigated to what is included in sale of business page
-      user selects checkboxes and continues(select others option checkbox)
-    user is navigated to total consideration of all assets included in sale of business page
-    user enters the amount and continues
-      user is navigated to the CAP1 or NSBC page
-    user selects yes radio button and continues
-    user is navigated to restrictions convenants and conditions page
-      user selects yes radio button and continues
-    user is navigated to enter details of restrictions convenants and conditions page
-      user enters the details and continues
-      user is navigated to exchange or part exchange of land or property page
-    user selects yes radio button and continues
-    user is navigated to address flow and fills the details
-      user navigates to Exercising an option page
-    user selects yes radio button and continues
-    user is navigated to CYA page and verifies the answers and submits
+user enters the claimed amount and continues
+user navigated to considerations effected by uncertain future events page
+user selects yes radio button and continues
+user is navigated to deferring payment page
+user selects yes radio button and continues
+user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
+user selects checkboxes and continues
+user is navigated to Sale of business page
+user selects yes radio button and continues
+user is navigated to what is included in sale of business page
+user selects checkboxes and continues(select others option checkbox)
+user is navigated to total consideration of all assets included in sale of business page
+user enters the amount and continues
+user is navigated to the CAP1 or NSBC page
+user selects yes radio button and continues
+user is navigated to restrictions convenants and conditions page
+user selects yes radio button and continues
+user is navigated to enter details of restrictions convenants and conditions page
+user enters the details and continues
+user is navigated to exchange or part exchange of land or property page
+user selects yes radio button and continues
+user is navigated to address flow and fills the details
+user navigates to Exercising an option page
+user selects yes radio button and continues
+user is navigated to CYA page and verifies the answers and submits
        */
 
     }
@@ -285,11 +286,11 @@ class TransactionQuestionsSpec
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
       ReasonForClaimingRelief.saveAndContinue()
       /*         user is navigated to DO you know the company CIS number page
-      user selects yes radio button and continues
-    user enters CIS number and continues */
+user selects yes radio button and continues
+user enters CIS number and continues */
 
       Then("the user is navigated to the Partial Relief page")
-      // remove below line when navigation completed
+// remove below line when navigation completed
       PartialRelief.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/partial-relief"
       )
@@ -300,31 +301,31 @@ class TransactionQuestionsSpec
       PartialRelief.saveAndContinue()
 
       /* user is navigated to claiming partial relief page
-     user enters the claimed amount and continues
-    user navigated to considerations effected by uncertain future events page
-      user selects yes radio button and continues
-    user is navigated to deferring payment page
-    user selects yes radio button and continues
-    user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
-    user selects checkboxes and continues
-    user is navigated to Sale of business page
-      user selects yes radio button and continues
-    user is navigated to what is included in sale of business page
-      user selects checkboxes and continues(select others option checkbox)
-    user is navigated to total consideration of all assets included in sale of business page
-    user enters the amount and continues
-      user is navigated to the CAP1 or NSBC page
-    user selects yes radio button and continues
-    user is navigated to restrictions convenants and conditions page
-    user selects yes radio button and continues
-    user is navigated to enter details of restrictions convenants and conditions page
-      user enters the details and continues
-      user is navigated to exchange or part exchange of land or property page
-    user selects yes radio button and continues
-    user is navigated to address flow and fills the details
-      user navigates to Exercising an option page
-    user selects yes radio button and continues
-    user is navigated to CYA page and verifies the answers and submits*/
+user enters the claimed amount and continues
+user navigated to considerations effected by uncertain future events page
+user selects yes radio button and continues
+user is navigated to deferring payment page
+user selects yes radio button and continues
+user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
+user selects checkboxes and continues
+user is navigated to Sale of business page
+user selects yes radio button and continues
+user is navigated to what is included in sale of business page
+user selects checkboxes and continues(select others option checkbox)
+user is navigated to total consideration of all assets included in sale of business page
+user enters the amount and continues
+user is navigated to the CAP1 or NSBC page
+user selects yes radio button and continues
+user is navigated to restrictions convenants and conditions page
+user selects yes radio button and continues
+user is navigated to enter details of restrictions convenants and conditions page
+user enters the details and continues
+user is navigated to exchange or part exchange of land or property page
+user selects yes radio button and continues
+user is navigated to address flow and fills the details
+user navigates to Exercising an option page
+user selects yes radio button and continues
+user is navigated to CYA page and verifies the answers and submits*/
     }
   }
 }
