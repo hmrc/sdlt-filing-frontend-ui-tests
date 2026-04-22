@@ -25,7 +25,7 @@ object ActingAsATrustee extends BasePage {
   override def pageTitle: String =
     "Is the purchaser acting as a trustee? - About the purchaser - Stamp Taxes Online - GOV.UK"
 
-  def yes: String = "#value_0"
+  def yes: String = "#value"
 
-  def no: String = "#value_1"
+  def no: String = "#value-2"
 }
