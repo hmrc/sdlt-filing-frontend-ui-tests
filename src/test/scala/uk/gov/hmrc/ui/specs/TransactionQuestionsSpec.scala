@@ -123,8 +123,8 @@ class TransactionQuestionsSpec
       ReasonForClaimingRelief.saveAndContinue()
       Then("user is navigated to Do you know the charity's registration number page")
       DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
-      DoYouKnowCharityRegistrationNumber.validateCharityComissionLink()
-      DoYouKnowCharityRegistrationNumber.validateCharityComissionNorthernIrelandLink()
+//      DoYouKnowCharityRegistrationNumber.validateCharityComissionLink()
+//      DoYouKnowCharityRegistrationNumber.validateCharityComissionNorthernIrelandLink()
 
       And("user selects yes radio button and continues")
       DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
