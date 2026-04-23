@@ -183,7 +183,7 @@ class LandQuestionsSpec
 
     Scenario(
       "Complete the Land Questions with a mixed property",
-      LandJourney
+      wip
     ) {
 
       Given("the user is logged in through the AuthWizard page")
@@ -211,7 +211,10 @@ class LandQuestionsSpec
       Then("the LandCheckYourAnswers page is shown")
       LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
 
-      When("the user submits the land questions")
+      When("the user make updates and submits the land questions")
+      LandCheckYourAnswers.clickInterestTransferredOrCreated()
+      InterestTransferredOrCreated.radioButton(InterestTransferredOrCreated.FG)
+      InterestTransferredOrCreated.saveAndContinue()
       LandCheckYourAnswers.saveAndContinue()
       Then("the LandOverview page is shown")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
