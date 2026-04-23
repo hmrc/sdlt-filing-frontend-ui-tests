@@ -73,7 +73,7 @@ class LandQuestionsSpec
       When("the user does not confirm the land address")
       LandConfirmAddress.radioButton(LandConfirmAddress.no)
       LandConfirmAddress.saveAndContinue()
-      Then("the Land Address page is shown")
+      Then("the LandAddress page is shown")
       LandAddress.verifyPageTitle(LandAddress.pageTitle)
 
       When("the user enters the land address manually")
