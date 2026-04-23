@@ -152,12 +152,23 @@ class TransactionQuestionsSpec
         By.id(ClaimingPartialRelief.totalPartialRelief),
         ClaimingPartialRelief.totalPartialReliefInput
       )
-      ClaimingPartialRelief.saveAndContinue()
+      //      uncomment line below when navigation to the next page is ready
+      //      ClaimingPartialRelief.saveAndContinue()
 
-      /*user navigated to considerations effected by uncertain future events page
-user selects yes radio button and continues
-user is navigated to deferring payment page
-user selects yes radio button and continues
+      //      user navigated to considerations effected by uncertain future events page
+      //      user selects yes radio button and continues
+      Then("the DeferringPayment page is shown")
+      DeferringPayment.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/deferring-payment"
+      )
+      DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
+
+      When("the user confirms the purchaser is applying for a deferment")
+      DeferringPayment.radioButton(DeferringPayment.yes)
+//      uncomment line below when navigation to the next page is ready
+//      DeferringPayment.saveAndContinue()
+
+      /*
 user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
 user selects checkboxes and continues
 user is navigated to Sale of business page
@@ -295,7 +306,7 @@ user is navigated to CYA page and verifies the answers and submits
       And("user selects charities radio button and continues")
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
       // enable below step after the flow is ready
-      ReasonForClaimingRelief.saveAndContinue()
+      //      ReasonForClaimingRelief.saveAndContinue()
       /*         user is navigated to DO you know the company CIS number page
 user selects yes radio button and continues
 user enters CIS number and continues */
@@ -318,11 +329,23 @@ user enters CIS number and continues */
         By.id(ClaimingPartialRelief.totalPartialRelief),
         ClaimingPartialRelief.totalPartialReliefInput
       )
-      ClaimingPartialRelief.saveAndContinue()
-      /*user navigated to considerations effected by uncertain future events page
-user selects yes radio button and continues
-user is navigated to deferring payment page
-user selects yes radio button and continues
+      //      uncomment line below when navigation to the next page is ready
+      //      ClaimingPartialRelief.saveAndContinue()
+
+      //      user navigated to considerations effected by uncertain future events page
+      //      user selects yes radio button and continues
+      Then("the DeferringPayment page is shown")
+      DeferringPayment.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/deferring-payment"
+      )
+      DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
+
+      When("the user confirms the purchaser is applying for a deferment")
+      DeferringPayment.radioButton(DeferringPayment.yes)
+      //      uncomment line below when navigation to the next page is ready
+      //      DeferringPayment.saveAndContinue()
+
+      /*
 user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
 user selects checkboxes and continues
 user is navigated to Sale of business page
