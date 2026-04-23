@@ -17,6 +17,7 @@
 package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
+import org.openqa.selenium.{By, WebDriver}
 
 object DoYouKnowCharityRegistrationNumber extends BasePage {
 
@@ -29,4 +30,18 @@ object DoYouKnowCharityRegistrationNumber extends BasePage {
 
   val no: String = "#value-2"
 
+  def clickCharityCommisionLink(): Unit                                               = click(
+    By.xpath("//a[contains(@href,'register-of-charities.charitycommission')]")
+  )
+  def validateCharityComissionLink()(implicit driver: WebDriver): Unit                = {
+    clickCharityCommisionLink()
+    switchToNewTabAndValidateTitle("About the register of charities")
+  }
+  def clickCharityCommisionNorthernIrelandLink(): Unit                                = click(
+    By.xpath("//a[contains(@href,'charitycommissionni.org.uk/charity-search')]")
+  )
+  def validateCharityComissionNorthernIrelandLink()(implicit driver: WebDriver): Unit = {
+    clickCharityCommisionNorthernIrelandLink()
+    switchToNewTabAndValidateTitle("Charity search")
+  }
 }

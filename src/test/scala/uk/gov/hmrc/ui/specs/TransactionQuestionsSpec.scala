@@ -27,6 +27,7 @@ import uk.gov.hmrc.ui.pages.Preliminary.TransactionType
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import uk.gov.hmrc.selenium.webdriver.Driver.instance
 
 class TransactionQuestionsSpec
     extends AnyFeatureSpec
@@ -122,6 +123,8 @@ class TransactionQuestionsSpec
       ReasonForClaimingRelief.saveAndContinue()
       Then("user is navigated to Do you know the charity's registration number page")
       DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
+      DoYouKnowCharityRegistrationNumber.validateCharityComissionLink()
+      DoYouKnowCharityRegistrationNumber.validateCharityComissionNorthernIrelandLink()
 
       And("user selects yes radio button and continues")
       DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
@@ -291,6 +294,7 @@ user is navigated to CYA page and verifies the answers and submits
 
       And("user selects charities radio button and continues")
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
+      // enable below step after the flow is ready
       ReasonForClaimingRelief.saveAndContinue()
       /*         user is navigated to DO you know the company CIS number page
 user selects yes radio button and continues
