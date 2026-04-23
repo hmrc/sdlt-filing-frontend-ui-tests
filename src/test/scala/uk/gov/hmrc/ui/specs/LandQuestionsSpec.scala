@@ -70,9 +70,21 @@ class LandQuestionsSpec
       Then("the LandConfirmAddress page is shown")
       LandConfirmAddress.verifyPageTitle(LandConfirmAddress.pageTitle)
 
-      When("the user confirms the land address")
-      LandConfirmAddress.radioButton(LandConfirmAddress.yes)
+      When("the user does not confirm the land address")
+      LandConfirmAddress.radioButton(LandConfirmAddress.no)
       LandConfirmAddress.saveAndContinue()
+      Then("the Land Address page is shown")
+      LandAddress.verifyPageTitle(LandAddress.pageTitle)
+
+      When("the user enters the land address manually")
+      LandAddress.clickAddressManually()
+      LandAddress.verifyPageTitle(LandAddress.editPageTitle)
+      LandAddress.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("the ConfirmLandAddress page is shown")
+      LandAddress.verifyPageTitle(LandAddress.confirmPageTitle)
+
+      When("the user confirms the land address")
+      LandAddress.clickContinueButton()
       Then("the LocalAuthorityCode page is shown")
       LocalAuthorityCode.verifyPageTitle(LocalAuthorityCode.pageTitle)
 
