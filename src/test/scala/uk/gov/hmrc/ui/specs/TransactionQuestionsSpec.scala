@@ -141,10 +141,17 @@ class TransactionQuestionsSpec
       When("the user select Yes button and continues")
       PartialRelief.radioButton(PartialRelief.yes)
       PartialRelief.saveAndContinue()
+      Then("the user is navigated to the claim partial relief page")
+      ClaimingPartialRelief.verifyPageTitle(ClaimingPartialRelief.pageTitle)
 
-      /* user is navigated to claiming partial relief page
-user enters the claimed amount and continues
-user navigated to considerations effected by uncertain future events page
+      When("the user enters the total partial relief claimed")
+      ClaimingPartialRelief.input(
+        By.id(ClaimingPartialRelief.totalPartialRelief),
+        ClaimingPartialRelief.totalPartialReliefInput
+      )
+      ClaimingPartialRelief.saveAndContinue()
+
+      /*user navigated to considerations effected by uncertain future events page
 user selects yes radio button and continues
 user is navigated to deferring payment page
 user selects yes radio button and continues
@@ -299,10 +306,16 @@ user enters CIS number and continues */
       When("the user select Yes button and continues")
       PartialRelief.radioButton(PartialRelief.yes)
       PartialRelief.saveAndContinue()
+      Then("the user is navigated to the claim partial relief page")
+      ClaimingPartialRelief.verifyPageTitle(ClaimingPartialRelief.pageTitle)
 
-      /* user is navigated to claiming partial relief page
-user enters the claimed amount and continues
-user navigated to considerations effected by uncertain future events page
+      When("the user enters the total partial relief claimed")
+      ClaimingPartialRelief.input(
+        By.id(ClaimingPartialRelief.totalPartialRelief),
+        ClaimingPartialRelief.totalPartialReliefInput
+      )
+      ClaimingPartialRelief.saveAndContinue()
+      /*user navigated to considerations effected by uncertain future events page
 user selects yes radio button and continues
 user is navigated to deferring payment page
 user selects yes radio button and continues
