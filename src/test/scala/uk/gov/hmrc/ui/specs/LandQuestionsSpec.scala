@@ -223,7 +223,12 @@ class LandQuestionsSpec
       Then("the LandCheckYourAnswers page is shown")
       LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
 
-      When("the user submits the land questions")
+      When("the user updates the Interest Transferred value")
+      LandCheckYourAnswers.clickInterestTransferredOrCreated()
+      InterestTransferredOrCreated.radioButton(InterestTransferredOrCreated.FG)
+      InterestTransferredOrCreated.saveAndContinue()
+      And("submits the Land Questions from Check Your Answers page")
+      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
       LandCheckYourAnswers.saveAndContinue()
       Then("the LandOverview page is shown")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
