@@ -147,11 +147,8 @@ class PurchaserAgentQuestionsSpec
       AddPurchaserAgentReferenceNumber.verifyPageTitle(AddPurchaserAgentReferenceNumber.pageTitle)
       AddPurchaserAgentReferenceNumber.radioButton(AddPurchaserAgentReferenceNumber.yes)
       AddPurchaserAgentReferenceNumber.saveAndContinue()
-      Then("the PurchaserAgentCheckYourAnswers page is shown")
-      PurchaserAgentCheckYourAnswers.verifyPageTitle(PurchaserAgentCheckYourAnswers.pageTitle)
-
+      
       When("the user updates the purchaser agent reference number details")
-      PurchaserAgentCheckYourAnswers.clickPurchaserAgentReferenceNumberChange()
       PurchaserAgentEnterReferenceNumber.verifyPageTitle(PurchaserAgentEnterReferenceNumber.pageTitle)
       PurchaserAgentEnterReferenceNumber.input(
         By.id(PurchaserAgentEnterReferenceNumber.purchaserReference),
