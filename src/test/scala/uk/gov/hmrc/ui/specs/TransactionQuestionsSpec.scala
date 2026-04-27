@@ -27,7 +27,6 @@ import uk.gov.hmrc.ui.pages.Preliminary.TransactionType
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
-import uk.gov.hmrc.selenium.webdriver.Driver.instance
 
 class TransactionQuestionsSpec
     extends AnyFeatureSpec
@@ -165,30 +164,34 @@ class TransactionQuestionsSpec
 
       When("the user confirms the purchaser is applying for a deferment")
       DeferringPayment.radioButton(DeferringPayment.yes)
-//      uncomment line below when navigation to the next page is ready
-//      DeferringPayment.saveAndContinue()
+      DeferringPayment.saveAndContinue()
+      Then(
+        "user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )"
+      )
+      WhatIsThePropertyUsedFor.verifyPageTitle(WhatIsThePropertyUsedFor.pageTitle)
+      And("user selects checkboxes and continues")
+      WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.office, true)
+      WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.hotel, true)
+      WhatIsThePropertyUsedFor.saveAndContinue()
 
-      /*
-user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
-user selects checkboxes and continues
-user is navigated to Sale of business page
-user selects yes radio button and continues
-user is navigated to what is included in sale of business page
-user selects checkboxes and continues(select others option checkbox)
-user is navigated to total consideration of all assets included in sale of business page
-user enters the amount and continues
-user is navigated to the CAP1 or NSBC page
-user selects yes radio button and continues
-user is navigated to restrictions convenants and conditions page
-user selects yes radio button and continues
-user is navigated to enter details of restrictions convenants and conditions page
-user enters the details and continues
-user is navigated to exchange or part exchange of land or property page
-user selects yes radio button and continues
-user is navigated to address flow and fills the details
-user navigates to Exercising an option page
-user selects yes radio button and continues
-user is navigated to CYA page and verifies the answers and submits
+      /*user is navigated to Sale of business page
+     user selects yes radio button and continues
+     user is navigated to what is included in sale of business page
+     user selects checkboxes and continues(select others option checkbox)
+     user is navigated to total consideration of all assets included in sale of business page
+     user enters the amount and continues
+     user is navigated to the CAP1 or NSBC page
+     user selects yes radio button and continues
+     user is navigated to restrictions convenants and conditions page
+     user selects yes radio button and continues
+     user is navigated to enter details of restrictions convenants and conditions page
+     user enters the details and continues
+     user is navigated to exchange or part exchange of land or property page
+     user selects yes radio button and continues
+     user is navigated to address flow and fills the details
+     user navigates to Exercising an option page
+     user selects yes radio button and continues
+     user is navigated to CYA page and verifies the answers and submits
        */
 
     }
@@ -342,30 +345,35 @@ user enters CIS number and continues */
 
       When("the user confirms the purchaser is applying for a deferment")
       DeferringPayment.radioButton(DeferringPayment.yes)
-      //      uncomment line below when navigation to the next page is ready
-      //      DeferringPayment.saveAndContinue()
+      DeferringPayment.saveAndContinue()
 
-      /*
-user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )
-user selects checkboxes and continues
-user is navigated to Sale of business page
-user selects yes radio button and continues
-user is navigated to what is included in sale of business page
-user selects checkboxes and continues(select others option checkbox)
-user is navigated to total consideration of all assets included in sale of business page
-user enters the amount and continues
-user is navigated to the CAP1 or NSBC page
-user selects yes radio button and continues
-user is navigated to restrictions convenants and conditions page
-user selects yes radio button and continues
-user is navigated to enter details of restrictions convenants and conditions page
-user enters the details and continues
-user is navigated to exchange or part exchange of land or property page
-user selects yes radio button and continues
-user is navigated to address flow and fills the details
-user navigates to Exercising an option page
-user selects yes radio button and continues
-user is navigated to CYA page and verifies the answers and submits*/
+      Then(
+        "user is navigated to the use of land or property page(Only if property type is selected as non - residential or mixed )"
+      )
+      WhatIsThePropertyUsedFor.verifyPageTitle(WhatIsThePropertyUsedFor.pageTitle)
+      And("user selects checkboxes and continues")
+      WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.other, true)
+      WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.otherIndustrialUnit, true)
+      WhatIsThePropertyUsedFor.saveAndContinue()
+      /*user selects checkboxes and continues
+    user is navigated to Sale of business page
+    user selects yes radio button and continues
+    user is navigated to what is included in sale of business page
+    user selects checkboxes and continues(select others option checkbox)
+    user is navigated to total consideration of all assets included in sale of business page
+    user enters the amount and continues
+    user is navigated to the CAP1 or NSBC page
+    user selects yes radio button and continues
+    user is navigated to restrictions convenants and conditions page
+    user selects yes radio button and continues
+    user is navigated to enter details of restrictions convenants and conditions page
+    user enters the details and continues
+    user is navigated to exchange or part exchange of land or property page
+    user selects yes radio button and continues
+    user is navigated to address flow and fills the details
+    user navigates to Exercising an option page
+    user selects yes radio button and continues
+    user is navigated to CYA page and verifies the answers and submits*/
     }
   }
 }
