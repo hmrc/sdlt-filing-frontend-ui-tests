@@ -151,15 +151,16 @@ class TransactionQuestionsSpec
         By.id(ClaimingPartialRelief.totalPartialRelief),
         ClaimingPartialRelief.totalPartialReliefInput
       )
-      //      uncomment line below when navigation to the next page is ready
-      //      ClaimingPartialRelief.saveAndContinue()
+      ClaimingPartialRelief.saveAndContinue()
 
-      //      user navigated to considerations effected by uncertain future events page
-      //      user selects yes radio button and continues
-      Then("the DeferringPayment page is shown")
-      DeferringPayment.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/deferring-payment"
+      Then("the considerations effected by uncertain future events page is shown")
+      ConsiderationsAffectedByUncertainFutureEvents.verifyPageTitle(
+        ConsiderationsAffectedByUncertainFutureEvents.pageTitle
       )
+      And("user selects yes radio button and continues")
+      ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.yes)
+      ConsiderationsAffectedByUncertainFutureEvents.saveAndContinue()
+      Then("the DeferringPayment page is shown")
       DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
 
       When("the user confirms the purchaser is applying for a deferment")
@@ -332,15 +333,15 @@ user enters CIS number and continues */
         By.id(ClaimingPartialRelief.totalPartialRelief),
         ClaimingPartialRelief.totalPartialReliefInput
       )
-      //      uncomment line below when navigation to the next page is ready
-      //      ClaimingPartialRelief.saveAndContinue()
-
-      //      user navigated to considerations effected by uncertain future events page
-      //      user selects yes radio button and continues
-      Then("the DeferringPayment page is shown")
-      DeferringPayment.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/deferring-payment"
+      ClaimingPartialRelief.saveAndContinue()
+      Then("the considerations effected by uncertain future events page is shown")
+      ConsiderationsAffectedByUncertainFutureEvents.verifyPageTitle(
+        ConsiderationsAffectedByUncertainFutureEvents.pageTitle
       )
+      And("user selects yes radio button and continues")
+      ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.yes)
+      ConsiderationsAffectedByUncertainFutureEvents.saveAndContinue()
+      Then("the DeferringPayment page is shown")
       DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
 
       When("the user confirms the purchaser is applying for a deferment")
