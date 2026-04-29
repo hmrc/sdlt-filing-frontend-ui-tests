@@ -173,17 +173,29 @@ class TransactionQuestionsSpec
       And("user selects checkboxes and continues")
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.office, true)
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.hotel, true)
-      WhatIsThePropertyUsedFor.saveAndContinue()
+      // below step to be enabled after navigation is ready
+//      WhatIsThePropertyUsedFor.saveAndContinue()
 
       /*user is navigated to Sale of business page
      user selects yes radio button and continues
      user is navigated to what is included in sale of business page
      user selects checkboxes and continues(select others option checkbox)
      user is navigated to total consideration of all assets included in sale of business page
-     user enters the amount and continues
-     user is navigated to the CAP1 or NSBC page
-     user selects yes radio button and continues
-     user is navigated to restrictions convenants and conditions page
+     user enters the amount and continues*/
+      Then("the user is navigated to the CAP1 or NSBC page")
+      // Below step to be removed once navigation is ready
+      HaveYouFollowedTheRuling.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/have-you-followed-the-ruling"
+      )
+      HaveYouFollowedTheRuling.verifyPageTitle(
+        HaveYouFollowedTheRuling.pageTitle
+      )
+
+      When("the user selects yes radio button and continues")
+      HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.yes)
+      HaveYouFollowedTheRuling.saveAndContinue()
+
+      /*user is navigated to restrictions convenants and conditions page
      user selects yes radio button and continues
      user is navigated to enter details of restrictions convenants and conditions page
      user enters the details and continues
@@ -355,17 +367,29 @@ user enters CIS number and continues */
       And("user selects checkboxes and continues")
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.other, true)
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.otherIndustrialUnit, true)
-      WhatIsThePropertyUsedFor.saveAndContinue()
+      // below step to be enabled after navigation is ready
+//      WhatIsThePropertyUsedFor.saveAndContinue()
       /*user selects checkboxes and continues
     user is navigated to Sale of business page
     user selects yes radio button and continues
     user is navigated to what is included in sale of business page
     user selects checkboxes and continues(select others option checkbox)
     user is navigated to total consideration of all assets included in sale of business page
-    user enters the amount and continues
-    user is navigated to the CAP1 or NSBC page
-    user selects yes radio button and continues
-    user is navigated to restrictions convenants and conditions page
+    user enters the amount and continues*/
+
+      Then("the user is navigated to the CAP1 or NSBC page")
+      // Below step to be removed once navigation is ready
+      HaveYouFollowedTheRuling.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/have-you-followed-the-ruling"
+      )
+      HaveYouFollowedTheRuling.verifyPageTitle(
+        HaveYouFollowedTheRuling.pageTitle
+      )
+
+      When("the user selects yes radio button and continues")
+      HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.no)
+      HaveYouFollowedTheRuling.saveAndContinue()
+      /*  user is navigated to restrictions convenants and conditions page
     user selects yes radio button and continues
     user is navigated to enter details of restrictions convenants and conditions page
     user enters the details and continues
