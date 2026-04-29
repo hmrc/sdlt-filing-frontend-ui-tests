@@ -173,11 +173,16 @@ class TransactionQuestionsSpec
       And("user selects checkboxes and continues")
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.office, true)
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.hotel, true)
-      // below step to be enabled after navigation is ready
-//      WhatIsThePropertyUsedFor.saveAndContinue()
+      WhatIsThePropertyUsedFor.saveAndContinue()
 
-      /*user is navigated to Sale of business page
-     user selects yes radio button and continues
+      Then("the SaleOfABusiness page is shown")
+      SaleOfABusiness.verifyPageTitle(SaleOfABusiness.pageTitle)
+      When("the user confirms the transaction is part of the sale of a business")
+      SaleOfABusiness.radioButton(SaleOfABusiness.yes)
+      // uncomment below once navigation to the next page is ready
+//      SaleOfABusiness.saveAndContinue()
+
+      /*
      user is navigated to what is included in sale of business page
      user selects checkboxes and continues(select others option checkbox)
      user is navigated to total consideration of all assets included in sale of business page
@@ -367,11 +372,16 @@ user enters CIS number and continues */
       And("user selects checkboxes and continues")
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.other, true)
       WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.otherIndustrialUnit, true)
-      // below step to be enabled after navigation is ready
-//      WhatIsThePropertyUsedFor.saveAndContinue()
-      /*user selects checkboxes and continues
-    user is navigated to Sale of business page
-    user selects yes radio button and continues
+      WhatIsThePropertyUsedFor.saveAndContinue()
+
+      Then("the SaleOfABusiness page is shown")
+      SaleOfABusiness.verifyPageTitle(SaleOfABusiness.pageTitle)
+      When("the user confirms the transaction is part of the sale of a business")
+      SaleOfABusiness.radioButton(SaleOfABusiness.yes)
+      // uncomment below once navigation to the next page is ready
+      //      SaleOfABusiness.saveAndContinue()
+
+      /*
     user is navigated to what is included in sale of business page
     user selects checkboxes and continues(select others option checkbox)
     user is navigated to total consideration of all assets included in sale of business page
