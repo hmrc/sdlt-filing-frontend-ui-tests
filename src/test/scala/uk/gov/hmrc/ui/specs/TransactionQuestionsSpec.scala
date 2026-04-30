@@ -179,12 +179,15 @@ class TransactionQuestionsSpec
       SaleOfABusiness.verifyPageTitle(SaleOfABusiness.pageTitle)
       When("the user confirms the transaction is part of the sale of a business")
       SaleOfABusiness.radioButton(SaleOfABusiness.yes)
-      // uncomment below once navigation to the next page is ready
-//      SaleOfABusiness.saveAndContinue()
+      SaleOfABusiness.saveAndContinue()
 
+      Then("user provides what is included in sale of business")
+      WhatIncludedInSale.verifyPageTitle(WhatIncludedInSale.pageTitle)
+      And("user selects checkboxes and continues")
+      WhatIncludedInSale.checkbox(WhatIncludedInSale.stock, true)
+      WhatIncludedInSale.checkbox(WhatIncludedInSale.chattelsAndMovables, true)
+      WhatIncludedInSale.saveAndContinue()
       /*
-     user is navigated to what is included in sale of business page
-     user selects checkboxes and continues(select others option checkbox)
      user is navigated to total consideration of all assets included in sale of business page
      user enters the amount and continues*/
       Then("the user is navigated to the CAP1 or NSBC page")
@@ -378,13 +381,14 @@ user enters CIS number and continues */
       SaleOfABusiness.verifyPageTitle(SaleOfABusiness.pageTitle)
       When("the user confirms the transaction is part of the sale of a business")
       SaleOfABusiness.radioButton(SaleOfABusiness.yes)
-      // uncomment below once navigation to the next page is ready
-      //      SaleOfABusiness.saveAndContinue()
-
+      SaleOfABusiness.saveAndContinue()
+      Then("user provides what is included in sale of business")
+      WhatIncludedInSale.verifyPageTitle(WhatIncludedInSale.pageTitle)
+      And("user selects checkboxes and continues")
+      WhatIncludedInSale.checkbox(WhatIncludedInSale.others, true)
+      WhatIncludedInSale.saveAndContinue()
       /*
-    user is navigated to what is included in sale of business page
-    user selects checkboxes and continues(select others option checkbox)
-    user is navigated to total consideration of all assets included in sale of business page
+      user is navigated to total consideration of all assets included in sale of business page
     user enters the amount and continues*/
 
       Then("the user is navigated to the CAP1 or NSBC page")
