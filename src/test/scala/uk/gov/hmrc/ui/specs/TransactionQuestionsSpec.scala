@@ -187,11 +187,20 @@ class TransactionQuestionsSpec
      user selects checkboxes and continues(select others option checkbox)
      user is navigated to total consideration of all assets included in sale of business page
      user enters the amount and continues*/
-      Then("the user is navigated to the CAP1 or NSBC page")
+      Then("the user is navigated to the applied for CAP1 or NSBC page")
       // Below step to be removed once navigation is ready
-      HaveYouFollowedTheRuling.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/have-you-followed-the-ruling"
+      AppliedForCAP1OrNSBC.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/CAP1-or-NSBC"
       )
+      AppliedForCAP1OrNSBC.verifyPageTitle(
+        AppliedForCAP1OrNSBC.pageTitle
+      )
+
+      When("the user selects yes radio button and continues")
+      AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
+      AppliedForCAP1OrNSBC.saveAndContinue()
+
+      Then("the user is navigated to the have you followed the ruling under CAP1 or NSBC page")
       HaveYouFollowedTheRuling.verifyPageTitle(
         HaveYouFollowedTheRuling.pageTitle
       )
@@ -387,11 +396,20 @@ user enters CIS number and continues */
     user is navigated to total consideration of all assets included in sale of business page
     user enters the amount and continues*/
 
-      Then("the user is navigated to the CAP1 or NSBC page")
+      Then("the user is navigated to the applied for  CAP1 or NSBC page")
       // Below step to be removed once navigation is ready
-      HaveYouFollowedTheRuling.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/have-you-followed-the-ruling"
+      AppliedForCAP1OrNSBC.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/CAP1-or-NSBC"
       )
+      AppliedForCAP1OrNSBC.verifyPageTitle(
+        AppliedForCAP1OrNSBC.pageTitle
+      )
+
+      When("the user selects yes radio button and continues")
+      AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
+      AppliedForCAP1OrNSBC.saveAndContinue()
+
+      Then("the user is navigated to the have you followed the ruling under CAP1 or NSBC page")
       HaveYouFollowedTheRuling.verifyPageTitle(
         HaveYouFollowedTheRuling.pageTitle
       )
