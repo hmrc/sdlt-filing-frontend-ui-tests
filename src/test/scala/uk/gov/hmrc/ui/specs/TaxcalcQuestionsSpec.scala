@@ -35,7 +35,7 @@ class TaxcalcSpecQuestions
     with BeforeAndAfterEach
     with Browser
     with ScreenshotOnFailure {
- /* scenario 1 user select self assessment date
+  /* scenario 1 user select self assessment date
     user is navigated to Tax cal summary page
     user click check your SDLT breakdown and continue
     user is navigated SDLT breakdown page
@@ -48,12 +48,12 @@ class TaxcalcSpecQuestions
     user enter amount to be retunred and continue
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
-    user is navigated to Tax calculation Check your answers page 
-    user select confirm and continue button 
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
     user is navigated to tasklist
-    */
+   */
 
-     /*Scenario 4
+  /*Scenario 4
     user is navigated to What is the tax due on total premium payable page
     user enter the total premium payable and click save and continue button
     user is navigated to what is the tax due on the NPV page
@@ -62,12 +62,12 @@ class TaxcalcSpecQuestions
     user enter the total amount you intend to pay with this return and click save and continue
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
-    user is navigated to Tax calculation Check your answers page 
-    user select confirm and continue button 
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
     user is navigated to tasklist
-    */
+   */
 
-     /*Scenario 3 (lease involved)
+  /*Scenario 3 (lease involved)
     user is navigated to calclated SDLT due is xxx amount page
     user click check your SDLT breakdown and continue
     user is navigated SDLT breakdown page
@@ -80,12 +80,12 @@ class TaxcalcSpecQuestions
     user enter amount to be retunred and continue
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
-    user is navigated to Tax calculation Check your answers page 
-    user select confirm and continue button 
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
     user is navigated to tasklist
-     */
+   */
 
-     /*Scenario 2 (nolease involved)
+  /*Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
     user click continue button
     user enter self assessment amount of SDLT and click continue
@@ -93,16 +93,9 @@ class TaxcalcSpecQuestions
     user enter amount to be retunred and continue
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
-    user is navigated to Tax calculation Check your answers page 
-    user select confirm and continue button 
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
     user is navigated to tasklist
-     */
+   */
 
-    }
-     
-
-     
-
-  
-  
-
+}
