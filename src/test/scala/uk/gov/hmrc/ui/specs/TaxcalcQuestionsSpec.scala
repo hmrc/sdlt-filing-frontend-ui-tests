@@ -83,6 +83,7 @@ class TaxcalcSpecQuestions
     user is navigated to Tax calculation Check your answers page 
     user select confirm and continue button 
     user is navigated to tasklist
+     */
 
      /*Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
@@ -95,6 +96,7 @@ class TaxcalcSpecQuestions
     user is navigated to Tax calculation Check your answers page 
     user select confirm and continue button 
     user is navigated to tasklist
+     */
 
     }
      
