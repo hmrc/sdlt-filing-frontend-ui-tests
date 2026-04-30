@@ -208,17 +208,21 @@ class TransactionQuestionsSpec
       When("the user selects yes radio button and continues")
       HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.yes)
       HaveYouFollowedTheRuling.saveAndContinue()
+      Then("the user is navigated to Restrictions Covenants or Conditions Page")
+      RestrictionsConvenantsOrConditions.verifyPageTitle(RestrictionsConvenantsOrConditions.pageTitle)
 
-      /*user is navigated to restrictions convenants and conditions page
-     user selects yes radio button and continues
-     user is navigated to enter details of restrictions convenants and conditions page
-     user enters the details and continues
-     user is navigated to exchange or part exchange of land or property page
-     user selects yes radio button and continues
-     user is navigated to address flow and fills the details
-     user navigates to Exercising an option page
-     user selects yes radio button and continues
-     user is navigated to CYA page and verifies the answers and submits
+      When("the user selects yes radio button and continues")
+      RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.yes)
+      RestrictionsConvenantsOrConditions.saveAndContinue()
+      /*
+    user is navigated to enter details of restrictions convenants and conditions page
+    user enters the details and continues
+    user is navigated to exchange or part exchange of land or property page
+    user selects yes radio button and continues
+    user is navigated to address flow and fills the details
+    user navigates to Exercising an option page
+    user selects yes radio button and continues
+    user is navigated to CYA page and verifies the answers and submits
        */
 
     }
@@ -417,10 +421,14 @@ user enters CIS number and continues */
       When("the user selects yes radio button and continues")
       HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.no)
       HaveYouFollowedTheRuling.saveAndContinue()
-      /*  user is navigated to restrictions convenants and conditions page
-    user selects yes radio button and continues
-    user is navigated to enter details of restrictions convenants and conditions page
-    user enters the details and continues
+      Then("the user is navigated to Restrictions Covenants or Conditions Page")
+      RestrictionsConvenantsOrConditions.verifyPageTitle(RestrictionsConvenantsOrConditions.pageTitle)
+
+      When("the user selects yes radio button and continues")
+      RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
+      RestrictionsConvenantsOrConditions.saveAndContinue()
+
+      /*
     user is navigated to exchange or part exchange of land or property page
     user selects yes radio button and continues
     user is navigated to address flow and fills the details
