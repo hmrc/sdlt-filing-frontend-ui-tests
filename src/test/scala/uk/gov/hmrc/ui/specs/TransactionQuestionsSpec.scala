@@ -183,21 +183,22 @@ class TransactionQuestionsSpec
 
       Then("user provides what is included in sale of business")
       WhatIncludedInSale.verifyPageTitle(WhatIncludedInSale.pageTitle)
-      And("user selects checkboxes and continues")
+
+      When("user selects checkboxes and continues")
       WhatIncludedInSale.checkbox(WhatIncludedInSale.stock, true)
       WhatIncludedInSale.checkbox(WhatIncludedInSale.chattelsAndMovables, true)
       WhatIncludedInSale.saveAndContinue()
-      /*
-     user is navigated to total consideration of all assets included in sale of business page
-     user enters the amount and continues*/
+      Then("user is navigated to the Total Consideration of all assets page")
+      TotalConsiderationOfAllAssets.verifyPageTitle(TotalConsiderationOfAllAssets.pageTitle)
+
+      When("the user enters the amount and click continue")
+      TotalConsiderationOfAllAssets.input(
+        By.id(TotalConsiderationOfAllAssets.totalConsiderationOfAllAssets),
+        TotalConsiderationOfAllAssets.totalConsiderationOfAllAssetsInput
+      )
+      TotalConsiderationOfAllAssets.saveAndContinue()
       Then("the user is navigated to the applied for CAP1 or NSBC page")
-      // Below step to be removed once navigation is ready
-      AppliedForCAP1OrNSBC.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/CAP1-or-NSBC"
-      )
-      AppliedForCAP1OrNSBC.verifyPageTitle(
-        AppliedForCAP1OrNSBC.pageTitle
-      )
+      AppliedForCAP1OrNSBC.verifyPageTitle(AppliedForCAP1OrNSBC.pageTitle)
 
       When("the user selects yes radio button and continues")
       AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
@@ -411,18 +412,17 @@ user enters CIS number and continues */
       And("user selects checkboxes and continues")
       WhatIncludedInSale.checkbox(WhatIncludedInSale.others, true)
       WhatIncludedInSale.saveAndContinue()
-      /*
-      user is navigated to total consideration of all assets included in sale of business page
-    user enters the amount and continues*/
+      Then("user is navigated to the Total Consideration of all assets page")
+      TotalConsiderationOfAllAssets.verifyPageTitle(TotalConsiderationOfAllAssets.pageTitle)
 
+      When("the user enters the amount and click continue")
+      TotalConsiderationOfAllAssets.input(
+        By.id(TotalConsiderationOfAllAssets.totalConsiderationOfAllAssets),
+        TotalConsiderationOfAllAssets.totalConsiderationOfAllAssetsInput
+      )
+      TotalConsiderationOfAllAssets.saveAndContinue()
       Then("the user is navigated to the applied for  CAP1 or NSBC page")
-      // Below step to be removed once navigation is ready
-      AppliedForCAP1OrNSBC.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/CAP1-or-NSBC"
-      )
-      AppliedForCAP1OrNSBC.verifyPageTitle(
-        AppliedForCAP1OrNSBC.pageTitle
-      )
+      AppliedForCAP1OrNSBC.verifyPageTitle(AppliedForCAP1OrNSBC.pageTitle)
 
       When("the user selects yes radio button and continues")
       AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
