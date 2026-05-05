@@ -216,12 +216,23 @@ class TransactionQuestionsSpec
 
       When("the user selects yes radio button and continues")
       RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.yes)
-      RestrictionsConvenantsOrConditions.saveAndContinue()
+      // Uncomment when navigated to next page is ready
+      // RestrictionsConvenantsOrConditions.saveAndContinue()
+
+      Then("the ExchangeOrPartExchange page is shown")
+      ExchangeOrPartExchange.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exchange-or-part-exchange"
+      )
+      ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
+
+      When("the user confirms the land is being exchanged or part exchanged")
+      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
+      // Uncomment when navigated to next page is ready
+      // ExchangeOrPartExchange.saveAndContinue()
+
       /*
     user is navigated to enter details of restrictions convenants and conditions page
     user enters the details and continues
-    user is navigated to exchange or part exchange of land or property page
-    user selects yes radio button and continues
     user is navigated to address flow and fills the details
     user navigates to Exercising an option page
     user selects yes radio button and continues
@@ -430,11 +441,21 @@ user enters CIS number and continues */
 
       When("the user selects yes radio button and continues")
       RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
-      RestrictionsConvenantsOrConditions.saveAndContinue()
+      // Uncomment when navigated to next page is ready
+      // RestrictionsConvenantsOrConditions.saveAndContinue()
+
+      Then("the ExchangeOrPartExchange page is shown")
+      ExchangeOrPartExchange.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exchange-or-part-exchange"
+      )
+      ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
+
+      When("the user confirms the land is being exchanged or part exchanged")
+      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
+      // Uncomment when navigated to next page is ready
+      // ExchangeOrPartExchange.saveAndContinue()
 
       /*
-    user is navigated to exchange or part exchange of land or property page
-    user selects yes radio button and continues
     user is navigated to address flow and fills the details
     user navigates to Exercising an option page
     user selects yes radio button and continues
