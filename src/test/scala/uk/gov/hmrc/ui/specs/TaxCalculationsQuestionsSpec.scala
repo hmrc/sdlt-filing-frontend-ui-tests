@@ -38,6 +38,68 @@ class TaxCalculationsQuestionsSpec
 
   Feature("SDLT Filing Frontend Tax Calculations") {
 
+    /* scenario 1 user select self assessment date
+    user is navigated to Tax cal summary page
+    user click check your SDLT breakdown and continue
+    user is navigated SDLT breakdown page
+    user click return to the tax calculation hyperlink
+    user is navigated to Tax cal summary page
+    user click continue button in Tax cal summary page
+    user is navigated to the Tax calculation SDLT self assessment page
+    user enter self assessment amount of SDLT and click continue
+    user is navigated to Total amount due page
+    user enter amount to be retunred and continue
+    user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+    user selects yes radio button and continues
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
+    user is navigated to tasklist
+     */
+
+    /*Scenario 4
+    user is navigated to What is the tax due on total premium payable page
+    user enter the total premium payable and click save and continue button
+    user is navigated to what is the tax due on the NPV page
+    user enter the NPV value and click save and continue button
+    user is navigated to total mount due page
+    user enter the total amount you intend to pay with this return and click save and continue
+    user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+    user selects yes radio button and continues
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
+    user is navigated to tasklist
+     */
+
+    /*Scenario 3 (lease involved)
+    user is navigated to calclated SDLT due is xxx amount page
+    user click check your SDLT breakdown and continue
+    user is navigated SDLT breakdown page
+    user click return to the tax calculation hyperlink
+    user is navigated to Tax cal summary page
+    user click continue button in Tax cal summary page
+    user is navigated to the Tax calculation SDLT self assessment page
+    user enter self assessment amount of SDLT and click continue
+    user is navigated to Total amount due page
+    user enter amount to be retunred and continue
+    user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+    user selects yes radio button and continues
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
+    user is navigated to tasklist
+     */
+
+    /*Scenario 2 (nolease involved)
+    user is navigated to HMRC cannot calculate the SDLT due page
+    user click continue button
+    user enter self assessment amount of SDLT and click continue
+    user is navigated to Total amount due page
+    user enter amount to be retunred and continue
+    user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+    user selects yes radio button and continues
+    user is navigated to Tax calculation Check your answers page
+    user select confirm and continue button
+    user is navigated to tasklist
+     */
     Scenario(
       "Complete the Freehold calculated Tax Calculation Journey",
       TaxCalculationJourney
