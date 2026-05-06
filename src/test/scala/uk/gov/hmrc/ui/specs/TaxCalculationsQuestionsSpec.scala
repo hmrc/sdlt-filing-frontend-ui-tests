@@ -102,7 +102,6 @@ class TaxCalculationsQuestionsSpec
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
       // user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
-      When("the user want the penalties page journey")
       Then("the user is navigated to the pay penalties page")
       TaxCalculationsPenalties.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/are-penalties-and-interest-included"
