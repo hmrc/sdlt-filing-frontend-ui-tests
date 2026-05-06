@@ -22,6 +22,7 @@ import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBeforeYouStart
+import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBreakdown
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -55,10 +56,20 @@ class TaxCalculationsQuestionsSpec
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
       /* scenario 1 user select self assessment date
-    user is navigated to Tax cal summary page
-    user click check your SDLT breakdown and continue
-    user is navigated SDLT breakdown page
-    user click return to the tax calculation hyperlink
+      user is navigated to Tax cal summary page*/
+      // user click check your SDLT breakdown and continue
+      When("the user want the breakdown page journey")
+      Then("the user is navigated to the SDLT breakdown page")
+      TaxCalculationsBreakdown.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/SDLT-breakdown"
+      )
+      TaxCalculationsBreakdown.verifyPageTitle(TaxCalculationsBreakdown.pageTitle)
+      When("the user want to go return to the tax calculation page")
+      TaxCalculationsBreakdown.clickReturnTaxPage()
+      Then("the Freehold calculated Before you start page is displayed")
+      TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
+      /*
+
     user is navigated to Tax cal summary page
     user click continue button in Tax cal summary page
     user is navigated to the Tax calculation SDLT self assessment page
