@@ -234,10 +234,18 @@ class TransactionQuestionsSpec
       /*
     user is navigated to enter details of restrictions convenants and conditions page
     user enters the details and continues
-    user is navigated to address flow and fills the details
-    user navigates to Exercising an option page
-    user selects yes radio button and continues
-    user is navigated to CYA page and verifies the answers and submits
+    user is navigated to address flow and fills the details */
+      Then("user navigates to Exercising an option page")
+      // Remove the below line when navigation to page is ready
+      ExercisingAnOption.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exercising-an-option"
+      )
+      ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
+      And("user selects yes radio button and continues")
+      ExercisingAnOption.radioButton(ExercisingAnOption.yes)
+      // enable below line when navigation to next page is ready
+      // ExercisingAnOption.saveAndContinue()
+      /*user is navigated to CYA page and verifies the answers and submits
        */
 
     }
@@ -441,13 +449,9 @@ user enters CIS number and continues */
 
       When("the user selects yes radio button and continues")
       RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
-      // Uncomment when navigated to next page is ready
-      // RestrictionsConvenantsOrConditions.saveAndContinue()
+      RestrictionsConvenantsOrConditions.saveAndContinue()
 
       Then("the ExchangeOrPartExchange page is shown")
-      ExchangeOrPartExchange.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exchange-or-part-exchange"
-      )
       ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
 
       When("the user confirms the land is being exchanged or part exchanged")
@@ -456,10 +460,16 @@ user enters CIS number and continues */
       // ExchangeOrPartExchange.saveAndContinue()
 
       /*
-    user is navigated to address flow and fills the details
-    user navigates to Exercising an option page
-    user selects yes radio button and continues
-    user is navigated to CYA page and verifies the answers and submits*/
+    user is navigated to address flow and fills the details*/
+      Then("user navigates to Exercising an option page")
+      // Remove the below line when navigation to page is ready
+      ExercisingAnOption.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exercising-an-option"
+      )
+      ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
+      And("user selects yes radio button and continues")
+      ExercisingAnOption.radioButton(ExercisingAnOption.yes)
+      /*user is navigated to CYA page and verifies the answers and submits*/
     }
   }
 }

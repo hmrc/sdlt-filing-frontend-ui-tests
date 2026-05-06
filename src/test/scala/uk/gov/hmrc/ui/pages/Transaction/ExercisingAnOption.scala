@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.TaxCalculations
+package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-import org.openqa.selenium.By
+object ExercisingAnOption extends BasePage {
 
-object TaxCalculationsBreakdown extends BasePage {
-
-  override def pageUrl: String = "tax-calculation/freehold-calculated/SDLT-breakdown"
+  override def pageUrl: String = "about-the-transaction/exercising-an-option"
 
   override def pageTitle: String =
-    "SDLT breakdown - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
+    "Exercising an option - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val returnTaxCalc = "[data-module='hmrc-back-link']"
+  val yes: String = "#value"
 
-  def clickReturnTaxPage(): Unit =
-    click(By.xpath("//a[@data-module='hmrc-back-link' and text()='Return to tax calculation']"))
+  val no: String = "#value-2"
 
 }
