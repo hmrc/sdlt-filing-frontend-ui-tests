@@ -240,7 +240,8 @@ class TransactionQuestionsSpec
       TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
       And("user is navigated to confirm the address page and continues")
       TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
-      TransactionExchangeAddress.clickSubmitButton()
+      // uncomment once navigation is ready
+      // TransactionExchangeAddress.clickSubmitButton()
       /*
     user navigates to Exercising an option page
     user selects yes radio button and continues
@@ -368,13 +369,13 @@ user selects yes radio button and continues*/
 
       // remove next line when navigation is completed
       EnterCISRegistrationNumber.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/PurchaserQuestionsSpec"
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/what-is-the-CIS-number"
       )
 
       When("the user enters the enter CIS Number Page")
       EnterCISRegistrationNumber.input(
         By.id(EnterCISRegistrationNumber.CISRegistrationNumber),
-        EnterCISRegistrationNumber.CISRegistrationNumber
+        EnterCISRegistrationNumber.CISRegistrationNumberInput
       )
       EnterCISRegistrationNumber.saveAndContinue()
       Then("the user is navigated to Partial Relief page")
