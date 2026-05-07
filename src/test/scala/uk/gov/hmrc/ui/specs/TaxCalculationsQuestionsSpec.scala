@@ -24,6 +24,7 @@ import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBeforeYouStart
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBreakdown
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenalties
+import uk.gov.hmrc.ui.pages.Preliminary.PreliminaryBeforeYouStart
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -69,6 +70,18 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsBreakdown.clickReturnTaxPage()
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
+
+      // user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+      Then("the user is navigated to the pay penalties page")
+      TaxCalculationsPenalties.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/are-penalties-and-interest-included"
+      )
+      TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitle)
+      When("user selects no radio button and continues")
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
+      TaxCalculationsPenalties.saveAndContinue()
+      Then("the Preliminary page is shown")
+      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
       /*
 
     user is navigated to Tax cal summary page
@@ -101,17 +114,6 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
-      // user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
-      Then("the user is navigated to the pay penalties page")
-      TaxCalculationsPenalties.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/are-penalties-and-interest-included"
-      )
-      TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitle)
-      When("user selects no radio button and continues")
-      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
-      TaxCalculationsPenalties.saveAndContinue()
-      Then("the ReturnTaskList page is shown")
-      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       /* Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
