@@ -361,10 +361,13 @@ class TransactionQuestionsSpec
 
       And("user selects charities radio button and continues")
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
-      // enable below step after the flow is ready
-      //      ReasonForClaimingRelief.saveAndContinue()
-      /*         user is navigated to DO you know the company CIS number page
-user selects yes radio button and continues
+      ReasonForClaimingRelief.saveAndContinue()
+      Then(" user is navigated to DO you know the company CIS number page")
+      ConstructionIndustryScheme.verifyPageTitle(ConstructionIndustryScheme.pageTitle)
+      And("user selects yes radio button and continues")
+      ConstructionIndustryScheme.radioButton(ConstructionIndustryScheme.yes)
+      ConstructionIndustryScheme.saveAndContinue()
+      /*
 user enters CIS number and continues */
 
       Then("the user is navigated to the Partial Relief page")
