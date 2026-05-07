@@ -23,6 +23,7 @@ import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBeforeYouStart
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBreakdown
+import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenalties
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -100,6 +101,17 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
+      // user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+      Then("the user is navigated to the pay penalties page")
+      TaxCalculationsPenalties.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/are-penalties-and-interest-included"
+      )
+      TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitle)
+      When("user selects no radio button and continues")
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
+      TaxCalculationsPenalties.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       /* Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
@@ -107,7 +119,6 @@ class TaxCalculationsQuestionsSpec
     user enter self assessment amount of SDLT and click continue
     user is navigated to Total amount due page
     user enter amount to be retunred and continue
-    user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
     user is navigated to Tax calculation Check your answers page
     user select confirm and continue button

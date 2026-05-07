@@ -18,18 +18,13 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-import org.openqa.selenium.By
+object TaxCalculationsPenalties extends BasePage {
 
-object TaxCalculationsBreakdown extends BasePage {
-
-  override def pageUrl: String = "tax-calculation/freehold-calculated/SDLT-breakdown"
+  override def pageUrl: String = "tax-calculation/freehold-calculated/are-penalties-and-interest-included"
 
   override def pageTitle: String =
-    "SDLT breakdown - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
+    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
+  val yes: String                = "#value_0"
 
-  val returnTaxCalc = "[data-module='hmrc-back-link']"
-
-  def clickReturnTaxPage(): Unit =
-    click(By.xpath("//a[@data-module='hmrc-back-link' and text()='Return to tax calculation']"))
-
+  val no: String = "#value_1"
 }
