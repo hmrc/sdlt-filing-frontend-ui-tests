@@ -233,8 +233,16 @@ class TransactionQuestionsSpec
 
       /*
     user is navigated to enter details of restrictions convenants and conditions page
-    user enters the details and continues
-    user is navigated to address flow and fills the details
+    user enters the details and continues*/
+
+      Then("user is navigated to address flow and fills the details")
+      TransactionExchangeAddress.clickAddressManually()
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
+      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      And("user is navigated to confirm the address page and continues")
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
+      TransactionExchangeAddress.clickSubmitButton()
+      /*
     user navigates to Exercising an option page
     user selects yes radio button and continues
     user is navigated to CYA page and verifies the answers and submits
@@ -452,11 +460,17 @@ user enters CIS number and continues */
 
       When("the user confirms the land is being exchanged or part exchanged")
       ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
-      // Uncomment when navigated to next page is ready
-      // ExchangeOrPartExchange.saveAndContinue()
+      ExchangeOrPartExchange.saveAndContinue()
+      Then("user is navigated to address flow and fills the details")
+      TransactionExchangeAddress.clickAddressManually()
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
+      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      And("user is navigated to confirm the address page and continues")
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
+      TransactionExchangeAddress.clickSubmitButton()
 
       /*
-    user is navigated to address flow and fills the details
+
     user navigates to Exercising an option page
     user selects yes radio button and continues
     user is navigated to CYA page and verifies the answers and submits*/
