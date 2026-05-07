@@ -243,7 +243,7 @@ class TransactionQuestionsSpec
     }
 
     Scenario(
-      "Complete the Transactions Questions user journey with  transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
+      "Complete the Transactions Questions user journey with transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
       TransactionJourney
     ) {
 
@@ -357,14 +357,20 @@ class TransactionQuestionsSpec
       // enable below step after the flow is ready
       //      ReasonForClaimingRelief.saveAndContinue()
       /*         user is navigated to DO you know the company CIS number page
-user selects yes radio button and continues
-user enters CIS number and continues */
+user selects yes radio button and continues*/
 
-      Then("the user is navigated to the Partial Relief page")
-// remove below line when navigation completed
-      PartialRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/partial-relief"
+      // remove next line when navigation is completed
+      EnterCISRegistrationNumber.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/PurchaserQuestionsSpec"
       )
+
+      When("the user enters the enter CIS Number Page")
+      EnterCISRegistrationNumber.input(
+        By.id(EnterCISRegistrationNumber.CISRegistrationNumber),
+        EnterCISRegistrationNumber.CISRegistrationNumber
+      )
+      EnterCISRegistrationNumber.saveAndContinue()
+      Then("the user is navigated to Partial Relief page")
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
       When("the user select Yes button and continues")
