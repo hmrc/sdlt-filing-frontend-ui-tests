@@ -228,8 +228,7 @@ class TransactionQuestionsSpec
 
       When("the user confirms the land is being exchanged or part exchanged")
       ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
-      // Uncomment when navigated to next page is ready
-      // ExchangeOrPartExchange.saveAndContinue()
+      ExchangeOrPartExchange.saveAndContinue()
 
       /*
     user is navigated to enter details of restrictions convenants and conditions page

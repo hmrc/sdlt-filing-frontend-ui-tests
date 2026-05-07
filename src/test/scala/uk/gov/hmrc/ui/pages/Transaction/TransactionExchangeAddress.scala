@@ -30,7 +30,7 @@ object TransactionExchangeAddress extends BasePage {
     "Enter the address of the land or property being exchanged or part exchanged - About the transaction - Stamp Taxes Online - GOV.UK"
 
   val confirmPageTitle: String =
-    "Review and confirm the address of the land or property being exchanged or part exchanged- About the transaction - Stamp Taxes Online - GOV.UK"
+    "Review and confirm the address of the land or property being exchanged or part exchanged - About the transaction - Stamp Taxes Online - GOV.UK"
 
   def clickAddressManually(): Unit = click(By.linkText(Locators.lnkAddrManually))
 

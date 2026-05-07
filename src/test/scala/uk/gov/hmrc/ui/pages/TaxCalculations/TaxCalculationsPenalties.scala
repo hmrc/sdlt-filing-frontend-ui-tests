@@ -18,8 +18,6 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
-
 object TaxCalculationsPenalties extends BasePage {
 
   override def pageUrl: String = "tax-calculation/freehold-calculated/are-penalties-and-interest-included"
