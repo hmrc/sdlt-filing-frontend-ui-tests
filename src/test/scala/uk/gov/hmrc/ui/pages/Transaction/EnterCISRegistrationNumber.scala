@@ -23,7 +23,7 @@ object EnterCISRegistrationNumber extends BasePage {
   override def pageUrl: String = "about-the-transaction/what-is-the-CIS-number"
 
   override def pageTitle: String =
-    "What is the purchaser’s CIS registration number? - About the transaction - Stamp Taxes Online – GOV.UK"
+    "What is the purchaser’s CIS registration number? - About the transaction - Stamp Taxes Online - GOV.UK"
 
   val CISRegistrationNumber: String = "value"
 
