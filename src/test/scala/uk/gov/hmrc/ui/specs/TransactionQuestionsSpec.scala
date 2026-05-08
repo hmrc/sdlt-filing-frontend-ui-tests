@@ -217,23 +217,24 @@ class TransactionQuestionsSpec
 
       When("the user selects yes radio button and continues")
       RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.yes)
-      // Uncomment when navigated to next page is ready
-      // RestrictionsConvenantsOrConditions.saveAndContinue()
-
-      Then("the ExchangeOrPartExchange page is shown")
-      ExchangeOrPartExchange.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exchange-or-part-exchange"
+      RestrictionsConvenantsOrConditions.saveAndContinue()
+      Then("the user is navigated to enter details of restrictions convenants and conditions page")
+      DescriptionOfRestrictionsConvenantsOrConditions.verifyPageTitle(
+        DescriptionOfRestrictionsConvenantsOrConditions.pageTitle
       )
+
+      When("the user enter the details of restrictions and continue")
+      DescriptionOfRestrictionsConvenantsOrConditions.input(
+        By.id(DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditions),
+        DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditionsInput
+      )
+      DescriptionOfRestrictionsConvenantsOrConditions.saveAndContinue()
+      Then("the ExchangeOrPartExchange page is shown")
       ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
 
       When("the user confirms the land is being exchanged or part exchanged")
       ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
       ExchangeOrPartExchange.saveAndContinue()
-
-      /*
-    user is navigated to enter details of restrictions convenants and conditions page
-    user enters the details and continues*/
-
       Then("user is navigated to address flow and fills the details")
       TransactionExchangeAddress.clickAddressManually()
       TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
@@ -255,7 +256,7 @@ class TransactionQuestionsSpec
     ) {
 
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-mixed"))
 
       When("the user clicks on the 'Transaction Questions' link")
       ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
@@ -453,13 +454,9 @@ class TransactionQuestionsSpec
 
       When("the user selects yes radio button and continues")
       RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
-      // Uncomment when navigated to next page is ready
-      // RestrictionsConvenantsOrConditions.saveAndContinue()
+      RestrictionsConvenantsOrConditions.saveAndContinue()
 
       Then("the ExchangeOrPartExchange page is shown")
-      ExchangeOrPartExchange.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exchange-or-part-exchange"
-      )
       ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
 
       When("the user confirms the land is being exchanged or part exchanged")
