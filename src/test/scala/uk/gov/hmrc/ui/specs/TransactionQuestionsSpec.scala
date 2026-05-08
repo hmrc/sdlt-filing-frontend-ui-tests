@@ -240,8 +240,7 @@ class TransactionQuestionsSpec
       TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
       And("user is navigated to confirm the address page and continues")
       TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
-      // uncomment once navigation is ready
-      // TransactionExchangeAddress.clickSubmitButton()
+      TransactionExchangeAddress.clickSubmitButton()
       /*
     user navigates to Exercising an option page
     user selects yes radio button and continues
@@ -251,7 +250,7 @@ class TransactionQuestionsSpec
     }
 
     Scenario(
-      "Complete the Transactions Questions user journey with transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
+      "Complete the Transactions Questions user journey with  transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
       TransactionJourney
     ) {
 
@@ -362,23 +361,22 @@ class TransactionQuestionsSpec
 
       And("user selects charities radio button and continues")
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
-      // enable below step after the flow is ready
-      //      ReasonForClaimingRelief.saveAndContinue()
-      /*         user is navigated to DO you know the company CIS number page
-user selects yes radio button and continues*/
-
-      // remove next line when navigation is completed
-      EnterCISRegistrationNumber.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/what-is-the-CIS-number"
-      )
-
+      ReasonForClaimingRelief.saveAndContinue()
+      Then(" user is navigated to DO you know the company CIS number page")
+      ConstructionIndustryScheme.verifyPageTitle(ConstructionIndustryScheme.pageTitle)
+      And("user selects yes radio button and continues")
+      ConstructionIndustryScheme.radioButton(ConstructionIndustryScheme.yes)
+      ConstructionIndustryScheme.saveAndContinue()
+      Then("user navigates to enter CIS Number page")
+      EnterCISRegistrationNumber.verifyPageTitle(EnterCISRegistrationNumber.pageTitle)
       When("the user enters the enter CIS Number Page")
       EnterCISRegistrationNumber.input(
         By.id(EnterCISRegistrationNumber.CISRegistrationNumber),
         EnterCISRegistrationNumber.CISRegistrationNumberInput
       )
       EnterCISRegistrationNumber.saveAndContinue()
-      Then("the user is navigated to Partial Relief page")
+
+      Then("the user is navigated to the Partial Relief page")
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
       When("the user select Yes button and continues")
