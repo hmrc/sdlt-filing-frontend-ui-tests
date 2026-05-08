@@ -367,14 +367,16 @@ class TransactionQuestionsSpec
       And("user selects yes radio button and continues")
       ConstructionIndustryScheme.radioButton(ConstructionIndustryScheme.yes)
       ConstructionIndustryScheme.saveAndContinue()
-      /*
-user enters CIS number and continues */
+      Then("user navigates to enter CIS Number page")
+      EnterCISRegistrationNumber.verifyPageTitle(EnterCISRegistrationNumber.pageTitle)
+      When("the user enters the enter CIS Number Page")
+      EnterCISRegistrationNumber.input(
+        By.id(EnterCISRegistrationNumber.CISRegistrationNumber),
+        EnterCISRegistrationNumber.CISRegistrationNumberInput
+      )
+      EnterCISRegistrationNumber.saveAndContinue()
 
       Then("the user is navigated to the Partial Relief page")
-// remove below line when navigation completed
-      PartialRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/partial-relief"
-      )
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
       When("the user select Yes button and continues")
