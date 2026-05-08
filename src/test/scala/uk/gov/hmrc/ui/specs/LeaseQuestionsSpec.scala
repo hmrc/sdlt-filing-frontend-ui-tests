@@ -44,47 +44,51 @@ class LeaseQuestionsSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-residential"))
 
       When("the user starts the Lease questions")
       ReturnTaskList.clickLinkById("task-list-link-lease-questions")
       Then("Lease questions Before you start page is shown")
       LeaseBeforeYouStart.verifyPageTitle(LeaseBeforeYouStart.pageTitle)
-      // Uncomment the below code when the navigation is ready
-      // LeaseBeforeYouStart.clickContinueButton()
 
+      When("the user click continue on Before You Start Page")
+      LeaseBeforeYouStart.saveAndContinue()
+      Then("the user is naviagted to Type of Lease Page")
+      TypeOfLease.verifyPageTitle(TypeOfLease.pageTitle)
+
+      When("the user selects Residential and clicks continue")
+      TypeOfLease.radioButton(TypeOfLease.residential)
+      TypeOfLease.saveAndContinue()
       /*
-      Type of Lease Page is shown
-        User selects the type of lease as  and continues
-        Lease start date page is shown
-        USer selects the Lease start date and continues
-        Lease end date page is shown
-        User selects the Lease end date and continues
-        Rent free periods page is shown
-        User selects the yes for rent-free periods and continues
-        Calculating the rent-free periods page is shown
-        User enters the rent-free periods months and continues
-        Annual starting rent page is shown
-        User enters the annual starting rent and continues
-        End of annual starting rent page is shown
-        User selects the end date of annual starting rent and continues
-        Later rent page is shown
-        User selects the yes for later rent and continues
-        £1000 threshold page is shown
-        User selects the yes for £1000 threshold and continues
-        Annual rent VAT page is shown
-        User selects the yes for annual rent VAT and continues
-        Total amount of VAT payable on annual rent is shown
-         User enters the total amount of VAT payable on annual rent and continues
-        Total premium payable page is shown
-        User selects the yes for total premium payable and continues
-        Calculating the total premium payable including VAT page is shown
-        User enters the total premium payable including VAT and continues
-        Net present value page is shown
-        User enters the net present value and continues
-        Check your answers page is shown
-         User checks the answers and continues
-         Overview page is shown
+     Lease start date page is shown
+       USer selects the Lease start date and continues
+       Lease end date page is shown
+       User selects the Lease end date and continues
+       Rent free periods page is shown
+       User selects the yes for rent-free periods and continues
+       Calculating the rent-free periods page is shown
+       User enters the rent-free periods months and continues
+       Annual starting rent page is shown
+       User enters the annual starting rent and continues
+       End of annual starting rent page is shown
+       User selects the end date of annual starting rent and continues
+       Later rent page is shown
+       User selects the yes for later rent and continues
+       £1000 threshold page is shown
+       User selects the yes for £1000 threshold and continues
+       Annual rent VAT page is shown
+       User selects the yes for annual rent VAT and continues
+       Total amount of VAT payable on annual rent is shown
+        User enters the total amount of VAT payable on annual rent and continues
+       Total premium payable page is shown
+       User selects the yes for total premium payable and continues
+       Calculating the total premium payable including VAT page is shown
+       User enters the total premium payable including VAT and continues
+       Net present value page is shown
+       User enters the net present value and continues
+       Check your answers page is shown
+        User checks the answers and continues
+        Overview page is shown
 
 
        */
@@ -95,18 +99,23 @@ class LeaseQuestionsSpec
       LeaseJourney
     ) {
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-mixed"))
 
       When("the user starts the Lease questions")
       ReturnTaskList.clickLinkById("task-list-link-lease-questions")
       Then("Lease questions Before you start page is shown")
       LeaseBeforeYouStart.verifyPageTitle(LeaseBeforeYouStart.pageTitle)
-      // Uncomment the below code when the navigation is ready
-      // LeaseBeforeYouStart.clickContinueButton()
+
+      When("the user click continue on Before You Start Page")
+      LeaseBeforeYouStart.saveAndContinue()
+      Then("the user is naviagted to Type of Lease Page")
+      TypeOfLease.verifyPageTitle(TypeOfLease.pageTitle)
+
+      When("the user selects Residential and clicks continue")
+      TypeOfLease.radioButton(TypeOfLease.mixedUse)
+      TypeOfLease.saveAndContinue()
 
       /*
- Type of Lease Page is shown
- User selects the type of lease and continues
  Lease start date page is shown
  USer selects the Lease start date and continues
  Lease end date page is shown
