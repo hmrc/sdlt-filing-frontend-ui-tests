@@ -25,6 +25,6 @@ object TaxCalculationsTotalPremiumValueLeaseholdSelfassesed extends BasePage {
   override def pageTitle: String =
     "What is the tax due on the total premium payable? – Tax calculation – Leasehold not calculated – Stamp Taxes Online – GOV.UK"
   val tppTax: String             = "TPPtax"
-  
-  val tppTaxInput: String        = "10000"
+
+  val tppTaxInput: String = "10000"
 }
