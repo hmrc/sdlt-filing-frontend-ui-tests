@@ -29,4 +29,6 @@ object TotalConsiderationOfTransaction extends BasePage {
 
   val totalConsiderationInput: String = "300000"
 
+  val totalConsiderationInputCYA: String = "200000"
+
 }
