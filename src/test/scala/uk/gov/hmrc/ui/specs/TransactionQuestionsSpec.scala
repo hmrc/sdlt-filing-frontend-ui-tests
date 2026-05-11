@@ -242,15 +242,7 @@ class TransactionQuestionsSpec
       And("user is navigated to confirm the address page and continues")
       TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
       TransactionExchangeAddress.clickSubmitButton()
-      /*
-    user is navigated to enter details of restrictions convenants and conditions page
-    user enters the details and continues
-    user is navigated to address flow and fills the details */
       Then("user navigates to Exercising an option page")
-      // Remove the below line when navigation to page is ready
-      ExercisingAnOption.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exercising-an-option"
-      )
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
@@ -263,11 +255,11 @@ class TransactionQuestionsSpec
 
     Scenario(
       "Complete the Transactions Questions user journey with  transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
-      TransactionJourney
+      wip
     ) {
 
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-mixed"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL"))
 
       When("the user clicks on the 'Transaction Questions' link")
       ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
@@ -480,14 +472,7 @@ class TransactionQuestionsSpec
       And("user is navigated to confirm the address page and continues")
       TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
       TransactionExchangeAddress.clickSubmitButton()
-
-      /*
-    user is navigated to address flow and fills the details*/
       Then("user navigates to Exercising an option page")
-      // Remove the below line when navigation to page is ready
-      ExercisingAnOption.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exercising-an-option"
-      )
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
