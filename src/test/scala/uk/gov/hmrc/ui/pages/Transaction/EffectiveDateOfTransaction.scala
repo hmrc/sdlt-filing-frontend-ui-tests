@@ -30,13 +30,19 @@ object EffectiveDateOfTransaction extends BasePage {
 
   val dayInput: String = "30"
 
+  val dayInputCYA: String = "15"
+
   val month: String = "value.month"
 
   val monthInput: String = "03"
 
+  val monthInputCYA: String = "06"
+
   val year: String = "value.year"
 
   val yearInput: String = "2004"
+
+  val yearInputCYA: String = "2008"
 
   def enterEffectiveDateOfTransaction(): Unit = inputDateMonthAndYear(
     By.id(day),
@@ -45,6 +51,15 @@ object EffectiveDateOfTransaction extends BasePage {
     dayInput,
     monthInput,
     yearInput
+  )
+
+  def enterEffectiveDateOfTransactionCYA(): Unit = inputDateMonthAndYear(
+    By.id(day),
+    By.id(month),
+    By.id(year),
+    dayInputCYA,
+    monthInputCYA,
+    yearInputCYA
   )
 
 }
