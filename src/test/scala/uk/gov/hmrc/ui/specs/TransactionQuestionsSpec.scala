@@ -103,41 +103,14 @@ class TransactionQuestionsSpec
       ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
 
       When("user selects charities radio button and continues")
-      ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.charitiesRelief)
+      ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.relocationOfEmployment)
       ReasonForClaimingRelief.saveAndContinue()
-      Then("user is navigated to Do you know the charity's registration number page")
-      DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
-//      DoYouKnowCharityRegistrationNumber.validateCharityComissionLink()
-//      DoYouKnowCharityRegistrationNumber.validateCharityComissionNorthernIrelandLink()
-
-      And("user selects yes radio button and continues")
-      DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
-      DoYouKnowCharityRegistrationNumber.saveAndContinue()
-      Then("user is navigated to enter charity registration number page")
-      EnterCharityRegistrationNumber.verifyPageTitle(EnterCharityRegistrationNumber.pageTitle)
-      When("user enters charity registration number and continues")
-      EnterCharityRegistrationNumber.input(
-        By.id(EnterCharityRegistrationNumber.charityRegistrationNumber),
-        EnterCharityRegistrationNumber.charityRegistrationNumberInput
-      )
-      EnterCharityRegistrationNumber.saveAndContinue()
-
       Then("the user is navigated to the Partial Relief page")
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
-      When("the user select Yes button and continues")
-      PartialRelief.radioButton(PartialRelief.yes)
+      When("the user select No button and continues")
+      PartialRelief.radioButton(PartialRelief.no)
       PartialRelief.saveAndContinue()
-      Then("the user is navigated to the claim partial relief page")
-      ClaimingPartialRelief.verifyPageTitle(ClaimingPartialRelief.pageTitle)
-
-      When("the user enters the total partial relief claimed")
-      ClaimingPartialRelief.input(
-        By.id(ClaimingPartialRelief.totalPartialRelief),
-        ClaimingPartialRelief.totalPartialReliefInput
-      )
-      ClaimingPartialRelief.saveAndContinue()
-
       Then("the considerations effected by uncertain future events page is shown")
       ConsiderationsAffectedByUncertainFutureEvents.verifyPageTitle(
         ConsiderationsAffectedByUncertainFutureEvents.pageTitle
@@ -232,6 +205,7 @@ class TransactionQuestionsSpec
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
       ExercisingAnOption.saveAndContinue()
+
       Then("the TransactionCheckYourAnswers page is shown")
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
@@ -318,12 +292,15 @@ class TransactionQuestionsSpec
       ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.charitiesRelief)
       ReasonForClaimingRelief.saveAndContinue()
+      Then("the AddRegisteredCharityNumber page is shown")
+      DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
+      //      DoYouKnowCharityRegistrationNumber.validateCharityComissionLink()
+      //      DoYouKnowCharityRegistrationNumber.validateCharityComissionNorthernIrelandLink()
 
-      Then("the TransactionCheckYourAnswers page is shown")
-      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
-
-      When("the user updates their Registered Charity Number")
-      TransactionCheckYourAnswers.clickEnterRegisteredCharityNumber()
+      When("the user confirms to know the charity's registered number")
+      DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
+      DoYouKnowCharityRegistrationNumber.saveAndContinue()
+      Then("the EnterRegisteredCharityNumber page is shown")
       EnterCharityRegistrationNumber.verifyPageTitle(EnterCharityRegistrationNumber.pageTitle)
 
       When("the user provides the charity's registration number")
@@ -340,11 +317,6 @@ class TransactionQuestionsSpec
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
       PartialRelief.radioButton(PartialRelief.yes)
       PartialRelief.saveAndContinue()
-      Then("the TransactionCheckYourAnswers page is shown")
-      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
-
-      When("the user updates the total partial relief claimed")
-      TransactionCheckYourAnswers.clickClaimingPartialRelief()
       ClaimingPartialRelief.verifyPageTitle(ClaimingPartialRelief.pageTitle)
       ClaimingPartialRelief.input(
         By.id(ClaimingPartialRelief.totalPartialRelief),
