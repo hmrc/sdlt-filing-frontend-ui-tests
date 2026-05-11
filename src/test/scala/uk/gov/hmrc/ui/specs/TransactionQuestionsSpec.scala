@@ -231,10 +231,8 @@ class TransactionQuestionsSpec
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
+      ExercisingAnOption.saveAndContinue()
       Then("the TransactionCheckYourAnswers page is shown")
-      TransactionCheckYourAnswers.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/check-answers"
-      )
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
       When("the user updates the type of transaction")
@@ -583,10 +581,8 @@ class TransactionQuestionsSpec
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
+      ExercisingAnOption.saveAndContinue()
       Then("the TransactionCheckYourAnswers page is shown")
-      TransactionCheckYourAnswers.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/check-answers"
-      )
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
       When("the user updates the total consideration")
