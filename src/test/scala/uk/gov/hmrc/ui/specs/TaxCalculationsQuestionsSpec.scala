@@ -26,6 +26,7 @@ import uk.gov.hmrc.ui.pages.Preliminary.PreliminaryBeforeYouStart
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.openqa.selenium.By
 
 class TaxCalculationsQuestionsSpec
     extends AnyFeatureSpec
@@ -203,7 +204,11 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle
       )
       When("user enter amount in the box and click continues")
-      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.enterTaxValue("10000")
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.input(
+        By.id(TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.tppTax),
+        TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.tppTaxInput
+      )
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.saveAndContinue()
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
       /*Scenario 4

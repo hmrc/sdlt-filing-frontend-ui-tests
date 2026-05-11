@@ -58,7 +58,6 @@ trait BasePage extends PageObject with Eventually with Matchers with LazyLogging
     val txtAddressPostCode = By.ById("postcode")
     val lnkAddrManually    = "Enter the address manually"
     val cbxConfirm         = "#value_0"
-    val tppTaxInput: By    = By.ById("TPPtax")
   }
 
   def pageUrl: String
