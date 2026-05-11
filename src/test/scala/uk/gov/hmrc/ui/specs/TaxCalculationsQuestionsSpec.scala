@@ -21,14 +21,12 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBeforeYouStart
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBreakdown
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenalties
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenaltiesFreeholdselfassesed
+import uk.gov.hmrc.ui.pages.TaxCalculations.*
 import uk.gov.hmrc.ui.pages.Preliminary.PreliminaryBeforeYouStart
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.openqa.selenium.By
 
 class TaxCalculationsQuestionsSpec
     extends AnyFeatureSpec
@@ -198,9 +196,19 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
       /*Scenario 4
     user is navigated to What is the tax due on total premium payable page
-    user enter the total premium payable and click save and continue button
-    user is navigated to what is the tax due on the NPV page
-    user enter the NPV value and click save and continue button
+    user enter the total premium payable and click save and continue button*/
+      Then("user is navigated to what is the tax due on the NPV page")
+      TaxDueOnNPV.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-NPV"
+      )
+      TaxDueOnNPV.verifyPageTitle(TaxDueOnNPV.pageTitle)
+      When("user enter the NPV value and click save and continue button")
+      TaxDueOnNPV.input(
+        By.id(TaxDueOnNPV.taxDueOnNPVAmountInput),
+        TaxDueOnNPV.taxDueOnNPVAmount
+      )
+      TaxDueOnNPV.saveAndContinue()
+      /*Scenario 4
     user is navigated to total mount due page
     user enter the total amount you intend to pay with this return and click save and continue
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
