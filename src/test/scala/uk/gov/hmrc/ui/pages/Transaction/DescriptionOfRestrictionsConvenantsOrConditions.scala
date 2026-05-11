@@ -27,6 +27,6 @@ object DescriptionOfRestrictionsConvenantsOrConditions extends BasePage {
 
   val restrictionsConvenantsOrConditions: String = "value"
 
-  val restrictionsConvenantsOrConditionsInput: String = "Third-Party Rights"
+  val restrictionsConvenantsOrConditionsInput: String = "Third Party Rights"
 
 }
