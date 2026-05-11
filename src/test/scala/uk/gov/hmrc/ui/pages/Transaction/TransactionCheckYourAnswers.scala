@@ -27,35 +27,43 @@ object TransactionCheckYourAnswers extends BasePage {
 
   val typeOfTransaction = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/type-of-transaction/change']"
 
-  val effectiveDateOfTransaction = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction/change']"
+  val effectiveDateOfTransaction =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/effective-date-of-transaction/change']"
 
   val addDateOfContract = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/add-date-of-contract/change']"
 
-  val enterDateOfContract = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/enter-date-of-contract/change']"
+  val enterDateOfContract =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/enter-date-of-contract/change']"
 
-  val totalConsiderationOfTransaction = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/total-consideration-of-transaction/change']"
+  val totalConsiderationOfTransaction =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/total-consideration-of-transaction/change']"
 
   val isVATIncluded = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/is-VAT-included/change']"
 
   val vATAmount = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/VAT-amount/change']"
 
-  val formsOfConsideration = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/forms-of-consideration/change']"
+  val formsOfConsideration =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/forms-of-consideration/change']"
 
   val linkedTransactions = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/linked-transactions/change']"
 
-  val totalConsiderationOfLinkedTransaction = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/total-consideration-of-linked-transaction/change']"
+  val totalConsiderationOfLinkedTransaction =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/total-consideration-of-linked-transaction/change']"
 
   val claimingRelief = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/claiming-relief/change']"
 
   val reasonForRelief = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/reason-for-relief/change']"
 
-  val addRegisteredCharityNumber = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/add-registered-charity-number/change']"
+  val addRegisteredCharityNumber =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/add-registered-charity-number/change']"
 
-  val enterRegisteredCharityNumber = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/enter-registered-charity-number/change']"
+  val enterRegisteredCharityNumber =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/enter-registered-charity-number/change']"
 
   val partialRelief = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/partial-relief/change']"
 
-  val claimingPartialRelief = "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/claiming-partial-relief/change']"
+  val claimingPartialRelief =
+    "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/claiming-partial-relief/change']"
 
   def clickTypeOfTransaction(): Unit = click(By.cssSelector(typeOfTransaction))
 
