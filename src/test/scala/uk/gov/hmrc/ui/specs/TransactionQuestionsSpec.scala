@@ -79,35 +79,20 @@ class TransactionQuestionsSpec
       When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
       EffectiveDateOfTransaction.saveAndContinue()
-      Then(" user is navigated to Do you Know Date of contract or conclusion of missives page")
+      Then("user is navigated to Do you Know Date of contract or conclusion of missives page")
       DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
         DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
       )
 
-      When("the user selects yes radio button and continues")
-      DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
+      When("the user selects no radio button and continues")
+      DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.no)
       DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
-      Then("the Enter Date of Contract page is displayed")
-      EnterDateOfContract.verifyPageTitle(EnterDateOfContract.pageTitle)
-
-      When("the user enters the date of contract")
-      EnterDateOfContract.enterDateOfContract()
-      EnterDateOfContract.saveAndContinue()
       Then("the Linked Transactions page is displayed")
       LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
 
-      When("the user selects Yes")
-      LinkedTransaction.radioButton(LinkedTransaction.yes)
+      When("the user selects No")
+      LinkedTransaction.radioButton(LinkedTransaction.no)
       LinkedTransaction.saveAndContinue()
-      Then("the user is navigated to the Total Consideration Of Linked Transactions Page")
-      TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
-
-      When("the user enters the Total Consideration Of Linked Transactions ")
-      TotalConsiderationOfLinkedTransaction.input(
-        By.id(TotalConsiderationOfLinkedTransaction.totalConsiderationOfLT),
-        TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
-      )
-      TotalConsiderationOfLinkedTransaction.saveAndContinue()
       Then("the user is navigated to Claiming Relief page")
       ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
 
@@ -246,20 +231,142 @@ class TransactionQuestionsSpec
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
-      // enable below line when navigation to next page is ready
-      // ExercisingAnOption.saveAndContinue()
-      /*user is navigated to CYA page and verifies the answers and submits
-       */
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/check-answers"
+      )
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
+      When("the user updates the type of transaction")
+      TransactionCheckYourAnswers.clickTypeOfTransaction()
+      TransactionType.verifyPageTitle(TransactionType.pageTitleTransaction)
+      TransactionType.radioButton(TransactionType.conveyance)
+      TransactionType.saveAndContinue()
+      Then("the TotalConsiderationOfTransaction page is shown")
+      TotalConsiderationOfTransaction.verifyPageTitle(TotalConsiderationOfTransaction.pageTitle)
+
+      When("the user provides the total consideration")
+      TotalConsiderationOfTransaction.input(
+        By.id(TotalConsiderationOfTransaction.totalConsideration),
+        TotalConsiderationOfTransaction.totalConsiderationInput
+      )
+      TotalConsiderationOfTransaction.saveAndContinue()
+      Then("the IsVATIncluded page is shown")
+      IsVatIncludedInTotalConsideration.verifyPageTitle(IsVatIncludedInTotalConsideration.pageTitle)
+
+      When("the user confirms there is vat included in the total consideration")
+      IsVatIncludedInTotalConsideration.radioButton(IsVatIncludedInTotalConsideration.yes)
+      IsVatIncludedInTotalConsideration.saveAndContinue()
+      Then("the VATAmount page is shown")
+      AmountOfVAT.verifyPageTitle(AmountOfVAT.pageTitle)
+
+      When("the user provides the VAT Amount")
+      AmountOfVAT.input(
+        By.id(AmountOfVAT.totalAmountOfVAT),
+        AmountOfVAT.totalAmountOfVATInput
+      )
+      AmountOfVAT.saveAndContinue()
+      Then("the FormsOfConsideration page is shown")
+      FormsOfConsideration.verifyPageTitle(FormsOfConsideration.pageTitle)
+
+      When("the user provides all forms the consideration takes")
+      FormsOfConsideration.checkbox(FormsOfConsideration.cash, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.building_works, true)
+      FormsOfConsideration.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates the effective date of transaction")
+      TransactionCheckYourAnswers.clickEffectiveDateOfTransaction()
+      EffectiveDateOfTransaction.enterEffectiveDateOfTransactionCYA()
+      EffectiveDateOfTransaction.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to provide a date of contact")
+      TransactionCheckYourAnswers.clickAddDateOfContract()
+      DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
+      DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
+      EnterDateOfContract.verifyPageTitle(EnterDateOfContract.pageTitle)
+      EnterDateOfContract.enterDateOfContract()
+      EnterDateOfContract.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to confirm the transaction is linked")
+      TransactionCheckYourAnswers.clickLinkedTransactions()
+      LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
+      LinkedTransaction.radioButton(LinkedTransaction.yes)
+      LinkedTransaction.saveAndContinue()
+      TotalConsiderationOfLinkedTransaction.verifyPageTitle(TotalConsiderationOfLinkedTransaction.pageTitle)
+      TotalConsiderationOfLinkedTransaction.input(
+        By.id(TotalConsiderationOfLinkedTransaction.totalConsiderationOfLT),
+        TotalConsiderationOfLinkedTransaction.totalConsiderationOfLTInput
+      )
+      TotalConsiderationOfLinkedTransaction.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user confirms the purchaser is eligible to claim relief")
+      TransactionCheckYourAnswers.clickClaimingRelief()
+      ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
+      ClaimingRelief.radioButton(ClaimingRelief.yes)
+      ClaimingRelief.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to confirm charities as reason for claiming relief")
+      TransactionCheckYourAnswers.clickReasonForRelief()
+      ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
+      ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.charitiesRelief)
+      ReasonForClaimingRelief.saveAndContinue()
+      Then("the AddRegisteredCharityNumber page is shown")
+      DoYouKnowCharityRegistrationNumber.verifyPageTitle(DoYouKnowCharityRegistrationNumber.pageTitle)
+      //      DoYouKnowCharityRegistrationNumber.validateCharityComissionLink()
+      //      DoYouKnowCharityRegistrationNumber.validateCharityComissionNorthernIrelandLink()
+
+      When("the user confirms to know the charity's registered number")
+      DoYouKnowCharityRegistrationNumber.radioButton(DoYouKnowCharityRegistrationNumber.yes)
+      DoYouKnowCharityRegistrationNumber.saveAndContinue()
+      Then("the EnterRegisteredCharityNumber page is shown")
+      EnterCharityRegistrationNumber.verifyPageTitle(EnterCharityRegistrationNumber.pageTitle)
+
+      When("the user provides the charity's registration number")
+      EnterCharityRegistrationNumber.input(
+        By.id(EnterCharityRegistrationNumber.charityRegistrationNumber),
+        EnterCharityRegistrationNumber.charityRegistrationNumberInput
+      )
+      EnterCharityRegistrationNumber.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to confirm the purchaser is claiming relief")
+      TransactionCheckYourAnswers.clickPartialRelief()
+      PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
+      PartialRelief.radioButton(PartialRelief.yes)
+      PartialRelief.saveAndContinue()
+      ClaimingPartialRelief.verifyPageTitle(ClaimingPartialRelief.pageTitle)
+      ClaimingPartialRelief.input(
+        By.id(ClaimingPartialRelief.totalPartialRelief),
+        ClaimingPartialRelief.totalPartialReliefInput
+      )
+      ClaimingPartialRelief.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user submits the transaction questions")
+      TransactionCheckYourAnswers.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
 
     Scenario(
       "Complete the Transactions Questions user journey with  transaction type other than grant of lease and claiming relief is selected as part exchange flow ",
-      wip
+      TransactionJourney
     ) {
 
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-mixed"))
 
       When("the user clicks on the 'Transaction Questions' link")
       ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
@@ -476,7 +583,44 @@ class TransactionQuestionsSpec
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
-      /*user is navigated to CYA page and verifies the answers and submits*/
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/check-answers"
+      )
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates the total consideration")
+      TransactionCheckYourAnswers.clickTotalConsiderationOfTransaction()
+      TotalConsiderationOfTransaction.verifyPageTitle(TotalConsiderationOfTransaction.pageTitle)
+      TotalConsiderationOfTransaction.input(
+        By.id(TotalConsiderationOfTransaction.totalConsideration),
+        TotalConsiderationOfTransaction.totalConsiderationInputCYA
+      )
+      TotalConsiderationOfTransaction.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user confirms there is not vat included in the total consideration")
+      TransactionCheckYourAnswers.clickIsVATIncluded()
+      IsVatIncludedInTotalConsideration.verifyPageTitle(IsVatIncludedInTotalConsideration.pageTitle)
+      IsVatIncludedInTotalConsideration.radioButton(IsVatIncludedInTotalConsideration.no)
+      IsVatIncludedInTotalConsideration.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to provide the forms of consideration")
+      TransactionCheckYourAnswers.clickFormsOfConsideration()
+      FormsOfConsideration.verifyPageTitle(FormsOfConsideration.pageTitle)
+      FormsOfConsideration.checkbox(FormsOfConsideration.cash, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.building_works, true)
+      FormsOfConsideration.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user submits the transaction questions")
+      TransactionCheckYourAnswers.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
   }
 }
