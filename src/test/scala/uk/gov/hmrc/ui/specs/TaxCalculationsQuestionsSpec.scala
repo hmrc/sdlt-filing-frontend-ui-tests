@@ -24,6 +24,7 @@ import uk.gov.hmrc.ui.pages.*
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBeforeYouStart
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBreakdown
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenalties
+import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenaltiesFreeholdselfassesed
 import uk.gov.hmrc.ui.pages.Preliminary.PreliminaryBeforeYouStart
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
@@ -110,10 +111,24 @@ class TaxCalculationsQuestionsSpec
         returnId = Some("freehold-self-assessed")
       )
 
+      /* scenario 2 Tax calculation - Freehold not calculated - Stamp Taxes online*/
       When("the user starts the tax calculations journey")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
-      Then("the Freehold calculated Before you start page is displayed")
+
+      Then("the Freehold not calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
+
+      Then("the user is navigated to the pay penalties page")
+      TaxCalculationsPenaltiesFreeholdselfassesed.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/are-penalties-and-interest-included"
+      )
+      TaxCalculationsPenaltiesFreeholdselfassesed.verifyPageTitle(TaxCalculationsPenaltiesFreeholdselfassesed.pageTitle)
+
+      When("user selects yes radio button and continues")
+      TaxCalculationsPenaltiesFreeholdselfassesed.radioButton(TaxCalculationsPenaltiesFreeholdselfassesed.yes)
+      TaxCalculationsPenaltiesFreeholdselfassesed.saveAndContinue()
+      Then("the Preliminary page is shown")
+      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
 
       /* Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
