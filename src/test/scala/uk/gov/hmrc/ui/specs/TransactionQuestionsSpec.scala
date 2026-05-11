@@ -200,16 +200,13 @@ class TransactionQuestionsSpec
       And("user is navigated to confirm the address page and continues")
       TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
       TransactionExchangeAddress.clickSubmitButton()
-
-      /*
-        user navigates to Exercising an option page
-        user selects yes radio button and continues
-       */
+      Then("user navigates to Exercising an option page")
+      ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
+      And("user selects yes radio button and continues")
+      ExercisingAnOption.radioButton(ExercisingAnOption.yes)
+      ExercisingAnOption.saveAndContinue()
 
       Then("the TransactionCheckYourAnswers page is shown")
-      TransactionCheckYourAnswers.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/check-answers"
-      )
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
       When("the user updates the type of transaction")
@@ -554,19 +551,12 @@ class TransactionQuestionsSpec
       And("user is navigated to confirm the address page and continues")
       TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
       TransactionExchangeAddress.clickSubmitButton()
-
-      /*
-
-        user navigates to Exercising an option page
-        user selects yes radio button and continues
-        user is navigated to CYA page and verifies the answers and submits
-
-       */
-
+      Then("user navigates to Exercising an option page")
+      ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
+      And("user selects yes radio button and continues")
+      ExercisingAnOption.radioButton(ExercisingAnOption.yes)
+      ExercisingAnOption.saveAndContinue()
       Then("the TransactionCheckYourAnswers page is shown")
-      TransactionCheckYourAnswers.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/check-answers"
-      )
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
       When("the user updates the total consideration")
