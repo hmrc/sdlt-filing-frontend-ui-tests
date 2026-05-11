@@ -21,11 +21,7 @@ import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBeforeYouStart
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBreakdown
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenalties
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenaltiesFreeholdselfassesed
-import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsTotalPremiumValueLeaseholdSelfassesed
+import uk.gov.hmrc.ui.pages.TaxCalculations.*
 import uk.gov.hmrc.ui.pages.Preliminary.PreliminaryBeforeYouStart
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
