@@ -217,20 +217,31 @@ class TransactionQuestionsSpec
 
       When("the user selects yes radio button and continues")
       RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.yes)
-      // Uncomment when navigated to next page is ready
-      // RestrictionsConvenantsOrConditions.saveAndContinue()
-
-      Then("the ExchangeOrPartExchange page is shown")
-      ExchangeOrPartExchange.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/exchange-or-part-exchange"
+      RestrictionsConvenantsOrConditions.saveAndContinue()
+      Then("the user is navigated to enter details of restrictions convenants and conditions page")
+      DescriptionOfRestrictionsConvenantsOrConditions.verifyPageTitle(
+        DescriptionOfRestrictionsConvenantsOrConditions.pageTitle
       )
+
+      When("the user enter the details of restrictions and continue")
+      DescriptionOfRestrictionsConvenantsOrConditions.input(
+        By.id(DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditions),
+        DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditionsInput
+      )
+      DescriptionOfRestrictionsConvenantsOrConditions.saveAndContinue()
+      Then("the ExchangeOrPartExchange page is shown")
       ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
 
       When("the user confirms the land is being exchanged or part exchanged")
       ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
-      // Uncomment when navigated to next page is ready
-      // ExchangeOrPartExchange.saveAndContinue()
-
+      ExchangeOrPartExchange.saveAndContinue()
+      Then("user is navigated to address flow and fills the details")
+      TransactionExchangeAddress.clickAddressManually()
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
+      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      And("user is navigated to confirm the address page and continues")
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
+      TransactionExchangeAddress.clickSubmitButton()
       /*
     user is navigated to enter details of restrictions convenants and conditions page
     user enters the details and continues
@@ -256,7 +267,7 @@ class TransactionQuestionsSpec
     ) {
 
       Given("the user logs in through the Authority Wizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-mixed"))
 
       When("the user clicks on the 'Transaction Questions' link")
       ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
@@ -362,17 +373,22 @@ class TransactionQuestionsSpec
 
       And("user selects charities radio button and continues")
       ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.partExchange)
-      // enable below step after the flow is ready
-      //      ReasonForClaimingRelief.saveAndContinue()
-      /*         user is navigated to DO you know the company CIS number page
-user selects yes radio button and continues
-user enters CIS number and continues */
+      ReasonForClaimingRelief.saveAndContinue()
+      Then(" user is navigated to DO you know the company CIS number page")
+      ConstructionIndustryScheme.verifyPageTitle(ConstructionIndustryScheme.pageTitle)
+      And("user selects yes radio button and continues")
+      ConstructionIndustryScheme.radioButton(ConstructionIndustryScheme.yes)
+      ConstructionIndustryScheme.saveAndContinue()
+      Then("user navigates to enter CIS Number page")
+      EnterCISRegistrationNumber.verifyPageTitle(EnterCISRegistrationNumber.pageTitle)
+      When("the user enters the enter CIS Number Page")
+      EnterCISRegistrationNumber.input(
+        By.id(EnterCISRegistrationNumber.CISRegistrationNumber),
+        EnterCISRegistrationNumber.CISRegistrationNumberInput
+      )
+      EnterCISRegistrationNumber.saveAndContinue()
 
       Then("the user is navigated to the Partial Relief page")
-// remove below line when navigation completed
-      PartialRelief.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-transaction/partial-relief"
-      )
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
       When("the user select Yes button and continues")
@@ -456,8 +472,14 @@ user enters CIS number and continues */
 
       When("the user confirms the land is being exchanged or part exchanged")
       ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
-      // Uncomment when navigated to next page is ready
-      // ExchangeOrPartExchange.saveAndContinue()
+      ExchangeOrPartExchange.saveAndContinue()
+      Then("user is navigated to address flow and fills the details")
+      TransactionExchangeAddress.clickAddressManually()
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
+      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      And("user is navigated to confirm the address page and continues")
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
+      TransactionExchangeAddress.clickSubmitButton()
 
       /*
     user is navigated to address flow and fills the details*/
