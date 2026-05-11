@@ -25,6 +25,7 @@ import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBeforeYouStart
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsBreakdown
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenalties
 import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsPenaltiesFreeholdselfassesed
+import uk.gov.hmrc.ui.pages.TaxCalculations.TaxCalculationsTotalPremiumValueLeaseholdSelfassesed
 import uk.gov.hmrc.ui.pages.Preliminary.PreliminaryBeforeYouStart
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
@@ -196,13 +197,25 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
+
+      // user enter the total amount you intend to pay with this return and click save and continue
+      Then("the user is navigated to the total premium value page")
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-premium"
+      )
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.verifyPageTitle(
+        TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle
+      )
+      When("user enter amount in the box and click continues")
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.enterTaxValue("10000")
+      Then("the Preliminary page is shown")
+      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
       /*Scenario 4
     user is navigated to What is the tax due on total premium payable page
     user enter the total premium payable and click save and continue button
     user is navigated to what is the tax due on the NPV page
     user enter the NPV value and click save and continue button
     user is navigated to total mount due page
-    user enter the total amount you intend to pay with this return and click save and continue
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
     user is navigated to Tax calculation Check your answers page
