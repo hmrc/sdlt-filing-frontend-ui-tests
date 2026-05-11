@@ -108,7 +108,7 @@ class TransactionQuestionsSpec
       Then("the user is navigated to the Partial Relief page")
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
-      When("the user select Yes button and continues")
+      When("the user select No button and continues")
       PartialRelief.radioButton(PartialRelief.no)
       PartialRelief.saveAndContinue()
       Then("the considerations effected by uncertain future events page is shown")
