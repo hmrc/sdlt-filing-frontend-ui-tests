@@ -57,7 +57,7 @@ class TaxCalculationsQuestionsSpec
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
       /* scenario 1 user select self assessment date
-      user is navigated to Tax cal summary page*/
+      / user is navigated to Tax cal summary page*/
       // user click check your SDLT breakdown and continue
       When("the user want the breakdown page journey")
       Then("the user is navigated to the SDLT breakdown page")
@@ -81,14 +81,31 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenalties.saveAndContinue()
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+
+      /*
+    user is navigated to Total amount due pag
+    user enter amount to be retunred and continue*/
+      Then("user is navigated to what is the total amount due page")
+      TaxDueOnNPV.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/total-amount-due"
+      )
+      TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.verifyPageTitle(
+        TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.pageTitle
+      )
+      When("user enter the amount value and click save and continue button")
+      TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.input(
+        By.id(TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.tppTax),
+        TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.tppTaxInput
+      )
+      TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.saveAndContinue()
+      Then("the Preliminary page is shown")
+      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
       /*
 
     user is navigated to Tax cal summary page
     user click continue button in Tax cal summary page
     user is navigated to the Tax calculation SDLT self assessment page
     user enter self assessment amount of SDLT and click continue
-    user is navigated to Total amount due page
-    user enter amount to be retunred and continue
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
     user is navigated to Tax calculation Check your answers page
@@ -226,20 +243,7 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.saveAndContinue()
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
-      /*Scenario 4
-    user is navigated to What is the tax due on total premium payable page
-    user enter the total premium payable and click save and continue button*/
-      Then("user is navigated to what is the tax due on the NPV page")
-      TaxDueOnNPV.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-NPV"
-      )
-      TaxDueOnNPV.verifyPageTitle(TaxDueOnNPV.pageTitle)
-      When("user enter the NPV value and click save and continue button")
-      TaxDueOnNPV.input(
-        By.id(TaxDueOnNPV.taxDueOnNPVAmountInput),
-        TaxDueOnNPV.taxDueOnNPVAmount
-      )
-      TaxDueOnNPV.saveAndContinue()
+
       /*Scenario 4
     user is navigated to total mount due page
     user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
