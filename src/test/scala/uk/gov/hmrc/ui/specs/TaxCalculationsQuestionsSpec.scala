@@ -142,61 +142,8 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenaltiesFreeholdselfassesed.saveAndContinue()
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
-
-      /* Scenario 3 Tax calculation - Leasehold calculated - Stamp Taxes online*/
-      Scenario(
-        "Complete the Leasehold calculated Tax Calculation Journey",
-        TaxCalculationJourney
-      ) {
-
-        Given("the user logs in through the Authority Wizard page")
-        AuthWizard.login(
-          HASDIRECT,
-          Organisation,
-          returnId = Some("leasehold-tax-calculated")
-        )
-
-        When("the user starts the tax calculations journey")
-        ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
-        Then("the Leasehold calculated Before you start page is displayed")
-        TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
-
-        /*  user is navigated to tax calculations SDLT breakdown page*/
-
-        When("the user want to go return to the tax calculation page")
-        TaxCalculationsBreakdown.clickReturnTaxPage()
-        Then("the Leasehold calculated Before you start page is displayed")
-        TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
-
-        // Navigate to total amount due page and click continue to open pay penalities page
-        Then("the user is navigated to the pay penalties page")
-        TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
-          "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
-        )
-        TaxCalculationsPenaltiesLeaseholdCalculated.verifyPageTitle(
-          TaxCalculationsPenaltiesLeaseholdCalculated.pageTitle
-        )
-        When("user selects no radio button and continues")
-        TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
-        TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
-        // User navigates to click and continue page
-        Then("the Preliminary page is shown")
-        PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
-      }
-      /* Scenario 2 (nolease involved)
-    user is navigated to HMRC cannot calculate the SDLT due page
-    user click continue button
-    user enter self assessment amount of SDLT and click continue
-    user is navigated to Total amount due page
-    user enter amount to be retunred and continue
-    user selects yes radio button and continues
-    user is navigated to Tax calculation Check your answers page
-    user select confirm and continue button
-    user is navigated to tasklist
-       */
-
     }
-
+    /* Scenario 3 Tax calculation - Leasehold calculated - Stamp Taxes online*/
     Scenario(
       "Complete the Leasehold calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -214,24 +161,48 @@ class TaxCalculationsQuestionsSpec
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdCalculated)
 
-      /*Scenario 3 (lease involved)
-    user is navigated to calclated SDLT due is xxx amount page
-    user click check your SDLT breakdown and continue
-    user is navigated SDLT breakdown page
-    user click return to the tax calculation hyperlink
-    user is navigated to Tax cal summary page
-    user click continue button in Tax cal summary page
-    user is navigated to the Tax calculation SDLT self assessment page
+      Then("user is navigated to what is the total amount due page")
+      TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/total-amount-due"
+      )
+      TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.verifyPageTitle(
+        TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.pageTitle
+      )
+      When("user enter the amount value and click save and continue button")
+      TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.input(
+        By.id(TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.tppTax),
+        TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.tppTaxInput
+      )
+      // TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.saveAndContinue()
+      // Then("the Preliminary page is shown")
+      // PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+
+      // Navigate to total amount due page and click continue to open pay penalities page
+      Then("the user is navigated to the pay penalties page")
+      TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
+      )
+      TaxCalculationsPenaltiesLeaseholdCalculated.verifyPageTitle(
+        TaxCalculationsPenaltiesLeaseholdCalculated.pageTitle
+      )
+      When("user selects no radio button and continues")
+      TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
+      TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
+      // User navigates to click and continue page
+      Then("the Preliminary page is shown")
+      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+    }
+    /* Scenario 2 (nolease involved)
+    user is navigated to HMRC cannot calculate the SDLT due page
+    user click continue button
     user enter self assessment amount of SDLT and click continue
     user is navigated to Total amount due page
     user enter amount to be retunred and continue
-    user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
     user selects yes radio button and continues
     user is navigated to Tax calculation Check your answers page
     user select confirm and continue button
     user is navigated to tasklist
-       */
-    }
+     */
 
     Scenario(
       "Complete the Leasehold not calculated Tax Calculation Journey",
