@@ -56,7 +56,7 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
-       /* scenario 1 user select self assessment date
+      /* scenario 1 user select self assessment date
       / user is navigated to Tax cal summary page*/
       // user click check your SDLT breakdown and continue
       When("the user want the breakdown page journey")
