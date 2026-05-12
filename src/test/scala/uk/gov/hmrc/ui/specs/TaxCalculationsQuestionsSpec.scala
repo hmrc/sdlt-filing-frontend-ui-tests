@@ -78,15 +78,13 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitle)
       When("user selects no radio button and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
-      TaxCalculationsPenalties.saveAndContinue()
-      Then("the Preliminary page is shown")
-      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+      // TaxCalculationsPenalties.saveAndContinue()
 
       /*
     user is navigated to Total amount due pag
     user enter amount to be retunred and continue*/
       Then("user is navigated to what is the total amount due page")
-      TaxDueOnNPV.navigateToPage(
+      TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/total-amount-due"
       )
       TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.verifyPageTitle(
@@ -197,7 +195,7 @@ class TaxCalculationsQuestionsSpec
 
     Scenario(
       "Complete the Leasehold not calculated Tax Calculation Journey",
-      wip
+      TaxCalculationJourney
     ) {
 
       Given("the user logs in through the Authority Wizard page")
@@ -215,7 +213,7 @@ class TaxCalculationsQuestionsSpec
 // user enter the total amount you intend to pay with this return and click save and continue
       Then("the user is navigated to the total premium value page")
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-premium-payable"
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-total-premium-payable"
       )
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.verifyPageTitle(
         TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle

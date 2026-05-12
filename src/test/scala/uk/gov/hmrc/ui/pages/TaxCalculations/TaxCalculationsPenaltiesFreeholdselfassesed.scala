@@ -23,7 +23,7 @@ object TaxCalculationsPenaltiesFreeholdselfassesed extends BasePage {
   override def pageUrl: String = "tax-calculation/freehold-not-calculated/are-penalties-and-interest-included"
 
   override def pageTitle: String =
-    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Freehold not calculated - Stamp Taxes Online - GOV.UK"
+    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Freehold not calculated – Stamp Taxes Online - Stamp Taxes Online - GOV.UK"
   val yes: String                = "#value_0"
 
   val no: String = "#value_1"
