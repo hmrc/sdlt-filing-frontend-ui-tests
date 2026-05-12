@@ -145,6 +145,46 @@ class TaxCalculationsQuestionsSpec
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
 
+      /* Scenario 3 Tax calculation - Leasehold calculated - Stamp Taxes online*/
+      Scenario(
+        "Complete the Leasehold calculated Tax Calculation Journey",
+        TaxCalculationJourney
+      ) {
+
+        Given("the user logs in through the Authority Wizard page")
+        AuthWizard.login(
+          HASDIRECT,
+          Organisation,
+          returnId = Some("leasehold-tax-calculated")
+        )
+
+        When("the user starts the tax calculations journey")
+        ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+        Then("the Leasehold calculated Before you start page is displayed")
+        TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
+
+        /*  user is navigated to tax calculations SDLT breakdown page*/
+
+        When("the user want to go return to the tax calculation page")
+        TaxCalculationsBreakdown.clickReturnTaxPage()
+        Then("the Leasehold calculated Before you start page is displayed")
+        TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
+
+        // Navigate to total amount due page and click continue to open pay penalities page
+        Then("the user is navigated to the pay penalties page")
+        TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
+          "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
+        )
+        TaxCalculationsPenaltiesLeaseholdCalculated.verifyPageTitle(
+          TaxCalculationsPenaltiesLeaseholdCalculated.pageTitle
+        )
+        When("user selects no radio button and continues")
+        TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
+        TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
+        // User navigates to click and continue page
+        Then("the Preliminary page is shown")
+        PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+      }
       /* Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
     user click continue button
