@@ -163,6 +163,7 @@ class TaxCalculationsQuestionsSpec
         Then("the Leasehold calculated Before you start page is displayed")
         TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
 
+        /*  user is navigated to tax calculations SDLT breakdown page*/
         When("the user want the breakdown page journey")
         Then("the user is navigated to the SDLT breakdown page")
         TaxCalculationsBreakdown.navigateToPage(
@@ -174,6 +175,7 @@ class TaxCalculationsQuestionsSpec
         Then("the Leasehold calculated Before you start page is displayed")
         TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
 
+        /*  user is navigated to pay penalities page*/
         Then("the user is navigated to the pay penalties page")
         TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
           "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
