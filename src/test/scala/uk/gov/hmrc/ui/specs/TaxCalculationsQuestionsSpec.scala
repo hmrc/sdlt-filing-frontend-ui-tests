@@ -175,7 +175,7 @@ class TaxCalculationsQuestionsSpec
         Then("the Leasehold calculated Before you start page is displayed")
         TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
 
-        /*  user is navigated to pay penalities page*/
+        // Navigate to total amount due page and click continue to open pay penalities page
         Then("the user is navigated to the pay penalties page")
         TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
           "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
@@ -186,6 +186,7 @@ class TaxCalculationsQuestionsSpec
         When("user selects no radio button and continues")
         TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
         TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
+        // User navigates to click and continue page
         Then("the Preliminary page is shown")
         PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
       }
