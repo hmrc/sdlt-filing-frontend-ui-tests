@@ -145,6 +145,48 @@ class TaxCalculationsQuestionsSpec
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
 
+      /* Scenario 3 Tax calculation - Leasehold calculated - Stamp Taxes online*/
+      Scenario(
+        "Complete the Leasehold calculated Tax Calculation Journey",
+        TaxCalculationJourney
+      ) {
+
+        Given("the user logs in through the Authority Wizard page")
+        AuthWizard.login(
+          HASDIRECT,
+          Organisation,
+          returnId = Some("leasehold-tax-calculated")
+        )
+
+        When("the user starts the tax calculations journey")
+        ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+        Then("the Leasehold calculated Before you start page is displayed")
+        TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
+
+        When("the user want the breakdown page journey")
+        Then("the user is navigated to the SDLT breakdown page")
+        TaxCalculationsBreakdown.navigateToPage(
+          "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/SDLT-breakdown"
+        )
+        TaxCalculationsBreakdown.verifyPageTitle(TaxCalculationsBreakdown.pageTitle)
+        When("the user want to go return to the tax calculation page")
+        TaxCalculationsBreakdown.clickReturnTaxPage()
+        Then("the Leasehold calculated Before you start page is displayed")
+        TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
+
+        Then("the user is navigated to the pay penalties page")
+        TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
+          "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
+        )
+        TaxCalculationsPenaltiesLeaseholdCalculated.verifyPageTitle(
+          TaxCalculationsPenaltiesLeaseholdCalculated.pageTitle
+        )
+        When("user selects no radio button and continues")
+        TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
+        TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
+        Then("the Preliminary page is shown")
+        PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+      }
       /* Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
     user click continue button
