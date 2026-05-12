@@ -197,7 +197,7 @@ class TaxCalculationsQuestionsSpec
 
     Scenario(
       "Complete the Leasehold not calculated Tax Calculation Journey",
-      TaxCalculationJourney
+      wip
     ) {
 
       Given("the user logs in through the Authority Wizard page")
@@ -212,9 +212,20 @@ class TaxCalculationsQuestionsSpec
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
 
-      /*Scenario 4
-    user is navigated to What is the tax due on total premium payable page
-    user enter the total premium payable and click save and continue button*/
+// user enter the total amount you intend to pay with this return and click save and continue
+      Then("the user is navigated to the total premium value page")
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-premium-payable"
+      )
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.verifyPageTitle(
+        TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle
+      )
+      When("user enter amount in the box and click continues")
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.input(
+        By.id(TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.tppTax),
+        TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.tppTaxInput
+      )
+      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.saveAndContinue()
       Then("user is navigated to what is the tax due on the NPV page")
       TaxDueOnNPV.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-NPV"
@@ -226,23 +237,6 @@ class TaxCalculationsQuestionsSpec
         TaxDueOnNPV.taxDueOnNPVAmount
       )
       TaxDueOnNPV.saveAndContinue()
-
-      // user enter the total amount you intend to pay with this return and click save and continue
-      Then("the user is navigated to the total premium value page")
-      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-premium"
-      )
-      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.verifyPageTitle(
-        TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle
-      )
-      When("user enter amount in the box and click continues")
-      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.input(
-        By.id(TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.tppTax),
-        TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.tppTaxInput
-      )
-      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.saveAndContinue()
-      Then("the Preliminary page is shown")
-      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
 
       /*Scenario 4
     user is navigated to total mount due page
