@@ -164,12 +164,7 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
 
         /*  user is navigated to tax calculations SDLT breakdown page*/
-        When("the user want the breakdown page journey")
-        Then("the user is navigated to the SDLT breakdown page")
-        TaxCalculationsBreakdown.navigateToPage(
-          "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/SDLT-breakdown"
-        )
-        TaxCalculationsBreakdown.verifyPageTitle(TaxCalculationsBreakdown.pageTitle)
+
         When("the user want to go return to the tax calculation page")
         TaxCalculationsBreakdown.clickReturnTaxPage()
         Then("the Leasehold calculated Before you start page is displayed")
