@@ -27,5 +27,5 @@ object TaxDueOnNPV extends BasePage {
 
   val taxDueOnNPVAmount: String = "30000"
 
-  val taxDueOnNPVAmountInput: String = "TPPtax"
+  val taxDueOnNPVAmountInput: String = "value"
 }

@@ -18,12 +18,12 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TaxCalculationsTotalPremiumValueLeaseholdSelfassesed extends BasePage {
+object TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation extends BasePage {
 
-  override def pageUrl: String = "tax-calculation/leasehold-not-calculated/tax-due-on-total-premium-payable"
+  override def pageUrl: String = "tax-calculation/leasehold-calculated/total-amount-due"
 
   override def pageTitle: String =
-    "What is the tax due on the total premium payable? - Tax calculation - Leasehold not calculated - Stamp Taxes Online - GOV.UK"
+    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
   val tppTax: String             = "value"
 
   val tppTaxInput: String = "10000"
