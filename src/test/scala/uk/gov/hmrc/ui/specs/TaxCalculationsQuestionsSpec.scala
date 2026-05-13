@@ -242,7 +242,24 @@ class TaxCalculationsQuestionsSpec
         By.id(TaxDueOnNPV.taxDueOnNPVAmountInput),
         TaxDueOnNPV.taxDueOnNPVAmount
       )
+
       TaxDueOnNPV.saveAndContinue()
+
+      Then("user is navigated to what is the total amount due page")
+      TaxCalculationsTotalAmountDueLeaseholdSelfassesed.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/total-amount-due"
+      )
+      TaxCalculationsTotalAmountDueLeaseholdSelfassesed.verifyPageTitle(
+        TaxCalculationsTotalAmountDueLeaseholdSelfassesed.pageTitle
+      )
+      When("user enter the amount value and click save and continue button")
+      TaxCalculationsTotalAmountDueLeaseholdSelfassesed.input(
+        By.id(TaxCalculationsTotalAmountDueLeaseholdSelfassesed.tppTax),
+        TaxCalculationsTotalAmountDueLeaseholdSelfassesed.tppTaxInput
+      )
+      // TaxCalculationsTotalAmountDueLeaseholdSelfassesed.saveAndContinue()
+      // user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+      // user selects yes radio button and continues
 
       /*Scenario 4
     user is navigated to total mount due page
