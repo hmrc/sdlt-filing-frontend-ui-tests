@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.specs
 
+import org.openqa.selenium.By
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
@@ -65,10 +66,18 @@ class LeaseQuestionsSpec
        Lease end date page is shown
        User selects the Lease end date and continues
        Rent free periods page is shown
-       User selects the yes for rent-free periods and continues
-       Calculating the rent-free periods page is shown
-       User enters the rent-free periods months and continues
-       Annual starting rent page is shown
+       User selects the yes for rent-free periods and continues*/
+      // Below step to removed once the navigation is ready
+      RentFreePeriod.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-rent-free-period"
+      )
+      Then("the user is naviagted to Calculating the rent-free periods Page")
+      RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
+
+      When("the user enters the rent-free periods months and continues")
+      RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
+      RentFreePeriod.saveAndContinue()
+      /*Annual starting rent page is shown
        User enters the annual starting rent and continues
        End of annual starting rent page is shown
        User selects the end date of annual starting rent and continues
@@ -116,28 +125,36 @@ class LeaseQuestionsSpec
       TypeOfLease.saveAndContinue()
 
       /*
- Lease start date page is shown
- USer selects the Lease start date and continues
- Lease end date page is shown
- User selects the Lease end date and continues
- Rent free periods page is shown
- User selects the yes for rent - free periods and continues
- Calculating the rent - free periods page is shown
- User enters the rent - free periods months and continues
- Annual starting rent page is shown
- User enters the annual starting rent and continues
-       End of annual starting rent page is shown
-       User selects the end date of annual starting rent and continues
-       Later rent page is shown
-       User selects the yes for later rent and continues
-        User selects the yes for £1000 threshold and continues
-   Annual rent VAT page is shown
-   User selects the yes for annual rent VAT and continues
-   Total amount of VAT payable on annual rent is shown
-    User enters the total amount of VAT payable on annual rent and continues
-    Check your answers page is shown
-    User checks the answers and continues
-    Overview page is shown
+      Lease start date page is shown
+      USer selects the Lease start date and continues
+      Lease end date page is shown
+      User selects the Lease end date and continues
+      Rent free periods page is shown
+      User selects the yes for rent - free periods and continues*/
+      // Below step to removed once the navigation is ready
+      RentFreePeriod.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-rent-free-period"
+      )
+      Then("the user is navigated to Calculating the rent-free periods Page")
+      RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
+
+      When("the user enters the rent-free periods months and continues")
+      RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
+      RentFreePeriod.saveAndContinue()
+      /*Annual starting rent page is shown
+      User enters the annual starting rent and continues
+      End of annual starting rent page is shown
+      User selects the end date of annual starting rent and continues
+      Later rent page is shown
+      User selects the yes for later rent and continues
+      User selects the yes for £1000 threshold and continues
+      Annual rent VAT page is shown
+      User selects the yes for annual rent VAT and continues
+      Total amount of VAT payable on annual rent is shown
+      User enters the total amount of VAT payable on annual rent and continues
+      Check your answers page is shown
+      User checks the answers and continues
+      Overview page is shown
        */
     }
   }
