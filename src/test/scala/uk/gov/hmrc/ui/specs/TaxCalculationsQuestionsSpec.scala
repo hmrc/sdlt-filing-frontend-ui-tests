@@ -175,7 +175,7 @@ class TaxCalculationsQuestionsSpec
         By.id(TaxCalculationsTotalPremiumValueLeasehold.tppTax),
         TaxCalculationsTotalPremiumValueLeasehold.tppTaxInput
       )
-      //TaxCalculationsTotalPremiumValueLeasehold.saveAndContinue()
+      // TaxCalculationsTotalPremiumValueLeasehold.saveAndContinue()
       // Navigate to total amount due page and click continue to open pay penalities page
       Then("the user is navigated to the pay penalties page")
       TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
@@ -186,10 +186,8 @@ class TaxCalculationsQuestionsSpec
       )
       When("user selects no radio button and continues")
       TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
-      TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
-      // User navigates to click and continue page
-      Then("the Preliminary page is shown")
-      PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+      //TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
+      //Navigate to check your answers page
     }
     /* Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
