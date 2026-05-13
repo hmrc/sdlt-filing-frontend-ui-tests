@@ -18,13 +18,13 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TaxCalculationsPenaltiesFreeholdselfassesed extends BasePage {
+object TaxCalculationsTotalAmountDueLeaseholdSelfassesed extends BasePage {
 
-  override def pageUrl: String = "tax-calculation/freehold-not-calculated/are-penalties-and-interest-included"
+  override def pageUrl: String = "tax-calculation/leasehold-not-calculated/total-amount-due"
 
   override def pageTitle: String =
-    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Freehold not calculated – Stamp Taxes Online - Stamp Taxes Online - GOV.UK"
-  val yes: String                = "#value_0"
+    "Total amount due - Tax calculation - Leasehold not calculated - Stamp Taxes Online - GOV.UK"
+  val tppTax: String             = "value"
 
-  val no: String = "#value_1"
+  val tppTaxInput: String = "10000"
 }
