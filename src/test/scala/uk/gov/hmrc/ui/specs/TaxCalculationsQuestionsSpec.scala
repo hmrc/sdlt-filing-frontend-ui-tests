@@ -161,22 +161,21 @@ class TaxCalculationsQuestionsSpec
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdCalculated)
 
+      // Navigate to tax due on NPV and click continue
+
       Then("user is navigated to what is the total amount due page")
-      TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.navigateToPage(
+      TaxCalculationsTotalPremiumValueLeasehold.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/total-amount-due"
       )
-      TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.verifyPageTitle(
-        TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.pageTitle
+      TaxCalculationsTotalPremiumValueLeasehold.verifyPageTitle(
+        TaxCalculationsTotalPremiumValueLeasehold.pageTitle
       )
       When("user enter the amount value and click save and continue button")
-      TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.input(
-        By.id(TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.tppTax),
-        TaxCalculationsTotalPremiumValueLeaseholdTaxCalulation.tppTaxInput
+      TaxCalculationsTotalPremiumValueLeasehold.input(
+        By.id(TaxCalculationsTotalPremiumValueLeasehold.tppTax),
+        TaxCalculationsTotalPremiumValueLeasehold.tppTaxInput
       )
-      // TaxCalculationsTotalPremiumValueFreeholdTaxCalulation.saveAndContinue()
-      // Then("the Preliminary page is shown")
-      // PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
-
+      //TaxCalculationsTotalPremiumValueLeasehold.saveAndContinue()
       // Navigate to total amount due page and click continue to open pay penalities page
       Then("the user is navigated to the pay penalties page")
       TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
