@@ -186,8 +186,8 @@ class TaxCalculationsQuestionsSpec
       )
       When("user selects no radio button and continues")
       TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
-      //TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
-      //Navigate to check your answers page
+      // TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
+      // Navigate to check your answers page
     }
     /* Scenario 2 (nolease involved)
     user is navigated to HMRC cannot calculate the SDLT due page
