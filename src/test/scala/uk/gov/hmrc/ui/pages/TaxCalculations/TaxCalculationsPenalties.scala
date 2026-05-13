@@ -20,11 +20,25 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object TaxCalculationsPenalties extends BasePage {
 
-  override def pageUrl: String = "tax-calculation/freehold-calculated/are-penalties-and-interest-included"
+  override def pageUrl: String =
+    "tax-calculation/freehold-calculated/are-penalties-and-interest-included"
 
   override def pageTitle: String =
     "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
-  val yes: String                = "#value_0"
+
+  def pageUrlFreeholdSelfAssesed: String =
+    "tax-calculation/freehold-not-calculated/are-penalties-and-interest-included"
+
+  def pageTitleFreeholdSelfAssesed: String =
+    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Freehold not calculated - Stamp Taxes Online - GOV.UK"
+
+  def pageUrlLeaseholdCalculated: String =
+    "tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
+
+  def pageTitleLeaseholdCalculated: String =
+    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
+
+  val yes: String = "#value_0"
 
   val no: String = "#value_1"
 }

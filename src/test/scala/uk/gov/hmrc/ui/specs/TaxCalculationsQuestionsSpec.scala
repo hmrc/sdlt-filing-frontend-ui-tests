@@ -132,14 +132,14 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
 
       Then("the user is navigated to the pay penalties page")
-      TaxCalculationsPenaltiesFreeholdselfassesed.navigateToPage(
+      TaxCalculationsPenalties.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/are-penalties-and-interest-included"
       )
-      TaxCalculationsPenaltiesFreeholdselfassesed.verifyPageTitle(TaxCalculationsPenaltiesFreeholdselfassesed.pageTitle)
+      TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitleFreeholdSelfAssesed)
 
       When("user selects yes radio button and continues")
-      TaxCalculationsPenaltiesFreeholdselfassesed.radioButton(TaxCalculationsPenaltiesFreeholdselfassesed.yes)
-      TaxCalculationsPenaltiesFreeholdselfassesed.saveAndContinue()
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
+      TaxCalculationsPenalties.saveAndContinue()
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
     }
@@ -178,14 +178,14 @@ class TaxCalculationsQuestionsSpec
       // TaxCalculationsTotalPremiumValueLeasehold.saveAndContinue()
       // Navigate to total amount due page and click continue to open pay penalities page
       Then("the user is navigated to the pay penalties page")
-      TaxCalculationsPenaltiesLeaseholdCalculated.navigateToPage(
+      TaxCalculationsPenalties.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
       )
-      TaxCalculationsPenaltiesLeaseholdCalculated.verifyPageTitle(
-        TaxCalculationsPenaltiesLeaseholdCalculated.pageTitle
+      TaxCalculationsPenalties.verifyPageTitle(
+        TaxCalculationsPenalties.pageTitleLeaseholdCalculated
       )
       When("user selects no radio button and continues")
-      TaxCalculationsPenaltiesLeaseholdCalculated.radioButton(TaxCalculationsPenaltiesLeaseholdCalculated.no)
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
       // TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
       // Navigate to check your answers page
     }
