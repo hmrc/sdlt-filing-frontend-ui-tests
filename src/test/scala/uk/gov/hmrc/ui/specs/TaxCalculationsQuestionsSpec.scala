@@ -39,7 +39,7 @@ class TaxCalculationsQuestionsSpec
     with ScreenshotOnFailure {
 
   Feature("SDLT Filing Frontend Tax Calculations") {
-
+    /* scenario 1 Tax calculation - Freehold  calculated - Stamp Taxes online*/
     Scenario(
       "Complete the Freehold calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -111,7 +111,7 @@ class TaxCalculationsQuestionsSpec
     user is navigated to tasklist
        */
     }
-
+    /* scenario 2 Tax calculation - Freehold not calculated - Stamp Taxes online*/
     Scenario(
       "Complete the Freehold not calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -124,7 +124,6 @@ class TaxCalculationsQuestionsSpec
         returnId = Some("freehold-self-assessed")
       )
 
-      /* scenario 2 Tax calculation - Freehold not calculated - Stamp Taxes online*/
       When("the user starts the tax calculations journey")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
 
@@ -142,6 +141,17 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenaltiesFreeholdselfassesed.saveAndContinue()
       Then("the Preliminary page is shown")
       PreliminaryBeforeYouStart.verifyPageTitle(PreliminaryBeforeYouStart.pageTitle)
+      /* Scenario 2 (nolease involved)
+user is navigated to HMRC cannot calculate the SDLT due page
+user click continue button
+user enter self assessment amount of SDLT and click continue
+user is navigated to Total amount due page
+user enter amount to be retunred and continue
+user selects yes radio button and continues
+user is navigated to Tax calculation Check your answers page
+user select confirm and continue button
+user is navigated to tasklist
+       */
     }
     /* Scenario 3 Tax calculation - Leasehold calculated - Stamp Taxes online*/
     Scenario(
@@ -189,18 +199,8 @@ class TaxCalculationsQuestionsSpec
       // TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
       // Navigate to check your answers page
     }
-    /* Scenario 2 (nolease involved)
-    user is navigated to HMRC cannot calculate the SDLT due page
-    user click continue button
-    user enter self assessment amount of SDLT and click continue
-    user is navigated to Total amount due page
-    user enter amount to be retunred and continue
-    user selects yes radio button and continues
-    user is navigated to Tax calculation Check your answers page
-    user select confirm and continue button
-    user is navigated to tasklist
-     */
 
+    /* Scenario 3 Tax calculation - Leasehold not calculated - Stamp Taxes online*/
     Scenario(
       "Complete the Leasehold not calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -217,7 +217,17 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
+      Then("the user is navigated to the pay penalties page")
+      TaxCalculationsPenaltiesLeaseholdSelfassesed.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/are-penalties-and-interest-included"
+      )
+      TaxCalculationsPenaltiesLeaseholdSelfassesed.verifyPageTitle(
+        TaxCalculationsPenaltiesLeaseholdSelfassesed.pageTitle
+      )
 
+      When("user selects yes radio button and continues")
+      TaxCalculationsPenaltiesLeaseholdSelfassesed.radioButton(TaxCalculationsPenaltiesLeaseholdSelfassesed.yes)
+      TaxCalculationsPenaltiesLeaseholdSelfassesed.saveAndContinue()
 // user enter the total amount you intend to pay with this return and click save and continue
       Then("the user is navigated to the total premium value page")
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.navigateToPage(
@@ -245,10 +255,6 @@ class TaxCalculationsQuestionsSpec
       TaxDueOnNPV.saveAndContinue()
 
       /*Scenario 4
-    user is navigated to total mount due page
-    user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
-    user selects yes radio button and continues
-    user is navigated to Tax calculation Check your answers page
     user select confirm and continue button
     user is navigated to tasklist
        */
