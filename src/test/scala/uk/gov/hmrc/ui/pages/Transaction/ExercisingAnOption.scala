@@ -18,17 +18,15 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TotalConsiderationOfTransaction extends BasePage {
+object ExercisingAnOption extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/total-consideration-of-transaction"
+  override def pageUrl: String = "about-the-transaction/exercising-an-option"
 
   override def pageTitle: String =
-    "Total consideration of the transaction - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Exercising an option - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val totalConsideration: String = "value"
+  val yes: String = "#value"
 
-  val totalConsiderationInput: String = "300000"
-
-  val totalConsiderationInputCYA: String = "200000"
+  val no: String = "#value-2"
 
 }

@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Transaction
+package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TotalConsiderationOfTransaction extends BasePage {
+object TaxCalculationsTotalPremiumValueLeasehold extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/total-consideration-of-transaction"
+  override def pageUrl: String = "tax-calculation/leasehold-calculated/total-amount-due"
 
   override def pageTitle: String =
-    "Total consideration of the transaction - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Total amount due - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
+  val tppTax: String             = "value"
 
-  val totalConsideration: String = "value"
-
-  val totalConsiderationInput: String = "300000"
-
-  val totalConsiderationInputCYA: String = "200000"
-
+  val tppTaxInput: String = "10000"
 }

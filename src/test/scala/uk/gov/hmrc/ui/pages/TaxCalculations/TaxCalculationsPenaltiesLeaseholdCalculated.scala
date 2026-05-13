@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Transaction
+package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TotalConsiderationOfTransaction extends BasePage {
+object TaxCalculationsPenaltiesLeaseholdCalculated extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/total-consideration-of-transaction"
+  override def pageUrl: String = "tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
 
   override def pageTitle: String =
-    "Total consideration of the transaction - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Does the amount you intend to pay include penalties and interest charges? – Tax calculation – Leasehold calculated – Stamp Taxes Online – GOV.UK"
+  val yes: String                = "#value_0"
 
-  val totalConsideration: String = "value"
-
-  val totalConsiderationInput: String = "300000"
-
-  val totalConsiderationInputCYA: String = "200000"
-
+  val no: String = "#value_1"
 }
