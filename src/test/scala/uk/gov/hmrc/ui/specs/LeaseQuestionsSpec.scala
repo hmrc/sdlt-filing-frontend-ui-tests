@@ -81,10 +81,18 @@ class LeaseQuestionsSpec
        User enters the annual starting rent and continues
        End of annual starting rent page is shown
        User selects the end date of annual starting rent and continues
-       Later rent page is shown
-       User selects the yes for later rent and continues
-       £1000 threshold page is shown
-       User selects the yes for £1000 threshold and continues
+       Later rent page is shown*/
+      // Below step to removed once the navigation is ready
+      LaterRent.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/later-rent"
+      )
+      Then("the user is naviagted to Later rent Page")
+      LaterRent.verifyPageTitle(LaterRent.pageTitle)
+
+      When("the user selects Yes and continues")
+      LaterRent.radioButton(LaterRent.yes)
+      LaterRent.saveAndContinue()
+      /*  User selects the yes for £1000 threshold and continues
        Annual rent VAT page is shown
        User selects the yes for annual rent VAT and continues
        Total amount of VAT payable on annual rent is shown
@@ -144,10 +152,17 @@ class LeaseQuestionsSpec
       /*Annual starting rent page is shown
       User enters the annual starting rent and continues
       End of annual starting rent page is shown
-      User selects the end date of annual starting rent and continues
-      Later rent page is shown
-      User selects the yes for later rent and continues
-      User selects the yes for £1000 threshold and continues
+      User selects the end date of annual starting rent and continues*/
+      LaterRent.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/later-rent"
+      )
+      Then("the user is naviagted to Later rent Page")
+      LaterRent.verifyPageTitle(LaterRent.pageTitle)
+
+      When("the user selects Yes and continues")
+      LaterRent.radioButton(LaterRent.no)
+      LaterRent.saveAndContinue()
+      /*User selects the yes for £1000 threshold and continues
       Annual rent VAT page is shown
       User selects the yes for annual rent VAT and continues
       Total amount of VAT payable on annual rent is shown
