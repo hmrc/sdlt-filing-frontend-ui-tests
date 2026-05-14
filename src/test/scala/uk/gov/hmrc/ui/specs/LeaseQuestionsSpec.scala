@@ -54,45 +54,62 @@ class LeaseQuestionsSpec
 
       When("the user click continue on Before You Start Page")
       LeaseBeforeYouStart.saveAndContinue()
-      Then("the user is naviagted to Type of Lease Page")
+      Then("the user is navigated to Type of Lease Page")
       TypeOfLease.verifyPageTitle(TypeOfLease.pageTitle)
 
       When("the user selects Residential and clicks continue")
       TypeOfLease.radioButton(TypeOfLease.residential)
-      TypeOfLease.saveAndContinue()
+      // Below step to be uncommented once the next page is ready
+      // TypeOfLease.saveAndContinue()
+
       /*
-     Lease start date page is shown
-       USer selects the Lease start date and continues
-       Lease end date page is shown
-       User selects the Lease end date and continues
-       Rent free periods page is shown
-       User selects the yes for rent-free periods and continues*/
+        Lease start date page is shown
+        User selects the Lease start date and continues
+        Lease end date page is shown
+        User selects the Lease end date and continues
+        Rent free periods page is shown
+        User selects the yes for rent-free periods and continues
+       */
+
       // Below step to removed once the navigation is ready
       RentFreePeriod.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-rent-free-period"
       )
-      Then("the user is naviagted to Calculating the rent-free periods Page")
+      Then("the user is navigated to Calculating the rent-free periods Page")
       RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
 
       When("the user enters the rent-free periods months and continues")
       RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      RentFreePeriod.saveAndContinue()
-      /*Annual starting rent page is shown
-       User enters the annual starting rent and continues
-       End of annual starting rent page is shown
-       User selects the end date of annual starting rent and continues
-       Later rent page is shown*/
+      // Below step to be uncommented once the next page is ready
+      // RentFreePeriod.saveAndContinue()
+
+      /*
+        Annual starting rent page is shown
+        User enters the annual starting rent and continues
+        End of annual starting rent page is shown
+        User selects the end date of annual starting rent and continues
+        Later rent page is shown
+       */
+
       // Below step to removed once the navigation is ready
       LaterRent.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/later-rent"
       )
-      Then("the user is naviagted to Later rent Page")
+      Then("the user is navigated to Later rent Page")
       LaterRent.verifyPageTitle(LaterRent.pageTitle)
 
       When("the user selects Yes and continues")
       LaterRent.radioButton(LaterRent.yes)
       LaterRent.saveAndContinue()
-      /*  User selects the yes for £1000 threshold and continues
+      Then("the ThousandPoundThreshold page is displayed")
+      ThousandPoundThreshold.verifyPageTitle(ThousandPoundThreshold.pageTitle)
+
+      When("the user confirms the annual rent is £1000 or more")
+      ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
+      // Below step to be uncommented once the next page is ready
+      //      ThousandPoundThreshold.saveAndContinue()
+
+      /*
        Annual rent VAT page is shown
        User selects the yes for annual rent VAT and continues
        Total amount of VAT payable on annual rent is shown
@@ -130,15 +147,18 @@ class LeaseQuestionsSpec
 
       When("the user selects Residential and clicks continue")
       TypeOfLease.radioButton(TypeOfLease.mixedUse)
-      TypeOfLease.saveAndContinue()
+      // Below step to be uncommented once the next page is ready
+      // TypeOfLease.saveAndContinue()
 
       /*
-      Lease start date page is shown
-      USer selects the Lease start date and continues
-      Lease end date page is shown
-      User selects the Lease end date and continues
-      Rent free periods page is shown
-      User selects the yes for rent - free periods and continues*/
+        Lease start date page is shown
+        User selects the Lease start date and continues
+        Lease end date page is shown
+        User selects the Lease end date and continues
+        Rent free periods page is shown
+        User selects the yes for rent - free periods and continues
+       */
+
       // Below step to removed once the navigation is ready
       RentFreePeriod.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-rent-free-period"
@@ -148,28 +168,41 @@ class LeaseQuestionsSpec
 
       When("the user enters the rent-free periods months and continues")
       RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      RentFreePeriod.saveAndContinue()
-      /*Annual starting rent page is shown
-      User enters the annual starting rent and continues
-      End of annual starting rent page is shown
-      User selects the end date of annual starting rent and continues*/
+      // Below step to be uncommented once the next page is ready
+      // RentFreePeriod.saveAndContinue()
+
+      /*
+        Annual starting rent page is shown
+        User enters the annual starting rent and continues
+        End of annual starting rent page is shown
+        User selects the end date of annual starting rent and continues
+       */
+
       LaterRent.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/later-rent"
       )
-      Then("the user is naviagted to Later rent Page")
+      Then("the user is navigated to Later rent Page")
       LaterRent.verifyPageTitle(LaterRent.pageTitle)
 
       When("the user selects Yes and continues")
       LaterRent.radioButton(LaterRent.no)
       LaterRent.saveAndContinue()
-      /*User selects the yes for £1000 threshold and continues
-      Annual rent VAT page is shown
-      User selects the yes for annual rent VAT and continues
-      Total amount of VAT payable on annual rent is shown
-      User enters the total amount of VAT payable on annual rent and continues
-      Check your answers page is shown
-      User checks the answers and continues
-      Overview page is shown
+      Then("the ThousandPoundThreshold page is displayed")
+      ThousandPoundThreshold.verifyPageTitle(ThousandPoundThreshold.pageTitle)
+
+      When("the user confirms the annual rent is £1000 or more")
+      ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
+      // Below step to uncommented once the next page is ready
+      //      ThousandPoundThreshold.saveAndContinue()
+
+      /*
+        Annual rent VAT page is shown
+        User selects the yes for annual rent VAT and continues
+        Total amount of VAT payable on annual rent is shown
+        User enters the total amount of VAT payable on annual rent and continues
+        Check your answers page is shown
+        User checks the answers and continues
+        Overview page is shown
        */
     }
   }
