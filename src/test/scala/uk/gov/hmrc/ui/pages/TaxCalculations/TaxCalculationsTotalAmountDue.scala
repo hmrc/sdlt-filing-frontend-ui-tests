@@ -18,13 +18,29 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TaxCalculationsTotalAmountDueLeaseholdSelfassesed extends BasePage {
+object TaxCalculationsTotalAmountDue extends BasePage {
 
   override def pageUrl: String = "tax-calculation/leasehold-not-calculated/total-amount-due"
 
   override def pageTitle: String =
     "Total amount due - Tax calculation - Leasehold not calculated - Stamp Taxes Online - GOV.UK"
-  val tppTax: String             = "value"
+
+  def pageUrlFreehold: String = "tax-calculation/freehold-calculated/total-amount-due"
+
+  def pageTitleFreehold: String =
+    "Total amount due - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
+
+  def pageUrlLeasehold: String = "tax-calculation/leasehold-calculated/total-amount-due"
+
+  def pageTitleLeasehold: String =
+    "Total amount due - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
+
+  def pageUrlFreeholdSelfAssesedTAD: String = "tax-calculation/freehold-not-calculated/total-amount-due"
+
+  def pageTitleFreeholdSelfAssesedTAD: String =
+    "Total amount due - Tax calculation - Freehold not calculated - Stamp Taxes Online - GOV.UK"
+
+  val tppTax: String = "value"
 
   val tppTaxInput: String = "10000"
 }
