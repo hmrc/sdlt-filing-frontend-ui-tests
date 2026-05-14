@@ -59,7 +59,8 @@ class LeaseQuestionsSpec
 
       When("the user selects Residential and clicks continue")
       TypeOfLease.radioButton(TypeOfLease.residential)
-      TypeOfLease.saveAndContinue()
+      // Below step to be uncommented once the next page is ready
+      // TypeOfLease.saveAndContinue()
 
       /*
         Lease start date page is shown
@@ -79,7 +80,8 @@ class LeaseQuestionsSpec
 
       When("the user enters the rent-free periods months and continues")
       RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      RentFreePeriod.saveAndContinue()
+      // Below step to be uncommented once the next page is ready
+      // RentFreePeriod.saveAndContinue()
 
       /*
         Annual starting rent page is shown
@@ -104,7 +106,7 @@ class LeaseQuestionsSpec
 
       When("the user confirms the annual rent is £1000 or more")
       ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
-      // Below step to uncommented once the next page is ready
+      // Below step to be uncommented once the next page is ready
       //      ThousandPoundThreshold.saveAndContinue()
 
       /*
@@ -145,7 +147,8 @@ class LeaseQuestionsSpec
 
       When("the user selects Residential and clicks continue")
       TypeOfLease.radioButton(TypeOfLease.mixedUse)
-      TypeOfLease.saveAndContinue()
+      // Below step to be uncommented once the next page is ready
+      // TypeOfLease.saveAndContinue()
 
       /*
         Lease start date page is shown
@@ -165,7 +168,8 @@ class LeaseQuestionsSpec
 
       When("the user enters the rent-free periods months and continues")
       RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      RentFreePeriod.saveAndContinue()
+      // Below step to be uncommented once the next page is ready
+      // RentFreePeriod.saveAndContinue()
 
       /*
         Annual starting rent page is shown
