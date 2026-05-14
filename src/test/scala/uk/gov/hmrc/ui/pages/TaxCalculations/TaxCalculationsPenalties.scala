@@ -38,7 +38,13 @@ object TaxCalculationsPenalties extends BasePage {
   def pageTitleLeaseholdCalculated: String =
     "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value_0"
+  def pageUrlLeaseholdNotCalculated: String =
+    "tax-calculation/leasehold-not-calculated/are-penalties-and-interest-included"
 
-  val no: String = "#value_1"
+  def pageTitleLeaseholdNotCalculated: String =
+    "Does the amount you intend to pay include penalties and interest charges? - Tax calculation - Leasehold not calculated - Stamp Taxes Online - GOV.UK"
+
+  val yes: String = "#value"
+
+  val no: String = "#value-2"
 }

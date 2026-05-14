@@ -274,7 +274,16 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsTotalAmountDue.tppTaxInput
       )
       // TaxCalculationsTotalAmountDueLeaseholdSelfassesed.saveAndContinue()
-      // user is navigated to does the amount you intend to pay include penalties and interest charges radio button page
+      Then("the user is navigated to the pay penalties page")
+      TaxCalculationsPenalties.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/are-penalties-and-interest-included"
+      )
+      TaxCalculationsPenalties.verifyPageTitle(
+        TaxCalculationsPenalties.pageTitleLeaseholdNotCalculated
+      )
+      When("user selects no radio button and continues")
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
+      // TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
       // user selects yes radio button and continues
 
       /*Scenario 4
