@@ -59,11 +59,16 @@ class LeaseQuestionsSpec
 
       When("the user selects Residential and clicks continue")
       TypeOfLease.radioButton(TypeOfLease.residential)
+      TypeOfLease.saveAndContinue()
+      Then("the user is navigated to Lease start date page")
+      LeaseStartDate.verifyPageTitle(LeaseStartDate.pageTitle)
+
+      When("the user enters the lease start date and continues")
+      LeaseStartDate.enterLeaseStartDate()
       // Below step to be uncommented once the next page is ready
-      // TypeOfLease.saveAndContinue()
+      // LeaseStartDate.saveAndContinue()
 
       /*
-        Lease start date page is shown
         User selects the Lease start date and continues
         Lease end date page is shown
         User selects the Lease end date and continues
@@ -147,11 +152,16 @@ class LeaseQuestionsSpec
 
       When("the user selects Residential and clicks continue")
       TypeOfLease.radioButton(TypeOfLease.mixedUse)
-      // Below step to be uncommented once the next page is ready
-      // TypeOfLease.saveAndContinue()
+      TypeOfLease.saveAndContinue()
+      Then("the user is navigated to Lease start date page")
+      LeaseStartDate.verifyPageTitle(LeaseStartDate.pageTitle)
 
+      When("the user enters the lease start date and continues")
+      LeaseStartDate.enterLeaseStartDate()
+      // Below step to be uncommented once the next page is ready
+      // LeaseStartDate.saveAndContinue()
       /*
-        Lease start date page is shown
+
         User selects the Lease start date and continues
         Lease end date page is shown
         User selects the Lease end date and continues
