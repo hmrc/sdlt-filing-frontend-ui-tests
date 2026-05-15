@@ -72,14 +72,17 @@ class LeaseQuestionsSpec
         User selects the Lease start date and continues
         Lease end date page is shown
         User selects the Lease end date and continues
-        Rent free periods page is shown
-        User selects the yes for rent-free periods and continues
        */
-
       // Below step to removed once the navigation is ready
-      RentFreePeriod.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-rent-free-period"
+      AddRentFreePeriod.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/add-rent-free-period"
       )
+      Then("the user is navigated to Rent Free Period Page")
+      AddRentFreePeriod.verifyPageTitle(AddRentFreePeriod.pageTitle)
+
+      When("the user selects Yes and continues")
+      AddRentFreePeriod.radioButton(AddRentFreePeriod.yes)
+      AddRentFreePeriod.saveAndContinue()
       Then("the user is navigated to Calculating the rent-free periods Page")
       RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
 
@@ -165,22 +168,17 @@ class LeaseQuestionsSpec
         User selects the Lease start date and continues
         Lease end date page is shown
         User selects the Lease end date and continues
-        Rent free periods page is shown
-        User selects the yes for rent - free periods and continues
        */
-
       // Below step to removed once the navigation is ready
-      RentFreePeriod.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-rent-free-period"
+      AddRentFreePeriod.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/add-rent-free-period"
       )
-      Then("the user is navigated to Calculating the rent-free periods Page")
-      RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
+      Then("the user is navigated to Rent Free Period Page")
+      AddRentFreePeriod.verifyPageTitle(AddRentFreePeriod.pageTitle)
 
-      When("the user enters the rent-free periods months and continues")
-      RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      // Below step to be uncommented once the next page is ready
-      // RentFreePeriod.saveAndContinue()
-
+      When("the user selects Yes and continues")
+      AddRentFreePeriod.radioButton(AddRentFreePeriod.no)
+//      AddRentFreePeriod.saveAndContinue()
       /*
         Annual starting rent page is shown
         User enters the annual starting rent and continues
