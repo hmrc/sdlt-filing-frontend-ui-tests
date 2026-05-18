@@ -126,8 +126,6 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsSDLTSelfAssessment.saaInput
       )
       TaxCalculationsSDLTSelfAssessment.saveAndContinue()
-
-      Then("user is navigated to what is the  Total amount due page")
       TaxCalculationsTotalAmountDue.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/total-amount-due"
       )
@@ -141,7 +139,6 @@ class TaxCalculationsQuestionsSpec
       )
       /*TaxCalculationsTotalAmountDue.saveAndContinue()*/
 
-      Then("the user is navigated to the pay penalties page")
       TaxCalculationsPenalties.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/are-penalties-and-interest-included"
       )
