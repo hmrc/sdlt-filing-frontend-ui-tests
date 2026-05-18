@@ -138,8 +138,12 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold not calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
-      // User is navigated to HMRC cannot calculate SDLT due page
-      // User Click on Continue
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculateSDLTDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/HMRC-cannot-calculate-SDLT-due"
+      )
+      CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.freeholdSelfAssesedSDLTDuepageTitle)
+      // CalculateSDLTDue.saveAndContinue()
       Then("user is navigated to what is the SDLT self-assessment page")
       TaxCalculationsSDLTSelfAssessment.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/SDLT-self-assessment"
