@@ -113,21 +113,33 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
       // User is navigated to HMRC cannot calculate SDLT due page
       // User Click on Continue
-      // User is navigated to SDLT self-assesement page
-      // user is navigated to Total amount due page
-      /* Then("user is navigated to what is the total amount due page")
-    TaxCalculationsTotalAmountDue.navigateToPage(
-       "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/total-amount-due"
-     )
-     TaxCalculationsTotalAmountDue.verifyPageTitle(
-       TaxCalculationsTotalAmountDue.pageTitleFreeholdSelfAssesedTAD
-     )
-     When("user enter the amount value and click save and continue button")
-     TaxCalculationsTotalAmountDue.input(
-       By.id(TaxCalculationsTotalAmountDue.tppTax),
-       TaxCalculationsTotalAmountDue.tppTaxInput
-     )
-   TaxCalculationsTotalAmountDue.saveAndContinue()*/
+      Then("user is navigated to what is the SDLT self-assessment page")
+      TaxCalculationsSDLTSelfAssessment.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/SDLT-self-assessment"
+      )
+      TaxCalculationsSDLTSelfAssessment.verifyPageTitle(
+        TaxCalculationsSDLTSelfAssessment.pageTitleFreeholdSelfAssesed
+      )
+      When("user enter the amount value and click save and continue button")
+      TaxCalculationsSDLTSelfAssessment.input(
+        By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
+        TaxCalculationsSDLTSelfAssessment.saaInput
+      )
+      TaxCalculationsSDLTSelfAssessment.saveAndContinue()
+
+      Then("user is navigated to what is the  Total amount due page")
+      TaxCalculationsTotalAmountDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/total-amount-due"
+      )
+      TaxCalculationsTotalAmountDue.verifyPageTitle(
+        TaxCalculationsTotalAmountDue.pageTitleFreeholdSelfAssesedTAD
+      )
+      When("user enter the amount value and click save and continue button")
+      TaxCalculationsTotalAmountDue.input(
+        By.id(TaxCalculationsTotalAmountDue.tppTax),
+        TaxCalculationsTotalAmountDue.tppTaxInput
+      )
+      /*TaxCalculationsTotalAmountDue.saveAndContinue()*/
 
       Then("the user is navigated to the pay penalties page")
       TaxCalculationsPenalties.navigateToPage(
