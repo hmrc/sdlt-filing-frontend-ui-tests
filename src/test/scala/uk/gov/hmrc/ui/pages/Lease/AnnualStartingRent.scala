@@ -1,0 +1,38 @@
+/*
+ * Copyright 2025 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package uk.gov.hmrc.ui.pages.Lease
+
+import org.openqa.selenium.By
+import uk.gov.hmrc.ui.pages.BasePage
+import uk.gov.hmrc.ui.pages.Lease.AnnualStartingRent.driver
+
+object AnnualStartingRent extends BasePage {
+
+  override def pageUrl: String = "about-the-lease/annual-starting-rent"
+
+  override def pageTitle: String =
+    "Annual starting rent - About the lease - Stamp Taxes Online - GOV.UK"
+
+  val annualStartingRent: String = "value"
+
+  val annualStartingRentInput: String = "12000"
+
+  def clickDropdownText(): Unit = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
+  def dropdownText: String      =
+    "If the exact rent is uncertain (for example, linked to turnover), a reasonable estimate must be made. This should be based on available information, like a business plan or projected turnover, and used to calculate the Net Present Value (NPV) of the rent. Keep evidence of how the estimate was calculated in case requested by HMRC."
+
+}
