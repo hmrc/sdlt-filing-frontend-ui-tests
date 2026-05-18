@@ -53,6 +53,17 @@ class TaxCalculationsQuestionsSpec
       )
 
       When("the user starts the tax calculations journey")
+
+      // Then("the confirm effective date of the transaction page displayed")
+      // TaxCalculationsTotalAmountDue.navigateToPage(
+      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      // )
+      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // ConfirmEffectiveDate.saveAndContinue()
+      // Is this effective date of transaction
+      // Radio button yes open the before start page
+      // Radio button no open effective date question page
+      And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
@@ -108,6 +119,16 @@ class TaxCalculationsQuestionsSpec
       )
 
       When("the user starts the tax calculations journey")
+      // Then("the confirm effective date of the transaction page displayed")
+      // TaxCalculationsTotalAmountDue.navigateToPage(
+      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      // )
+      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // ConfirmEffectiveDate.saveAndContinue()
+      // Is this effective date of transaction
+      // Radio button yes open the before start page
+      // Radio button no open effective date question page
+      And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold not calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
@@ -164,8 +185,16 @@ class TaxCalculationsQuestionsSpec
         Organisation,
         returnId = Some("leasehold-tax-calculated")
       )
-
       When("the user starts the tax calculations journey")
+      // Then("the confirm effective date of the transaction page displayed")
+      // TaxCalculationsTotalAmountDue.navigateToPage(
+      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      // )
+      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // ConfirmEffectiveDate.saveAndContinue()
+      // Is this effective date of transaction
+      // Radio button yes open the before start page
+      And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdCalculated)
@@ -219,6 +248,16 @@ class TaxCalculationsQuestionsSpec
       )
 
       When("the user starts the tax calculations journey")
+      // Then("the confirm effective date of the transaction page displayed")
+      // TaxCalculationsTotalAmountDue.navigateToPage(
+      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      // )
+      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // ConfirmEffectiveDate.saveAndContinue()
+      // Is this effective date of transaction
+      // Radio button yes open the before start page
+      // Radio button no open effective date question page
+      And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
@@ -277,5 +316,36 @@ class TaxCalculationsQuestionsSpec
       // User is navigated to Return to TaskList
 
     }
+
+    // Scenario(
+    //   "Comeplte effective date Journey",
+    //   TaxCalculationJourney
+    // ) {
+
+    //   Given("the user logs in through the Authority Wizard page")
+    //   AuthWizard.login(
+    //     HASDIRECT,
+    //     Organisation,
+    //     returnId = Some("leasehold-self-assessed")
+    //   )
+
+    //   When("the user starts the tax calculations journey")
+    //   // Then("the confirm effective date of the transaction page displayed")
+    //   // TaxCalculationsTotalAmountDue.navigateToPage(
+    //   //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+    //   // )
+    //   // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+    //   // ConfirmEffectiveDate.saveAndContinue()
+    //   // Is this effective date of transaction
+    //   // Radio button no open effective date question page
+    //   // Then("the Effective Date of Transaction page is displayed")
+    //   // EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
+
+    //   // When("the user enters the effective date of transaction and continues")
+    //   // EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
+    //   // EffectiveDateOfTransaction.saveAndContinue()
+
+    // }
+
   }
 }
