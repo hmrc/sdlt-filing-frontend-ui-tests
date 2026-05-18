@@ -76,8 +76,14 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsBreakdown.verifyPageTitle(TaxCalculationsBreakdown.pageTitle)
       When("the user want to go return to the tax calculation page")
       TaxCalculationsBreakdown.clickReturnTaxPage()
-      // User is navigated to calculate SDLT due page
-      // User Click on Continue
+
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculateSDLTDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/calculated-SDLT-due"
+      )
+      CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.pageTitle)
+      When("the user want to go return to the tax calculation page")
+      // CalculateSDLTDue.saveAndContinue()
       // User is navigated to SDLT self-assesement page
       // User Click Save and Continue
       Then("user is navigated to what is the total amount due page")
