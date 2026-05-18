@@ -88,12 +88,17 @@ class LeaseQuestionsSpec
 
       When("the user enters the rent-free periods months and continues")
       RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      // Below step to be uncommented once the next page is ready
-      // RentFreePeriod.saveAndContinue()
+      RentFreePeriod.saveAndContinue()
+      Then("the user is navigated to Annual starting rent page")
+      AnnualStartingRent.verifyPageTitle(AnnualStartingRent.pageTitle)
+      And("the validates the drop down text About variable or uncertain rent")
+      AnnualStartingRent.clickDropdownText()
+      AnnualStartingRent.verifyPageText(AnnualStartingRent.dropdownText, 2)
 
+      When("the user enters annual rent and continues")
+      AnnualStartingRent.input(By.id(AnnualStartingRent.annualStartingRent), AnnualStartingRent.annualStartingRentInput)
+      AnnualStartingRent.saveAndContinue()
       /*
-        Annual starting rent page is shown
-        User enters the annual starting rent and continues
         End of annual starting rent page is shown
         User selects the end date of annual starting rent and continues
         Later rent page is shown
@@ -178,10 +183,15 @@ class LeaseQuestionsSpec
 
       When("the user selects Yes and continues")
       AddRentFreePeriod.radioButton(AddRentFreePeriod.no)
-//      AddRentFreePeriod.saveAndContinue()
+      AddRentFreePeriod.saveAndContinue()
+      Then("the user is navigated to Annual starting rent page")
+      AnnualStartingRent.verifyPageTitle(AnnualStartingRent.pageTitle)
+
+      When("the user enters annual rent and continues")
+      AnnualStartingRent.input(By.id(AnnualStartingRent.annualStartingRent), AnnualStartingRent.annualStartingRentInput)
+      AnnualStartingRent.saveAndContinue()
+
       /*
-        Annual starting rent page is shown
-        User enters the annual starting rent and continues
         End of annual starting rent page is shown
         User selects the end date of annual starting rent and continues
        */
