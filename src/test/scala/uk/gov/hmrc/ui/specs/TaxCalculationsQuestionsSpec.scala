@@ -53,7 +53,7 @@ class TaxCalculationsQuestionsSpec
       )
 
       When("the user starts the tax calculations journey")
-      
+
       // Then("the confirm effective date of the transaction page displayed")
       // TaxCalculationsTotalAmountDue.navigateToPage(
       //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
