@@ -222,13 +222,21 @@ class TaxCalculationsQuestionsSpec
       // User is navigated to SDLT breakdown page
       // User Click on Hyperlink - Return to tax calculation page
       // User click on Continue button
-      // User is navigated to SDLT self-assessment page
-      // User click on save and continue
+      Then("user is navigated to what is the SDLT self-assessment page")
+      TaxCalculationsSDLTSelfAssessment.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/SDLT-self-assessment"
+      )
+      TaxCalculationsSDLTSelfAssessment.verifyPageTitle(
+        TaxCalculationsSDLTSelfAssessment.pageTitleLeaseholdTax
+      )
+      When("user enter the amount value and click save and continue button")
+      TaxCalculationsSDLTSelfAssessment.input(
+        By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
+        TaxCalculationsSDLTSelfAssessment.saaInput
+      )
+      TaxCalculationsSDLTSelfAssessment.saveAndContinue()
 
       Then("user is navigated to what is the total amount due page")
-      TaxCalculationsTotalAmountDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/total-amount-due"
-      )
       TaxCalculationsTotalAmountDue.verifyPageTitle(
         TaxCalculationsTotalAmountDue.pageTitleLeasehold
       )
