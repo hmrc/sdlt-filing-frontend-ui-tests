@@ -84,12 +84,21 @@ class TaxCalculationsQuestionsSpec
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.pageTitle)
       When("the user want to go return to the tax calculation page")
       // CalculateSDLTDue.saveAndContinue()
-      // User is navigated to SDLT self-assesement page
-      // User Click Save and Continue
-      Then("user is navigated to what is the total amount due page")
-      TaxCalculationsTotalAmountDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/total-amount-due"
+      Then("user is navigated to what is the SDLT self-assessment page")
+      TaxCalculationsSDLTSelfAssessment.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/SDLT-self-assessment"
       )
+      TaxCalculationsSDLTSelfAssessment.verifyPageTitle(
+        TaxCalculationsSDLTSelfAssessment.pageTitleFreeholdTax
+      )
+      When("user enter the amount value and click save and continue button")
+      TaxCalculationsSDLTSelfAssessment.input(
+        By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
+        TaxCalculationsSDLTSelfAssessment.saaInput
+      )
+      TaxCalculationsSDLTSelfAssessment.saveAndContinue()
+
+      Then("user is navigated to what is the total amount due page")
       TaxCalculationsTotalAmountDue.verifyPageTitle(
         TaxCalculationsTotalAmountDue.pageTitleFreehold
       )
