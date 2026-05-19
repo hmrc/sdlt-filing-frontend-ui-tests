@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.TaxCalculations
+package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ConfirmEffectiveDate extends BasePage {
+object AnnualRentVAT extends BasePage {
 
-  override def pageUrl: String = "tax-calculation/confirm-effective-date-of-transaction"
+  override def pageUrl: String = "about-the-lease/add-annual-rent-VAT"
 
   override def pageTitle: String =
-    "Confirm the effective date of the transaction - Tax calculation - Stamp Taxes Online - GOV.UK"
+    "Annual rent VAT - About the lease - Stamp Taxes Online - GOV.UK"
+
+  val yes: String = "#value"
+
+  val no: String = "#value-2"
 
 }
