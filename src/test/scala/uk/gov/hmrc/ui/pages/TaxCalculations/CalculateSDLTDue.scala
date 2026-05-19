@@ -27,4 +27,10 @@ object CalculateSDLTDue extends BasePage {
   override def pageTitle: String =
     "Calculated SDLT due - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
 
+  def freeholdSelfAssesedSDLTDuepageUrl: String =
+    "tax-calculation/freehold-not-calculated/HMRC-cannot-calculate-SDLT-due"
+
+  def freeholdSelfAssesedSDLTDuepageTitle: String =
+    "HMRC cannot calculate the SDLT due - Tax calculation - Freehold not calculated - Stamp Taxes Online - GOV.UK"
+
 }
