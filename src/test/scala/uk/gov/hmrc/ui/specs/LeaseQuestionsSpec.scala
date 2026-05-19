@@ -69,7 +69,6 @@ class LeaseQuestionsSpec
       // LeaseStartDate.saveAndContinue()
 
       /*
-        User selects the Lease start date and continues
         Lease end date page is shown
         User selects the Lease end date and continues
        */
@@ -101,7 +100,7 @@ class LeaseQuestionsSpec
       /*
         End of annual starting rent page is shown
         User selects the end date of annual starting rent and continues
-        Later rent page is shown
+       .
        */
 
       // Below step to removed once the navigation is ready
@@ -119,12 +118,17 @@ class LeaseQuestionsSpec
 
       When("the user confirms the annual rent is £1000 or more")
       ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
-      // Below step to be uncommented once the next page is ready
-      //      ThousandPoundThreshold.saveAndContinue()
+      ThousandPoundThreshold.saveAndContinue()
+      Then("Annual rent VAT page is shown")
+      AnnualRentVAT.verifyPageTitle(AnnualRentVAT.pageTitle)
+
+      When("the user selects Yes and continues")
+      AnnualRentVAT.radioButton(AnnualRentVAT.yes)
+      // Below step should be uncommented once the next page is ready
+      // AnnualRentVAT.saveAndContinue()
 
       /*
-       Annual rent VAT page is shown
-       User selects the yes for annual rent VAT and continues
+
        Total amount of VAT payable on annual rent is shown
         User enters the total amount of VAT payable on annual rent and continues
        Total premium payable page is shown
@@ -169,8 +173,6 @@ class LeaseQuestionsSpec
       // Below step to be uncommented once the next page is ready
       // LeaseStartDate.saveAndContinue()
       /*
-
-        User selects the Lease start date and continues
         Lease end date page is shown
         User selects the Lease end date and continues
        */
@@ -210,12 +212,16 @@ class LeaseQuestionsSpec
 
       When("the user confirms the annual rent is £1000 or more")
       ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
-      // Below step to uncommented once the next page is ready
-      //      ThousandPoundThreshold.saveAndContinue()
+      ThousandPoundThreshold.saveAndContinue()
+      Then("Annual rent VAT page is shown")
+      AnnualRentVAT.verifyPageTitle(AnnualRentVAT.pageTitle)
+
+      When("the user selects Yes and continues")
+      AnnualRentVAT.radioButton(AnnualRentVAT.yes)
+      // Below step should be uncommented once the next page is ready
+      // AnnualRentVAT.saveAndContinue()
 
       /*
-        Annual rent VAT page is shown
-        User selects the yes for annual rent VAT and continues
         Total amount of VAT payable on annual rent is shown
         User enters the total amount of VAT payable on annual rent and continues
         Check your answers page is shown
