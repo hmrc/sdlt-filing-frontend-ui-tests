@@ -31,6 +31,11 @@ object TaxCalculationsSDLTSelfAssessment extends BasePage {
   def pageTitleFreeholdSelfAssesed: String =
     "SDLT self-assessment - Tax calculation - Freehold not calculated - Stamp Taxes Online - GOV.UK"
 
+  def pageUrlFreeholdTax: String   =
+    "tax-calculation/freehold-calculated/SDLT-self-assessment"
+  def pageTitleFreeholdTax: String =
+    "SDLT self-assessment - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
+
   val saaValue: String = "value"
 
   val saaInput: String = "10000"
