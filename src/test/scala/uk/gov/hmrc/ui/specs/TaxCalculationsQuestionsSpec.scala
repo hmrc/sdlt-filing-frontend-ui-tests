@@ -51,20 +51,27 @@ class TaxCalculationsQuestionsSpec
         Organisation,
         returnId = Some("freehold-tax-calculated")
       )
-
-      When("the user starts the tax calculations journey")
-
-      // Then("the confirm effective date of the transaction page displayed")
-      // TaxCalculationsTotalAmountDue.navigateToPage(
-      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
-      // )
-      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // ConfirmEffectiveDate.saveAndContinue()
-      // Is this effective date of transaction
-      // Radio button yes open the before start page
-      // Radio button no open effective date question page
       And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+
+      When("the user confirms the effective date of the transaction and continues")
+      ConfirmEffectiveDate.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      )
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // uncomment below line when the navigation is ready
+      // ConfirmEffectiveDate.saveAndContinue()
+
+      Then("the user is navigated to Is this effective date of transaction page")
+      // remove below line when the navigation is ready
+      IsThisEffectiveDateOfTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
+      )
+      IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
+      When("the user selects yes radio button and continues")
+      IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
+      IsThisEffectiveDateOfTransaction.saveAndContinue()
+
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
       // User is navigated to calculate SDLT due page
@@ -133,18 +140,27 @@ class TaxCalculationsQuestionsSpec
         returnId = Some("freehold-self-assessed")
       )
 
-      When("the user starts the tax calculations journey")
-      // Then("the confirm effective date of the transaction page displayed")
-      // TaxCalculationsTotalAmountDue.navigateToPage(
-      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
-      // )
-      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // ConfirmEffectiveDate.saveAndContinue()
-      // Is this effective date of transaction
-      // Radio button yes open the before start page
-      // Radio button no open effective date question page
       And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+
+      Then("the confirm effective date of the transaction page displayed")
+      TaxCalculationsTotalAmountDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      )
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // uncomment below line when the navigation is ready
+      // ConfirmEffectiveDate.saveAndContinue()
+
+      Then("the user is navigated to Is this effective date of transaction page")
+      // remove below line when the navigation is ready
+      IsThisEffectiveDateOfTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
+      )
+      IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
+      When("the user selects yes radio button and continues")
+      IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
+      IsThisEffectiveDateOfTransaction.saveAndContinue()
+
       Then("the Freehold not calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
       Then("the user is navigated to the calculate SDLT due page")
@@ -204,17 +220,28 @@ class TaxCalculationsQuestionsSpec
         Organisation,
         returnId = Some("leasehold-tax-calculated")
       )
-      When("the user starts the tax calculations journey")
-      // Then("the confirm effective date of the transaction page displayed")
-      // TaxCalculationsTotalAmountDue.navigateToPage(
-      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
-      // )
-      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // ConfirmEffectiveDate.saveAndContinue()
-      // Is this effective date of transaction
-      // Radio button yes open the before start page
+
       And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+
+      Then("the confirm effective date of the transaction page displayed")
+      TaxCalculationsTotalAmountDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      )
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // uncomment below line when the navigation is ready
+      // ConfirmEffectiveDate.saveAndContinue()
+
+      Then("the user is navigated to Is this effective date of transaction page")
+      // remove below line when the navigation is ready
+      IsThisEffectiveDateOfTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
+      )
+      IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
+      When("the user selects yes radio button and continues")
+      IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
+      IsThisEffectiveDateOfTransaction.saveAndContinue()
+
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdCalculated)
       // User is navigated to calculate SDLT due page
@@ -273,19 +300,26 @@ class TaxCalculationsQuestionsSpec
         Organisation,
         returnId = Some("leasehold-self-assessed")
       )
-
-      When("the user starts the tax calculations journey")
-      // Then("the confirm effective date of the transaction page displayed")
-      // TaxCalculationsTotalAmountDue.navigateToPage(
-      //   "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
-      // )
-      // ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // ConfirmEffectiveDate.saveAndContinue()
-      // Is this effective date of transaction
-      // Radio button yes open the before start page
-      // Radio button no open effective date question page
       And("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+
+      Then("the confirm effective date of the transaction page displayed")
+      TaxCalculationsTotalAmountDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
+      )
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+      // uncomment below line when the navigation is ready
+      // ConfirmEffectiveDate.saveAndContinue()
+
+      Then("the user is navigated to Is this effective date of transaction page")
+      IsThisEffectiveDateOfTransaction.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
+      )
+      IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
+      When("the user selects yes radio button and continues")
+      IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
+      IsThisEffectiveDateOfTransaction.saveAndContinue()
+
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
       // User is navigated to HMRC cannot calculate SDLT due page
