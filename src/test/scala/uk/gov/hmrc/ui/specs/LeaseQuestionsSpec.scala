@@ -97,16 +97,12 @@ class LeaseQuestionsSpec
       When("the user enters annual rent and continues")
       AnnualStartingRent.input(By.id(AnnualStartingRent.annualStartingRent), AnnualStartingRent.annualStartingRentInput)
       AnnualStartingRent.saveAndContinue()
-      /*
-        End of annual starting rent page is shown
-        User selects the end date of annual starting rent and continues
-       .
-       */
+      Then("the EndOfAnnualStartingRent page is shown")
+      EndOfAnnualStartingRent.verifyPageTitle(EndOfAnnualStartingRent.pageTitle)
 
-      // Below step to removed once the navigation is ready
-      LaterRent.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/later-rent"
-      )
+      When("the user provides the end date for starting rent")
+      EndOfAnnualStartingRent.enterEndOfAnnualStartingRent()
+      EndOfAnnualStartingRent.saveAndContinue()
       Then("the user is navigated to Later rent Page")
       LaterRent.verifyPageTitle(LaterRent.pageTitle)
 
@@ -128,20 +124,17 @@ class LeaseQuestionsSpec
       // AnnualRentVAT.saveAndContinue()
 
       /*
-
-       Total amount of VAT payable on annual rent is shown
+        Total amount of VAT payable on annual rent is shown
         User enters the total amount of VAT payable on annual rent and continues
-       Total premium payable page is shown
-       User selects the yes for total premium payable and continues
-       Calculating the total premium payable including VAT page is shown
-       User enters the total premium payable including VAT and continues
-       Net present value page is shown
-       User enters the net present value and continues
-       Check your answers page is shown
+        Total premium payable page is shown
+        User selects the yes for total premium payable and continues
+        Calculating the total premium payable including VAT page is shown
+        User enters the total premium payable including VAT and continues
+        Net present value page is shown
+        User enters the net present value and continues
+        Check your answers page is shown
         User checks the answers and continues
         Overview page is shown
-
-
        */
     }
 
@@ -192,15 +185,12 @@ class LeaseQuestionsSpec
       When("the user enters annual rent and continues")
       AnnualStartingRent.input(By.id(AnnualStartingRent.annualStartingRent), AnnualStartingRent.annualStartingRentInput)
       AnnualStartingRent.saveAndContinue()
+      Then("the EndOfAnnualStartingRent page is shown")
+      EndOfAnnualStartingRent.verifyPageTitle(EndOfAnnualStartingRent.pageTitle)
 
-      /*
-        End of annual starting rent page is shown
-        User selects the end date of annual starting rent and continues
-       */
-
-      LaterRent.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/later-rent"
-      )
+      When("the user provides the end date for starting rent")
+      EndOfAnnualStartingRent.enterEndOfAnnualStartingRent()
+      EndOfAnnualStartingRent.saveAndContinue()
       Then("the user is navigated to Later rent Page")
       LaterRent.verifyPageTitle(LaterRent.pageTitle)
 
