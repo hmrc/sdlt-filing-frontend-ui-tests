@@ -244,7 +244,13 @@ class TaxCalculationsQuestionsSpec
 
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdCalculated)
-      // User is navigated to calculate SDLT due page
+
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculateSDLTDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/calculated-SDLT-due"
+      )
+      CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSDLTDuepageTitle)
+      // CalculateSDLTDue.clickSDLTBreakDownLink()
       // User Click on Hyperlink - check your SDLT breakdown
       // User is navigated to SDLT breakdown page
       // User Click on Hyperlink - Return to tax calculation page

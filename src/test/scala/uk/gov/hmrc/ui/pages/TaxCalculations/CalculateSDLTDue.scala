@@ -18,6 +18,8 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
+import org.openqa.selenium.By
+
 object CalculateSDLTDue extends BasePage {
 
   override def pageUrl: String = "tax-calculation/freehold-calculated/calculated-SDLT-due"
@@ -30,5 +32,14 @@ object CalculateSDLTDue extends BasePage {
 
   def freeholdSelfAssesedSDLTDuepageTitle: String =
     "HMRC cannot calculate the SDLT due - Tax calculation - Freehold not calculated - Stamp Taxes Online - GOV.UK"
+
+  def leaseholdSDLTDuepageUrl: String =
+    "tax-calculation/leasehold-calculated/calculated-SDLT-due"
+
+  def leaseholdSDLTDuepageTitle: String =
+    "Calculated SDLT due - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
+
+  def clickSDLTBreakDownLink(): Unit =
+    click(By.xpath("//a[@class='govuk-body govuk-link' and text()='Check your SDLT breakdown']"))
 
 }
