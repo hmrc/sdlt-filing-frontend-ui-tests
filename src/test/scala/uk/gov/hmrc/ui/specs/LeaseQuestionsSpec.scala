@@ -133,9 +133,22 @@ class LeaseQuestionsSpec
 
       /*  Total premium payable page is shown
       User selects the yes for total premium payable and continues
-      Calculating the total premium payable including VAT page is shown
-      User enters the total premium payable including VAT and continues
-      Net present value page is shown
+       */
+      Then("Calculating the total premium payable including VAT page is shown")
+      // Below step to be removed once the navigation is ready
+      TotalPremiumPayable.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-total-premium-payable"
+      )
+      TotalPremiumPayable.verifyPageTitle(TotalPremiumPayable.pageTitle)
+      Then("User enters the total premium payable including VAT and continues")
+      TotalPremiumPayable.input(
+        By.id(TotalPremiumPayable.TotalPremiumPayable),
+        TotalPremiumPayable.TotalPremiumPayableInput
+      )
+      // Below step to be uncommented once the navigation is ready
+      TotalPremiumPayable.saveAndContinue()
+
+      /* Net present value page is shown
       User enters the net present value and continues
       Check your answers page is shown
       User checks the answers and continues

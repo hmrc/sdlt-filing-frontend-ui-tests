@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object EnterAnnualRentVATAmount extends BasePage {
+object TotalPremiumPayable extends BasePage {
 
-  override def pageUrl: String = "about-the-lease/enter-annual-rent-VAT"
+  override def pageUrl: String = "about-the-lease/enter-total-premium-payable"
 
   override def pageTitle: String =
-    "What is the total amount of VAT payable on the annual rent? - About the lease - Stamp Taxes Online - GOV.UK"
+    "Calculating the total premium payable including VAT - About the lease - Stamp Taxes Online - GOV.UK"
 
-  val annualRentVATAmount: String = "value"
+  val TotalPremiumPayable: String = "value"
 
-  val annualRentVATAmountInput: String = "12000"
+  val TotalPremiumPayableInput: String = "2450"
 
 }
