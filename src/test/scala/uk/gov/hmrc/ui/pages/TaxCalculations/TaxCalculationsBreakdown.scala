@@ -27,6 +27,11 @@ object TaxCalculationsBreakdown extends BasePage {
   override def pageTitle: String =
     "SDLT breakdown - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
 
+  def leaseholdSDLTBreakdownpageUrl: String = "tax-calculation/leasehold-calculated/SDLT-breakdown"
+
+  def leaseholdSDLTBreakdownpageTitle: String =
+    "SDLT breakdown - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
+
   val returnTaxCalc = "[data-module='hmrc-back-link']"
 
   def clickReturnTaxPage(): Unit =
