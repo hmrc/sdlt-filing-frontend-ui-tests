@@ -250,10 +250,13 @@ class TaxCalculationsQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/calculated-SDLT-due"
       )
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSDLTDuepageTitle)
-      // CalculateSDLTDue.clickSDLTBreakDownLink()
-      // User Click on Hyperlink - check your SDLT breakdown
-      // User is navigated to SDLT breakdown page
-      // User Click on Hyperlink - Return to tax calculation page
+      CalculateSDLTDue.clickSDLTBreakDownLink()
+      Then("the user is navigated to the SDLT breakdown page")
+      TaxCalculationsBreakdown.verifyPageTitle(TaxCalculationsBreakdown.leaseholdSDLTBreakdownpageTitle)
+      When("the user click retun to tax calculation hyperlink")
+      TaxCalculationsBreakdown.clickReturnTaxPage()
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSDLTDuepageTitle)
       // User click on Continue button
       Then("user is navigated to what is the SDLT self-assessment page")
       TaxCalculationsSDLTSelfAssessment.navigateToPage(

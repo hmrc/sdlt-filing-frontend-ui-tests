@@ -120,14 +120,19 @@ class LeaseQuestionsSpec
 
       When("the user selects Yes and continues")
       AnnualRentVAT.radioButton(AnnualRentVAT.yes)
-      // Below step should be uncommented once the next page is ready
-      // AnnualRentVAT.saveAndContinue()
+      AnnualRentVAT.saveAndContinue()
+      Then("the user navigates to Total amount of VAT payable on annual rent")
+      EnterAnnualRentVATAmount.verifyPageTitle(EnterAnnualRentVATAmount.pageTitle)
 
-      /*
-        Total amount of VAT payable on annual rent is shown
-        User enters the total amount of VAT payable on annual rent and continues
-        Total premium payable page is shown
-        User selects the yes for total premium payable and continues
+      When("the user enters the total amount of VAT payable on annual rent and continues")
+      EnterAnnualRentVATAmount.input(
+        By.id(EnterAnnualRentVATAmount.annualRentVATAmount),
+        EnterAnnualRentVATAmount.annualRentVATAmountInput
+      )
+      EnterAnnualRentVATAmount.saveAndContinue()
+
+      /*  Total premium payable page is shown
+      User selects the yes for total premium payable and continues
        */
       Then("Calculating the total premium payable including VAT page is shown")
       // Below step to be removed once the navigation is ready
@@ -143,11 +148,11 @@ class LeaseQuestionsSpec
       // Below step to be uncommented once the navigation is ready
       TotalPremiumPayable.saveAndContinue()
 
-      /*Net present value page is shown
-        User enters the net present value and continues
-        Check your answers page is shown
-        User checks the answers and continues
-        Overview page is shown
+      /* Net present value page is shown
+      User enters the net present value and continues
+      Check your answers page is shown
+      User checks the answers and continues
+      Overview page is shown
        */
     }
 
@@ -221,15 +226,19 @@ class LeaseQuestionsSpec
 
       When("the user selects Yes and continues")
       AnnualRentVAT.radioButton(AnnualRentVAT.yes)
-      // Below step should be uncommented once the next page is ready
-      // AnnualRentVAT.saveAndContinue()
+      AnnualRentVAT.saveAndContinue()
+      Then("the user navigates to Total amount of VAT payable on annual rent")
+      EnterAnnualRentVATAmount.verifyPageTitle(EnterAnnualRentVATAmount.pageTitle)
 
-      /*
-        Total amount of VAT payable on annual rent is shown
-        User enters the total amount of VAT payable on annual rent and continues
-        Check your answers page is shown
-        User checks the answers and continues
-        Overview page is shown
+      When("the user enters the total amount of VAT payable on annual rent and continues")
+      EnterAnnualRentVATAmount.input(
+        By.id(EnterAnnualRentVATAmount.annualRentVATAmount),
+        EnterAnnualRentVATAmount.annualRentVATAmountInput
+      )
+      EnterAnnualRentVATAmount.saveAndContinue()
+      /*   Check your answers page is shown
+      User checks the answers and continues
+      Overview page is shown
        */
     }
   }
