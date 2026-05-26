@@ -331,12 +331,15 @@ class TaxCalculationsQuestionsSpec
 
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
-      // User is navigated to HMRC cannot calculate SDLT due page
-      // User Click on Continue
-      Then("the user is navigated to the total premium value page")
-      TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-total-premium-payable"
+      // CalculateSDLTDue.saveAndContinue()
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculateSDLTDue.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/HMRC-cannot-calculate-SDLT-due"
       )
+      CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSelfAssesedSDLTDuepageTitle)
+      When("the user click save and continue button")
+      TaxCalculationsBreakdown.saveAndContinue()
+      Then("the user is navigated to the total premium value page")
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.verifyPageTitle(
         TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle
       )
@@ -347,9 +350,6 @@ class TaxCalculationsQuestionsSpec
       )
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.saveAndContinue()
       Then("user is navigated to what is the tax due on the NPV page")
-      TaxDueOnNPV.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/tax-due-on-NPV"
-      )
       TaxDueOnNPV.verifyPageTitle(TaxDueOnNPV.pageTitle)
       When("user enter the NPV value and click save and continue button")
       TaxDueOnNPV.input(
@@ -360,9 +360,6 @@ class TaxCalculationsQuestionsSpec
       TaxDueOnNPV.saveAndContinue()
 
       Then("user is navigated to what is the total amount due page")
-      TaxCalculationsTotalAmountDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/total-amount-due"
-      )
       TaxCalculationsTotalAmountDue.verifyPageTitle(
         TaxCalculationsTotalAmountDue.pageTitle
       )
@@ -371,11 +368,8 @@ class TaxCalculationsQuestionsSpec
         By.id(TaxCalculationsTotalAmountDue.tppTax),
         TaxCalculationsTotalAmountDue.tppTaxInput
       )
-      // TaxCalculationsTotalAmountDueLeaseholdSelfassesed.saveAndContinue()
+      TaxCalculationsTotalAmountDue.saveAndContinue()
       Then("the user is navigated to the pay penalties page")
-      TaxCalculationsPenalties.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/are-penalties-and-interest-included"
-      )
       TaxCalculationsPenalties.verifyPageTitle(
         TaxCalculationsPenalties.pageTitleLeaseholdNotCalculated
       )
