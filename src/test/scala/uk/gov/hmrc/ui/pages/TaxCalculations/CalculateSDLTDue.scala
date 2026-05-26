@@ -33,6 +33,12 @@ object CalculateSDLTDue extends BasePage {
   def freeholdSelfAssesedSDLTDuepageTitle: String =
     "HMRC cannot calculate the SDLT due - Tax calculation - Freehold not calculated - Stamp Taxes Online - GOV.UK"
 
+  def leaseholdSelfAssesedSDLTDuepageUrl: String =
+    "tax-calculation/leasehold-not-calculated/HMRC-cannot-calculate-SDLT-due"
+
+  def leaseholdSelfAssesedSDLTDuepageTitle: String =
+    "HMRC cannot calculate the SDLT due - Tax calculation - Leasehold not calculated - Stamp Taxes Online - GOV.UK"
+
   def leaseholdSDLTDuepageUrl: String =
     "tax-calculation/leasehold-calculated/calculated-SDLT-due"
 
