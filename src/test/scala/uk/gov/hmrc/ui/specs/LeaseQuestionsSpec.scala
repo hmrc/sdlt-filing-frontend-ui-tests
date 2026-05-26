@@ -65,17 +65,13 @@ class LeaseQuestionsSpec
 
       When("the user enters the lease start date and continues")
       LeaseStartDate.enterLeaseStartDate()
-      // Below step to be uncommented once the next page is ready
-      // LeaseStartDate.saveAndContinue()
+      LeaseStartDate.saveAndContinue()
+      Then("Lease end date page is shown")
+      LeaseEndDate.verifyPageTitle(LeaseEndDate.pageTitle)
 
-      /*
-        Lease end date page is shown
-        User selects the Lease end date and continues
-       */
-      // Below step to removed once the navigation is ready
-      AddRentFreePeriod.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/add-rent-free-period"
-      )
+      When("the user enters the lease end date and continues")
+      LeaseEndDate.enterLeaseEndDate()
+      LeaseEndDate.saveAndContinue()
       Then("the user is navigated to Rent Free Period Page")
       AddRentFreePeriod.verifyPageTitle(AddRentFreePeriod.pageTitle)
 
@@ -181,16 +177,13 @@ class LeaseQuestionsSpec
 
       When("the user enters the lease start date and continues")
       LeaseStartDate.enterLeaseStartDate()
-      // Below step to be uncommented once the next page is ready
-      // LeaseStartDate.saveAndContinue()
-      /*
-        Lease end date page is shown
-        User selects the Lease end date and continues
-       */
-      // Below step to removed once the navigation is ready
-      AddRentFreePeriod.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/add-rent-free-period"
-      )
+      LeaseStartDate.saveAndContinue()
+      Then("lease end date page is shown")
+      LeaseEndDate.verifyPageTitle(LeaseEndDate.pageTitle)
+
+      When("the user enters the lease end date and continues")
+      LeaseEndDate.enterLeaseEndDate()
+      LeaseEndDate.saveAndContinue()
       Then("the user is navigated to Rent Free Period Page")
       AddRentFreePeriod.verifyPageTitle(AddRentFreePeriod.pageTitle)
 
