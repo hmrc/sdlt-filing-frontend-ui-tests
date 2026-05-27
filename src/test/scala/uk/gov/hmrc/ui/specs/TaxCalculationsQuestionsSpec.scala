@@ -338,7 +338,7 @@ class TaxCalculationsQuestionsSpec
       )
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSelfAssesedSDLTDuepageTitle)
       When("the user click save and continue button")
-      //CalculateSDLTDue.saveAndContinue()
+      // CalculateSDLTDue.saveAndContinue()
       Then("the user is navigated to the total premium value page")
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.verifyPageTitle(
         TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle
