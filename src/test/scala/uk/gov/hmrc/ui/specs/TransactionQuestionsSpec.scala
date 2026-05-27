@@ -173,39 +173,21 @@ class TransactionQuestionsSpec
       Then("the user is navigated to Restrictions Covenants or Conditions Page")
       RestrictionsConvenantsOrConditions.verifyPageTitle(RestrictionsConvenantsOrConditions.pageTitle)
 
-      When("the user selects yes radio button and continues")
-      RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.yes)
+      When("the user selects no radio button and continues")
+      RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
       RestrictionsConvenantsOrConditions.saveAndContinue()
-      Then("the user is navigated to enter details of restrictions convenants and conditions page")
-      DescriptionOfRestrictionsConvenantsOrConditions.verifyPageTitle(
-        DescriptionOfRestrictionsConvenantsOrConditions.pageTitle
-      )
-
-      When("the user enter the details of restrictions and continue")
-      DescriptionOfRestrictionsConvenantsOrConditions.input(
-        By.id(DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditions),
-        DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditionsInput
-      )
-      DescriptionOfRestrictionsConvenantsOrConditions.saveAndContinue()
       Then("the ExchangeOrPartExchange page is shown")
       ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
 
-      When("the user confirms the land is being exchanged or part exchanged")
-      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
+      When("the user confirms the land is not being exchanged or part exchanged")
+      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.no)
       ExchangeOrPartExchange.saveAndContinue()
-      Then("user is navigated to address flow and fills the details")
-      TransactionExchangeAddress.clickAddressManually()
-      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
-      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
-      And("user is navigated to confirm the address page and continues")
-      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
-      TransactionExchangeAddress.clickSubmitButton()
       Then("user navigates to Exercising an option page")
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
+
       And("user selects yes radio button and continues")
       ExercisingAnOption.radioButton(ExercisingAnOption.yes)
       ExercisingAnOption.saveAndContinue()
-
       Then("the TransactionCheckYourAnswers page is shown")
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
@@ -255,7 +237,7 @@ class TransactionQuestionsSpec
       Then("the TransactionCheckYourAnswers page is shown")
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
-      When("the user updates their answer to provide a date of contact")
+      When("the user updates their answer to provide a date of contract")
       TransactionCheckYourAnswers.clickAddDateOfContract()
       DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.yes)
       DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
@@ -309,6 +291,35 @@ class TransactionQuestionsSpec
         EnterCharityRegistrationNumber.charityRegistrationNumberInput
       )
       EnterCharityRegistrationNumber.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to restrictions, covenants or conditions affecting")
+      TransactionCheckYourAnswers.clickRestrictionsConvenantsAndConditions()
+      RestrictionsConvenantsOrConditions.verifyPageTitle(RestrictionsConvenantsOrConditions.pageTitle)
+      RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.yes)
+      RestrictionsConvenantsOrConditions.saveAndContinue()
+      DescriptionOfRestrictionsConvenantsOrConditions.verifyPageTitle(
+        DescriptionOfRestrictionsConvenantsOrConditions.pageTitle
+      )
+      DescriptionOfRestrictionsConvenantsOrConditions.input(
+        By.id(DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditions),
+        DescriptionOfRestrictionsConvenantsOrConditions.restrictionsConvenantsOrConditionsInput
+      )
+      DescriptionOfRestrictionsConvenantsOrConditions.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to confirm the land is being exchanged or part exchanged")
+      TransactionCheckYourAnswers.clickExchangeOrPartExchange()
+      ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
+      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
+      ExchangeOrPartExchange.saveAndContinue()
+      TransactionExchangeAddress.clickAddressManually()
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
+      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
+      TransactionExchangeAddress.clickSubmitButton()
       Then("the TransactionCheckYourAnswers page is shown")
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
@@ -479,13 +490,13 @@ class TransactionQuestionsSpec
         ConsiderationsAffectedByUncertainFutureEvents.pageTitle
       )
       And("user selects yes radio button and continues")
-      ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.yes)
+      ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.no)
       ConsiderationsAffectedByUncertainFutureEvents.saveAndContinue()
       Then("the DeferringPayment page is shown")
       DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
 
       When("the user confirms the purchaser is applying for a deferment")
-      DeferringPayment.radioButton(DeferringPayment.yes)
+      DeferringPayment.radioButton(DeferringPayment.no)
       DeferringPayment.saveAndContinue()
 
       Then(
@@ -500,41 +511,20 @@ class TransactionQuestionsSpec
       Then("the SaleOfABusiness page is shown")
       SaleOfABusiness.verifyPageTitle(SaleOfABusiness.pageTitle)
       When("the user confirms the transaction is part of the sale of a business")
-      SaleOfABusiness.radioButton(SaleOfABusiness.yes)
+      SaleOfABusiness.radioButton(SaleOfABusiness.no)
       SaleOfABusiness.saveAndContinue()
-      Then("user provides what is included in sale of business")
-      WhatIncludedInSale.verifyPageTitle(WhatIncludedInSale.pageTitle)
-      And("user selects checkboxes and continues")
-      WhatIncludedInSale.checkbox(WhatIncludedInSale.others, true)
-      WhatIncludedInSale.saveAndContinue()
-      Then("user is navigated to the Total Consideration of all assets page")
-      TotalConsiderationOfAllAssets.verifyPageTitle(TotalConsiderationOfAllAssets.pageTitle)
 
-      When("the user enters the amount and click continue")
-      TotalConsiderationOfAllAssets.input(
-        By.id(TotalConsiderationOfAllAssets.totalConsiderationOfAllAssets),
-        TotalConsiderationOfAllAssets.totalConsiderationOfAllAssetsInput
-      )
-      TotalConsiderationOfAllAssets.saveAndContinue()
       Then("the user is navigated to the applied for  CAP1 or NSBC page")
       AppliedForCAP1OrNSBC.verifyPageTitle(AppliedForCAP1OrNSBC.pageTitle)
 
       When("the user selects yes radio button and continues")
-      AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
+      AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.no)
       AppliedForCAP1OrNSBC.saveAndContinue()
 
-      Then("the user is navigated to the have you followed the ruling under CAP1 or NSBC page")
-      HaveYouFollowedTheRuling.verifyPageTitle(
-        HaveYouFollowedTheRuling.pageTitle
-      )
-
-      When("the user selects yes radio button and continues")
-      HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.no)
-      HaveYouFollowedTheRuling.saveAndContinue()
       Then("the user is navigated to Restrictions Covenants or Conditions Page")
       RestrictionsConvenantsOrConditions.verifyPageTitle(RestrictionsConvenantsOrConditions.pageTitle)
 
-      When("the user selects yes radio button and continues")
+      When("the user selects no radio button and continues")
       RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
       RestrictionsConvenantsOrConditions.saveAndContinue()
 
@@ -587,8 +577,71 @@ class TransactionQuestionsSpec
       Then("the TransactionCheckYourAnswers page is shown")
       TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
 
+      When(
+        "the user updates their answer to confirm if any part of consideration is contingent on uncertain future events"
+      )
+      TransactionCheckYourAnswers.clickUncertainFutureEvent()
+      ConsiderationsAffectedByUncertainFutureEvents.verifyPageTitle(
+        ConsiderationsAffectedByUncertainFutureEvents.pageTitle
+      )
+      ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.yes)
+      ConsiderationsAffectedByUncertainFutureEvents.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to confirm the purchaser is applying for a deferment")
+      TransactionCheckYourAnswers.clickDeferringPayment()
+      DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
+      DeferringPayment.radioButton(DeferringPayment.yes)
+      DeferringPayment.saveAndContinue()
+      WhatIsThePropertyUsedFor.verifyPageTitle(WhatIsThePropertyUsedFor.pageTitle)
+      WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.other, true)
+      WhatIsThePropertyUsedFor.checkbox(WhatIsThePropertyUsedFor.otherIndustrialUnit, false)
+      WhatIsThePropertyUsedFor.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to confirm the transaction is part of the sale of a business")
+      TransactionCheckYourAnswers.clickSaleOfBusiness()
+      SaleOfABusiness.verifyPageTitle(SaleOfABusiness.pageTitle)
+      SaleOfABusiness.radioButton(SaleOfABusiness.yes)
+      SaleOfABusiness.saveAndContinue()
+      WhatIncludedInSale.verifyPageTitle(WhatIncludedInSale.pageTitle)
+      WhatIncludedInSale.checkbox(WhatIncludedInSale.others, true)
+      WhatIncludedInSale.saveAndContinue()
+      TotalConsiderationOfAllAssets.verifyPageTitle(TotalConsiderationOfAllAssets.pageTitle)
+      TotalConsiderationOfAllAssets.input(
+        By.id(TotalConsiderationOfAllAssets.totalConsiderationOfAllAssets),
+        TotalConsiderationOfAllAssets.totalConsiderationOfAllAssetsInput
+      )
+      TotalConsiderationOfAllAssets.saveAndContinue()
+      Then("the check your answers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to confirm they have applied for CAP1 or NSBC")
+      TransactionCheckYourAnswers.clickCAP1OrNSBC()
+      AppliedForCAP1OrNSBC.verifyPageTitle(AppliedForCAP1OrNSBC.pageTitle)
+      AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
+      AppliedForCAP1OrNSBC.saveAndContinue()
+      HaveYouFollowedTheRuling.verifyPageTitle(
+        HaveYouFollowedTheRuling.pageTitle
+      )
+      HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.yes)
+      HaveYouFollowedTheRuling.saveAndContinue()
+      Then("the check your answers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user updates their answer to exercising an option")
+      TransactionCheckYourAnswers.clickExercisingAnOption()
+      ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
+      ExercisingAnOption.radioButton(ExercisingAnOption.no)
+      ExercisingAnOption.saveAndContinue()
+      Then("the check your answers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
       When("the user submits the transaction questions")
       TransactionCheckYourAnswers.saveAndContinue()
+
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
