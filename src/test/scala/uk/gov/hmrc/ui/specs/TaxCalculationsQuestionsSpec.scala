@@ -331,14 +331,14 @@ class TaxCalculationsQuestionsSpec
 
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
-      // CalculateSDLTDue.saveAndContinue()
+      // BeforeYouStart.saveAndContinue()
       Then("the user is navigated to the calculate SDLT due page")
       CalculateSDLTDue.navigateToPage(
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/HMRC-cannot-calculate-SDLT-due"
       )
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSelfAssesedSDLTDuepageTitle)
       When("the user click save and continue button")
-      TaxCalculationsBreakdown.saveAndContinue()
+      //CalculateSDLTDue.saveAndContinue()
       Then("the user is navigated to the total premium value page")
       TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.verifyPageTitle(
         TaxCalculationsTotalPremiumValueLeaseholdSelfassesed.pageTitle
