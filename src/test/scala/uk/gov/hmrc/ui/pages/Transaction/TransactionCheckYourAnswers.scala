@@ -65,6 +65,47 @@ object TransactionCheckYourAnswers extends BasePage {
   val claimingPartialRelief =
     "a[href = '/stamp-duty-land-tax-filing/about-the-transaction/claiming-partial-relief/change']"
 
+  val deferringPayment = "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/deferring-payment/change']"
+
+  val uncertainFutureEvent =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/considerations-affected-by-uncertain-future-events/change']"
+
+  val useOfLandOrProperty =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/use-of-land-or-property/change']"
+
+  val saleOfBusiness = "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/sale-of-a-business/change']"
+
+  val CAP1OrNSBC = "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/CAP1-or-NSBC/change']"
+
+  val CAP1OrNSBCFollowed =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/description-of-CAP1-or-NSBC/change']"
+
+  val RestrictionsConvenantsAndConditions =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/restrictions-covenants-and-conditions/change']"
+
+  val ExchangeOrPartExchange =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/exchange-or-part-exchange/change']"
+
+  val ExercisingAnOption = "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/exercising-an-option/change']"
+
+  val DescriptionOfRestrictionsConvenantsAndConditions =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/description-of-restrictions-covenants-and-conditions/change']"
+
+  val WhatIsIncludedInTheSaleOfBusiness =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/assets-included-in-sale-of-the-business/change']"
+
+  val TotalConsiderationOfAssets =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/total-consideration-of-all-assets/change']"
+
+  val AddressOfPropertyExchangedOrPartExchanged =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/transaction-address-lookup?changeRoute=change']"
+
+  val IsPurchaserRegisteredWithCIS =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/is-the-purchaser-registered-with-CIS/change']"
+
+  val CISRegistrationNumber =
+    "a[href= '/stamp-duty-land-tax-filing/about-the-transaction/what-is-the-CIS-number/change']"
+
   def clickTypeOfTransaction(): Unit = click(By.cssSelector(typeOfTransaction))
 
   def clickEffectiveDateOfTransaction(): Unit = click(By.cssSelector(effectiveDateOfTransaction))
@@ -96,4 +137,39 @@ object TransactionCheckYourAnswers extends BasePage {
   def clickPartialRelief(): Unit = click(By.cssSelector(partialRelief))
 
   def clickClaimingPartialRelief(): Unit = click(By.cssSelector(claimingPartialRelief))
+
+  def clickDeferringPayment(): Unit = click(By.cssSelector(deferringPayment))
+
+  def clickUncertainFutureEvent(): Unit = click(By.cssSelector(uncertainFutureEvent))
+
+  def clickUseOfLandOrProperty(): Unit = click(By.cssSelector(useOfLandOrProperty))
+
+  def clickSaleOfBusiness(): Unit = click(By.cssSelector(saleOfBusiness))
+
+  def clickCAP1OrNSBC(): Unit = click(By.cssSelector(CAP1OrNSBC))
+
+  def clickRestrictionsConvenantsAndConditions(): Unit = click(By.cssSelector(RestrictionsConvenantsAndConditions))
+
+  def clickExchangeOrPartExchange(): Unit = click(By.cssSelector(ExchangeOrPartExchange))
+
+  def clickExercisingAnOption(): Unit = click(By.cssSelector(ExercisingAnOption))
+
+  def clickDescriptionOfRestrictionsConvenantsAndConditions(): Unit = click(
+    By.cssSelector(DescriptionOfRestrictionsConvenantsAndConditions)
+  )
+
+  def clickWhatIsIncludedInTheSaleOfBusiness(): Unit = click(By.cssSelector(WhatIsIncludedInTheSaleOfBusiness))
+
+  def clickTotalConsiderationOfAssets(): Unit = click(By.cssSelector(TotalConsiderationOfAssets))
+
+  def clickCAP1OrNSBCFollowed(): Unit = click(By.cssSelector(CAP1OrNSBCFollowed))
+
+  def clickAddressOfPropertyExchangedOrPartExchanged(): Unit = click(
+    By.cssSelector(AddressOfPropertyExchangedOrPartExchanged)
+  )
+
+  def clickIsPurchaserRegisteredWithCIS(): Unit = click(By.cssSelector(IsPurchaserRegisteredWithCIS))
+
+  def clickCISRegistrationNumber(): Unit = click(By.cssSelector(CISRegistrationNumber))
+
 }
