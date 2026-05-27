@@ -126,26 +126,27 @@ class LeaseQuestionsSpec
         EnterAnnualRentVATAmount.annualRentVATAmountInput
       )
       EnterAnnualRentVATAmount.saveAndContinue()
-
-      /*  Total premium payable page is shown
-      User selects the yes for total premium payable and continues
-       */
       Then("Calculating the total premium payable including VAT page is shown")
-      // Below step to be removed once the navigation is ready
-      TotalPremiumPayable.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/about-the-lease/enter-total-premium-payable"
-      )
       TotalPremiumPayable.verifyPageTitle(TotalPremiumPayable.pageTitle)
-      Then("User enters the total premium payable including VAT and continues")
+
+      When("User enters the total premium payable including VAT and continues")
       TotalPremiumPayable.input(
         By.id(TotalPremiumPayable.TotalPremiumPayable),
         TotalPremiumPayable.TotalPremiumPayableInput
       )
-      // Below step to be uncommented once the navigation is ready
       TotalPremiumPayable.saveAndContinue()
+      Then("the NetPresentValue page is shown")
+      NetPresentValue.verifyPageTitle(NetPresentValue.pageTitle)
 
-      /* Net present value page is shown
-      User enters the net present value and continues
+      When("the user provides the net present value")
+      NetPresentValue.input(
+        By.id(NetPresentValue.NetPresentValue),
+        NetPresentValue.NetPresentValueInput
+      )
+      // Below step to be removed once the navigation is ready
+      // NetPresentValue.saveAndContinue()
+
+      /*
       Check your answers page is shown
       User checks the answers and continues
       Overview page is shown
@@ -157,7 +158,7 @@ class LeaseQuestionsSpec
       LeaseJourney
     ) {
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-mixed"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionA"))
 
       When("the user starts the Lease questions")
       ReturnTaskList.clickLinkById("task-list-link-lease-questions")
@@ -166,7 +167,7 @@ class LeaseQuestionsSpec
 
       When("the user click continue on Before You Start Page")
       LeaseBeforeYouStart.saveAndContinue()
-      Then("the user is naviagted to Type of Lease Page")
+      Then("the user is navigated to Type of Lease Page")
       TypeOfLease.verifyPageTitle(TypeOfLease.pageTitle)
 
       When("the user selects Residential and clicks continue")
