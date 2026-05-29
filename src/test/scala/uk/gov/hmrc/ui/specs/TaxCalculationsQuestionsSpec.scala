@@ -59,14 +59,11 @@ class TaxCalculationsQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
       )
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // uncomment below line when the navigation is ready
-      // ConfirmEffectiveDate.saveAndContinue()
+
+      ConfirmEffectiveDate.saveAndContinue()
 
       Then("the user is navigated to Is this effective date of transaction page")
-      // remove below line when the navigation is ready
-      IsThisEffectiveDateOfTransaction.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
-      )
+
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
       When("the user selects yes radio button and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
@@ -74,27 +71,25 @@ class TaxCalculationsQuestionsSpec
 
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
-      // User is navigated to calculate SDLT due page
+      TaxCalculationsBeforeYouStart.saveAndContinue()
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.pageTitle)
+
       When("the user want the breakdown page journey")
+      CalculateSDLTDue.clickSDLTBreakDownLink()
       Then("the user is navigated to the SDLT breakdown page")
-      TaxCalculationsBreakdown.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/SDLT-breakdown"
-      )
+
       TaxCalculationsBreakdown.verifyPageTitle(TaxCalculationsBreakdown.pageTitle)
       When("the user want to go return to the tax calculation page")
       TaxCalculationsBreakdown.clickReturnTaxPage()
 
       Then("the user is navigated to the calculate SDLT due page")
-      CalculateSDLTDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/calculated-SDLT-due"
-      )
+
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.pageTitle)
       When("the user want to go return to the tax calculation page")
-      // CalculateSDLTDue.saveAndContinue()
+      CalculateSDLTDue.saveAndContinue()
       Then("user is navigated to what is the SDLT self-assessment page")
-      TaxCalculationsSDLTSelfAssessment.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/SDLT-self-assessment"
-      )
+
       TaxCalculationsSDLTSelfAssessment.verifyPageTitle(
         TaxCalculationsSDLTSelfAssessment.pageTitleFreeholdTax
       )
@@ -113,15 +108,13 @@ class TaxCalculationsQuestionsSpec
         By.id(TaxCalculationsTotalAmountDue.tppTax),
         TaxCalculationsTotalAmountDue.tppTaxInput
       )
-      // TaxCalculationsTotalAmountDue.saveAndContinue()
+      TaxCalculationsTotalAmountDue.saveAndContinue()
       Then("the user is navigated to the pay penalties page")
-      TaxCalculationsPenalties.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/are-penalties-and-interest-included"
-      )
+
       TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitle)
       When("user selects no radio button and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
-      // TaxCalculationsPenalties.saveAndContinue()
+      TaxCalculationsPenalties.saveAndContinue()
       // User navigated to Check your answers page
       // User clicks on Confirm and Continue
       // User is navigated to Return to TaskList
@@ -148,14 +141,11 @@ class TaxCalculationsQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
       )
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // uncomment below line when the navigation is ready
-      // ConfirmEffectiveDate.saveAndContinue()
+
+      ConfirmEffectiveDate.saveAndContinue()
 
       Then("the user is navigated to Is this effective date of transaction page")
-      // remove below line when the navigation is ready
-      IsThisEffectiveDateOfTransaction.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
-      )
+
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
       When("the user selects yes radio button and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
@@ -163,16 +153,12 @@ class TaxCalculationsQuestionsSpec
 
       Then("the Freehold not calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
-      Then("the user is navigated to the calculate SDLT due page")
-      CalculateSDLTDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/HMRC-cannot-calculate-SDLT-due"
-      )
+      TaxCalculationsBeforeYouStart.saveAndContinue()
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.freeholdSelfAssesedSDLTDuepageTitle)
-      // CalculateSDLTDue.saveAndContinue()
+      CalculateSDLTDue.saveAndContinue()
+      // Total Premium payable page
       Then("user is navigated to what is the SDLT self-assessment page")
-      TaxCalculationsSDLTSelfAssessment.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/SDLT-self-assessment"
-      )
+
       TaxCalculationsSDLTSelfAssessment.verifyPageTitle(
         TaxCalculationsSDLTSelfAssessment.pageTitleFreeholdSelfAssesed
       )
@@ -182,9 +168,7 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsSDLTSelfAssessment.saaInput
       )
       TaxCalculationsSDLTSelfAssessment.saveAndContinue()
-      TaxCalculationsTotalAmountDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/total-amount-due"
-      )
+
       TaxCalculationsTotalAmountDue.verifyPageTitle(
         TaxCalculationsTotalAmountDue.pageTitleFreeholdSelfAssesedTAD
       )
@@ -193,16 +177,13 @@ class TaxCalculationsQuestionsSpec
         By.id(TaxCalculationsTotalAmountDue.tppTax),
         TaxCalculationsTotalAmountDue.tppTaxInput
       )
-      /*TaxCalculationsTotalAmountDue.saveAndContinue()*/
+      TaxCalculationsTotalAmountDue.saveAndContinue()
 
-      TaxCalculationsPenalties.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/freehold-not-calculated/are-penalties-and-interest-included"
-      )
       TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitleFreeholdSelfAssesed)
 
       When("user selects yes radio button and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
-      // TaxCalculationsPenalties.saveAndContinue()
+      TaxCalculationsPenalties.saveAndContinue()
       // User navigated to Check your answers page
       // User clicks on Confirm and Continue
       // User is navigated to Return to TaskList
@@ -229,14 +210,11 @@ class TaxCalculationsQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
       )
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // uncomment below line when the navigation is ready
-      // ConfirmEffectiveDate.saveAndContinue()
+
+      ConfirmEffectiveDate.saveAndContinue()
 
       Then("the user is navigated to Is this effective date of transaction page")
-      // remove below line when the navigation is ready
-      IsThisEffectiveDateOfTransaction.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
-      )
+
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
       When("the user selects yes radio button and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
@@ -244,11 +222,8 @@ class TaxCalculationsQuestionsSpec
 
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdCalculated)
-
+      TaxCalculationsBeforeYouStart.saveAndContinue()
       Then("the user is navigated to the calculate SDLT due page")
-      CalculateSDLTDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/calculated-SDLT-due"
-      )
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSDLTDuepageTitle)
       CalculateSDLTDue.clickSDLTBreakDownLink()
       Then("the user is navigated to the SDLT breakdown page")
@@ -257,11 +232,9 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsBreakdown.clickReturnTaxPage()
       Then("the user is navigated to the calculate SDLT due page")
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSDLTDuepageTitle)
-      // User click on Continue button
+      CalculateSDLTDue.saveAndContinue()
       Then("user is navigated to what is the SDLT self-assessment page")
-      TaxCalculationsSDLTSelfAssessment.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/SDLT-self-assessment"
-      )
+
       TaxCalculationsSDLTSelfAssessment.verifyPageTitle(
         TaxCalculationsSDLTSelfAssessment.pageTitleLeaseholdTax
       )
@@ -281,23 +254,21 @@ class TaxCalculationsQuestionsSpec
         By.id(TaxCalculationsTotalAmountDue.tppTax),
         TaxCalculationsTotalAmountDue.tppTaxInput
       )
-      // TaxCalculationsTotalPremiumValueLeasehold.saveAndContinue()
+      TaxCalculationsTotalAmountDue.saveAndContinue()
       Then("the user is navigated to the pay penalties page")
-      TaxCalculationsPenalties.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-calculated/are-penalties-and-interest-included"
-      )
+
       TaxCalculationsPenalties.verifyPageTitle(
         TaxCalculationsPenalties.pageTitleLeaseholdCalculated
       )
-      When("user selects no radio button and continues")
-      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
-      // TaxCalculationsPenaltiesLeaseholdCalculated.saveAndContinue()
+      When("user selects yes radio button and continues")
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
+      TaxCalculationsPenalties.saveAndContinue()
       // Navigate to check your answers page
       // User clicks on Confirm and Continue
       // User is navigated to Return to TaskList
     }
 
-    // scenario 4 Leasehold Calculated
+    // scenario 4 Leasehold Self assessed
     Scenario(
       "Complete the Leasehold not calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -317,13 +288,11 @@ class TaxCalculationsQuestionsSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/confirm-effective-date-of-transaction"
       )
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
-      // uncomment below line when the navigation is ready
-      // ConfirmEffectiveDate.saveAndContinue()
+
+      ConfirmEffectiveDate.saveAndContinue()
 
       Then("the user is navigated to Is this effective date of transaction page")
-      IsThisEffectiveDateOfTransaction.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/is-this-the-effective-date-of-transaction"
-      )
+
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
       When("the user selects yes radio button and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
@@ -331,11 +300,9 @@ class TaxCalculationsQuestionsSpec
 
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
-      // CalculateSDLTDue.saveAndContinue()
+      TaxCalculationsBeforeYouStart.saveAndContinue()
       Then("the user is navigated to the calculate SDLT due page")
-      CalculateSDLTDue.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/tax-calculation/leasehold-not-calculated/HMRC-cannot-calculate-SDLT-due"
-      )
+
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSelfAssesedSDLTDuepageTitle)
       When("the user click save and continue button")
       TaxCalculationsBreakdown.saveAndContinue()
@@ -375,6 +342,7 @@ class TaxCalculationsQuestionsSpec
       )
       When("user selects no radio button and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
+      TaxCalculationsPenalties.saveAndContinue()
       // User is navigated to Check your answers page
       // User clicks on Confirm and Continue
       // User is navigated to Return to TaskList
