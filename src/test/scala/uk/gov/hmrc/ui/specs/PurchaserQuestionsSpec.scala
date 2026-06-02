@@ -169,36 +169,24 @@ class PurchaserQuestionsSpec
       PurchaserWhoIsMakingThePurchase.verifyPageTitle(PurchaserWhoIsMakingThePurchase.pageTitle)
       PurchaserWhoIsMakingThePurchase.radioButton(PurchaserWhoIsMakingThePurchase.company)
       PurchaserWhoIsMakingThePurchase.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates the purchaser name")
-      PurchaserCheckYourAnswers.clickPurchaserNameChange()
       PurchaserName.verifyPageTitle(PurchaserName.pageTitle)
       PurchaserName.input(
         By.id(PurchaserName.companyId),
         PurchaserName.companyName2
       )
       PurchaserName.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates the purchaser form of id")
-      PurchaserCheckYourAnswers.clickFormOfIDChange()
       ConfirmPurchaserIdentity.verifyPageTitle(ConfirmPurchaserIdentity.pageTitle)
       ConfirmPurchaserIdentity.radioButton(ConfirmPurchaserIdentity.vatRegistrationNumber)
       ConfirmPurchaserIdentity.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates the purchaser form of id details")
-      PurchaserCheckYourAnswers.clickVATRegistrationNumberChange()
       VATRegistrationNumber.verifyPageTitle(VATRegistrationNumber.pageTitle)
       VATRegistrationNumber.input(
         By.id(VATRegistrationNumber.vat),
         VATRegistrationNumber.VATNumber
       )
       VATRegistrationNumber.saveAndContinue()
+      DoYouKnowTypeOfCompany.verifyPageTitle(DoYouKnowTypeOfCompany.pageTitle)
+      DoYouKnowTypeOfCompany.radioButton(DoYouKnowTypeOfCompany.no)
+      DoYouKnowTypeOfCompany.saveAndContinue()
       Then("the PurchaserCheckYourAnswers page is shown")
       PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
 
@@ -512,7 +500,7 @@ class PurchaserQuestionsSpec
 
       When("the user confirms they dont know what type of company the purchaser is")
       DoYouKnowTypeOfCompany.radioButton(DoYouKnowTypeOfCompany.no)
-      TypeOfCompany.saveAndContinue()
+      DoYouKnowTypeOfCompany.saveAndContinue()
       Then("the ActingAsATrustee page is shown")
       ActingAsATrustee.verifyPageTitle(ActingAsATrustee.pageTitle)
 
@@ -567,20 +555,11 @@ class PurchaserQuestionsSpec
       ConfirmPurchaserIdentity.verifyPageTitle(ConfirmPurchaserIdentity.pageTitle)
       ConfirmPurchaserIdentity.radioButton(ConfirmPurchaserIdentity.anotherFormOfID)
       ConfirmPurchaserIdentity.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user provides another form of id")
-      PurchaserCheckYourAnswers.clickIdAndCountryIssuedChange()
-      Then("the FormOfIDCompany page is shown")
       FormOfIDCompany.verifyPageTitle(FormOfIDCompany.pageTitle)
-
-      When("the user provides the id number or reference")
       FormOfIDCompany.input(
         By.id(FormOfIDCompany.idNumberOrReference),
         FormOfIDCompany.idNumberOrReferenceInput
       )
-      And("country of issue")
       FormOfIDCompany.input(
         By.id(FormOfIDCompany.countryOfIssue),
         FormOfIDCompany.countryOfIssueInput
@@ -597,11 +576,6 @@ class PurchaserQuestionsSpec
       When("the user confirms to add a phone number")
       DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.yes)
       DoesPurchaserHavePhoneNumber.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates their answer to add phone number details")
-      PurchaserCheckYourAnswers.clickPurchaserPhoneNumberChange()
       Then("the EnterPurchaserPhoneNumber page is shown")
       EnterPurchaserPhoneNumber.verifyPageTitle(EnterPurchaserPhoneNumber.pageTitle)
 
@@ -619,18 +593,13 @@ class PurchaserQuestionsSpec
       Then("the DoYouKnowTypeOfCompany page is shown")
       DoYouKnowTypeOfCompany.verifyPageTitle(DoYouKnowTypeOfCompany.pageTitle)
 
-      When("the user confirms they know the type of company")
+      When("the user provides the type of company")
       DoYouKnowTypeOfCompany.radioButton(DoYouKnowTypeOfCompany.yes)
       DoYouKnowTypeOfCompany.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates their answer to confirm the type of company")
-      PurchaserCheckYourAnswers.clickTypeOfCompanyChange()
       Then("the TypeOfCompany page is shown")
       TypeOfCompany.verifyPageTitle(TypeOfCompany.pageTitle)
 
-      When("the user provides the types of company details")
+      When("the user provides the type of company details")
       TypeOfCompany.checkbox(
         TypeOfCompany.Unincorporated_sole_trader_other_than_builder,
         true
@@ -747,11 +716,6 @@ class PurchaserQuestionsSpec
       PurchaserWhoIsMakingThePurchase.verifyPageTitle(PurchaserWhoIsMakingThePurchase.pageTitle)
       PurchaserWhoIsMakingThePurchase.radioButton(PurchaserWhoIsMakingThePurchase.individual)
       PurchaserWhoIsMakingThePurchase.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates the purchaser name")
-      PurchaserCheckYourAnswers.clickPurchaserNameChange()
       PurchaserName.verifyPageTitle(PurchaserName.pageTitle)
       PurchaserName.input(
         By.id(PurchaserName.forenameId),
@@ -766,30 +730,15 @@ class PurchaserQuestionsSpec
         PurchaserName.surnameInput
       )
       PurchaserName.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates their answer to provide a national insurance number")
-      PurchaserCheckYourAnswers.clickDoPurchaserHaveNINumberChange()
       AddPurchaserNationalInsuranceNumber.verifyPageTitle(AddPurchaserNationalInsuranceNumber.pageTitle)
       AddPurchaserNationalInsuranceNumber.radioButton(AddPurchaserNationalInsuranceNumber.yes)
       AddPurchaserNationalInsuranceNumber.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates their national insurance number")
-      PurchaserCheckYourAnswers.clickPurchaserNINumberChange()
       EnterPurchaserNationalInsuranceNumber.verifyPageTitle(EnterPurchaserNationalInsuranceNumber.pageTitle)
       EnterPurchaserNationalInsuranceNumber.input(
         By.id(EnterPurchaserNationalInsuranceNumber.Nino),
         EnterPurchaserNationalInsuranceNumber.NinoValue2
       )
       EnterPurchaserNationalInsuranceNumber.saveAndContinue()
-      Then("the PurchaserCheckYourAnswers page is shown")
-      PurchaserCheckYourAnswers.verifyPageTitle(PurchaserCheckYourAnswers.pageTitle)
-
-      When("the user updates their answer to provide a date of birth")
-      PurchaserCheckYourAnswers.clickPurchaserDOBChange()
       DateOfBirth.verifyPageTitle(DateOfBirth.pageTitle)
       DateOfBirth.enterDateOfBirth()
       DateOfBirth.saveAndContinue()
