@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object checkYourAnswers extends BasePage {
+object TaxCalculationCheckYourAnswers extends BasePage {
 
   override def pageUrl: String =
     "tax-calculation/check-answers"

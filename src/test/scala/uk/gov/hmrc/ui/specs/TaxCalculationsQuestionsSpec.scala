@@ -117,10 +117,10 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenalties.saveAndContinue()
 
       Then("the user is navigated to the check your answers page")
-      checkYourAnswers.verifyPageTitle(checkYourAnswers.pageTitle)
+      TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
 
       When("the user clicks on change link and enter self assesed sdlt amount")
-      checkYourAnswers.clickselfAssesedSDLTAmountChange()
+      TaxCalculationCheckYourAnswers.clickselfAssesedSDLTAmountChange()
       TaxCalculationsSDLTSelfAssessment.input(
         By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
         TaxCalculationsSDLTSelfAssessment.saaInput
@@ -128,7 +128,7 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsSDLTSelfAssessment.saveAndContinue()
 
       When("the user clicks on change link and enter amount to be paid")
-      checkYourAnswers.clickamountTobePaidChange()
+      TaxCalculationCheckYourAnswers.clickamountTobePaidChange()
       TaxCalculationsTotalAmountDue.input(
         By.id(TaxCalculationsTotalAmountDue.tppTax),
         TaxCalculationsTotalAmountDue.tppTaxInput
@@ -136,7 +136,7 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsTotalAmountDue.saveAndContinue()
 
       When("the user clicks on change link and change yes to pay penalties page")
-      checkYourAnswers.clickpenaltiesChange()
+      TaxCalculationCheckYourAnswers.clickpenaltiesChange()
       When("user selects yes radio button and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
       TaxCalculationsPenalties.saveAndContinue()
