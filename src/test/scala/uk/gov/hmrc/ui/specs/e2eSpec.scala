@@ -30,6 +30,7 @@ import uk.gov.hmrc.ui.pages.PurchaserAgent.*
 import uk.gov.hmrc.ui.pages.Land.*
 import uk.gov.hmrc.ui.pages.UKResidency.*
 import uk.gov.hmrc.ui.pages.Transaction.*
+import uk.gov.hmrc.ui.pages.Lease.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
@@ -324,7 +325,7 @@ class e2eSpec
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
-      When("the user starts the land questions")
+      When("the user opens the land questions")
       ReturnTaskList.clickLinkById("task-list-link-land-questions")
       Then("the LandOverview page is shown")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
@@ -409,7 +410,10 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
 
-    Scenario("Complete the end to end flow of the Filing Journey from UK Residency Questions to Lease Questions", wip) {
+    Scenario(
+      "Complete the end to end flow of the Filing Journey from UK Residency Questions to Lease Questions",
+      e2eJourney
+    ) {
 
       Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-residential"))
@@ -562,9 +566,18 @@ class e2eSpec
       Then("the ExchangeOrPartExchange page is shown")
       ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
 
-      When("the user confirms the land is not being exchanged or part exchanged")
-      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.no)
+      When("the user confirms the land is being exchanged or part exchanged")
+      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
       ExchangeOrPartExchange.saveAndContinue()
+      Then("the TransactionExchangeAddress page is shown")
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.pageTitle)
+
+      When("the user provides the transaction exchange address")
+      TransactionExchangeAddress.clickAddressManually()
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
+      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
+      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
+      TransactionExchangeAddress.clickSubmitButton()
       Then("the ExercisingAnOption page is shown")
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
 
@@ -576,8 +589,104 @@ class e2eSpec
 
       When("the user submits the transaction questions")
       TransactionCheckYourAnswers.saveAndContinue()
-//      Then("the ReturnTaskList page is shown")
-//      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user opens the lease questions")
+      ReturnTaskList.clickLinkById("task-list-link-lease-questions")
+      Then("the LeaseBeforeYouStart page is shown")
+      LeaseBeforeYouStart.verifyPageTitle(LeaseBeforeYouStart.pageTitle)
+
+      When("the user starts the lease questions")
+      LeaseBeforeYouStart.saveAndContinue()
+      Then("the TypeOfLease page is shown")
+      TypeOfLease.verifyPageTitle(TypeOfLease.pageTitle)
+
+      When("the user selects Residential as the type of lease")
+      TypeOfLease.radioButton(TypeOfLease.residential)
+      TypeOfLease.saveAndContinue()
+      Then("the LeaseStartDate page is shown")
+      LeaseStartDate.verifyPageTitle(LeaseStartDate.pageTitle)
+
+      When("the user provides the lease start date")
+      LeaseStartDate.enterLeaseStartDate()
+      LeaseStartDate.saveAndContinue()
+      Then("the LeaseEndDate page is shown")
+      LeaseEndDate.verifyPageTitle(LeaseEndDate.pageTitle)
+
+      When("the user provides the lease end date")
+      LeaseEndDate.enterLeaseEndDate()
+      LeaseEndDate.saveAndContinue()
+      Then("the AddRentFreePeriod page is shown")
+      AddRentFreePeriod.verifyPageTitle(AddRentFreePeriod.pageTitle)
+
+      When("the user confirms the lease includes a rent free period")
+      AddRentFreePeriod.radioButton(AddRentFreePeriod.yes)
+      AddRentFreePeriod.saveAndContinue()
+      Then("the EnterRentFreePeriod page is shown")
+      RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
+
+      When("the user provides the rent free period in months")
+      RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
+      RentFreePeriod.saveAndContinue()
+      Then("the AnnualStartingRent page is shown")
+      AnnualStartingRent.verifyPageTitle(AnnualStartingRent.pageTitle)
+
+      When("the user provides the annual rent")
+      AnnualStartingRent.clickDropdownText()
+      AnnualStartingRent.verifyPageText(AnnualStartingRent.dropdownText, 2)
+      AnnualStartingRent.input(By.id(AnnualStartingRent.annualStartingRent), AnnualStartingRent.annualStartingRentInput)
+      AnnualStartingRent.saveAndContinue()
+      Then("the EndOfAnnualStartingRent page is shown")
+      EndOfAnnualStartingRent.verifyPageTitle(EndOfAnnualStartingRent.pageTitle)
+
+      When("the user provides the end date for starting rent")
+      EndOfAnnualStartingRent.enterEndOfAnnualStartingRent()
+      EndOfAnnualStartingRent.saveAndContinue()
+      Then("the LaterRent page is shown")
+      LaterRent.verifyPageTitle(LaterRent.pageTitle)
+
+      When("the user confirms they know the later rent")
+      LaterRent.radioButton(LaterRent.yes)
+      LaterRent.saveAndContinue()
+      Then("the ThousandPoundThreshold page is shown")
+      ThousandPoundThreshold.verifyPageTitle(ThousandPoundThreshold.pageTitle)
+
+      When("the user confirms the annual rent is £1000 or more")
+      ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
+      ThousandPoundThreshold.saveAndContinue()
+      Then("the AddAnnualRentVAT page is shown")
+      AnnualRentVAT.verifyPageTitle(AnnualRentVAT.pageTitle)
+
+      When("the user confirms vat is payable on the annual rent")
+      AnnualRentVAT.radioButton(AnnualRentVAT.yes)
+      AnnualRentVAT.saveAndContinue()
+      Then("the EnterAnnualRentVAT page is shown")
+      EnterAnnualRentVATAmount.verifyPageTitle(EnterAnnualRentVATAmount.pageTitle)
+
+      When("the user provides the total amount of vat payable on the annual rent")
+      EnterAnnualRentVATAmount.input(
+        By.id(EnterAnnualRentVATAmount.annualRentVATAmount),
+        EnterAnnualRentVATAmount.annualRentVATAmountInput
+      )
+      EnterAnnualRentVATAmount.saveAndContinue()
+      Then("the EnterTotalPremiumPayable page is shown")
+      TotalPremiumPayable.verifyPageTitle(TotalPremiumPayable.pageTitle)
+
+      When("the user provides the total premium payable including vat")
+      TotalPremiumPayable.input(
+        By.id(TotalPremiumPayable.TotalPremiumPayable),
+        TotalPremiumPayable.TotalPremiumPayableInput
+      )
+      TotalPremiumPayable.saveAndContinue()
+      Then("the NetPresentValue page is shown")
+      NetPresentValue.verifyPageTitle(NetPresentValue.pageTitle)
+
+      When("the user provides the net present value")
+      NetPresentValue.input(
+        By.id(NetPresentValue.NetPresentValue),
+        NetPresentValue.NetPresentValueInput
+      )
     }
   }
 }
