@@ -120,7 +120,7 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
 
       When("the user clicks on change link and enter self assesed sdlt amount")
-      TaxCalculationCheckYourAnswers.clickselfAssesedSDLTAmountChange()
+      TaxCalculationCheckYourAnswers.clickselfAssessedSDLTAmountChange()
       TaxCalculationsSDLTSelfAssessment.input(
         By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
         TaxCalculationsSDLTSelfAssessment.saaInput

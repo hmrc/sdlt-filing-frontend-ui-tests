@@ -27,7 +27,7 @@ object TaxCalculationCheckYourAnswers extends BasePage {
   override def pageTitle: String =
     "Check your answers - Tax calculation - Stamp Taxes Online - GOV.UK"
 
-  val selfAssesedSDLTAmountChange =
+  val selfAssessedSDLTAmountChange =
     "a[href='/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/SDLT-self-assessment/change']"
 
   val amountTobePaidChange =
@@ -36,8 +36,8 @@ object TaxCalculationCheckYourAnswers extends BasePage {
   val penaltiesChange =
     "a[href='/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/are-penalties-and-interest-included/change']"
 
-  def clickselfAssesedSDLTAmountChange(): Unit =
-    click(By.cssSelector(selfAssesedSDLTAmountChange))
+  def clickselfAssessedSDLTAmountChange(): Unit =
+    click(By.cssSelector(selfAssessedSDLTAmountChange))
 
   def clickamountTobePaidChange(): Unit =
     click(By.cssSelector(amountTobePaidChange))
