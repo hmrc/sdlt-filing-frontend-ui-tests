@@ -28,6 +28,8 @@ import uk.gov.hmrc.ui.pages.VendorAgent.*
 import uk.gov.hmrc.ui.pages.Purchaser.*
 import uk.gov.hmrc.ui.pages.PurchaserAgent.*
 import uk.gov.hmrc.ui.pages.Land.*
+import uk.gov.hmrc.ui.pages.UKResidency.*
+import uk.gov.hmrc.ui.pages.Transaction.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
@@ -44,7 +46,10 @@ class e2eSpec
 
   Feature("SDLT Filing Frontend end to end") {
 
-    Scenario("Complete the end to end flow of the Filing Journey", e2eJourney) {
+    Scenario(
+      "Complete the end to end flow of the Filing Journey from Preliminary Questions to Land Questions",
+      e2eJourney
+    ) {
 
       Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(HASDIRECT, Organisation)
@@ -402,32 +407,175 @@ class e2eSpec
       LandOverview.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+    }
 
-//      When("the user opens the uk residency questions")
-//      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
-//      Then("the UKResidencyBeforeYouStart page is shown")
-//      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
-//
-//      When("the user starts the uk residency questions")
-//      UKResidencyBeforeYouStart.saveAndContinue()
-//      Then("the ResidencyStatus page is shown")
-//      ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
-//      ResidencyStatus.clickResidencyStatusLink()
-//
-//      When("the user confirms there are non-UK resident purchasers")
-//      ResidencyStatus.radioButton(ResidencyStatus.yes)
-//      ResidencyStatus.saveAndContinue()
-//      Then("the CrownEmploymentRelief page is shown")
-//      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
-//
-//      When("the user confirms there are purchasers claiming Crown Employment relief")
-//      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
-//      CrownEmploymentRelief.saveAndContinue()
-//      Then("the UKResidencyCheckYourAnswers page is shown")
-//      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
-//
-//      When("the user submits the uk residency questions")
-//      UKResidencyCheckYourAnswers.saveAndContinue()
+    Scenario("Complete the end to end flow of the Filing Journey from UK Residency Questions to Lease Questions", wip) {
+
+      Given("the user is logged in through the AuthWizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-residential"))
+      Then("the ReturnTaskList page page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user opens the uk residency questions")
+      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
+      Then("the UKResidencyBeforeYouStart page is shown")
+      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
+
+      When("the user starts the uk residency questions")
+      UKResidencyBeforeYouStart.saveAndContinue()
+      Then("the ResidencyStatus page is shown")
+      ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
+      ResidencyStatus.clickResidencyStatusLink()
+
+      When("the user confirms there are non-UK resident purchasers")
+      ResidencyStatus.radioButton(ResidencyStatus.yes)
+      ResidencyStatus.saveAndContinue()
+      Then("the CloseCompanies page is shown")
+      CloseCompaniesPage.verifyPageTitle(CloseCompaniesPage.pageTitle)
+
+      When("the user confirms that the purchaser is a UK close company controlled by non-UK residents")
+      CloseCompaniesPage.radioButton(CloseCompaniesPage.yes)
+      CloseCompaniesPage.saveAndContinue()
+      Then("the CrownEmploymentRelief page is shown")
+      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
+
+      When("the user confirms there are purchasers claiming Crown Employment relief")
+      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
+      CrownEmploymentRelief.saveAndContinue()
+      Then("the UKResidencyCheckYourAnswers page is shown")
+      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
+
+      When("the user submits the uk residency questions")
+      UKResidencyCheckYourAnswers.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user opens the transaction questions")
+      ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
+      Then("the TransactionBeforeYouStart page is shown")
+      TransactionBeforeYouStart.verifyPageTitle(TransactionBeforeYouStart.pageTitle)
+
+      When("the user starts the transaction questions")
+      TransactionBeforeYouStart.saveAndContinue()
+      Then("the ConfirmTypeOfTransaction page is shown")
+      ConfirmTheTransaction.verifyPageTitle(ConfirmTheTransaction.pageTitle)
+
+      When("the user confirms the transaction type is correct")
+      ConfirmTheTransaction.radioButton(ConfirmTheTransaction.yes)
+      ConfirmTheTransaction.saveAndContinue()
+      Then("the EffectiveDateOfTransaction page is shown")
+      EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
+
+      When("the user provides the effective date of transaction")
+      EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
+      EffectiveDateOfTransaction.saveAndContinue()
+      Then("the AddDateOfContract page is shown")
+      DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
+        DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
+      )
+
+      When("the user doesn't add the date of contact or conclusion of missives")
+      DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.no)
+      DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
+      Then("the LinkedTransactions page is shown")
+      LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
+
+      When("the user confirms the transaction is not linked to another")
+      LinkedTransaction.radioButton(LinkedTransaction.no)
+      LinkedTransaction.saveAndContinue()
+      Then("the ClaimingRelief page is shown")
+      ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
+
+      When("the user confirms the purchaser is eligible to claim relief")
+      ClaimingRelief.radioButton(ClaimingRelief.yes)
+      ClaimingRelief.saveAndContinue()
+      Then("the ReasonForRelief page is shown")
+      ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
+
+      When("the user selects relocation of employment as the reason for claiming relief")
+      ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.relocationOfEmployment)
+      ReasonForClaimingRelief.saveAndContinue()
+      Then("the PartialRelief page is shown")
+      PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
+
+      When("the user confirms the purchaser is not claiming relief on part of the land")
+      PartialRelief.radioButton(PartialRelief.no)
+      PartialRelief.saveAndContinue()
+      Then("the ConsiderationsAffectedByUncertainFutureEvents page is shown")
+      ConsiderationsAffectedByUncertainFutureEvents.verifyPageTitle(
+        ConsiderationsAffectedByUncertainFutureEvents.pageTitle
+      )
+
+      When("the user confirms a part of the consideration is contingent or dependent on uncertain future events")
+      ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.yes)
+      ConsiderationsAffectedByUncertainFutureEvents.saveAndContinue()
+      Then("the DeferringPayment page is shown")
+      DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
+
+      When("the user confirms the purchaser is not applying for a deferment")
+      DeferringPayment.radioButton(DeferringPayment.no)
+      DeferringPayment.saveAndContinue()
+      Then("the SaleOfABusiness page is shown")
+      SaleOfABusiness.verifyPageTitle(SaleOfABusiness.pageTitle)
+
+      When("the user confirms the transaction is part of the sale of a business")
+      SaleOfABusiness.radioButton(SaleOfABusiness.yes)
+      SaleOfABusiness.saveAndContinue()
+      Then("the AssetsIncludedInSaleOfTheBusiness page is shown")
+      WhatIncludedInSale.verifyPageTitle(WhatIncludedInSale.pageTitle)
+
+      When("the user selects assets that are included in this transaction")
+      WhatIncludedInSale.checkbox(WhatIncludedInSale.stock, true)
+      WhatIncludedInSale.checkbox(WhatIncludedInSale.chattelsAndMovables, true)
+      WhatIncludedInSale.saveAndContinue()
+      Then("the TotalConsiderationOfAllAssets page is shown")
+      TotalConsiderationOfAllAssets.verifyPageTitle(TotalConsiderationOfAllAssets.pageTitle)
+
+      When("the user provides the total amount of consideration for the sale of the business")
+      TotalConsiderationOfAllAssets.input(
+        By.id(TotalConsiderationOfAllAssets.totalConsiderationOfAllAssets),
+        TotalConsiderationOfAllAssets.totalConsiderationOfAllAssetsInput
+      )
+      TotalConsiderationOfAllAssets.saveAndContinue()
+      Then("the CAP1OrNSBC page is shown")
+      AppliedForCAP1OrNSBC.verifyPageTitle(AppliedForCAP1OrNSBC.pageTitle)
+
+      When("the user confirms they have applied for a CAP1 or NSBC for the transaction")
+      AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
+      AppliedForCAP1OrNSBC.saveAndContinue()
+      Then("the HaveYouFollowedTheRuling page is shown")
+      HaveYouFollowedTheRuling.verifyPageTitle(
+        HaveYouFollowedTheRuling.pageTitle
+      )
+
+      When("the user confirms they have followed the ruling under CAP1 or NSBC")
+      HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.yes)
+      HaveYouFollowedTheRuling.saveAndContinue()
+      Then("the RestrictionsCovenantsAndConditions page is shown")
+      RestrictionsConvenantsOrConditions.verifyPageTitle(RestrictionsConvenantsOrConditions.pageTitle)
+
+      When(
+        "the user confirms there are no restrictions, covenants or conditions affecting the value of the interest transferred"
+      )
+      RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
+      RestrictionsConvenantsOrConditions.saveAndContinue()
+      Then("the ExchangeOrPartExchange page is shown")
+      ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
+
+      When("the user confirms the land is not being exchanged or part exchanged")
+      ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.no)
+      ExchangeOrPartExchange.saveAndContinue()
+      Then("the ExercisingAnOption page is shown")
+      ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
+
+      When("the user confirms the transaction is pursuant to a previous option agreement")
+      ExercisingAnOption.radioButton(ExercisingAnOption.yes)
+      ExercisingAnOption.saveAndContinue()
+      Then("the TransactionCheckYourAnswers page is shown")
+      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
+
+      When("the user submits the transaction questions")
+      TransactionCheckYourAnswers.saveAndContinue()
 //      Then("the ReturnTaskList page is shown")
 //      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
