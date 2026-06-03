@@ -115,8 +115,37 @@ class TaxCalculationsQuestionsSpec
       When("user selects no radio button and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
       TaxCalculationsPenalties.saveAndContinue()
-      // User navigated to Check your answers page
-      // User clicks on Confirm and Continue
+
+      Then("the user is navigated to the check your answers page")
+      TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user clicks on change link and enter self assesed sdlt amount")
+      TaxCalculationCheckYourAnswers.clickselfAssessedSDLTAmountChange()
+      TaxCalculationsSDLTSelfAssessment.input(
+        By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
+        TaxCalculationsSDLTSelfAssessment.saaInput
+      )
+      TaxCalculationsSDLTSelfAssessment.saveAndContinue()
+      Then("the user is navigated to the check your answers page")
+      TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user clicks on change link and enter amount to be paid")
+      TaxCalculationCheckYourAnswers.clickamountTobePaidChange()
+      TaxCalculationsTotalAmountDue.input(
+        By.id(TaxCalculationsTotalAmountDue.tppTax),
+        TaxCalculationsTotalAmountDue.tppTaxInput
+      )
+      TaxCalculationsTotalAmountDue.saveAndContinue()
+      Then("the user is navigated to the check your answers page")
+      TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user clicks on change link and change yes to pay penalties page")
+      TaxCalculationCheckYourAnswers.clickpenaltiesChange()
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
+      TaxCalculationsPenalties.saveAndContinue()
+      Then("the user is navigated to the check your answers page")
+      TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+      // checkYourAnswers.saveAndContinue()
       // User is navigated to Return to TaskList
 
     }
