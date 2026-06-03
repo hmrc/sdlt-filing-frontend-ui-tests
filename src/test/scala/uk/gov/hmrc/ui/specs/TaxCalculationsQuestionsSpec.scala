@@ -115,8 +115,32 @@ class TaxCalculationsQuestionsSpec
       When("user selects no radio button and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
       TaxCalculationsPenalties.saveAndContinue()
-      // User navigated to Check your answers page
-      // User clicks on Confirm and Continue
+
+      Then("the user is navigated to the check your answers page")
+      checkYourAnswers.verifyPageTitle(checkYourAnswers.pageTitle)
+
+      When("the user clicks on change link and enter self assesed sdlt amount")
+      checkYourAnswers.clickselfAssesedSDLTAmountChange()
+      TaxCalculationsSDLTSelfAssessment.input(
+        By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
+        TaxCalculationsSDLTSelfAssessment.saaInput
+      )
+      TaxCalculationsSDLTSelfAssessment.saveAndContinue()
+
+      When("the user clicks on change link and enter amount to be paid")
+      checkYourAnswers.clickamountTobePaidChange()
+      TaxCalculationsTotalAmountDue.input(
+        By.id(TaxCalculationsTotalAmountDue.tppTax),
+        TaxCalculationsTotalAmountDue.tppTaxInput
+      )
+      TaxCalculationsTotalAmountDue.saveAndContinue()
+
+      When("the user clicks on change link and change yes to pay penalties page")
+      checkYourAnswers.clickpenaltiesChange()
+      When("user selects yes radio button and continues")
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
+      TaxCalculationsPenalties.saveAndContinue()
+      // checkYourAnswers.saveAndContinue()
       // User is navigated to Return to TaskList
 
     }
