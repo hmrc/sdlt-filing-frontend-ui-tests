@@ -76,16 +76,11 @@ class LeaseQuestionsSpec
       AddRentFreePeriod.verifyPageTitle(AddRentFreePeriod.pageTitle)
 
       When("the user selects Yes and continues")
-      AddRentFreePeriod.radioButton(AddRentFreePeriod.yes)
+      AddRentFreePeriod.radioButton(AddRentFreePeriod.no)
       AddRentFreePeriod.saveAndContinue()
-      Then("the user is navigated to Calculating the rent-free periods Page")
-      RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
-
-      When("the user enters the rent-free periods months and continues")
-      RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      RentFreePeriod.saveAndContinue()
       Then("the user is navigated to Annual starting rent page")
       AnnualStartingRent.verifyPageTitle(AnnualStartingRent.pageTitle)
+
       And("the validates the drop down text About variable or uncertain rent")
       AnnualStartingRent.clickDropdownText()
       AnnualStartingRent.verifyPageText(AnnualStartingRent.dropdownText, 2)
@@ -138,19 +133,74 @@ class LeaseQuestionsSpec
       Then("the NetPresentValue page is shown")
       NetPresentValue.verifyPageTitle(NetPresentValue.pageTitle)
 
-      When("the user provides the net present value")
+      When("the user provides the net present value and continues")
       NetPresentValue.input(
         By.id(NetPresentValue.NetPresentValue),
         NetPresentValue.NetPresentValueInput
       )
-      // Below step to be removed once the navigation is ready
-      // NetPresentValue.saveAndContinue()
+      NetPresentValue.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
 
-      /*
-      Check your answers page is shown
-      User checks the answers and continues
-      Overview page is shown
-       */
+      When("the user clicks change link for lease start date and updates the answer")
+      LeaseCheckYourAnswers.clickLeaseStartDate()
+      LeaseStartDate.verifyPageTitle(LeaseStartDate.pageTitle)
+      LeaseStartDate.enterLeaseStartDateCYA()
+      LeaseStartDate.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for lease end date and updates the answer")
+      LeaseCheckYourAnswers.clickLeaseEndDate()
+      LeaseEndDate.verifyPageTitle(LeaseEndDate.pageTitle)
+      LeaseEndDate.enterLeaseEndDateCYA()
+      LeaseEndDate.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for rent free period and updates the answer")
+      LeaseCheckYourAnswers.clickDoesLeaseIncludeFreePeriod()
+      AddRentFreePeriod.verifyPageTitle(AddRentFreePeriod.pageTitle)
+      AddRentFreePeriod.radioButton(AddRentFreePeriod.yes)
+      AddRentFreePeriod.saveAndContinue()
+
+      Then("the user is navigated to Calculating the rent-free periods Page")
+      RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
+      When("the user enters the rent-free periods months and continues")
+      RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
+      RentFreePeriod.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for annual starting rent and updates the answer")
+      LeaseCheckYourAnswers.clickAnnualStartingRent()
+      AnnualStartingRent.verifyPageTitle(AnnualStartingRent.pageTitle)
+      AnnualStartingRent.input(
+        By.id(AnnualStartingRent.annualStartingRent),
+        AnnualStartingRent.annualStartingRentInputCYA
+      )
+      AnnualStartingRent.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for end of annual starting rent and updates the answer")
+      LeaseCheckYourAnswers.clickEndOfAnnualStartingRent()
+      EndOfAnnualStartingRent.verifyPageTitle(EndOfAnnualStartingRent.pageTitle)
+      EndOfAnnualStartingRent.enterEndOfAnnualStartingRentCYA()
+      EndOfAnnualStartingRent.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for Net Present Value and updates the answer")
+      LeaseCheckYourAnswers.clickNetPresentValue()
+      NetPresentValue.verifyPageTitle(NetPresentValue.pageTitle)
+      NetPresentValue.input(
+        By.id(NetPresentValue.NetPresentValue),
+        NetPresentValue.NetPresentValueInputCYA
+      )
+      NetPresentValue.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
     }
 
     Scenario(
@@ -219,21 +269,49 @@ class LeaseQuestionsSpec
       AnnualRentVAT.verifyPageTitle(AnnualRentVAT.pageTitle)
 
       When("the user selects Yes and continues")
+      AnnualRentVAT.radioButton(AnnualRentVAT.no)
+      AnnualRentVAT.saveAndContinue()
+      Then("Check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for type of lease and updates the answer")
+      LeaseCheckYourAnswers.clickTypeOfLease()
+      TypeOfLease.verifyPageTitle(TypeOfLease.pageTitle)
+      TypeOfLease.radioButton(TypeOfLease.residential)
+      TypeOfLease.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for later rent and updates the answer")
+      LeaseCheckYourAnswers.clickLaterRentKnown()
+      LaterRent.verifyPageTitle(LaterRent.pageTitle)
+      LaterRent.radioButton(LaterRent.yes)
+      LaterRent.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for annual rent £1000 or more and updates the answer")
+      LeaseCheckYourAnswers.clickAnnualRent1000rMore()
+      ThousandPoundThreshold.verifyPageTitle(ThousandPoundThreshold.pageTitle)
+      ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
+      ThousandPoundThreshold.saveAndContinue()
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user clicks change link for Is VAT payable on rent and updates the answer")
+      LeaseCheckYourAnswers.clickIsVatPayableOnRent()
+      AnnualRentVAT.verifyPageTitle(AnnualRentVAT.pageTitle)
       AnnualRentVAT.radioButton(AnnualRentVAT.yes)
       AnnualRentVAT.saveAndContinue()
-      Then("the user navigates to Total amount of VAT payable on annual rent")
       EnterAnnualRentVATAmount.verifyPageTitle(EnterAnnualRentVATAmount.pageTitle)
-
-      When("the user enters the total amount of VAT payable on annual rent and continues")
       EnterAnnualRentVATAmount.input(
         By.id(EnterAnnualRentVATAmount.annualRentVATAmount),
         EnterAnnualRentVATAmount.annualRentVATAmountInput
       )
       EnterAnnualRentVATAmount.saveAndContinue()
-      /*   Check your answers page is shown
-      User checks the answers and continues
-      Overview page is shown
-       */
+      Then("check your answers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
     }
   }
 }

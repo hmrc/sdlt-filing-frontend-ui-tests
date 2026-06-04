@@ -29,4 +29,6 @@ object TotalPremiumPayable extends BasePage {
 
   val TotalPremiumPayableInput: String = "2450"
 
+  val TotalPremiumPayableInputCYA: String = "2452"
+
 }
