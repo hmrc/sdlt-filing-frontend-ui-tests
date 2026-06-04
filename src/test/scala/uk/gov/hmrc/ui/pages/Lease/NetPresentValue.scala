@@ -29,4 +29,6 @@ object NetPresentValue extends BasePage {
 
   val NetPresentValueInput: String = "3000"
 
+  val NetPresentValueInputCYA: String = "4000"
+
 }

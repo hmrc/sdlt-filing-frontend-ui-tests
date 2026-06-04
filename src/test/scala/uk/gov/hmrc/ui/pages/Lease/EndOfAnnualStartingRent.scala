@@ -30,19 +30,19 @@ object EndOfAnnualStartingRent extends BasePage {
 
   val dayInput: String = "30"
 
-  val dayInputCYA: String = "15"
+  val dayInputCYA: String = "07"
 
   val month: String = "value.month"
 
   val monthInput: String = "07"
 
-  val monthInputCYA: String = "06"
+  val monthInputCYA: String = "08"
 
   val year: String = "value.year"
 
   val yearInput: String = "2005"
 
-  val yearInputCYA: String = "2008"
+  val yearInputCYA: String = "2005"
 
   def enterEndOfAnnualStartingRent(): Unit = inputDateMonthAndYear(
     By.id(day),
@@ -51,6 +51,15 @@ object EndOfAnnualStartingRent extends BasePage {
     dayInput,
     monthInput,
     yearInput
+  )
+
+  def enterEndOfAnnualStartingRentCYA(): Unit = inputDateMonthAndYear(
+    By.id(day),
+    By.id(month),
+    By.id(year),
+    dayInputCYA,
+    monthInputCYA,
+    yearInputCYA
   )
 
 }

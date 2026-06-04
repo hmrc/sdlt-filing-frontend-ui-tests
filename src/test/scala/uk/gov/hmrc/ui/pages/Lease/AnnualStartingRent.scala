@@ -29,7 +29,8 @@ object AnnualStartingRent extends BasePage {
 
   val annualStartingRent: String = "value"
 
-  val annualStartingRentInput: String = "12000"
+  val annualStartingRentInput: String    = "12000"
+  val annualStartingRentInputCYA: String = "15000"
 
   def clickDropdownText(): Unit = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
   def dropdownText: String      =

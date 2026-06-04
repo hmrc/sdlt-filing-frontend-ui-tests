@@ -30,19 +30,19 @@ object LeaseStartDate extends BasePage {
 
   val dayInput: String = "30"
 
-  val dayInputCYA: String = "15"
+  val dayInputCYA: String = "29"
 
   val month: String = "value.month"
 
   val monthInput: String = "03"
 
-  val monthInputCYA: String = "06"
+  val monthInputCYA: String = "02"
 
   val year: String = "value.year"
 
   val yearInput: String = "2004"
 
-  val yearInputCYA: String = "2008"
+  val yearInputCYA: String = "2004"
 
   def enterLeaseStartDate(): Unit = inputDateMonthAndYear(
     By.id(day),
@@ -51,6 +51,15 @@ object LeaseStartDate extends BasePage {
     dayInput,
     monthInput,
     yearInput
+  )
+
+  def enterLeaseStartDateCYA(): Unit = inputDateMonthAndYear(
+    By.id(day),
+    By.id(month),
+    By.id(year),
+    dayInputCYA,
+    monthInputCYA,
+    yearInputCYA
   )
 
 }
