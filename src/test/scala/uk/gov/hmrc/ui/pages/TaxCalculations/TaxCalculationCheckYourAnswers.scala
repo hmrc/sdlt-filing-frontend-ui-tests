@@ -28,14 +28,12 @@ object TaxCalculationCheckYourAnswers extends BasePage {
     "Check your answers - Tax calculation - Stamp Taxes Online - GOV.UK"
 
   val selfAssessedSDLTAmountChange =
-    "a[href='/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/SDLT-self-assessment/change']"
+    "a[href$='/SDLT-self-assessment/change']"
+  val amountTobePaidChange         =
+    "a[href$='/total-amount-due/change']"
 
-  val amountTobePaidChange =
-    "a[href='/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/total-amount-due/change']"
-
-  val penaltiesChange =
-    "a[href='/stamp-duty-land-tax-filing/tax-calculation/freehold-calculated/are-penalties-and-interest-included/change']"
-
+  val penaltiesChange                           =
+    "a[href$='/are-penalties-and-interest-included/change']"
   def clickselfAssessedSDLTAmountChange(): Unit =
     click(By.cssSelector(selfAssessedSDLTAmountChange))
 
