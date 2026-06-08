@@ -69,6 +69,9 @@ class LeaseQuestionsSpec
       Then("Lease end date page is shown")
       LeaseEndDate.verifyPageTitle(LeaseEndDate.pageTitle)
 
+      When("the user reads the Lease End Date details")
+      LeaseEndDate.clickDropdownText()
+      LeaseEndDate.verifyPageText(LeaseEndDate.dropdownText, 1)
       When("the user enters the lease end date and continues")
       LeaseEndDate.enterLeaseEndDate()
       LeaseEndDate.saveAndContinue()

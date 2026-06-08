@@ -379,6 +379,9 @@ class TransactionQuestionsSpec
       Then("the Effective Date of Transaction page is displayed")
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
 
+      When("the user reads the Effective Date Of Transaction details")
+      EffectiveDateOfTransaction.clickDropdownText()
+      EffectiveDateOfTransaction.verifyPageText(EffectiveDateOfTransaction.dropdownText, 1)
       When("the user enters the effective date of transaction and continues")
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
       EffectiveDateOfTransaction.saveAndContinue()

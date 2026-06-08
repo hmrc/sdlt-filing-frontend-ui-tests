@@ -61,5 +61,9 @@ object LeaseEndDate extends BasePage {
     monthInputCYA,
     yearInputCYA
   )
+  def clickDropdownText(): Unit    = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
+
+  def dropdownText: String =
+    "For a periodic tenancy, enter the date the first period ends, like the end of the first month or year. For long leases, where the lease ends after the year 9999, enter 31 12 9999 as the end date."
 
 }
