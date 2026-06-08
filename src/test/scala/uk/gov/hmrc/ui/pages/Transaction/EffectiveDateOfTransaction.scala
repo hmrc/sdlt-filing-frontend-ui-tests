@@ -62,4 +62,9 @@ object EffectiveDateOfTransaction extends BasePage {
     yearInputCYA
   )
 
+  def clickDropdownText(): Unit = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
+
+  def dropdownText: String =
+    "The effective date of transaction can be brought forward if the contract is substantially performed prior to completion. Substantial performance occurs when the purchaser pays 90% or more of the total price, occupies 90% or more of the property, or pays any rent."
+
 }
