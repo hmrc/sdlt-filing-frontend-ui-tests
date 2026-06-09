@@ -202,11 +202,6 @@ class VendorAgentQuestionsSpec
       AddVendorAgentContactDetails.verifyPageTitle(AddVendorAgentContactDetails.pageTitle)
       AddVendorAgentContactDetails.radioButton(AddVendorAgentContactDetails.yes)
       AddVendorAgentContactDetails.saveAndContinue()
-      Then("the VendorAgentCheckYourAnswers page is shown")
-      VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-
-      When("the user updates the vendor agent contact details")
-      VendorAgentCheckYourAnswers.clickVendorAgentContactDetailsChange()
       VendorAgentEnterContactDetails.verifyPageTitle(VendorAgentEnterContactDetails.pageTitle)
       VendorAgentEnterContactDetails.input(
         By.id(VendorAgentEnterContactDetails.phoneNumber),
@@ -221,11 +216,6 @@ class VendorAgentQuestionsSpec
       AddVendorAgentReferenceNumber.verifyPageTitle(AddVendorAgentReferenceNumber.pageTitle)
       AddVendorAgentReferenceNumber.radioButton(AddVendorAgentReferenceNumber.yes)
       AddVendorAgentReferenceNumber.saveAndContinue()
-      Then("the VendorAgentCheckYourAnswers page is shown")
-      VendorAgentCheckYourAnswers.verifyPageTitle(VendorAgentCheckYourAnswers.pageTitle)
-
-      When("the user updates the vendor agent reference number")
-      VendorAgentCheckYourAnswers.clickVendorAgentReferenceNumberChange()
       VendorAgentEnterReferenceNumber.verifyPageTitle(VendorAgentEnterReferenceNumber.pageTitle)
       VendorAgentEnterReferenceNumber.input(
         By.id(VendorAgentEnterReferenceNumber.agentReference),
