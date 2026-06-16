@@ -21,7 +21,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.WhoAreYouSubmittingThisReturnFor
+import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.{DeclarationConfirmation, WhoAreYouSubmittingThisReturnFor}
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -40,7 +40,7 @@ class DeclarationAndSubmissionSpec
 
     Scenario(
       "Complete the Declaration and Submission flow",
-      Declaration
+      DeclarationAndSubmissionJourney
     ) {
 
       Given("the user logs in through the Authority Wizard page")
@@ -60,7 +60,7 @@ class DeclarationAndSubmissionSpec
        Then the user is navigated to email confirmation page
 
        When the user selects 'Yes' on email confirmation page
-       Then the user is navigates to What email address should HMRC use
+       Then the user is navigated to What email address should HMRC use
 
        When the user enters email address and clicks Save and Continue
        */
@@ -73,6 +73,13 @@ class DeclarationAndSubmissionSpec
       When("the user selects purchaserAuthorised and continues")
       WhoAreYouSubmittingThisReturnFor.radioButton(WhoAreYouSubmittingThisReturnFor.purchaserAuthorised)
       WhoAreYouSubmittingThisReturnFor.saveAndContinue()
+
+      Then("the user is navigated to Confirm Declaration ")
+      DeclarationConfirmation.verifyPageTitle(DeclarationConfirmation.pageTitle)
+
+      When("the user clicks Confirm and Submit")
+      DeclarationConfirmation.saveAndContinue()
+
     }
   }
 }
