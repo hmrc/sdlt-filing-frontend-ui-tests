@@ -21,10 +21,11 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.{DeclarationConfirmation, WhoAreYouSubmittingThisReturnFor}
+import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.{DeclarationConfirmation, EnterEmailAddress, WhoAreYouSubmittingThisReturnFor}
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import org.openqa.selenium.By
 
 class DeclarationAndSubmissionSpec
     extends AnyFeatureSpec
@@ -50,7 +51,7 @@ class DeclarationAndSubmissionSpec
         returnId = Some("123456")
       )
 
-      /*     When the user clicks on Submit your Return on the tasklist page
+      /*When the user clicks on Submit your Return on the tasklist page
 //     Then the user is navigated to the Your Return is ready for Submission page.
 
        When the user click on View and Print this return
@@ -64,10 +65,17 @@ class DeclarationAndSubmissionSpec
 
        When the user enters email address and clicks Save and Continue
        */
-      Then("the user us navigated to Who are you submitting this return for")
-      WhoAreYouSubmittingThisReturnFor.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/who-are-you-submitting-this-return-for"
+      Then("the user is navigated to What email address should HMRC use?")
+      EnterEmailAddress.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/enter-email-address"
       )
+      EnterEmailAddress.verifyPageTitle(EnterEmailAddress.pageTitle)
+
+      When("the user enters email address and clicks Save and Continue")
+      EnterEmailAddress.input(By.id(EnterEmailAddress.emailAddress), EnterEmailAddress.emailAddressInput)
+      EnterEmailAddress.saveAndContinue()
+
+      Then("the user is navigated to Who are you submitting this return for")
       WhoAreYouSubmittingThisReturnFor.verifyPageTitle(WhoAreYouSubmittingThisReturnFor.pageTitle)
 
       When("the user selects purchaserAuthorised and continues")
