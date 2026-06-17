@@ -51,8 +51,10 @@ class TaxCalculationsQuestionsSpec
         Organisation,
         returnId = Some("freehold-tax-calculated")
       )
-      And("the user navigated to tax calculation")
+      When("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      Then("the Is this effective date of transaction page is displayed")
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
 
       When("the user confirms the effective date of the transaction and continues")
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
@@ -88,7 +90,7 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsSDLTSelfAssessment.pageTitleFreeholdTax
       )
 
-      When("user enter the amount value and click save and continue button")
+      When("user enter the self assessed amount value and click save and continue button")
       TaxCalculationsSDLTSelfAssessment.input(
         By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
         TaxCalculationsSDLTSelfAssessment.saaInput
@@ -98,6 +100,8 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsTotalAmountDue.verifyPageTitle(
         TaxCalculationsTotalAmountDue.pageTitleFreehold
       )
+
+      When("user enter the total amount value and click save and continue button")
       TaxCalculationsTotalAmountDue.input(
         By.id(TaxCalculationsTotalAmountDue.tppTax),
         TaxCalculationsTotalAmountDue.tppTaxInput
@@ -138,6 +142,8 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user clicks save and continue button")
       TaxCalculationCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
@@ -155,8 +161,11 @@ class TaxCalculationsQuestionsSpec
         returnId = Some("freehold-self-assessed")
       )
 
-      And("the user navigated to tax calculation")
+      When("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      Then("the Is this effective date of transaction page is displayed")
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
+
       When("the confirm effective date of the transaction page displayed")
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
       ConfirmEffectiveDate.saveAndContinue()
@@ -168,6 +177,8 @@ class TaxCalculationsQuestionsSpec
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Freehold not calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleFreeholdNotCalculated)
+
+      When("the user click save and continues")
       TaxCalculationsBeforeYouStart.saveAndContinue()
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.freeholdSelfAssesedSDLTDuepageTitle)
       CalculateSDLTDue.saveAndContinue()
@@ -228,6 +239,8 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user clicks on save and continue button on check your answers page")
       TaxCalculationCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
@@ -246,8 +259,10 @@ class TaxCalculationsQuestionsSpec
         returnId = Some("leasehold-tax-calculated")
       )
 
-      And("the user navigated to tax calculation")
+      When("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      Then("the Is this effective date of transaction page is displayed")
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
 
       Then("the confirm effective date of the transaction page displayed")
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
@@ -260,9 +275,13 @@ class TaxCalculationsQuestionsSpec
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdCalculated)
+
+      When("the user start sdlt due page")
       TaxCalculationsBeforeYouStart.saveAndContinue()
       Then("the user is navigated to the calculate SDLT due page")
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSDLTDuepageTitle)
+
+      When("the user start sdlt breakdown page")
       CalculateSDLTDue.clickSDLTBreakDownLink()
       Then("the user is navigated to the SDLT breakdown page")
       TaxCalculationsBreakdown.verifyPageTitle(TaxCalculationsBreakdown.leaseholdSDLTBreakdownpageTitle)
@@ -271,13 +290,15 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsBreakdown.clickReturnTaxPage()
       Then("the user is navigated to the calculate SDLT due page")
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSDLTDuepageTitle)
+
+      When("the user start sdlt self assessment page")
       CalculateSDLTDue.saveAndContinue()
       Then("user is navigated to what is the SDLT self-assessment page")
       TaxCalculationsSDLTSelfAssessment.verifyPageTitle(
         TaxCalculationsSDLTSelfAssessment.pageTitleLeaseholdTax
       )
 
-      When("user enter the amount value and click save and continue button")
+      When("the user start total amount page")
       TaxCalculationsSDLTSelfAssessment.input(
         By.id(TaxCalculationsSDLTSelfAssessment.saaValue),
         TaxCalculationsSDLTSelfAssessment.saaInput
@@ -288,7 +309,7 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsTotalAmountDue.pageTitleLeasehold
       )
 
-      When("user enter the amount value and click save and continue button")
+      When("the user start pay penalties page ")
       TaxCalculationsTotalAmountDue.input(
         By.id(TaxCalculationsTotalAmountDue.tppTax),
         TaxCalculationsTotalAmountDue.tppTaxInput
@@ -331,6 +352,8 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user start return task list page")
       TaxCalculationCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
@@ -347,8 +370,10 @@ class TaxCalculationsQuestionsSpec
         Organisation,
         returnId = Some("leasehold-self-assessed")
       )
-      And("the user navigated to tax calculation")
+      When("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      Then("the Is this effective date of transaction page is displayed")
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
 
       Then("the confirm effective date of the transaction page displayed")
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
@@ -361,6 +386,8 @@ class TaxCalculationsQuestionsSpec
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitleLeaseholdNotCalculated)
+
+      When("the user start sdlt due page")
       TaxCalculationsBeforeYouStart.saveAndContinue()
       Then("the user is navigated to the calculate SDLT due page")
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.leaseholdSelfAssesedSDLTDuepageTitle)
@@ -425,6 +452,8 @@ class TaxCalculationsQuestionsSpec
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user start return task list page")
       TaxCalculationCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
@@ -442,8 +471,10 @@ class TaxCalculationsQuestionsSpec
         Organisation,
         returnId = Some("leasehold-self-assessed")
       )
-      And("the user navigated to tax calculation")
+      When("the user navigated to tax calculation")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      Then("the Is this effective date of transaction page is displayed")
+      ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
 
       Then("the confirm effective date of the transaction page displayed")
       ConfirmEffectiveDate.verifyPageTitle(ConfirmEffectiveDate.pageTitle)
