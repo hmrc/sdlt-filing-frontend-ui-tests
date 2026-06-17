@@ -40,7 +40,6 @@ class TaxCalculationsQuestionsSpec
 
   Feature("SDLT Filing Frontend Tax Calculations") {
 
-// scenario 1 Freehold Tax calculator
     Scenario(
       "Complete the Freehold calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -61,12 +60,13 @@ class TaxCalculationsQuestionsSpec
       Then("the user is navigated to Is this effective date of transaction page")
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
 
-      When("the user selects yes radio button and continues")
+      When("the user selects effective date before oct 2024 as yes and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Freehold calculated Before you start page is displayed")
       TaxCalculationsBeforeYouStart.verifyPageTitle(TaxCalculationsBeforeYouStart.pageTitle)
 
+      When("the user is navigated to sdlt due page")
       TaxCalculationsBeforeYouStart.saveAndContinue()
       Then("the user is navigated to the calculate SDLT due page")
       CalculateSDLTDue.verifyPageTitle(CalculateSDLTDue.pageTitle)
@@ -106,7 +106,7 @@ class TaxCalculationsQuestionsSpec
       Then("the user is navigated to the pay penalties page")
       TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitle)
 
-      When("user selects no radio button and continues")
+      When("user selects no penalties and interest value and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
@@ -142,7 +142,7 @@ class TaxCalculationsQuestionsSpec
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
-    // scenario 2 Freehold Self assesed
+
     Scenario(
       "Complete the Freehold not calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -163,7 +163,7 @@ class TaxCalculationsQuestionsSpec
       Then("the user is navigated to Is this effective date of transaction page")
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
 
-      When("the user selects yes radio button and continues")
+      When("the user selects 1st oct 2024 effective date as yes and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Freehold not calculated Before you start page is displayed")
@@ -196,7 +196,7 @@ class TaxCalculationsQuestionsSpec
       Then("user is navigated to penalties page")
       TaxCalculationsPenalties.verifyPageTitle(TaxCalculationsPenalties.pageTitleFreeholdSelfAssesed)
 
-      When("user selects yes radio button and continues")
+      When("user selects penalties and interest value and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
@@ -222,9 +222,9 @@ class TaxCalculationsQuestionsSpec
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
 
-      When("the user clicks on change link and change yes to pay penalties page")
+      When("the user clicks on change link and select no penalties and interest value on penalties page")
       TaxCalculationCheckYourAnswers.clickpenaltiesChange()
-      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
+      TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
@@ -233,7 +233,7 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
     }
-    // scenario 3 Leasehold Calculated
+
     Scenario(
       "Complete the Leasehold calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -255,7 +255,7 @@ class TaxCalculationsQuestionsSpec
       Then("the user is navigated to Is this effective date of transaction page")
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
 
-      When("the user selects yes radio button and continues")
+      When("the user selects effective date before oct 2024 as yes and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Freehold calculated Before you start page is displayed")
@@ -299,7 +299,7 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsPenalties.pageTitleLeaseholdCalculated
       )
 
-      When("user selects yes radio button and continues")
+      When("user selects penalties and interest value as yes and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.yes)
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
@@ -336,7 +336,6 @@ class TaxCalculationsQuestionsSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
 
-    // scenario 4 Leasehold Self assessed
     Scenario(
       "Complete the Leasehold not calculated Tax Calculation Journey",
       TaxCalculationJourney
@@ -357,7 +356,7 @@ class TaxCalculationsQuestionsSpec
       Then("the user is navigated to Is this effective date of transaction page")
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
 
-      When("the user selects yes radio button and continues")
+      When("the user selects effective date before oct 2024 as yes and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.yes)
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Freehold calculated Before you start page is displayed")
@@ -404,7 +403,7 @@ class TaxCalculationsQuestionsSpec
         TaxCalculationsPenalties.pageTitleLeaseholdNotCalculated
       )
 
-      When("user selects no radio button and continues")
+      When("user selects no penalties and interest value and continues")
       TaxCalculationsPenalties.radioButton(TaxCalculationsPenalties.no)
       TaxCalculationsPenalties.saveAndContinue()
       Then("the user is navigated to the check your answers page")
@@ -452,7 +451,7 @@ class TaxCalculationsQuestionsSpec
       Then("the user is navigated to Is this effective date of transaction page")
       IsThisEffectiveDateOfTransaction.verifyPageTitle(IsThisEffectiveDateOfTransaction.pageTitle)
 
-      When("the user selects yes radio button and continues")
+      When("the user selects effective date before oct 2024 as yes and continues")
       IsThisEffectiveDateOfTransaction.radioButton(IsThisEffectiveDateOfTransaction.no)
       IsThisEffectiveDateOfTransaction.saveAndContinue()
       Then("the Effective Date of Transaction page is displayed")
