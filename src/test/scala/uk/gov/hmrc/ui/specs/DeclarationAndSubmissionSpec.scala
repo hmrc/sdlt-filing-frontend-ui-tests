@@ -21,7 +21,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.{DeclarationConfirmation, EnterEmailAddress, WhoAreYouSubmittingThisReturnFor}
+import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.{DeclarationAndSubmissionBeforeYouStart, DeclarationConfirmation, EnterEmailAddress, WhoAreYouSubmittingThisReturnFor}
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -51,10 +51,15 @@ class DeclarationAndSubmissionSpec
         returnId = Some("123456")
       )
 
-      /*When the user clicks on Submit your Return on the tasklist page
-//     Then the user is navigated to the Your Return is ready for Submission page.
+      When("the user clicks on the 'Submit Your Return' link on ReturnTaskList")
+      ReturnTaskList.clickLinkById("task-list-link-submit-your-return")
+      Then("the user is navigated to the Declaration And Submission Before you start page")
+      DeclarationAndSubmissionBeforeYouStart.verifyPageTitle(DeclarationAndSubmissionBeforeYouStart.pageTitle)
 
-       When the user click on View and Print this return
+      When("the user clicks the Continue button")
+      DeclarationAndSubmissionBeforeYouStart.saveAndContinue()
+      // do next step once completed-return page created:
+      /* When the user click on View and Print this return
        Then the user is navigated to the completed return form
 
        When the user click on Continue
