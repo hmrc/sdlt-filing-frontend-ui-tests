@@ -20,7 +20,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object AddEmailConfirmation extends BasePage {
 
-  override def pageUrl: String   = "submit-your-return/add-email-confirmation"
+  override def pageUrl: String = "submit-your-return/add-email-confirmation"
 
   override def pageTitle: String =
     "Would you like an email confirmation once your return has been submitted? - Submit your return - Stamp Taxes Online - GOV.UK"
