@@ -21,7 +21,7 @@ import org.scalatest.verbs.ShouldVerb
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, GivenWhenThen}
 import uk.gov.hmrc.selenium.webdriver.{Browser, ScreenshotOnFailure}
 import uk.gov.hmrc.ui.pages.*
-import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.{DeclarationAndSubmissionBeforeYouStart, DeclarationConfirmation, EnterEmailAddress, WhoAreYouSubmittingThisReturnFor}
+import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.*
 import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
@@ -59,21 +59,25 @@ class DeclarationAndSubmissionSpec
       When("the user clicks the Continue button")
       DeclarationAndSubmissionBeforeYouStart.saveAndContinue()
       // do next step once completed-return page created:
-      /* When the user click on View and Print this return
-       Then the user is navigated to the completed return form
+      
+      /*
+        When the user click on View and Print this return
+        Then the user is navigated to the completed return form
 
-       When the user click on Continue
-       Then the user is navigated to email confirmation page
-
-       When the user selects 'Yes' on email confirmation page
-       Then the user is navigated to What email address should HMRC use
-
-       When the user enters email address and clicks Save and Continue
+        When the user click on Continue
        */
-      Then("the user is navigated to What email address should HMRC use?")
+
+      Then("the AddEmailConfirmation page is shown")
       EnterEmailAddress.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/enter-email-address"
+        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/add-email-confirmation"
       )
+      AddEmailConfirmation.verifyPageTitle(AddEmailConfirmation.pageTitle)
+
+      When("the user chooses to receive an email confirmation when the return is submitted")
+      AddEmailConfirmation.radioButton(AddEmailConfirmation.yes)
+      AddEmailConfirmation.saveAndContinue()
+
+      Then("the user is navigated to What email address should HMRC use?")
       EnterEmailAddress.verifyPageTitle(EnterEmailAddress.pageTitle)
 
       When("the user enters email address and clicks Save and Continue")
