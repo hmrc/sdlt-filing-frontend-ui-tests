@@ -20,7 +20,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 import org.openqa.selenium.By
 
-object CalculateSDLTDue extends BasePage {
+object CalculatedSDLTDue extends BasePage {
 
   override def pageUrl: String = "tax-calculation/freehold-calculated/calculated-SDLT-due"
 

@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TaxCalculationsPenalties extends BasePage {
+object ArePenaltiesAndInterestIncluded extends BasePage {
 
   override def pageUrl: String =
     "tax-calculation/freehold-calculated/are-penalties-and-interest-included"

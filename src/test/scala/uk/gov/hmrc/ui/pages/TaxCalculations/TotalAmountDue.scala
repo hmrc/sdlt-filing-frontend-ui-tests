@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TaxCalculationsTotalAmountDue extends BasePage {
+object TotalAmountDue extends BasePage {
 
   override def pageUrl: String = "tax-calculation/leasehold-not-calculated/total-amount-due"
 
