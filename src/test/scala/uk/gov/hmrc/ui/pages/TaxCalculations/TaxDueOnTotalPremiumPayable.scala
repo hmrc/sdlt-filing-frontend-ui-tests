@@ -18,11 +18,13 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ConfirmEffectiveDate extends BasePage {
+object TaxDueOnTotalPremiumPayable extends BasePage {
 
-  override def pageUrl: String = "tax-calculation/confirm-effective-date-of-transaction"
+  override def pageUrl: String = "tax-calculation/leasehold-not-calculated/tax-due-on-total-premium-payable"
 
   override def pageTitle: String =
-    "Confirm the effective date of the transaction - Tax calculation - Stamp Taxes Online - GOV.UK"
+    "What is the tax due on the total premium payable? - Tax calculation - Leasehold not calculated - Stamp Taxes Online - GOV.UK"
+  val tppTax: String             = "value"
 
+  val tppTaxInput: String = "10000"
 }

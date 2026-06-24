@@ -18,23 +18,11 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-import org.openqa.selenium.By
+object ConfirmEffectiveDateOfTransaction extends BasePage {
 
-object TaxCalculationsBreakdown extends BasePage {
-
-  override def pageUrl: String = "tax-calculation/freehold-calculated/SDLT-breakdown"
+  override def pageUrl: String = "tax-calculation/confirm-effective-date-of-transaction"
 
   override def pageTitle: String =
-    "SDLT breakdown - Tax calculation - Freehold calculated - Stamp Taxes Online - GOV.UK"
-
-  def leaseholdSDLTBreakdownpageUrl: String = "tax-calculation/leasehold-calculated/SDLT-breakdown"
-
-  def leaseholdSDLTBreakdownpageTitle: String =
-    "SDLT breakdown - Tax calculation - Leasehold calculated - Stamp Taxes Online - GOV.UK"
-
-  val returnTaxCalc = "[data-module='hmrc-back-link']"
-
-  def clickReturnTaxPage(): Unit =
-    click(By.xpath("//a[@data-module='hmrc-back-link' and text()='Return to tax calculation']"))
+    "Confirm the effective date of the transaction - Tax calculation - Stamp Taxes Online - GOV.UK"
 
 }

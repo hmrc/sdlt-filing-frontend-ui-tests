@@ -31,6 +31,7 @@ import uk.gov.hmrc.ui.pages.Land.*
 import uk.gov.hmrc.ui.pages.UKResidency.*
 import uk.gov.hmrc.ui.pages.Transaction.*
 import uk.gov.hmrc.ui.pages.Lease.*
+import uk.gov.hmrc.ui.pages.TaxCalculations.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import uk.gov.hmrc.ui.tags.*
@@ -417,7 +418,7 @@ class e2eSpec
 
       Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-residential"))
-      Then("the ReturnTaskList page page is shown")
+      Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the uk residency questions")
@@ -687,6 +688,84 @@ class e2eSpec
         By.id(NetPresentValue.NetPresentValue),
         NetPresentValue.NetPresentValueInput
       )
+      NetPresentValue.saveAndContinue()
+      Then("the LeaseCheckYourAnswers page is shown")
+      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
+
+      When("the user submits the lease questions")
+      LeaseCheckYourAnswers.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+    }
+
+    Scenario(
+      "Complete the end to end flow of the Tax Calculation Questions",
+      e2eJourney
+    ) {
+
+      Given("the user is logged in through the AuthWizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("freehold-tax-calculated"))
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user opens the tax calculation questions")
+      ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      Then("the ConfirmEffectiveDateOfTransaction page is shown")
+      ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
+
+      When("the user confirms the effective date of the transaction")
+      ConfirmEffectiveDateOfTransaction.saveAndContinue()
+      Then("the IsThisTheEffectiveDateOfTransaction page is shown")
+      IsThisTheEffectiveDateOfTransaction.verifyPageTitle(IsThisTheEffectiveDateOfTransaction.pageTitle)
+
+      When("the user verifies October 1st 2024 as the effective date of transaction")
+      IsThisTheEffectiveDateOfTransaction.radioButton(IsThisTheEffectiveDateOfTransaction.yes)
+      IsThisTheEffectiveDateOfTransaction.saveAndContinue()
+      Then("the TaxCalculationBeforeYouStart page is shown")
+      TaxCalculationBeforeYouStart.verifyPageTitle(TaxCalculationBeforeYouStart.pageTitle)
+
+      When("the user starts the tax calculation questions")
+      TaxCalculationBeforeYouStart.saveAndContinue()
+      Then("the CalculatedSDLTDue page is shown")
+      CalculatedSDLTDue.verifyPageTitle(CalculatedSDLTDue.pageTitle)
+
+      When("the user verifies the calculated sdlt due")
+      CalculatedSDLTDue.saveAndContinue()
+      Then("the SDLTSelfAssessment page is shown")
+      SDLTSelfAssessment.verifyPageTitle(
+        SDLTSelfAssessment.pageTitleFreeholdTax
+      )
+
+      When("the user provides the self assessed amount of sdlt")
+      SDLTSelfAssessment.input(
+        By.id(SDLTSelfAssessment.saaValue),
+        SDLTSelfAssessment.saaInput
+      )
+      SDLTSelfAssessment.saveAndContinue()
+      Then("the TotalAmountDue page is shown")
+      TotalAmountDue.verifyPageTitle(
+        TotalAmountDue.pageTitleFreehold
+      )
+
+      When("the user provides the total amount they intend to pay")
+      TotalAmountDue.input(
+        By.id(TotalAmountDue.tppTax),
+        TotalAmountDue.tppTaxInput
+      )
+      TotalAmountDue.saveAndContinue()
+      Then("the ArePenaltiesAndInterestIncluded page is shown")
+      ArePenaltiesAndInterestIncluded.verifyPageTitle(ArePenaltiesAndInterestIncluded.pageTitle)
+
+      When("the user confirms their payment includes no penalties and interest charges")
+      ArePenaltiesAndInterestIncluded.radioButton(ArePenaltiesAndInterestIncluded.no)
+      ArePenaltiesAndInterestIncluded.saveAndContinue()
+      Then("the TaxCalculationCheckYourAnswers is shown")
+      TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
+
+      When("the user submits the tax calculation questions")
+      TaxCalculationCheckYourAnswers.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
   }
 }

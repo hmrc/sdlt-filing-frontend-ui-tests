@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.TaxCalculations
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TaxCalculationsBeforeYouStart extends BasePage {
+object TaxCalculationBeforeYouStart extends BasePage {
 
   override def pageUrl: String = "tax-calculation/freehold-calculated/before-you-start"
 
