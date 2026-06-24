@@ -436,11 +436,11 @@ class e2eSpec
       ResidencyStatus.radioButton(ResidencyStatus.yes)
       ResidencyStatus.saveAndContinue()
       Then("the CloseCompanies page is shown")
-      CloseCompaniesPage.verifyPageTitle(CloseCompaniesPage.pageTitle)
+      CloseCompanies.verifyPageTitle(CloseCompanies.pageTitle)
 
       When("the user confirms that the purchaser is a UK close company controlled by non-UK residents")
-      CloseCompaniesPage.radioButton(CloseCompaniesPage.yes)
-      CloseCompaniesPage.saveAndContinue()
+      CloseCompanies.radioButton(CloseCompanies.yes)
+      CloseCompanies.saveAndContinue()
       Then("the CrownEmploymentRelief page is shown")
       CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
 
