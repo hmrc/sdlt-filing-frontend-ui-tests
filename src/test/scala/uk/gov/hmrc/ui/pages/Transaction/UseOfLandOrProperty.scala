@@ -18,15 +18,19 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object DescriptionOfRestrictionsConvenantsOrConditions extends BasePage {
+object UseOfLandOrProperty extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/description-of-restrictions-covenants-and-conditions"
+  override def pageUrl: String = "about-the-transaction/use-of-land-or-property"
 
   override def pageTitle: String =
-    "What are the restrictions, covenants or conditions affecting the value of the interest transferred or granted? - About the transaction - Stamp Taxes Online - GOV.UK"
+    "The use of the land or property - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val restrictionsConvenantsOrConditions: String = "value"
-
-  val restrictionsConvenantsOrConditionsInput: String = "Third Party Rights"
+  def office              = "#value_0"
+  def hotel               = "#value_1"
+  def shop                = "#value_2"
+  def warehouse           = "#value_3"
+  def factory             = "#value_4"
+  def otherIndustrialUnit = "#value_5"
+  def other               = "#value_6"
 
 }

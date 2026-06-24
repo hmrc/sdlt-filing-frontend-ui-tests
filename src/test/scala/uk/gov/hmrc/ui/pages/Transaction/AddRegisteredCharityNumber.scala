@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.pages.Transaction
 import uk.gov.hmrc.ui.pages.BasePage
 import org.openqa.selenium.{By, WebDriver}
 
-object DoYouKnowCharityRegistrationNumber extends BasePage {
+object AddRegisteredCharityNumber extends BasePage {
 
   override def pageUrl: String = "about-the-transaction/add-registered-charity-number"
 
@@ -30,18 +30,18 @@ object DoYouKnowCharityRegistrationNumber extends BasePage {
 
   val no: String = "#value-2"
 
-  def clickCharityCommisionLink(): Unit                                               = click(
+  def clickCharityCommissionLink(): Unit                                               = click(
     By.xpath("//a[contains(@href,'register-of-charities.charitycommission')]")
   )
-  def validateCharityComissionLink()(implicit driver: WebDriver): Unit                = {
-    clickCharityCommisionLink()
+  def validateCharityCommissionLink()(implicit driver: WebDriver): Unit                = {
+    clickCharityCommissionLink()
     switchToNewTabAndValidateTitle("About the register of charities")
   }
-  def clickCharityCommisionNorthernIrelandLink(): Unit                                = click(
+  def clickCharityCommissionNorthernIrelandLink(): Unit                                = click(
     By.xpath("//a[contains(@href,'charitycommissionni.org.uk/charity-search')]")
   )
-  def validateCharityComissionNorthernIrelandLink()(implicit driver: WebDriver): Unit = {
-    clickCharityCommisionNorthernIrelandLink()
+  def validateCharityCommissionNorthernIrelandLink()(implicit driver: WebDriver): Unit = {
+    clickCharityCommissionNorthernIrelandLink()
     switchToNewTabAndValidateTitle("Charity search")
   }
 }

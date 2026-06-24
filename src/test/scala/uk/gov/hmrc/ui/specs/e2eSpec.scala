@@ -463,11 +463,11 @@ class e2eSpec
       When("the user starts the transaction questions")
       TransactionBeforeYouStart.saveAndContinue()
       Then("the ConfirmTypeOfTransaction page is shown")
-      ConfirmTheTransaction.verifyPageTitle(ConfirmTheTransaction.pageTitle)
+      ConfirmTypeOfTransaction.verifyPageTitle(ConfirmTypeOfTransaction.pageTitle)
 
       When("the user confirms the transaction type is correct")
-      ConfirmTheTransaction.radioButton(ConfirmTheTransaction.yes)
-      ConfirmTheTransaction.saveAndContinue()
+      ConfirmTypeOfTransaction.radioButton(ConfirmTypeOfTransaction.yes)
+      ConfirmTypeOfTransaction.saveAndContinue()
       Then("the EffectiveDateOfTransaction page is shown")
       EffectiveDateOfTransaction.verifyPageTitle(EffectiveDateOfTransaction.pageTitle)
 
@@ -475,19 +475,19 @@ class e2eSpec
       EffectiveDateOfTransaction.enterEffectiveDateOfTransaction()
       EffectiveDateOfTransaction.saveAndContinue()
       Then("the AddDateOfContract page is shown")
-      DoYouKnowDateOfContractOrConclusionOfMissives.verifyPageTitle(
-        DoYouKnowDateOfContractOrConclusionOfMissives.pageTitle
+      AddDateOfContract.verifyPageTitle(
+        AddDateOfContract.pageTitle
       )
 
       When("the user doesn't add the date of contact or conclusion of missives")
-      DoYouKnowDateOfContractOrConclusionOfMissives.radioButton(DoYouKnowDateOfContractOrConclusionOfMissives.no)
-      DoYouKnowDateOfContractOrConclusionOfMissives.saveAndContinue()
+      AddDateOfContract.radioButton(AddDateOfContract.no)
+      AddDateOfContract.saveAndContinue()
       Then("the LinkedTransactions page is shown")
-      LinkedTransaction.verifyPageTitle(LinkedTransaction.pageTitle)
+      LinkedTransactions.verifyPageTitle(LinkedTransactions.pageTitle)
 
       When("the user confirms the transaction is not linked to another")
-      LinkedTransaction.radioButton(LinkedTransaction.no)
-      LinkedTransaction.saveAndContinue()
+      LinkedTransactions.radioButton(LinkedTransactions.no)
+      LinkedTransactions.saveAndContinue()
       Then("the ClaimingRelief page is shown")
       ClaimingRelief.verifyPageTitle(ClaimingRelief.pageTitle)
 
@@ -495,11 +495,11 @@ class e2eSpec
       ClaimingRelief.radioButton(ClaimingRelief.yes)
       ClaimingRelief.saveAndContinue()
       Then("the ReasonForRelief page is shown")
-      ReasonForClaimingRelief.verifyPageTitle(ReasonForClaimingRelief.pageTitle)
+      ReasonForRelief.verifyPageTitle(ReasonForRelief.pageTitle)
 
       When("the user selects relocation of employment as the reason for claiming relief")
-      ReasonForClaimingRelief.radioButton(ReasonForClaimingRelief.relocationOfEmployment)
-      ReasonForClaimingRelief.saveAndContinue()
+      ReasonForRelief.radioButton(ReasonForRelief.relocationOfEmployment)
+      ReasonForRelief.saveAndContinue()
       Then("the PartialRelief page is shown")
       PartialRelief.verifyPageTitle(PartialRelief.pageTitle)
 
@@ -527,12 +527,12 @@ class e2eSpec
       SaleOfABusiness.radioButton(SaleOfABusiness.yes)
       SaleOfABusiness.saveAndContinue()
       Then("the AssetsIncludedInSaleOfTheBusiness page is shown")
-      WhatIncludedInSale.verifyPageTitle(WhatIncludedInSale.pageTitle)
+      AssetsIncludedInSaleOfTheBusiness.verifyPageTitle(AssetsIncludedInSaleOfTheBusiness.pageTitle)
 
       When("the user selects assets that are included in this transaction")
-      WhatIncludedInSale.checkbox(WhatIncludedInSale.stock, true)
-      WhatIncludedInSale.checkbox(WhatIncludedInSale.chattelsAndMovables, true)
-      WhatIncludedInSale.saveAndContinue()
+      AssetsIncludedInSaleOfTheBusiness.checkbox(AssetsIncludedInSaleOfTheBusiness.stock, true)
+      AssetsIncludedInSaleOfTheBusiness.checkbox(AssetsIncludedInSaleOfTheBusiness.chattelsAndMovables, true)
+      AssetsIncludedInSaleOfTheBusiness.saveAndContinue()
       Then("the TotalConsiderationOfAllAssets page is shown")
       TotalConsiderationOfAllAssets.verifyPageTitle(TotalConsiderationOfAllAssets.pageTitle)
 
@@ -543,11 +543,11 @@ class e2eSpec
       )
       TotalConsiderationOfAllAssets.saveAndContinue()
       Then("the CAP1OrNSBC page is shown")
-      AppliedForCAP1OrNSBC.verifyPageTitle(AppliedForCAP1OrNSBC.pageTitle)
+      CAP1OrNSBC.verifyPageTitle(CAP1OrNSBC.pageTitle)
 
       When("the user confirms they have applied for a CAP1 or NSBC for the transaction")
-      AppliedForCAP1OrNSBC.radioButton(AppliedForCAP1OrNSBC.yes)
-      AppliedForCAP1OrNSBC.saveAndContinue()
+      CAP1OrNSBC.radioButton(CAP1OrNSBC.yes)
+      CAP1OrNSBC.saveAndContinue()
       Then("the HaveYouFollowedTheRuling page is shown")
       HaveYouFollowedTheRuling.verifyPageTitle(
         HaveYouFollowedTheRuling.pageTitle
@@ -557,28 +557,28 @@ class e2eSpec
       HaveYouFollowedTheRuling.radioButton(HaveYouFollowedTheRuling.yes)
       HaveYouFollowedTheRuling.saveAndContinue()
       Then("the RestrictionsCovenantsAndConditions page is shown")
-      RestrictionsConvenantsOrConditions.verifyPageTitle(RestrictionsConvenantsOrConditions.pageTitle)
+      RestrictionsCovenantsAndConditions.verifyPageTitle(RestrictionsCovenantsAndConditions.pageTitle)
 
       When(
         "the user confirms there are no restrictions, covenants or conditions affecting the value of the interest transferred"
       )
-      RestrictionsConvenantsOrConditions.radioButton(RestrictionsConvenantsOrConditions.no)
-      RestrictionsConvenantsOrConditions.saveAndContinue()
+      RestrictionsCovenantsAndConditions.radioButton(RestrictionsCovenantsAndConditions.no)
+      RestrictionsCovenantsAndConditions.saveAndContinue()
       Then("the ExchangeOrPartExchange page is shown")
       ExchangeOrPartExchange.verifyPageTitle(ExchangeOrPartExchange.pageTitle)
 
       When("the user confirms the land is being exchanged or part exchanged")
       ExchangeOrPartExchange.radioButton(ExchangeOrPartExchange.yes)
       ExchangeOrPartExchange.saveAndContinue()
-      Then("the TransactionExchangeAddress page is shown")
-      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.pageTitle)
+      Then("the TransactionAddressLookup page is shown")
+      TransactionAddressLookup.verifyPageTitle(TransactionAddressLookup.pageTitle)
 
       When("the user provides the transaction exchange address")
-      TransactionExchangeAddress.clickAddressManually()
-      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.editPageTitle)
-      TransactionExchangeAddress.enterAddressManually("523", "AGC", "TE11 1TS")
-      TransactionExchangeAddress.verifyPageTitle(TransactionExchangeAddress.confirmPageTitle)
-      TransactionExchangeAddress.clickSubmitButton()
+      TransactionAddressLookup.clickAddressManually()
+      TransactionAddressLookup.verifyPageTitle(TransactionAddressLookup.editPageTitle)
+      TransactionAddressLookup.enterAddressManually("523", "AGC", "TE11 1TS")
+      TransactionAddressLookup.verifyPageTitle(TransactionAddressLookup.confirmPageTitle)
+      TransactionAddressLookup.clickSubmitButton()
       Then("the ExercisingAnOption page is shown")
       ExercisingAnOption.verifyPageTitle(ExercisingAnOption.pageTitle)
 

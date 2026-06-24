@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.pages.Transaction
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TransactionExchangeAddress extends BasePage {
+object TransactionAddressLookup extends BasePage {
 
   override def pageUrl: String = "about-the-transaction/transaction-address-lookup"
 

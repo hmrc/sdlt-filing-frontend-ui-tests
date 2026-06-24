@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object DoYouKnowDateOfContractOrConclusionOfMissives extends BasePage {
+object AddDateOfContract extends BasePage {
 
   override def pageUrl: String = "about-the-transaction/add-date-of-contract "
 

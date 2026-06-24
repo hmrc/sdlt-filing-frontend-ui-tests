@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ReasonForClaimingRelief extends BasePage {
+object ReasonForRelief extends BasePage {
 
   override def pageUrl: String = "about-the-transaction/reason-for-relief"
 

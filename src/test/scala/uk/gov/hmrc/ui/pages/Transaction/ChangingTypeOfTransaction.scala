@@ -18,12 +18,12 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object IsVatIncludedInTotalConsideration extends BasePage {
+object ChangingTypeOfTransaction extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/is-VAT-included"
+  override def pageUrl: String = "about-the-transaction/changing-type-of-transaction"
 
   override def pageTitle: String =
-    "Is VAT included in the total consideration? - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Changing the type of transaction - About the transaction - Stamp Taxes Online - GOV.UK"
 
   val yes: String = "#value"
 

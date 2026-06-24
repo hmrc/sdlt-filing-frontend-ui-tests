@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object RestrictionsConvenantsOrConditions extends BasePage {
+object EnterRegisteredCharityNumber extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/restrictions-covenants-and-conditions"
+  override def pageUrl: String = "about-the-transaction/enter-registered-charity-number"
 
   override def pageTitle: String =
-    "Restrictions, covenants and conditions - About the transaction - Stamp Taxes Online - GOV.UK"
+    "What is the charity’s registered number? - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
+  val charityRegistrationNumber: String = "value"
 
-  val no: String = "#value-2"
+  val charityRegistrationNumberInput: String = "GB104956"
 
 }

@@ -18,16 +18,15 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object WhatIncludedInSale extends BasePage {
+object ConfirmTypeOfTransaction extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/assets-included-in-sale-of-the-business"
+  override def pageUrl: String = "about-the-transaction/confirm-type-of-transaction"
 
   override def pageTitle: String =
-    "What is included in the sale of the business? - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Confirm the type of transaction - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val stock: String               = "#value_0"
-  val goodwill: String            = "#value_1"
-  val chattelsAndMovables: String = "#value_2"
-  val others: String              = "#value_3"
+  val yes: String = "#value"
+
+  val no: String = "#value-2"
 
 }

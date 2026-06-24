@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ConfirmChangeOfTransaction extends BasePage {
+object DescriptionOfRestrictionsCovenantsAndConditions extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/changing-type-of-transaction"
+  override def pageUrl: String = "about-the-transaction/description-of-restrictions-covenants-and-conditions"
 
   override def pageTitle: String =
-    "Changing the type of transaction - About the transaction - Stamp Taxes Online - GOV.UK"
+    "What are the restrictions, covenants or conditions affecting the value of the interest transferred or granted? - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
+  val restrictionsCovenantsAndConditions: String = "value"
 
-  val no: String = "#value-2"
+  val restrictionsCovenantsAndConditionsInput: String = "Third Party Rights"
 
 }

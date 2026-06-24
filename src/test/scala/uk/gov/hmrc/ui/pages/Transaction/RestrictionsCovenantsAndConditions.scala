@@ -18,12 +18,12 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object LinkedTransaction extends BasePage {
+object RestrictionsCovenantsAndConditions extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/linked-transactions"
+  override def pageUrl: String = "about-the-transaction/restrictions-covenants-and-conditions"
 
   override def pageTitle: String =
-    "Linked transactions - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Restrictions, covenants and conditions - About the transaction - Stamp Taxes Online - GOV.UK"
 
   val yes: String = "#value"
 

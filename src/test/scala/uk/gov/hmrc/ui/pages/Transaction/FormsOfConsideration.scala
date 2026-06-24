@@ -19,7 +19,9 @@ package uk.gov.hmrc.ui.pages.Transaction
 import uk.gov.hmrc.ui.pages.BasePage
 
 object FormsOfConsideration extends BasePage {
-  override def pageUrl: String   = "about-the-transaction/forms-of-consideration"
+
+  override def pageUrl: String = "about-the-transaction/forms-of-consideration"
+
   override def pageTitle: String =
     "Forms of consideration - About the transaction - Stamp Taxes Online - GOV.UK"
 

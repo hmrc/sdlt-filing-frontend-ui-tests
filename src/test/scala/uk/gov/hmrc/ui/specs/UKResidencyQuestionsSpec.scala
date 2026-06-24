@@ -43,7 +43,7 @@ class UKResidencyQuestionsSpec
       UKResidencyJourney
     ) {
 
-      Given("the user logs in through the Authority Wizard page")
+      Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(
         HASDIRECT,
         Organisation,

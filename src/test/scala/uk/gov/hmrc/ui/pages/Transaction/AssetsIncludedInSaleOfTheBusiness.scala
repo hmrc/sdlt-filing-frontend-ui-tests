@@ -18,15 +18,16 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object EnterCharityRegistrationNumber extends BasePage {
+object AssetsIncludedInSaleOfTheBusiness extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/enter-registered-charity-number"
+  override def pageUrl: String = "about-the-transaction/assets-included-in-sale-of-the-business"
 
   override def pageTitle: String =
-    "What is the charity’s registered number? - About the transaction - Stamp Taxes Online - GOV.UK"
+    "What is included in the sale of the business? - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val charityRegistrationNumber: String = "value"
-
-  val charityRegistrationNumberInput: String = "GB104956"
+  val stock: String               = "#value_0"
+  val goodwill: String            = "#value_1"
+  val chattelsAndMovables: String = "#value_2"
+  val others: String              = "#value_3"
 
 }
