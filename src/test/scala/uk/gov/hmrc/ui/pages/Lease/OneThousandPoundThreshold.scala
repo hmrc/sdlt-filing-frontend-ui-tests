@@ -18,17 +18,15 @@ package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TotalPremiumPayable extends BasePage {
+object OneThousandPoundThreshold extends BasePage {
 
-  override def pageUrl: String = "about-the-lease/enter-total-premium-payable"
+  override def pageUrl: String = "about-the-lease/1000-pound-threshold"
 
   override def pageTitle: String =
-    "Calculating the total premium payable including VAT - About the lease - Stamp Taxes Online - GOV.UK"
+    "£1,000 threshold - About the lease - Stamp Taxes Online - GOV.UK"
 
-  val TotalPremiumPayable: String = "value"
+  val yes: String = "#value"
 
-  val TotalPremiumPayableInput: String = "2450"
-
-  val TotalPremiumPayableInputCYA: String = "2452"
+  val no: String = "#value-2"
 
 }

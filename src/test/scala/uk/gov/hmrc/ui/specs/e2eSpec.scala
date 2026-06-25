@@ -625,15 +625,15 @@ class e2eSpec
       AddRentFreePeriod.radioButton(AddRentFreePeriod.yes)
       AddRentFreePeriod.saveAndContinue()
       Then("the EnterRentFreePeriod page is shown")
-      RentFreePeriod.verifyPageTitle(RentFreePeriod.pageTitle)
+      EnterRentFreePeriod.verifyPageTitle(EnterRentFreePeriod.pageTitle)
 
       When("the user provides the rent free period in months")
-      RentFreePeriod.input(By.id(RentFreePeriod.rentFreePeriod), RentFreePeriod.inputRentFreePeriod)
-      RentFreePeriod.saveAndContinue()
+      EnterRentFreePeriod.input(By.id(EnterRentFreePeriod.rentFreePeriod), EnterRentFreePeriod.inputRentFreePeriod)
+      EnterRentFreePeriod.saveAndContinue()
       Then("the AnnualStartingRent page is shown")
       AnnualStartingRent.verifyPageTitle(AnnualStartingRent.pageTitle)
 
-      When("the user provides the annual rent")
+      When("the user provides the annual starting rent")
       AnnualStartingRent.clickDropdownText()
       AnnualStartingRent.verifyPageText(AnnualStartingRent.dropdownText, 2)
       AnnualStartingRent.input(By.id(AnnualStartingRent.annualStartingRent), AnnualStartingRent.annualStartingRentInput)
@@ -651,35 +651,35 @@ class e2eSpec
       LaterRent.radioButton(LaterRent.yes)
       LaterRent.saveAndContinue()
       Then("the ThousandPoundThreshold page is shown")
-      ThousandPoundThreshold.verifyPageTitle(ThousandPoundThreshold.pageTitle)
+      OneThousandPoundThreshold.verifyPageTitle(OneThousandPoundThreshold.pageTitle)
 
       When("the user confirms the annual rent is £1000 or more")
-      ThousandPoundThreshold.radioButton(ThousandPoundThreshold.yes)
-      ThousandPoundThreshold.saveAndContinue()
+      OneThousandPoundThreshold.radioButton(OneThousandPoundThreshold.yes)
+      OneThousandPoundThreshold.saveAndContinue()
       Then("the AddAnnualRentVAT page is shown")
-      AnnualRentVAT.verifyPageTitle(AnnualRentVAT.pageTitle)
+      AddAnnualRentVAT.verifyPageTitle(AddAnnualRentVAT.pageTitle)
 
       When("the user confirms vat is payable on the annual rent")
-      AnnualRentVAT.radioButton(AnnualRentVAT.yes)
-      AnnualRentVAT.saveAndContinue()
+      AddAnnualRentVAT.radioButton(AddAnnualRentVAT.yes)
+      AddAnnualRentVAT.saveAndContinue()
       Then("the EnterAnnualRentVAT page is shown")
-      EnterAnnualRentVATAmount.verifyPageTitle(EnterAnnualRentVATAmount.pageTitle)
+      EnterAnnualRentVAT.verifyPageTitle(EnterAnnualRentVAT.pageTitle)
 
       When("the user provides the total amount of vat payable on the annual rent")
-      EnterAnnualRentVATAmount.input(
-        By.id(EnterAnnualRentVATAmount.annualRentVATAmount),
-        EnterAnnualRentVATAmount.annualRentVATAmountInput
+      EnterAnnualRentVAT.input(
+        By.id(EnterAnnualRentVAT.annualRentVATAmount),
+        EnterAnnualRentVAT.annualRentVATAmountInput
       )
-      EnterAnnualRentVATAmount.saveAndContinue()
+      EnterAnnualRentVAT.saveAndContinue()
       Then("the EnterTotalPremiumPayable page is shown")
-      TotalPremiumPayable.verifyPageTitle(TotalPremiumPayable.pageTitle)
+      EnterTotalPremiumPayable.verifyPageTitle(EnterTotalPremiumPayable.pageTitle)
 
       When("the user provides the total premium payable including vat")
-      TotalPremiumPayable.input(
-        By.id(TotalPremiumPayable.TotalPremiumPayable),
-        TotalPremiumPayable.TotalPremiumPayableInput
+      EnterTotalPremiumPayable.input(
+        By.id(EnterTotalPremiumPayable.TotalPremiumPayable),
+        EnterTotalPremiumPayable.TotalPremiumPayableInput
       )
-      TotalPremiumPayable.saveAndContinue()
+      EnterTotalPremiumPayable.saveAndContinue()
       Then("the NetPresentValue page is shown")
       NetPresentValue.verifyPageTitle(NetPresentValue.pageTitle)
 

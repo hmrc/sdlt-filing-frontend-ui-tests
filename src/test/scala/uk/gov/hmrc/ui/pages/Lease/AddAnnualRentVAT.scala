@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object RentFreePeriod extends BasePage {
+object AddAnnualRentVAT extends BasePage {
 
-  override def pageUrl: String = "about-the-lease/enter-rent-free-period"
+  override def pageUrl: String = "about-the-lease/add-annual-rent-VAT"
 
   override def pageTitle: String =
-    "Calculating the rent-free period - About the lease - Stamp Taxes Online - GOV.UK"
+    "Annual rent VAT - About the lease - Stamp Taxes Online - GOV.UK"
 
-  val rentFreePeriod: String = "value"
+  val yes: String = "#value"
 
-  val inputRentFreePeriod: String = "12"
+  val no: String = "#value-2"
 
 }

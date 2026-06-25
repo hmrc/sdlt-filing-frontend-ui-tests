@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ThousandPoundThreshold extends BasePage {
+object EnterRentFreePeriod extends BasePage {
 
-  override def pageUrl: String = "about-the-lease/1000-pound-threshold"
+  override def pageUrl: String = "about-the-lease/enter-rent-free-period"
 
   override def pageTitle: String =
-    "£1,000 threshold - About the lease - Stamp Taxes Online - GOV.UK"
+    "Calculating the rent-free period - About the lease - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
+  val rentFreePeriod: String = "value"
 
-  val no: String = "#value-2"
+  val inputRentFreePeriod: String = "12"
 
 }
