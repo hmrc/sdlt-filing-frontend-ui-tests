@@ -29,11 +29,13 @@ object AnnualStartingRent extends BasePage {
 
   val annualStartingRent: String = "value"
 
-  val annualStartingRentInput: String    = "12000"
+  val annualStartingRentInput: String = "12000"
+
   val annualStartingRentInputCYA: String = "15000"
 
   def clickDropdownText(): Unit = driver.findElement(By.cssSelector("summary.govuk-details__summary")).click()
-  def dropdownText: String      =
+
+  def dropdownText: String =
     "If the exact rent is uncertain (for example, linked to turnover), a reasonable estimate must be made. This should be based on available information, like a business plan or projected turnover, and used to calculate the Net Present Value (NPV) of the rent. Keep evidence of how the estimate was calculated in case requested by HMRC."
 
 }

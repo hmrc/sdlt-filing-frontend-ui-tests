@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AmountOfVAT extends BasePage {
+object CAP1OrNSBC extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/VAT-amount"
+  override def pageUrl: String = "about-the-transaction/CAP1-or-NSBC"
 
   override def pageTitle: String =
-    "Amount of VAT - About the transaction - Stamp Taxes Online - GOV.UK"
+    "CAP1 or NSBC - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val totalAmountOfVAT: String = "value"
+  val yes: String = "#value"
 
-  val totalAmountOfVATInput: String = "30000"
+  val no: String = "#value-2"
 
 }

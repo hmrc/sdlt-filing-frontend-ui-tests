@@ -18,12 +18,12 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object AppliedForCAP1OrNSBC extends BasePage {
+object IsThePurchaserRegisteredWithCIS extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/CAP1-or-NSBC"
+  override def pageUrl: String = "about-the-transaction/is-the-purchaser-registered-with-CIS"
 
   override def pageTitle: String =
-    "CAP1 or NSBC - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Is the purchaser registered with the Construction Industry Scheme (CIS)? - About the transaction - Stamp Taxes Online - GOV.UK"
 
   val yes: String = "#value"
 

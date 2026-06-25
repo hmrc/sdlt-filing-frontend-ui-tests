@@ -14,20 +14,21 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Transaction
+package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object WhatIncludedInSale extends BasePage {
+object EnterTotalPremiumPayable extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/assets-included-in-sale-of-the-business"
+  override def pageUrl: String = "about-the-lease/enter-total-premium-payable"
 
   override def pageTitle: String =
-    "What is included in the sale of the business? - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Calculating the total premium payable including VAT - About the lease - Stamp Taxes Online - GOV.UK"
 
-  val stock: String               = "#value_0"
-  val goodwill: String            = "#value_1"
-  val chattelsAndMovables: String = "#value_2"
-  val others: String              = "#value_3"
+  val TotalPremiumPayable: String = "value"
+
+  val TotalPremiumPayableInput: String = "2450"
+
+  val TotalPremiumPayableInputCYA: String = "2452"
 
 }

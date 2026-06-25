@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Transaction
+package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object EnterCharityRegistrationNumber extends BasePage {
+object AddAnnualRentVAT extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/enter-registered-charity-number"
+  override def pageUrl: String = "about-the-lease/add-annual-rent-VAT"
 
   override def pageTitle: String =
-    "What is the charity’s registered number? - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Annual rent VAT - About the lease - Stamp Taxes Online - GOV.UK"
 
-  val charityRegistrationNumber: String = "value"
+  val yes: String = "#value"
 
-  val charityRegistrationNumberInput: String = "GB104956"
+  val no: String = "#value-2"
 
 }

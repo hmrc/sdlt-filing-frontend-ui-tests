@@ -18,15 +18,15 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object DoYouKnowDateOfContractOrConclusionOfMissives extends BasePage {
+object VATAmount extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/add-date-of-contract "
+  override def pageUrl: String = "about-the-transaction/VAT-amount"
 
   override def pageTitle: String =
-    "Date of contract - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Amount of VAT - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
+  val totalAmountOfVAT: String = "value"
 
-  val no: String = "#value-2"
+  val totalAmountOfVATInput: String = "30000"
 
 }

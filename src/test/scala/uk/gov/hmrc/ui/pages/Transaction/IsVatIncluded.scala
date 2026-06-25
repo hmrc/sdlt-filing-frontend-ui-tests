@@ -18,19 +18,15 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object WhatIsThePropertyUsedFor extends BasePage {
+object IsVatIncluded extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/use-of-land-or-property"
+  override def pageUrl: String = "about-the-transaction/is-VAT-included"
 
   override def pageTitle: String =
-    "The use of the land or property - About the transaction - Stamp Taxes Online - GOV.UK"
+    "Is VAT included in the total consideration? - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  def office              = "#value_0"
-  def hotel               = "#value_1"
-  def shop                = "#value_2"
-  def warehouse           = "#value_3"
-  def factory             = "#value_4"
-  def otherIndustrialUnit = "#value_5"
-  def other               = "#value_6"
+  val yes: String = "#value"
+
+  val no: String = "#value-2"
 
 }

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Transaction
+package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object ConfirmTheTransaction extends BasePage {
+object OneThousandPoundThreshold extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/confirm-type-of-transaction"
+  override def pageUrl: String = "about-the-lease/1000-pound-threshold"
 
   override def pageTitle: String =
-    "Confirm the type of transaction - About the transaction - Stamp Taxes Online - GOV.UK"
+    "£1,000 threshold - About the lease - Stamp Taxes Online - GOV.UK"
 
   val yes: String = "#value"
 

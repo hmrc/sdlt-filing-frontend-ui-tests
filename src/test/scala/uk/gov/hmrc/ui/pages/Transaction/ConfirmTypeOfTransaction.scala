@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Lease
+package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object EnterAnnualRentVATAmount extends BasePage {
+object ConfirmTypeOfTransaction extends BasePage {
 
-  override def pageUrl: String = "about-the-lease/enter-annual-rent-VAT"
+  override def pageUrl: String = "about-the-transaction/confirm-type-of-transaction"
 
   override def pageTitle: String =
-    "What is the total amount of VAT payable on the annual rent? - About the lease - Stamp Taxes Online - GOV.UK"
+    "Confirm the type of transaction - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val annualRentVATAmount: String = "value"
+  val yes: String = "#value"
 
-  val annualRentVATAmountInput: String = "12000"
+  val no: String = "#value-2"
 
 }

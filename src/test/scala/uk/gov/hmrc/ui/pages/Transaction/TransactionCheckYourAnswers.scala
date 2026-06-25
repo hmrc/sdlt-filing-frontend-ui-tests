@@ -148,13 +148,13 @@ object TransactionCheckYourAnswers extends BasePage {
 
   def clickCAP1OrNSBC(): Unit = click(By.cssSelector(CAP1OrNSBC))
 
-  def clickRestrictionsConvenantsAndConditions(): Unit = click(By.cssSelector(RestrictionsConvenantsAndConditions))
+  def clickRestrictionsCovenantsAndConditions(): Unit = click(By.cssSelector(RestrictionsConvenantsAndConditions))
 
   def clickExchangeOrPartExchange(): Unit = click(By.cssSelector(ExchangeOrPartExchange))
 
   def clickExercisingAnOption(): Unit = click(By.cssSelector(ExercisingAnOption))
 
-  def clickDescriptionOfRestrictionsConvenantsAndConditions(): Unit = click(
+  def clickDescriptionOfRestrictionsCovenantsAndConditions(): Unit = click(
     By.cssSelector(DescriptionOfRestrictionsConvenantsAndConditions)
   )
 

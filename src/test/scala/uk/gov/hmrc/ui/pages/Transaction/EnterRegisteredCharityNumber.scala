@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Lease
+package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object TotalPremiumPayable extends BasePage {
+object EnterRegisteredCharityNumber extends BasePage {
 
-  override def pageUrl: String = "about-the-lease/enter-total-premium-payable"
+  override def pageUrl: String = "about-the-transaction/enter-registered-charity-number"
 
   override def pageTitle: String =
-    "Calculating the total premium payable including VAT - About the lease - Stamp Taxes Online - GOV.UK"
+    "What is the charity’s registered number? - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val TotalPremiumPayable: String = "value"
+  val charityRegistrationNumber: String = "value"
 
-  val TotalPremiumPayableInput: String = "2450"
-
-  val TotalPremiumPayableInputCYA: String = "2452"
+  val charityRegistrationNumberInput: String = "GB104956"
 
 }

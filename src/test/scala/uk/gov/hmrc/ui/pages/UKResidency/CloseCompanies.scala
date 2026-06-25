@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.pages.UKResidency
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object CloseCompaniesPage extends BasePage {
+object CloseCompanies extends BasePage {
 
   override def pageUrl: String = "about-UK-residency/close-companies"
 

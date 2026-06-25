@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.ui.pages.Transaction
+package uk.gov.hmrc.ui.pages.Lease
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object IsVatIncludedInTotalConsideration extends BasePage {
+object EnterAnnualRentVAT extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/is-VAT-included"
+  override def pageUrl: String = "about-the-lease/enter-annual-rent-VAT"
 
   override def pageTitle: String =
-    "Is VAT included in the total consideration? - About the transaction - Stamp Taxes Online - GOV.UK"
+    "What is the total amount of VAT payable on the annual rent? - About the lease - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
+  val annualRentVATAmount: String = "value"
 
-  val no: String = "#value-2"
+  val annualRentVATAmountInput: String = "12000"
 
 }

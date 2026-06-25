@@ -18,15 +18,19 @@ package uk.gov.hmrc.ui.pages.Transaction
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object RestrictionsConvenantsOrConditions extends BasePage {
+object UseOfLandOrProperty extends BasePage {
 
-  override def pageUrl: String = "about-the-transaction/restrictions-covenants-and-conditions"
+  override def pageUrl: String = "about-the-transaction/use-of-land-or-property"
 
   override def pageTitle: String =
-    "Restrictions, covenants and conditions - About the transaction - Stamp Taxes Online - GOV.UK"
+    "The use of the land or property - About the transaction - Stamp Taxes Online - GOV.UK"
 
-  val yes: String = "#value"
-
-  val no: String = "#value-2"
+  def office              = "#value_0"
+  def hotel               = "#value_1"
+  def shop                = "#value_2"
+  def warehouse           = "#value_3"
+  def factory             = "#value_4"
+  def otherIndustrialUnit = "#value_5"
+  def other               = "#value_6"
 
 }
