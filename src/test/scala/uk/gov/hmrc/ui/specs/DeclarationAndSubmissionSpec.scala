@@ -48,7 +48,7 @@ class DeclarationAndSubmissionSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("123456")
+        returnId = Some("submission-complete")
       )
 
       When("the user clicks on the 'Submit Your Return' link on ReturnTaskList")
@@ -83,11 +83,18 @@ class DeclarationAndSubmissionSpec
       When("the user selects purchaserAuthorised and continues")
       WhoAreYouSubmittingThisReturnFor.radioButton(WhoAreYouSubmittingThisReturnFor.purchaserAuthorised)
       WhoAreYouSubmittingThisReturnFor.saveAndContinue()
-      Then("the user is navigated to Confirm Declaration ")
+      Then("the user is navigated to Confirm Declaration")
       DeclarationConfirmation.verifyPageTitle(DeclarationConfirmation.pageTitle)
 
-      When("the user clicks Confirm and Submit")
-      DeclarationConfirmation.saveAndContinue()
+      // uncomment when navigation to bs-4 is ready
+      // When("the user clicks Confirm and Submit")
+      // DeclarationConfirmation.saveAndContinue()
+
+      Then("the SubmissionComplete page is shown")
+      SubmissionComplete.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/submission-complete#"
+      )
+      SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
     }
   }
 }
