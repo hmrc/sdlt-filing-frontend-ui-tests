@@ -95,6 +95,12 @@ class DeclarationAndSubmissionSpec
         "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/submission-complete#"
       )
       SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
+
+      When("the user views their submitted return")
+      // click link when it's ready
+
+      When("the user views their sdlt5 certificate")
+      // click link when it's ready
     }
   }
 }

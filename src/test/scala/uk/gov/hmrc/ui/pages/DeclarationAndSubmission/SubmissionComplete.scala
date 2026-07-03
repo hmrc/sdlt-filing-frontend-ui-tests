@@ -20,7 +20,7 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object SubmissionComplete extends BasePage {
 
-  override def pageUrl: String   = "submit-your-return/submission-complete"
+  override def pageUrl: String = "submit-your-return/submission-complete"
 
   override def pageTitle: String =
     "Submission complete - Submit your return - Stamp Taxes Online - GOV.UK"
