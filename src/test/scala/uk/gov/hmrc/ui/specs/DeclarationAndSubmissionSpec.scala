@@ -104,7 +104,11 @@ class DeclarationAndSubmissionSpec
       CompletedReturn.verifyPageTitle(CompletedReturn.pageTitle)
 
       When("the user views their sdlt5 certificate")
-      // click link when it's ready
+      Then("the SubmissionReceipt page is shown")
+      SubmissionComplete.navigateToPage(
+        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/submission-receipt-and-SDLT5"
+      )
+      SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitleForSubmissionReceipt)
     }
   }
 }

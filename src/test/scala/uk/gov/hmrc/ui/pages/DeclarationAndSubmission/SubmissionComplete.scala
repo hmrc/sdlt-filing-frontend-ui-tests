@@ -24,5 +24,11 @@ object SubmissionComplete extends BasePage {
 
   override def pageTitle: String =
     "Submission complete - Submit your return - Stamp Taxes Online - GOV.UK"
+
+  def pageUrlForSubmissionReceipt: String = "submit-your-return/submission-receipt-and-SDLT5"
+
+  def pageTitleForSubmissionReceipt: String =
+    "Submission receipt and electronic SDLT5 certificate - Submit your return - Stamp Taxes Online - GOV.UK"
+
   // def submittedReturnLink: String = "View your submitted return"
 }
