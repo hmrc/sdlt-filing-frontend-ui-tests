@@ -412,7 +412,7 @@ class e2eSpec
     }
 
     Scenario(
-      "Complete the end to end flow of the Filing Journey from UK Residency Questions to Lease Questions",
+      "Complete the end to end flow of the Filing Journey from UK Residency Questions to Tax Calculation Questions",
       e2eJourney
     ) {
 
