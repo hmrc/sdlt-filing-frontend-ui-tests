@@ -417,7 +417,7 @@ class e2eSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-residential"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("e2e-from-uk-residency-to-tax-calculation"))
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
@@ -696,17 +696,6 @@ class e2eSpec
       LeaseCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
-    }
-
-    Scenario(
-      "Complete the end to end flow of the Tax Calculation Questions",
-      e2eJourney
-    ) {
-
-      Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("freehold-tax-calculated"))
-      Then("the ReturnTaskList page is shown")
-      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the tax calculation questions")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
@@ -721,30 +710,34 @@ class e2eSpec
       When("the user verifies October 1st 2024 as the effective date of transaction")
       IsThisTheEffectiveDateOfTransaction.radioButton(IsThisTheEffectiveDateOfTransaction.yes)
       IsThisTheEffectiveDateOfTransaction.saveAndContinue()
-      Then("the TaxCalculationBeforeYouStart page is shown")
-      TaxCalculationBeforeYouStart.verifyPageTitle(TaxCalculationBeforeYouStart.pageTitle)
-
-      When("the user starts the tax calculation questions")
-      TaxCalculationBeforeYouStart.saveAndContinue()
       Then("the CalculatedSDLTDue page is shown")
-      CalculatedSDLTDue.verifyPageTitle(CalculatedSDLTDue.pageTitle)
+      CalculatedSDLTDue.verifyPageTitle(CalculatedSDLTDue.leaseholdSelfAssesedSDLTDuepageTitle)
 
-      When("the user verifies the calculated sdlt due")
-      CalculatedSDLTDue.saveAndContinue()
-      Then("the SDLTSelfAssessment page is shown")
-      SDLTSelfAssessment.verifyPageTitle(
-        SDLTSelfAssessment.pageTitleFreeholdTax
+      When("the user continues to calculate the sdlt due")
+      SDLTBreakdown.saveAndContinue()
+      Then("the TaxDueOnTotalPremiumPayable page is shown")
+      TaxDueOnTotalPremiumPayable.verifyPageTitle(
+        TaxDueOnTotalPremiumPayable.pageTitle
       )
 
-      When("the user provides the self assessed amount of sdlt")
-      SDLTSelfAssessment.input(
-        By.id(SDLTSelfAssessment.saaValue),
-        SDLTSelfAssessment.saaInput
+      When("the user provides the tax due on the total premium payable")
+      TaxDueOnTotalPremiumPayable.input(
+        By.id(TaxDueOnTotalPremiumPayable.tppTax),
+        TaxDueOnTotalPremiumPayable.tppTaxInput
       )
-      SDLTSelfAssessment.saveAndContinue()
+      TaxDueOnTotalPremiumPayable.saveAndContinue()
+      Then("the TaxDueOnNPV page is shown")
+      TaxDueOnNPV.verifyPageTitle(TaxDueOnNPV.pageTitle)
+
+      When("the user provides the tax due on the npv")
+      TaxDueOnNPV.input(
+        By.id(TaxDueOnNPV.taxDueOnNPVAmountInput),
+        TaxDueOnNPV.taxDueOnNPVAmount
+      )
+      TaxDueOnNPV.saveAndContinue()
       Then("the TotalAmountDue page is shown")
       TotalAmountDue.verifyPageTitle(
-        TotalAmountDue.pageTitleFreehold
+        TotalAmountDue.pageTitle
       )
 
       When("the user provides the total amount they intend to pay")
@@ -754,7 +747,9 @@ class e2eSpec
       )
       TotalAmountDue.saveAndContinue()
       Then("the ArePenaltiesAndInterestIncluded page is shown")
-      ArePenaltiesAndInterestIncluded.verifyPageTitle(ArePenaltiesAndInterestIncluded.pageTitle)
+      ArePenaltiesAndInterestIncluded.verifyPageTitle(
+        ArePenaltiesAndInterestIncluded.pageTitleLeaseholdNotCalculated
+      )
 
       When("the user confirms their payment includes no penalties and interest charges")
       ArePenaltiesAndInterestIncluded.radioButton(ArePenaltiesAndInterestIncluded.no)
