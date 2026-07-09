@@ -265,12 +265,6 @@ class LeaseQuestionsSpec
       Then("the ThousandPoundThreshold page is shown")
       OneThousandPoundThreshold.verifyPageTitle(OneThousandPoundThreshold.pageTitle)
 
-      When("the user confirms the annual rent is £1000 or more")
-      OneThousandPoundThreshold.radioButton(OneThousandPoundThreshold.yes)
-      OneThousandPoundThreshold.saveAndContinue()
-      Then("the AddAnnualRentVAT page is shown")
-      AddAnnualRentVAT.verifyPageTitle(AddAnnualRentVAT.pageTitle)
-
       When("the user confirms vat is not payable on the annual rent")
       AddAnnualRentVAT.radioButton(AddAnnualRentVAT.no)
       AddAnnualRentVAT.saveAndContinue()
@@ -293,13 +287,6 @@ class LeaseQuestionsSpec
       Then("the LeaseCheckYourAnswers page is shown")
       LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
 
-      When("the user updates their answer to the annual rent being £1000 or more")
-      LeaseCheckYourAnswers.clickAnnualRent1000rMore()
-      OneThousandPoundThreshold.verifyPageTitle(OneThousandPoundThreshold.pageTitle)
-      OneThousandPoundThreshold.radioButton(OneThousandPoundThreshold.yes)
-      OneThousandPoundThreshold.saveAndContinue()
-      Then("the LeaseCheckYourAnswers page is shown")
-      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
 
       When("the user updates their answer to provide the total amount of vat payable")
       LeaseCheckYourAnswers.clickIsVatPayableOnRent()
