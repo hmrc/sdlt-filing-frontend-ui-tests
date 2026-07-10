@@ -262,8 +262,8 @@ class LeaseQuestionsSpec
       When("the user confirms they know the later rent")
       LaterRent.radioButton(LaterRent.no)
       LaterRent.saveAndContinue()
-      Then("the ThousandPoundThreshold page is shown")
-      OneThousandPoundThreshold.verifyPageTitle(OneThousandPoundThreshold.pageTitle)
+      Then("the AddAnnualRentVAT page is shown")
+      AddAnnualRentVAT.verifyPageTitle(AddAnnualRentVAT.pageTitle)
 
       When("the user confirms vat is not payable on the annual rent")
       AddAnnualRentVAT.radioButton(AddAnnualRentVAT.no)
@@ -286,7 +286,6 @@ class LeaseQuestionsSpec
       LaterRent.saveAndContinue()
       Then("the LeaseCheckYourAnswers page is shown")
       LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
-
 
       When("the user updates their answer to provide the total amount of vat payable")
       LeaseCheckYourAnswers.clickIsVatPayableOnRent()
