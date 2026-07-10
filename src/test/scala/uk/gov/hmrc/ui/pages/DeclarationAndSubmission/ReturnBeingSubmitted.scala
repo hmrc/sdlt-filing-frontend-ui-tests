@@ -17,14 +17,12 @@
 package uk.gov.hmrc.ui.pages.DeclarationAndSubmission
 
 import uk.gov.hmrc.ui.pages.BasePage
-import org.openqa.selenium.By
 
-object SubmissionComplete extends BasePage {
+object ReturnBeingSubmitted extends BasePage {
 
-  override def pageUrl: String = "submit-your-return/submission-complete"
+  override def pageUrl: String = "submit-your-return/return-is-being-submitted"
 
   override def pageTitle: String =
-    "Submission complete - Submit your return - Stamp Taxes Online - GOV.UK"
+    "Your return is being submitted to HMRC - Submit your return"
 
-  val submittedReturnLink: By = By.xpath("//a[contains(text(),'View your submitted return')]")
 }
