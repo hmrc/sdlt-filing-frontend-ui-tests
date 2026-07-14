@@ -77,6 +77,12 @@ class DeclarationAndSubmissionSpec
       When("the user enters email address and clicks Save and Continue")
       EnterEmailAddress.input(By.id(EnterEmailAddress.emailAddress), EnterEmailAddress.emailAddressInput)
       EnterEmailAddress.saveAndContinue()
+      Then("the user is navigated to Do you want certificate page")
+      DoYouWantCertificate.verifyPageTitle(DoYouWantCertificate.pageTitle)
+
+      When("the user selects yes and continues")
+      DoYouWantCertificate.radioButton(DoYouWantCertificate.yes)
+      DoYouWantCertificate.saveAndContinue()
       Then("the user is navigated to Who are you submitting this return for")
       WhoAreYouSubmittingThisReturnFor.verifyPageTitle(WhoAreYouSubmittingThisReturnFor.pageTitle)
 
