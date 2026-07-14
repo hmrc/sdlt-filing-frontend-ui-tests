@@ -262,12 +262,6 @@ class LeaseQuestionsSpec
       When("the user confirms they know the later rent")
       LaterRent.radioButton(LaterRent.no)
       LaterRent.saveAndContinue()
-      Then("the ThousandPoundThreshold page is shown")
-      OneThousandPoundThreshold.verifyPageTitle(OneThousandPoundThreshold.pageTitle)
-
-      When("the user confirms the annual rent is £1000 or more")
-      OneThousandPoundThreshold.radioButton(OneThousandPoundThreshold.yes)
-      OneThousandPoundThreshold.saveAndContinue()
       Then("the AddAnnualRentVAT page is shown")
       AddAnnualRentVAT.verifyPageTitle(AddAnnualRentVAT.pageTitle)
 
@@ -290,14 +284,6 @@ class LeaseQuestionsSpec
       LaterRent.verifyPageTitle(LaterRent.pageTitle)
       LaterRent.radioButton(LaterRent.yes)
       LaterRent.saveAndContinue()
-      Then("the LeaseCheckYourAnswers page is shown")
-      LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
-
-      When("the user updates their answer to the annual rent being £1000 or more")
-      LeaseCheckYourAnswers.clickAnnualRent1000rMore()
-      OneThousandPoundThreshold.verifyPageTitle(OneThousandPoundThreshold.pageTitle)
-      OneThousandPoundThreshold.radioButton(OneThousandPoundThreshold.yes)
-      OneThousandPoundThreshold.saveAndContinue()
       Then("the LeaseCheckYourAnswers page is shown")
       LeaseCheckYourAnswers.verifyPageTitle(LeaseCheckYourAnswers.pageTitle)
 

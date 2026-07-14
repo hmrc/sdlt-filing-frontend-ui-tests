@@ -48,7 +48,7 @@ class DeclarationAndSubmissionSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("submission-complete")
+        returnId = Some("submitted")
       )
 
       When("the user clicks on the 'Submit Your Return' link on ReturnTaskList")
@@ -92,22 +92,19 @@ class DeclarationAndSubmissionSpec
       Then("the user is navigated to Confirm Declaration")
       DeclarationConfirmation.verifyPageTitle(DeclarationConfirmation.pageTitle)
 
-      // uncomment when navigation to bs-4 is ready
-      // When("the user clicks Confirm and Submit")
-      // DeclarationConfirmation.saveAndContinue()
+      When("the user clicks Confirm and Submit")
+      DeclarationConfirmation.saveAndContinue()
+      Then("the user is shown Your Return is being submitted")
+      ReturnBeingSubmitted.verifyPageTitle(ReturnBeingSubmitted.pageTitle)
 
-      Then("the SubmissionComplete page is shown")
-      SubmissionComplete.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/submission-complete#"
-      )
+      And("then the user is navigated to SubmissionComplete page")
+      SubmissionComplete.waitForPage()
       SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
-      // click view submitted return link when it's ready
 
-      When("the user views their submitted return")
-      CompletedReturn.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/your-completed-SDLT-return"
-      )
-      CompletedReturn.verifyPageTitle(CompletedReturn.pageTitle)
+      When("the user click on views your submitted return")
+      SubmissionComplete.click(SubmissionComplete.submittedReturnLink)
+      Then("the user is navigated to completed SDLT return page")
+      CompletedReturn.verifyPageTitle(CompletedReturn.submittedReturnPageTitle)
 
       When("the user views their sdlt5 certificate")
       Then("the SubmissionReceipt page is shown")
