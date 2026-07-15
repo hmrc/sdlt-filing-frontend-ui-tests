@@ -27,4 +27,6 @@ object SubmissionComplete extends BasePage {
     "Submission complete - Submit your return - Stamp Taxes Online - GOV.UK"
 
   val submittedReturnLink: By = By.xpath("//a[contains(text(),'View your submitted return')]")
+
+  val sdlt5certificateLink: By = By.xpath("//a[contains(text(),'save your SDLT 5 certificate (opens in new tab)')]")
 }
