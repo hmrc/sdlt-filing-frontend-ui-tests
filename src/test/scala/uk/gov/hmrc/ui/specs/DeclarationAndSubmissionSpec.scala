@@ -26,6 +26,7 @@ import uk.gov.hmrc.ui.tags.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
 import org.openqa.selenium.By
+import uk.gov.hmrc.selenium.webdriver.Driver.instance
 
 class DeclarationAndSubmissionSpec
     extends AnyFeatureSpec
@@ -48,7 +49,7 @@ class DeclarationAndSubmissionSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("submitted")
+        returnId = Some("submission-complete-multiples")
       )
 
       When("the user clicks on the 'Submit Your Return' link on ReturnTaskList")
@@ -94,8 +95,6 @@ class DeclarationAndSubmissionSpec
 
       When("the user clicks Confirm and Submit")
       DeclarationConfirmation.saveAndContinue()
-      Then("the user is shown Your Return is being submitted")
-      ReturnBeingSubmitted.verifyPageTitle(ReturnBeingSubmitted.pageTitle)
 
       And("then the user is navigated to SubmissionComplete page")
       SubmissionComplete.waitForPage()
@@ -106,12 +105,14 @@ class DeclarationAndSubmissionSpec
       Then("the user is navigated to completed SDLT return page")
       CompletedReturn.verifyPageTitle(CompletedReturn.submittedReturnPageTitle)
 
-      When("the user views their sdlt5 certificate")
-      Then("the SubmissionReceipt page is shown")
-      SubmissionReceipt.navigateToPage(
-        "http://localhost:10910/stamp-duty-land-tax-filing/submit-your-return/submission-receipt-and-SDLT5"
+      When(
+        "the user navigates back to the SubmissionComplete page and clicks on the 'View your submission receipt' link"
       )
-      SubmissionReceipt.verifyPageTitle(SubmissionReceipt.pageTitle)
+      SubmissionComplete.navigateBackToPage()
+      SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
+      SubmissionComplete.click(SubmissionComplete.sdlt5certificateLink)
+      Then("the SubmissionReceipt page is shown")
+      SubmissionReceipt.switchToNewTabAndValidateTitle(SubmissionReceipt.pageTitle)
     }
   }
 }
