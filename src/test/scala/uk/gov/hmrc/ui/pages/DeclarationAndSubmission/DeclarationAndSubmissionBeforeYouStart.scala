@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.pages.DeclarationAndSubmission
 
+import org.openqa.selenium.By
 import uk.gov.hmrc.ui.pages.BasePage
 
 object DeclarationAndSubmissionBeforeYouStart extends BasePage {
@@ -24,4 +25,7 @@ object DeclarationAndSubmissionBeforeYouStart extends BasePage {
 
   override def pageTitle: String = "Before you start - Submit your return - Stamp Taxes Online - GOV.UK"
 
+  val viewAndPrintThisReturnLink: By = By.xpath(
+    "//a[contains(text(),'view and print this return for your client’s approval before submitting (opens in new tab)')]"
+  )
 }

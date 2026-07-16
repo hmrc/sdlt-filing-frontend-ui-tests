@@ -38,33 +38,31 @@ class DeclarationAndSubmissionSpec
     with Browser
     with ScreenshotOnFailure {
 
-  Feature("SDLT Filing Frontend Declaration and Submission") {
+  Feature("SDLT Filing Frontend Declaration and Submission Questions") {
 
     Scenario(
-      "Complete the Declaration and Submission flow",
+      "Complete the Declaration and Submission questions for a complete submission",
       DeclarationAndSubmissionJourney
     ) {
 
-      Given("the user logs in through the Authority Wizard page")
+      Given("the user is logged in through the AuthWizard page")
       AuthWizard.login(
         HASDIRECT,
         Organisation,
         returnId = Some("submission-complete-multiples")
       )
 
-      When("the user clicks on the 'Submit Your Return' link on ReturnTaskList")
+      When("the user opens the submit your return questions")
       ReturnTaskList.clickLinkById("task-list-link-submit-your-return")
-      Then("the user is navigated to the Declaration And Submission Before you start page")
+      Then("the DeclarationAndSubmissionBeforeYouStart page is shown")
       DeclarationAndSubmissionBeforeYouStart.verifyPageTitle(DeclarationAndSubmissionBeforeYouStart.pageTitle)
 
-      // do next step once completed-return page created:
+      When("the user views their completed sdlt return")
+      DeclarationAndSubmissionBeforeYouStart.click(DeclarationAndSubmissionBeforeYouStart.viewAndPrintThisReturnLink)
+      Then("the YourCompletedSDLTReturn page is shown")
+      YourCompletedSDLTReturn.switchToNewTabAndValidateTitle(YourCompletedSDLTReturn.submittedReturnPageTitle)
 
-      /*
-        When the user click on View and Print this return
-        Then the user is navigated to the completed return form
-       */
-
-      When("the user clicks the Continue button")
+      When("the user starts the submit your return questions")
       DeclarationAndSubmissionBeforeYouStart.saveAndContinue()
       Then("the AddEmailConfirmation page is shown")
       AddEmailConfirmation.verifyPageTitle(AddEmailConfirmation.pageTitle)
@@ -72,47 +70,44 @@ class DeclarationAndSubmissionSpec
       When("the user chooses to receive an email confirmation when the return is submitted")
       AddEmailConfirmation.radioButton(AddEmailConfirmation.yes)
       AddEmailConfirmation.saveAndContinue()
-      Then("the user is navigated to What email address should HMRC use?")
+      Then("the EnterEmailAddress page is shown")
       EnterEmailAddress.verifyPageTitle(EnterEmailAddress.pageTitle)
 
-      When("the user enters email address and clicks Save and Continue")
+      When("the user provides their email address")
       EnterEmailAddress.input(By.id(EnterEmailAddress.emailAddress), EnterEmailAddress.emailAddressInput)
       EnterEmailAddress.saveAndContinue()
-      Then("the user is navigated to Do you want certificate page")
-      DoYouWantCertificate.verifyPageTitle(DoYouWantCertificate.pageTitle)
+      Then("the SDLT5CertificateForEachLandOrProperty page is shown")
+      SDLT5CertificateForEachLandOrProperty.verifyPageTitle(SDLT5CertificateForEachLandOrProperty.pageTitle)
 
-      When("the user selects yes and continues")
-      DoYouWantCertificate.radioButton(DoYouWantCertificate.yes)
-      DoYouWantCertificate.saveAndContinue()
-      Then("the user is navigated to Who are you submitting this return for")
+      When("the user confirms to receive an sdlt5 certificate for each area of land")
+      SDLT5CertificateForEachLandOrProperty.radioButton(SDLT5CertificateForEachLandOrProperty.yes)
+      SDLT5CertificateForEachLandOrProperty.saveAndContinue()
+      Then("the WhoAreYouSubmittingThisReturnFor page is shown")
       WhoAreYouSubmittingThisReturnFor.verifyPageTitle(WhoAreYouSubmittingThisReturnFor.pageTitle)
 
-      When("the user selects purchaserAuthorised and continues")
+      When("the user confirms to submit the return for authorised purchasers")
       WhoAreYouSubmittingThisReturnFor.radioButton(WhoAreYouSubmittingThisReturnFor.purchaserAuthorised)
       WhoAreYouSubmittingThisReturnFor.saveAndContinue()
-      Then("the user is navigated to Confirm Declaration")
+      Then("the DeclarationConfirmation page is shown")
       DeclarationConfirmation.verifyPageTitle(DeclarationConfirmation.pageTitle)
 
-      When("the user clicks Confirm and Submit")
+      When("the user has read the declaration and submits their return")
       DeclarationConfirmation.saveAndContinue()
-
-      And("then the user is navigated to SubmissionComplete page")
+      Then("the SubmissionComplete page is shown")
       SubmissionComplete.waitForPage()
       SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
 
-      When("the user click on views your submitted return")
+      When("the user views their submitted sdlt return")
       SubmissionComplete.click(SubmissionComplete.submittedReturnLink)
-      Then("the user is navigated to completed SDLT return page")
-      CompletedReturn.verifyPageTitle(CompletedReturn.submittedReturnPageTitle)
+      Then("the YourCompletedSDLTReturn page is shown")
+      YourCompletedSDLTReturn.verifyPageTitle(YourCompletedSDLTReturn.submittedReturnPageTitle)
 
-      When(
-        "the user navigates back to the SubmissionComplete page and clicks on the 'View your submission receipt' link"
-      )
+      When("the user views their sdlt5 certificate")
       SubmissionComplete.navigateBackToPage()
       SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
       SubmissionComplete.click(SubmissionComplete.sdlt5certificateLink)
-      Then("the SubmissionReceipt page is shown")
-      SubmissionReceipt.switchToNewTabAndValidateTitle(SubmissionReceipt.pageTitle)
+      Then("the SubmissionReceiptAndSDLT5 page is shown")
+      SubmissionReceiptAndSDLT5.switchToNewTabAndValidateTitle(SubmissionReceiptAndSDLT5.pageTitle)
     }
   }
 }

@@ -19,7 +19,9 @@ package uk.gov.hmrc.ui.pages.DeclarationAndSubmission
 import uk.gov.hmrc.ui.pages.BasePage
 
 object DeclarationConfirmation extends BasePage {
-  override def pageUrl: String   = "submit-your-return/declaration"
+
+  override def pageUrl: String = "submit-your-return/declaration"
+
   override def pageTitle: String =
     "Declaration - Submit your return - Stamp Taxes Online - GOV.UK"
 
