@@ -18,11 +18,12 @@ package uk.gov.hmrc.ui.pages.DeclarationAndSubmission
 
 import uk.gov.hmrc.ui.pages.BasePage
 
-object SubmissionReceipt extends BasePage {
+object YourCompletedSDLTReturn extends BasePage {
 
-  override def pageUrl: String = "submit-your-return/submission-receipt-and-SDLT5"
+  override def pageUrl: String = "submit-your-return/your-completed-SDLT-return"
 
-  override def pageTitle: String =
-    "Submission receipt and electronic SDLT5 certificate - Submit your return - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Your completed SDLT return - Submit your return - Stamp Taxes Online - GOV.UK"
+
+  def submittedReturnPageTitle: String = "Your submitted SDLT return - Submit your return - Stamp Taxes Online - GOV.UK"
 
 }

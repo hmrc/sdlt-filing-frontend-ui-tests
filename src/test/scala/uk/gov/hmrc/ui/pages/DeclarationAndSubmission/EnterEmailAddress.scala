@@ -19,7 +19,9 @@ package uk.gov.hmrc.ui.pages.DeclarationAndSubmission
 import uk.gov.hmrc.ui.pages.BasePage
 
 object EnterEmailAddress extends BasePage {
-  override def pageUrl: String   = "submit-your-return/enter-email-address"
+
+  override def pageUrl: String = "submit-your-return/enter-email-address"
+
   override def pageTitle: String =
     "What email address should HMRC use to send confirmation? - Submit your return - Stamp Taxes Online - GOV.UK"
 

@@ -19,7 +19,9 @@ package uk.gov.hmrc.ui.pages.DeclarationAndSubmission
 import uk.gov.hmrc.ui.pages.BasePage
 
 object WhoAreYouSubmittingThisReturnFor extends BasePage {
-  override def pageUrl: String   = "submit-your-return/who-are-you-submitting-this-return-for"
+
+  override def pageUrl: String = "submit-your-return/who-are-you-submitting-this-return-for"
+
   override def pageTitle: String =
     "Who are you submitting this return for? - Submit your return - Stamp Taxes Online - GOV.UK"
 
