@@ -32,8 +32,10 @@ import uk.gov.hmrc.ui.pages.UKResidency.*
 import uk.gov.hmrc.ui.pages.Transaction.*
 import uk.gov.hmrc.ui.pages.Lease.*
 import uk.gov.hmrc.ui.pages.TaxCalculations.*
+import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
+import uk.gov.hmrc.selenium.webdriver.Driver.instance
 import uk.gov.hmrc.ui.tags.*
 
 class e2eSpec
@@ -46,10 +48,10 @@ class e2eSpec
     with Browser
     with ScreenshotOnFailure {
 
-  Feature("SDLT Filing Frontend end to end") {
+  Feature("SDLT Filing Frontend End to End Journeys") {
 
     Scenario(
-      "Complete the end to end flow of the Filing Journey from Preliminary Questions to Land Questions",
+      "Complete the Filing Journey from Preliminary Questions to Land Questions and Submitting Your Return",
       e2eJourney
     ) {
 
@@ -409,10 +411,49 @@ class e2eSpec
       LandOverview.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user opens the submit your return questions")
+      ReturnTaskList.clickLinkById("task-list-link-submit-your-return")
+      Then("the DeclarationAndSubmissionBeforeYouStart page is shown")
+      DeclarationAndSubmissionBeforeYouStart.verifyPageTitle(DeclarationAndSubmissionBeforeYouStart.pageTitle)
+
+      When("the user views their completed sdlt return")
+      DeclarationAndSubmissionBeforeYouStart.click(DeclarationAndSubmissionBeforeYouStart.viewAndPrintThisReturnLink)
+      Then("the YourCompletedSDLTReturn page is shown")
+      YourCompletedSDLTReturn.switchToNewTabAndValidateTitle(YourCompletedSDLTReturn.pageTitle)
+
+      When("the user starts the submit your return questions")
+      DeclarationAndSubmissionBeforeYouStart.saveAndContinue()
+      Then("the AddEmailConfirmation page is shown")
+      AddEmailConfirmation.verifyPageTitle(AddEmailConfirmation.pageTitle)
+
+      When("the user chooses to receive an email confirmation when the return is submitted")
+      AddEmailConfirmation.radioButton(AddEmailConfirmation.yes)
+      AddEmailConfirmation.saveAndContinue()
+      Then("the EnterEmailAddress page is shown")
+      EnterEmailAddress.verifyPageTitle(EnterEmailAddress.pageTitle)
+
+      When("the user provides their email address")
+      EnterEmailAddress.input(By.id(EnterEmailAddress.emailAddress), EnterEmailAddress.emailAddressInput)
+      EnterEmailAddress.saveAndContinue()
+      Then("the WhoAreYouSubmittingThisReturnFor page is shown")
+      WhoAreYouSubmittingThisReturnFor.verifyPageTitle(WhoAreYouSubmittingThisReturnFor.pageTitle)
+
+      When("the user confirms to submit the return for authorised purchasers")
+      WhoAreYouSubmittingThisReturnFor.radioButton(WhoAreYouSubmittingThisReturnFor.purchaserAuthorised)
+      WhoAreYouSubmittingThisReturnFor.saveAndContinue()
+      Then("the DeclarationConfirmation page is shown")
+      DeclarationConfirmation.verifyPageTitle(DeclarationConfirmation.pageTitle)
+
+      When("the user has read the declaration and submits their return")
+      DeclarationConfirmation.saveAndContinue()
+      Then("the SubmissionAwaitingConfirmation page is shown")
+      SubmissionAwaitingConfirmation.waitForPage()
+      SubmissionAwaitingConfirmation.verifyPageTitle(SubmissionAwaitingConfirmation.pageTitle)
     }
 
     Scenario(
-      "Complete the end to end flow of the Filing Journey from UK Residency Questions to Tax Calculation Questions",
+      "Complete the Filing Journey from UK Residency Questions to Tax Calculation Questions",
       e2eJourney
     ) {
 
