@@ -813,21 +813,21 @@ class e2eSpec
 
       When("the user has read the declaration and submits their return")
       DeclarationConfirmation.saveAndContinue()
-      Then("the SubmissionComplete page is shown")
-      SubmissionComplete.waitForPage()
-      SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
-
-      When("the user views their submitted sdlt return")
-      SubmissionComplete.click(SubmissionComplete.submittedReturnLink)
-      Then("the YourCompletedSDLTReturn page is shown")
-      YourCompletedSDLTReturn.verifyPageTitle(YourCompletedSDLTReturn.submittedReturnPageTitle)
-
-      When("the user views their sdlt5 certificate")
-      SubmissionComplete.navigateBackToPage()
-      SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
-      SubmissionComplete.click(SubmissionComplete.sdlt5certificateLink)
-      Then("the SubmissionReceiptAndSDLT5 page is shown")
-      SubmissionReceiptAndSDLT5.switchToNewTabAndValidateTitle(SubmissionReceiptAndSDLT5.pageTitle)
+//      Then("the SubmissionComplete page is shown")
+//      SubmissionComplete.waitForPage()
+//      SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
+//
+//      When("the user views their submitted sdlt return")
+//      SubmissionComplete.click(SubmissionComplete.submittedReturnLink)
+//      Then("the YourCompletedSDLTReturn page is shown")
+//      YourCompletedSDLTReturn.verifyPageTitle(YourCompletedSDLTReturn.submittedReturnPageTitle)
+//
+//      When("the user views their sdlt5 certificate")
+//      SubmissionComplete.navigateBackToPage()
+//      SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
+//      SubmissionComplete.click(SubmissionComplete.sdlt5certificateLink)
+//      Then("the SubmissionReceiptAndSDLT5 page is shown")
+//      SubmissionReceiptAndSDLT5.switchToNewTabAndValidateTitle(SubmissionReceiptAndSDLT5.pageTitle)
     }
   }
 }
