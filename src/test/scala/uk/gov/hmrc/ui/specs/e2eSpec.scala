@@ -767,7 +767,7 @@ class e2eSpec
 
     Scenario(
       "Complete the Declaration and Submission questions for a complete submission",
-      DeclarationAndSubmissionJourney
+      e2eJourney
     ) {
 
       Given("the user is logged in through the AuthWizard page")
