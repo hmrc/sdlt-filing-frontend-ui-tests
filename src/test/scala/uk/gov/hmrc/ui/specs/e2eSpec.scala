@@ -35,7 +35,6 @@ import uk.gov.hmrc.ui.pages.TaxCalculations.*
 import uk.gov.hmrc.ui.pages.DeclarationAndSubmission.*
 import uk.gov.hmrc.ui.util.Users.LoginTypes.HASDIRECT
 import uk.gov.hmrc.ui.util.Users.UserTypes.Organisation
-import uk.gov.hmrc.selenium.webdriver.Driver.instance
 import uk.gov.hmrc.ui.tags.*
 
 class e2eSpec
