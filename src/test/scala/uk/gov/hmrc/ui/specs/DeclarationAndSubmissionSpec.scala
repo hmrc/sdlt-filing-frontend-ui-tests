@@ -52,15 +52,13 @@ class DeclarationAndSubmissionSpec
         returnId = Some("submission-complete-multiples")
       )
 
-      When("the user opens the submit your return questions")
-      ReturnTaskList.clickLinkById("task-list-link-submit-your-return")
       Then("the DeclarationAndSubmissionBeforeYouStart page is shown")
       DeclarationAndSubmissionBeforeYouStart.verifyPageTitle(DeclarationAndSubmissionBeforeYouStart.pageTitle)
 
       When("the user views their completed sdlt return")
       DeclarationAndSubmissionBeforeYouStart.click(DeclarationAndSubmissionBeforeYouStart.viewAndPrintThisReturnLink)
       Then("the YourCompletedSDLTReturn page is shown")
-      YourCompletedSDLTReturn.switchToNewTabAndValidateTitle(YourCompletedSDLTReturn.submittedReturnPageTitle)
+      YourCompletedSDLTReturn.switchToNewTabAndValidateTitle(YourCompletedSDLTReturn.pageTitle)
 
       When("the user starts the submit your return questions")
       DeclarationAndSubmissionBeforeYouStart.saveAndContinue()
@@ -93,6 +91,19 @@ class DeclarationAndSubmissionSpec
 
       When("the user has read the declaration and submits their return")
       DeclarationConfirmation.saveAndContinue()
+    }
+
+    Scenario(
+      "Submission completed and the user can view their submitted return and SDLT5 certificate",
+      DeclarationAndSubmissionJourney
+    ) {
+
+      Given("the user is logged in through the AuthWizard page")
+      AuthWizard.login(
+        HASDIRECT,
+        Organisation,
+        returnId = Some("submission-complete")
+      )
       Then("the SubmissionComplete page is shown")
       SubmissionComplete.waitForPage()
       SubmissionComplete.verifyPageTitle(SubmissionComplete.pageTitle)
