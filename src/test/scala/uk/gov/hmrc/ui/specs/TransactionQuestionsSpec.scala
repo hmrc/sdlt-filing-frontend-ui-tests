@@ -494,12 +494,6 @@ class TransactionQuestionsSpec
       When("the user confirms a part of the consideration is not contingent or dependent on uncertain future events")
       ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.no)
       ConsiderationsAffectedByUncertainFutureEvents.saveAndContinue()
-      Then("the DeferringPayment page is shown")
-      DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
-
-      When("the user confirms the purchaser is not applying for a deferment")
-      DeferringPayment.radioButton(DeferringPayment.no)
-      DeferringPayment.saveAndContinue()
       Then("the UseOfLandOrProperty page is shown")
       UseOfLandOrProperty.verifyPageTitle(UseOfLandOrProperty.pageTitle)
 
@@ -588,11 +582,6 @@ class TransactionQuestionsSpec
       )
       ConsiderationsAffectedByUncertainFutureEvents.radioButton(ConsiderationsAffectedByUncertainFutureEvents.yes)
       ConsiderationsAffectedByUncertainFutureEvents.saveAndContinue()
-      Then("the TransactionCheckYourAnswers page is shown")
-      TransactionCheckYourAnswers.verifyPageTitle(TransactionCheckYourAnswers.pageTitle)
-
-      When("the user updates their answer to confirm the purchaser is applying for a deferment")
-      TransactionCheckYourAnswers.clickDeferringPayment()
       DeferringPayment.verifyPageTitle(DeferringPayment.pageTitle)
       DeferringPayment.radioButton(DeferringPayment.yes)
       DeferringPayment.saveAndContinue()
