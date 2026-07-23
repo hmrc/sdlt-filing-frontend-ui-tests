@@ -762,6 +762,17 @@ class e2eSpec
       TaxCalculationCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user attempts to save and exit the application")
+      ReturnTaskList.saveAndContinue()
+      Then("the SaveAndExit page is shown")
+      SaveAndExit.verifyPageTitle(SaveAndExit.pageTitle)
+
+      When("the user chooses not to save and exit the application")
+      SaveAndExit.radioButton(SaveAndExit.no)
+      SaveAndExit.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
 
     Scenario(
