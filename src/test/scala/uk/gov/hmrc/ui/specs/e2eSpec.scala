@@ -776,8 +776,6 @@ class e2eSpec
         returnId = Some("submission-complete-multiples")
       )
 
-      When("the user opens the submit your return questions")
-      ReturnTaskList.clickLinkById("task-list-link-submit-your-return")
       Then("the DeclarationAndSubmissionBeforeYouStart page is shown")
       DeclarationAndSubmissionBeforeYouStart.verifyPageTitle(DeclarationAndSubmissionBeforeYouStart.pageTitle)
 
