@@ -22,6 +22,6 @@ object ReturnTaskList extends BasePage {
 
   def pageUrlNoVendor: String = "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=no-vendor"
 
-  override def pageTitle: String = "returnTaskList - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Task list - Stamp Taxes Online - GOV.UK"
 
 }
