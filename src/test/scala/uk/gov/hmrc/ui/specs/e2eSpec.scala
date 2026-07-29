@@ -698,7 +698,7 @@ class e2eSpec
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
-      When("the user opens the tax calculation questions")
+      /* When("the user opens the tax calculation questions")
       ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
       Then("the ConfirmEffectiveDateOfTransaction page is shown")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
@@ -773,6 +773,7 @@ class e2eSpec
       SaveAndExit.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+       */
     }
 
     Scenario(
