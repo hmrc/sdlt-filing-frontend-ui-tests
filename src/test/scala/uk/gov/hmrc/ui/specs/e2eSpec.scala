@@ -410,51 +410,6 @@ class e2eSpec
       LandOverview.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
-    }
-
-    Scenario(
-      "Complete the Filing Journey from UK Residency to Tax Calculation Questions",
-      e2eJourney
-    ) {
-
-      Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("e2e-from-uk-residency-to-tax-calculation"))
-      Then("the ReturnTaskList page is shown")
-      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
-
-      When("the user opens the uk residency questions")
-      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
-      Then("the UKResidencyBeforeYouStart page is shown")
-      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
-
-      When("the user starts the uk residency questions")
-      UKResidencyBeforeYouStart.saveAndContinue()
-      Then("the ResidencyStatus page is shown")
-      ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
-      ResidencyStatus.clickResidencyStatusLink()
-
-      When("the user confirms there are non-UK resident purchasers")
-      ResidencyStatus.radioButton(ResidencyStatus.yes)
-      ResidencyStatus.saveAndContinue()
-      Then("the CloseCompanies page is shown")
-      CloseCompanies.verifyPageTitle(CloseCompanies.pageTitle)
-
-      When("the user confirms that the purchaser is a UK close company controlled by non-UK residents")
-      CloseCompanies.radioButton(CloseCompanies.yes)
-      CloseCompanies.saveAndContinue()
-      Then("the CrownEmploymentRelief page is shown")
-      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
-
-      When("the user confirms there are purchasers claiming Crown Employment relief")
-      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
-      CrownEmploymentRelief.saveAndContinue()
-      Then("the UKResidencyCheckYourAnswers page is shown")
-      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
-
-      When("the user submits the uk residency questions")
-      UKResidencyCheckYourAnswers.saveAndContinue()
-      Then("the ReturnTaskList page is shown")
-      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the transaction questions")
       ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
@@ -483,6 +438,39 @@ class e2eSpec
       When("the user doesn't add the date of contact or conclusion of missives")
       AddDateOfContract.radioButton(AddDateOfContract.no)
       AddDateOfContract.saveAndContinue()
+      Then("the TotalConsiderationOfTransaction page is shown")
+      TotalConsiderationOfTransaction.verifyPageTitle(TotalConsiderationOfTransaction.pageTitle)
+
+      When("the user provides the total consideration")
+      TotalConsiderationOfTransaction.input(
+        By.id(TotalConsiderationOfTransaction.totalConsideration),
+        TotalConsiderationOfTransaction.totalConsiderationInput
+      )
+      TotalConsiderationOfTransaction.saveAndContinue()
+      Then("the IsVATIncluded page is shown")
+      IsVatIncluded.verifyPageTitle(IsVatIncluded.pageTitle)
+
+      When("the user confirms there is vat included in the total consideration")
+      IsVatIncluded.radioButton(IsVatIncluded.yes)
+      IsVatIncluded.saveAndContinue()
+      Then("the VATAmount page is shown")
+      VATAmount.verifyPageTitle(VATAmount.pageTitle)
+
+      When("the user provides the VAT Amount")
+      VATAmount.input(
+        By.id(VATAmount.totalAmountOfVAT),
+        VATAmount.totalAmountOfVATInput
+      )
+      VATAmount.saveAndContinue()
+      Then("the FormsOfConsideration page is shown")
+      FormsOfConsideration.verifyPageTitle(FormsOfConsideration.pageTitle)
+
+      When("the user provides all forms the consideration takes")
+      FormsOfConsideration.checkbox(FormsOfConsideration.cash, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.building_works, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.shares_quoted_company, true)
+      FormsOfConsideration.checkbox(FormsOfConsideration.contingent, true)
+      FormsOfConsideration.saveAndContinue()
       Then("the LinkedTransactions page is shown")
       LinkedTransactions.verifyPageTitle(LinkedTransactions.pageTitle)
 
@@ -591,6 +579,51 @@ class e2eSpec
 
       When("the user submits the transaction questions")
       TransactionCheckYourAnswers.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+    }
+
+    Scenario(
+      "Complete the Filing Journey from UK Residency to Tax Calculation Questions",
+      e2eJourney
+    ) {
+
+      Given("the user is logged in through the AuthWizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("e2e-from-uk-residency-to-tax-calculation"))
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user opens the uk residency questions")
+      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
+      Then("the UKResidencyBeforeYouStart page is shown")
+      UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
+
+      When("the user starts the uk residency questions")
+      UKResidencyBeforeYouStart.saveAndContinue()
+      Then("the ResidencyStatus page is shown")
+      ResidencyStatus.verifyPageTitle(ResidencyStatus.pageTitle)
+      ResidencyStatus.clickResidencyStatusLink()
+
+      When("the user confirms there are non-UK resident purchasers")
+      ResidencyStatus.radioButton(ResidencyStatus.yes)
+      ResidencyStatus.saveAndContinue()
+      Then("the CloseCompanies page is shown")
+      CloseCompanies.verifyPageTitle(CloseCompanies.pageTitle)
+
+      When("the user confirms that the purchaser is a UK close company controlled by non-UK residents")
+      CloseCompanies.radioButton(CloseCompanies.yes)
+      CloseCompanies.saveAndContinue()
+      Then("the CrownEmploymentRelief page is shown")
+      CrownEmploymentRelief.verifyPageTitle(CrownEmploymentRelief.pageTitle)
+
+      When("the user confirms there are purchasers claiming Crown Employment relief")
+      CrownEmploymentRelief.radioButton(CrownEmploymentRelief.yes)
+      CrownEmploymentRelief.saveAndContinue()
+      Then("the UKResidencyCheckYourAnswers page is shown")
+      UKResidencyCheckYourAnswers.verifyPageTitle(UKResidencyCheckYourAnswers.pageTitle)
+
+      When("the user submits the uk residency questions")
+      UKResidencyCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
