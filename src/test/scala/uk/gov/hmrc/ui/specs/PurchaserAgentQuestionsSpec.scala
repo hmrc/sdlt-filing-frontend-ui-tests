@@ -238,7 +238,7 @@ class PurchaserAgentQuestionsSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("full-purchaser-with-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
 
       When("the user opens the purchaser agent questions")
       PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-purchaser-agent-questions")

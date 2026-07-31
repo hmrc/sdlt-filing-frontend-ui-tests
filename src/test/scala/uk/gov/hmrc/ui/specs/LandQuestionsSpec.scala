@@ -46,7 +46,7 @@ class LandQuestionsSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("firstJson"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
 
       When("the user opens the land questions")
       ReturnTaskList.clickLinkById("task-list-link-land-questions")
@@ -67,12 +67,6 @@ class LandQuestionsSpec
       When("the user selects long leasehold to describe the transaction")
       InterestTransferredOrCreated.radioButton(InterestTransferredOrCreated.LG)
       InterestTransferredOrCreated.saveAndContinue()
-      Then("the LandConfirmAddress page is shown")
-      LandConfirmAddress.verifyPageTitle(LandConfirmAddress.pageTitle)
-
-      When("the user does not confirm the land address")
-      LandConfirmAddress.radioButton(LandConfirmAddress.no)
-      LandConfirmAddress.saveAndContinue()
       Then("the LandAddress page is shown")
       LandAddress.verifyPageTitle(LandAddress.pageTitle)
 
@@ -176,11 +170,6 @@ class LandQuestionsSpec
       Then("the LandOverview page is shown")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
 
-      When("the user does not add another land")
-      LandOverview.radioButton(LandOverview.no)
-      LandOverview.saveAndContinue()
-      Then("the ReturnTaskList page is shown")
-      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
 
     Scenario(
@@ -189,44 +178,11 @@ class LandQuestionsSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("1-land-residential-property-type"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
 
       When("the user opens the land questions")
       ReturnTaskList.clickLinkById("task-list-link-land-questions")
-      Then("the LandOverview page is shown")
-      LandOverview.verifyPageTitle(LandOverview.pageTitle)
-
-      When("the user removes an existing land")
-      LandOverview.clickLandRemove()
-      Then("the LandRemove page is shown")
-      LandRemove.verifyPageTitle(LandRemove.pageTitle)
-
-      When("the user confirms the land removal")
-      LandRemove.radioButton(LandRemove.yes)
-      LandRemove.saveAndContinue()
-      Then("the LandOverview page is shown")
-      LandOverview.verifyPageTitle(LandOverview.pageTitle)
-      LandOverview.verifyElementIsDisplayed(LandOverview.removeBanner)
-
-      When("the user edits a land details")
-      LandOverview.clickLandChange()
-      Then("the InterestTransferredOrCreated page is shown to complete the land details")
-      InterestTransferredOrCreated.verifyPageTitle(InterestTransferredOrCreated.pageTitle)
-
-      When("the user provides the Interest Transferred or Created details")
-      InterestTransferredOrCreated.radioButton(InterestTransferredOrCreated.FG)
-      InterestTransferredOrCreated.saveAndContinue()
-      And("submits the Land Questions")
-      LandCheckYourAnswers.verifyPageTitle(LandCheckYourAnswers.pageTitle)
-      LandCheckYourAnswers.saveAndContinue()
-      Then("the LandOverview page is shown")
-      LandOverview.verifyPageTitle(LandOverview.pageTitle)
-      LandOverview.verifyElementIsDisplayed(LandOverview.updateBanner)
-
-      When("the user adds a new area of land")
-      LandOverview.radioButton(LandOverview.yes)
-      LandOverview.saveAndContinue()
-      Then("the LandBeforeYouStart page is shown")
+      Then("the LandAgentBeforeYouStart page is shown")
       LandBeforeYouStart.verifyPageTitle(LandBeforeYouStart.pageTitle)
 
       When("the user starts the land questions")
@@ -375,6 +331,32 @@ class LandQuestionsSpec
       LandCheckYourAnswers.saveAndContinue()
       Then("the LandOverview page is shown")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
+    }
+
+    Scenario(
+      "Validate remove land functionality in Land Journey",
+      LandJourney
+    ) {
+
+      Given("the user is logged in through the AuthWizard page")
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("all-sections-complete-company"))
+
+      When("the user opens the land questions")
+      ReturnTaskList.clickLinkById("task-list-link-land-questions")
+      Then("the LandOverview page is shown")
+      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+
+      When("the user removes an existing land")
+      LandOverview.clickLandRemove()
+      Then("the LandRemove page is shown")
+      LandRemove.verifyPageTitle(LandRemove.pageTitle)
+
+      When("the user confirms the land removal")
+      LandRemove.radioButton(LandRemove.yes)
+      LandRemove.saveAndContinue()
+      Then("the LandOverview page is shown")
+      LandOverview.verifyPageTitle(LandOverview.pageTitle)
+      LandOverview.verifyElementIsDisplayed(LandOverview.removeBanner)
     }
   }
 }

@@ -645,23 +645,29 @@ class PurchaserQuestionsSpec
 
       When("the user opens the purchaser questions")
       ReturnTaskList.clickLinkById("task-list-link-purchaser-questions")
-      Then("the PurchaserBeforeYouStart page is shown")
-      PurchaserBeforeYouStart.verifyPageTitle(PurchaserBeforeYouStart.pageTitle)
+      Then("the Purchaser Incomplete page is shown")
+      PurchaserIncomplete.verifyPageTitle(PurchaserIncomplete.pageTitle)
 
-      When("the user starts the purchaser questions")
-      PurchaserBeforeYouStart.saveAndContinue()
-      Then("the ConfirmPurchaserName page is shown")
-      ConfirmPurchaserName.verifyPageTitle(ConfirmPurchaserName.pageTitle)
+      When("the user clicks on update")
+      PurchaserIncomplete.clickPurchaserUpdate()
+      Then("the purchaser company's name page is shown")
+      PurchaserName.verifyPageTitle(PurchaserName.pageTitle)
 
-      When("the user confirms the purchaser name")
-      ConfirmPurchaserName.radioButton(ConfirmPurchaserName.yes)
-      ConfirmPurchaserName.saveAndContinue()
-      Then("the PurchaserConfirmAddress page is shown")
-      PurchaserConfirmAddress.verifyPageTitle(PurchaserConfirmAddress.pageTitle)
+      When("the user enters company name and continue")
+      PurchaserName.input(By.id(PurchaserName.companyId), PurchaserName.purchaserNameCompany)
+      PurchaserName.saveAndContinue()
+      Then("the PurchaserAddress page is shown")
+      PurchaserAddress.verifyPageTitle(PurchaserAddress.pageTitleCompany)
+
+      When("the user enters the purchaser address manually")
+      PurchaserAddress.clickAddressManually()
+      PurchaserAddress.verifyPageTitle(PurchaserAddress.editPageTitleCompany)
+      PurchaserAddress.enterAddressManually("123", "ABC", "TE13 1ES")
+      Then("the ConfirmPurchaserAddress page is shown")
+      PurchaserAddress.verifyPageTitle(PurchaserAddress.confirmPageTitleCompany)
 
       When("the user confirms the purchaser address")
-      PurchaserConfirmAddress.radioButton(PurchaserConfirmAddress.yes)
-      PurchaserConfirmAddress.saveAndContinue()
+      PurchaserAddress.clickContinueButton()
       Then("the DoesPurchaserHavePhoneNumber page is shown")
       DoesPurchaserHavePhoneNumber.verifyPageTitle(DoesPurchaserHavePhoneNumber.pageTitle)
 
@@ -669,7 +675,7 @@ class PurchaserQuestionsSpec
       DoesPurchaserHavePhoneNumber.radioButton(DoesPurchaserHavePhoneNumber.no)
       DoesPurchaserHavePhoneNumber.saveAndContinue()
       Then("the ConfirmPurchaserIdentity page is shown")
-      ConfirmPurchaserIdentity.verifyPageTitle(ConfirmPurchaserIdentity.pageTitleStub)
+      ConfirmPurchaserIdentity.verifyPageTitle(ConfirmPurchaserIdentity.pageTitle)
 
       When("the user chooses vat registration number to confirm the purchaser identity")
       ConfirmPurchaserIdentity.radioButton(ConfirmPurchaserIdentity.vatRegistrationNumber)
@@ -747,8 +753,8 @@ class PurchaserQuestionsSpec
 
       When("the user submits the purchaser questions")
       PurchaserCheckYourAnswers.saveAndContinue()
-      Then("the PurchaserOverview page is shown")
-      PurchaserOverview.verifyPageTitle(PurchaserOverview.pageTitle)
+      Then("the Purchaser Incomplete page is shown")
+      PurchaserIncomplete.verifyPageTitle(PurchaserIncomplete.pageTitle)
     }
   }
 }

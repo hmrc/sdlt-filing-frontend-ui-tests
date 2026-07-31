@@ -43,4 +43,6 @@ object LandOverview extends BasePage {
 
   def clickLandRemove(): Unit = click(landRemove)
 
+  def addTheLandOrProperty(): Unit = click(By.cssSelector(Locators.btnContinue))
+
 }
