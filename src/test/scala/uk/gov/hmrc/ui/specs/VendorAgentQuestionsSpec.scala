@@ -46,7 +46,11 @@ class VendorAgentQuestionsSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
+      AuthWizard.login(
+        HASDIRECT,
+        Organisation,
+        returnId = Some("no-return-agent-and-main-vendor-not-represented-by-agent")
+      )
 
       When("the user opens the vendor agent questions")
       ReturnTaskList.clickLinkById("task-list-link-vendor-agent-questions")
@@ -132,7 +136,11 @@ class VendorAgentQuestionsSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-vendor"))
+      AuthWizard.login(
+        HASDIRECT,
+        Organisation,
+        returnId = Some("no-return-agent-and-main-vendor-not-represented-by-agent")
+      )
 
       When("the user opens the vendor agent questions")
       ReturnTaskList.clickLinkById("task-list-link-vendor-agent-questions")
@@ -237,7 +245,7 @@ class VendorAgentQuestionsSpec
     ) {
 
       Given("the user is logged in through the AuthWizard page")
-      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("vendor-agent-and-main-vendor-represented-by-agent"))
+      AuthWizard.login(HASDIRECT, Organisation, returnId = Some("5-vendors"))
 
       When("the user opens the vendor agent questions")
       ReturnTaskList.clickLinkById("task-list-link-vendor-agent-questions")
