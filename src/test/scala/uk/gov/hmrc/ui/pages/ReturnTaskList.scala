@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.ui.pages
 
+import org.openqa.selenium.By
+
 object ReturnTaskList extends BasePage {
 
   override def pageUrl: String = "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=123456"
@@ -23,5 +25,10 @@ object ReturnTaskList extends BasePage {
   def pageUrlNoVendor: String = "http://localhost:10910/stamp-duty-land-tax-filing/returnTaskList?returnId=no-vendor"
 
   override def pageTitle: String = "Task list - Stamp Taxes Online - GOV.UK"
+
+  val saveAndExit               = "a[href = '/stamp-duty-land-tax-filing/task-list/save-and-exit']"
+  val deleteReturn              = "a[href = '/stamp-duty-land-tax-filing/task-list/deleting-SDLT-return']"
+  def clickSaveAndExit(): Unit  = click(By.cssSelector(saveAndExit))
+  def clickDeleteReturn(): Unit = click(By.cssSelector(deleteReturn))
 
 }

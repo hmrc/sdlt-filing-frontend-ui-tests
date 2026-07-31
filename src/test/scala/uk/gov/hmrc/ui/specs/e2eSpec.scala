@@ -799,13 +799,24 @@ class e2eSpec
        */
 
       When("the user attempts to save and exit the application")
-      ReturnTaskList.saveAndContinue()
+      ReturnTaskList.clickSaveAndExit()
       Then("the SaveAndExit page is shown")
       SaveAndExit.verifyPageTitle(SaveAndExit.pageTitle)
 
       When("the user chooses not to save and exit the application")
       SaveAndExit.radioButton(SaveAndExit.no)
       SaveAndExit.saveAndContinue()
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
+
+      When("the user attempts to delete the application")
+      ReturnTaskList.clickDeleteReturn()
+      Then("the delete return page is shown")
+      DeleteReturn.verifyPageTitle(DeleteReturn.pageTitle)
+
+      When("the user chooses not to save and exit the application")
+      DeleteReturn.radioButton(DeleteReturn.no)
+      DeleteReturn.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
     }
