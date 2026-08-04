@@ -35,6 +35,6 @@ object SDLTBreakdown extends BasePage {
   val returnTaxCalc = "[data-module='hmrc-back-link']"
 
   def clickReturnTaxPage(): Unit =
-    click(By.xpath("//a[@data-module='hmrc-back-link' and text()='Return to tax calculation']"))
+    click(By.xpath("//a[text()='Return to tax calculation']"))
 
 }
