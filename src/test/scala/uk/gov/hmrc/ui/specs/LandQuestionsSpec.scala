@@ -84,6 +84,11 @@ class LandQuestionsSpec
 
       When("the user validates the link containing the list of local auth codes")
       LocalAuthorityCode.validateListOfLocalAuthCodeLink()
+      LocalAuthorityCode.clickDropdownText()
+      LocalAuthorityCode.validateLandAndBuildingTransactionLink()
+      LocalAuthorityCode.validateOneOfSpecialCasesLink()
+      LocalAuthorityCode.validateLandTransactionTaxLink()
+      LocalAuthorityCode.validateOneOfSpecialCasesWalesLink()
       And("provides a local authority code")
       LocalAuthorityCode.input(
         By.id(LocalAuthorityCode.localAuthCode),
