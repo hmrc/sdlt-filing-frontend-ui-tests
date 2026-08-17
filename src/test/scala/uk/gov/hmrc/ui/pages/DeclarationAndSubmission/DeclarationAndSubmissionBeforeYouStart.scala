@@ -21,9 +21,10 @@ import uk.gov.hmrc.ui.pages.BasePage
 
 object DeclarationAndSubmissionBeforeYouStart extends BasePage {
 
-  override def pageUrl: String = "submit-your-return/before-you-start"
+  override def pageUrl: String = "submit-your-return/your-return-is-ready-for-submission"
 
-  override def pageTitle: String = "Before you start - Submit your return - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String =
+    "Your return is ready for submission - Submit your return - Stamp Taxes Online - GOV.UK"
 
   val viewAndPrintThisReturnLink: By = By.xpath(
     "//a[contains(text(),'view and print this return for your client’s approval before submitting (opens in new tab)')]"
