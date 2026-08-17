@@ -23,7 +23,7 @@ object VendorOverview extends BasePage {
 
   override def pageUrl: String = "about-the-vendor/vendor-overview"
 
-  override def pageTitle: String = "Vendor overview - About the vendor - Stamp Taxes Online - GOV.UK"
+  override def pageTitle: String = "Vendor Overview - About the vendor - Stamp Taxes Online - GOV.UK"
 
   def yes: String = "#value"
 
