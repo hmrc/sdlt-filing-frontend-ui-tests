@@ -48,7 +48,7 @@ class PurchaserAgentQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
 
       When("the user opens the purchaser agent questions")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-agent-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser’s-agent")
       Then("the PurchaserAgentBeforeYouStart page is shown")
       PurchaserAgentBeforeYouStart.verifyPageTitle(PurchaserAgentBeforeYouStart.pageTitle)
 
@@ -187,7 +187,7 @@ class PurchaserAgentQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-no-agents"))
 
       When("the user opens the purchaser agent questions")
-      PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-purchaser-agent-questions")
+      PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-about-the-purchaser’s-agent")
       Then("the PurchaserAgentBeforeYouStart page is shown")
       PurchaserAgentBeforeYouStart.verifyPageTitle(PurchaserAgentBeforeYouStart.pageTitle)
 
@@ -241,7 +241,7 @@ class PurchaserAgentQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("purchaser-agent"))
 
       When("the user opens the purchaser agent questions")
-      PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-purchaser-agent-questions")
+      PurchaserAgentBeforeYouStart.clickLinkById("task-list-link-about-the-purchaser’s-agent")
       Then("the PurchaserAgentOverview page is shown")
       PurchaserAgentOverview.verifyPageTitle(PurchaserAgentOverview.pageTitle)
 

@@ -48,7 +48,7 @@ class LeaseQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-residential"))
 
       When("the user opens the lease questions")
-      ReturnTaskList.clickLinkById("task-list-link-lease-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-lease")
       Then("the LeaseBeforeYouStart page is shown")
       LeaseBeforeYouStart.verifyPageTitle(LeaseBeforeYouStart.pageTitle)
 
@@ -214,7 +214,7 @@ class LeaseQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionA"))
 
       When("the user opens the lease questions")
-      ReturnTaskList.clickLinkById("task-list-link-lease-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-lease")
       Then("the LeaseBeforeYouStart page is shown")
       LeaseBeforeYouStart.verifyPageTitle(LeaseBeforeYouStart.pageTitle)
 

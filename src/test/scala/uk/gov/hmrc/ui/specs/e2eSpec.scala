@@ -103,7 +103,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the vendor questions")
-      WhoIsTheVendor.clickLinkById("task-list-link-vendor-questions")
+      WhoIsTheVendor.clickLinkById("task-list-link-about-the-vendor")
       Then("the VendorOverview page is shown")
       VendorOverview.verifyPageTitle(VendorOverview.pageTitle)
 
@@ -163,7 +163,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the vendor agent questions")
-      ReturnTaskList.clickLinkById("task-list-link-vendor-agent-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-vendor’s-agent")
       Then("the VendorAgentBeforeYouStart page is shown")
       VendorAgentBeforeYouStart.verifyPageTitle(VendorAgentBeforeYouStart.pageTitle)
 
@@ -218,7 +218,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the purchaser questions")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser")
       Then("the Purchaser Overview page is shown")
       PurchaserOverview.verifyPageTitle(PurchaserOverview.pageTitle)
 
@@ -286,7 +286,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the purchaser agent questions")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-agent-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser’s-agent")
       Then("the PurchaserAgentBeforeYouStart page is shown")
       PurchaserAgentBeforeYouStart.verifyPageTitle(PurchaserAgentBeforeYouStart.pageTitle)
 
@@ -328,7 +328,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the land questions")
-      ReturnTaskList.clickLinkById("task-list-link-land-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-land")
       Then("the LandOverview page is shown")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
 
@@ -412,7 +412,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the transaction questions")
-      ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-transaction")
       Then("the TransactionBeforeYouStart page is shown")
       TransactionBeforeYouStart.verifyPageTitle(TransactionBeforeYouStart.pageTitle)
 
@@ -594,7 +594,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the uk residency questions")
-      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-uk-residency")
       Then("the UKResidencyBeforeYouStart page is shown")
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
 
@@ -627,7 +627,7 @@ class e2eSpec
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
       When("the user opens the lease questions")
-      ReturnTaskList.clickLinkById("task-list-link-lease-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-lease")
       Then("the LeaseBeforeYouStart page is shown")
       LeaseBeforeYouStart.verifyPageTitle(LeaseBeforeYouStart.pageTitle)
 
@@ -766,7 +766,7 @@ class e2eSpec
       )
 
       When("the user navigated to tax calculation")
-      ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      ReturnTaskList.clickLinkById("task-list-link-tax-calculation")
       Then("the Is this effective date of transaction page is displayed")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
 

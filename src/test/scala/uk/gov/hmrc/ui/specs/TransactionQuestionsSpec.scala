@@ -49,7 +49,7 @@ class TransactionQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionF"))
 
       When("the user opens the transaction questions")
-      ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-transaction")
       Then("the TransactionBeforeYouStart page is shown")
       TransactionBeforeYouStart.verifyPageTitle(TransactionBeforeYouStart.pageTitle)
 
@@ -350,7 +350,7 @@ class TransactionQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("prelimTransactionL-property-type-mixed"))
 
       When("the user opens the transaction questions")
-      ReturnTaskList.clickLinkById("task-list-link-transaction-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-transaction")
       Then("the TransactionBeforeYouStart page is shown")
       TransactionBeforeYouStart.verifyPageTitle(TransactionBeforeYouStart.pageTitle)
 
