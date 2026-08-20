@@ -53,7 +53,7 @@ class TaxCalculationsQuestionsSpec
       )
 
       When("the user navigated to tax calculation")
-      ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      ReturnTaskList.clickLinkById("task-list-link-tax-calculation")
       Then("the Is this effective date of transaction page is displayed")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
 
@@ -162,7 +162,7 @@ class TaxCalculationsQuestionsSpec
       )
 
       When("the user navigated to tax calculation")
-      ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      ReturnTaskList.clickLinkById("task-list-link-tax-calculation")
       Then("the Is this effective date of transaction page is displayed")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
 
@@ -259,7 +259,7 @@ class TaxCalculationsQuestionsSpec
       )
 
       When("the user navigated to tax calculation")
-      ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      ReturnTaskList.clickLinkById("task-list-link-tax-calculation")
       Then("the Is this effective date of transaction page is displayed")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
 
@@ -370,7 +370,7 @@ class TaxCalculationsQuestionsSpec
         returnId = Some("leasehold-self-assessed")
       )
       When("the user navigated to tax calculation")
-      ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      ReturnTaskList.clickLinkById("task-list-link-tax-calculation")
       Then("the Is this effective date of transaction page is displayed")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
 
@@ -470,7 +470,7 @@ class TaxCalculationsQuestionsSpec
         returnId = Some("leasehold-self-assessed")
       )
       When("the user navigated to tax calculation")
-      ReturnTaskList.clickLinkById("task-list-link-tax-calculation-questions")
+      ReturnTaskList.clickLinkById("task-list-link-tax-calculation")
       Then("the Is this effective date of transaction page is displayed")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
 

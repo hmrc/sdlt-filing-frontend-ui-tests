@@ -49,7 +49,7 @@ class LandQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
 
       When("the user opens the land questions")
-      ReturnTaskList.clickLinkById("task-list-link-land-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-land")
       Then("the LandAgentBeforeYouStart page is shown")
       LandBeforeYouStart.verifyPageTitle(LandBeforeYouStart.pageTitle)
 
@@ -186,7 +186,7 @@ class LandQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-land"))
 
       When("the user opens the land questions")
-      ReturnTaskList.clickLinkById("task-list-link-land-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-land")
       Then("the LandAgentBeforeYouStart page is shown")
       LandBeforeYouStart.verifyPageTitle(LandBeforeYouStart.pageTitle)
 
@@ -347,7 +347,7 @@ class LandQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("all-sections-complete-company"))
 
       When("the user opens the land questions")
-      ReturnTaskList.clickLinkById("task-list-link-land-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-land")
       Then("the LandOverview page is shown")
       LandOverview.verifyPageTitle(LandOverview.pageTitle)
 

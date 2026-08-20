@@ -48,7 +48,7 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
 
       When("the user opens the purchaser questions")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser")
       Then("the PurchaserBeforeYouStart page is shown")
       PurchaserBeforeYouStart.verifyPageTitle(PurchaserBeforeYouStart.pageTitle)
 
@@ -205,7 +205,7 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
 
       When("the user opens the purchaser questions")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser")
       Then("the PurchaserBeforeYouStart page is shown")
       PurchaserBeforeYouStart.verifyPageTitle(PurchaserBeforeYouStart.pageTitle)
 
@@ -338,7 +338,7 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("2-purchasers-company"))
 
       When("the user opens the purchaser questions")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser")
       Then("the PurchaserOverview page is shown")
       PurchaserOverview.verifyPageTitle(PurchaserOverview.pageTitle)
 
@@ -447,7 +447,7 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("no-purchaser"))
 
       When("the user clicks on the 'Purchaser Questions' link")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser")
       Then("the PurchaserBeforeYouStart page is shown")
       PurchaserBeforeYouStart.verifyPageTitle(PurchaserBeforeYouStart.pageTitle)
 
@@ -644,7 +644,7 @@ class PurchaserQuestionsSpec
       AuthWizard.login(HASDIRECT, Organisation, returnId = Some("incomplete-purchaser"))
 
       When("the user opens the purchaser questions")
-      ReturnTaskList.clickLinkById("task-list-link-purchaser-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-the-purchaser")
       Then("the PurchaserBeforeYouStart page is shown")
       PurchaserBeforeYouStart.verifyPageTitle(PurchaserBeforeYouStart.pageTitle)
 

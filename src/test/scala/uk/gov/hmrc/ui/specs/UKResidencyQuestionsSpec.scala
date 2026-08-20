@@ -51,7 +51,7 @@ class UKResidencyQuestionsSpec
       )
 
       When("the user opens the uk residency questions")
-      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-uk-residency")
       Then("the UKResidencyBeforeYouStart page is shown")
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
 
@@ -106,7 +106,7 @@ class UKResidencyQuestionsSpec
       )
 
       When("the user starts the uk residency questions journey")
-      ReturnTaskList.clickLinkById("task-list-link-uk-residency-questions")
+      ReturnTaskList.clickLinkById("task-list-link-about-uk-residency")
       Then("the UKResidencyBeforeYouStart page is shown")
       UKResidencyBeforeYouStart.verifyPageTitle(UKResidencyBeforeYouStart.pageTitle)
 
