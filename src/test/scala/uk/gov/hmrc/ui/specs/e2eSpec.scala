@@ -683,12 +683,6 @@ class e2eSpec
       When("the user confirms they know the later rent")
       LaterRent.radioButton(LaterRent.yes)
       LaterRent.saveAndContinue()
-      Then("the ThousandPoundThreshold page is shown")
-      OneThousandPoundThreshold.verifyPageTitle(OneThousandPoundThreshold.pageTitle)
-
-      When("the user confirms the annual rent is £1000 or more")
-      OneThousandPoundThreshold.radioButton(OneThousandPoundThreshold.yes)
-      OneThousandPoundThreshold.saveAndContinue()
       Then("the AddAnnualRentVAT page is shown")
       AddAnnualRentVAT.verifyPageTitle(AddAnnualRentVAT.pageTitle)
 
