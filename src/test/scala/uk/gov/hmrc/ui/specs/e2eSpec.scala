@@ -756,7 +756,7 @@ class e2eSpec
       AuthWizard.login(
         HASDIRECT,
         Organisation,
-        returnId = Some("freehold-self-assessed")
+        returnId = Some("freehold-tax-calculated")
       )
 
       When("the user navigated to tax calculation")
@@ -764,26 +764,40 @@ class e2eSpec
       Then("the Is this effective date of transaction page is displayed")
       ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
 
-      When("the confirm effective date of the transaction page displayed")
-      ConfirmEffectiveDateOfTransaction.verifyPageTitle(ConfirmEffectiveDateOfTransaction.pageTitle)
+      When("the user confirms the effective date of the transaction and continues")
       ConfirmEffectiveDateOfTransaction.saveAndContinue()
       Then("the user is navigated to Is this effective date of transaction page")
       IsThisTheEffectiveDateOfTransaction.verifyPageTitle(IsThisTheEffectiveDateOfTransaction.pageTitle)
 
-      When("the user selects 1st oct 2024 effective date as yes and continues")
+      When("the user selects effective date before oct 2024 as yes and continues")
       IsThisTheEffectiveDateOfTransaction.radioButton(IsThisTheEffectiveDateOfTransaction.yes)
       IsThisTheEffectiveDateOfTransaction.saveAndContinue()
-      Then("the user is navigated to the freehold self assessed sdlt page")
-      CalculatedSDLTDue.verifyPageTitle(CalculatedSDLTDue.freeholdSelfAssesedSDLTDuepageTitle)
+      Then("the Freehold calculated Before you start page is displayed")
+      TaxCalculationBeforeYouStart.verifyPageTitle(TaxCalculationBeforeYouStart.pageTitle)
 
-      When("the user continues to the sdlt self-assessment page")
+      When("the user is navigated to sdlt due page")
+      TaxCalculationBeforeYouStart.saveAndContinue()
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculatedSDLTDue.verifyPageTitle(CalculatedSDLTDue.pageTitle)
+
+      When("the user want the breakdown page journey")
+      CalculatedSDLTDue.clickSDLTBreakDownLink()
+      Then("the user is navigated to the SDLT breakdown page")
+      SDLTBreakdown.verifyPageTitle(SDLTBreakdown.pageTitle)
+
+      When("the user want to go return to the tax calculation page")
+      SDLTBreakdown.clickReturnTaxPage()
+      Then("the user is navigated to the calculate SDLT due page")
+      CalculatedSDLTDue.verifyPageTitle(CalculatedSDLTDue.pageTitle)
+
+      When("the user want to go return to the tax calculation page")
       CalculatedSDLTDue.saveAndContinue()
       Then("user is navigated to what is the SDLT self-assessment page")
       SDLTSelfAssessment.verifyPageTitle(
-        SDLTSelfAssessment.pageTitleFreeholdSelfAssesed
+        SDLTSelfAssessment.pageTitleFreeholdTax
       )
 
-      When("user enter the amount value and click save and continue button")
+      When("user enter the self assessed amount value and click save and continue button")
       SDLTSelfAssessment.input(
         By.id(SDLTSelfAssessment.saaValue),
         SDLTSelfAssessment.saaInput
@@ -791,20 +805,20 @@ class e2eSpec
       SDLTSelfAssessment.saveAndContinue()
       Then("user is navigated to what is the total amount due page")
       TotalAmountDue.verifyPageTitle(
-        TotalAmountDue.pageTitleFreeholdSelfAssesedTAD
+        TotalAmountDue.pageTitleFreehold
       )
 
-      When("user enter the amount value and click save and continue button")
+      When("user enter the total amount value and click save and continue button")
       TotalAmountDue.input(
         By.id(TotalAmountDue.tppTax),
         TotalAmountDue.tppTaxInput
       )
       TotalAmountDue.saveAndContinue()
-      Then("user is navigated to penalties page")
-      ArePenaltiesAndInterestIncluded.verifyPageTitle(ArePenaltiesAndInterestIncluded.pageTitleFreeholdSelfAssesed)
+      Then("the user is navigated to the pay penalties page")
+      ArePenaltiesAndInterestIncluded.verifyPageTitle(ArePenaltiesAndInterestIncluded.pageTitle)
 
-      When("user selects penalties and interest value and continues")
-      ArePenaltiesAndInterestIncluded.radioButton(ArePenaltiesAndInterestIncluded.yes)
+      When("user selects no penalties and interest value and continues")
+      ArePenaltiesAndInterestIncluded.radioButton(ArePenaltiesAndInterestIncluded.no)
       ArePenaltiesAndInterestIncluded.saveAndContinue()
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
@@ -829,14 +843,14 @@ class e2eSpec
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
 
-      When("the user clicks on change link and select no penalties and interest value on penalties page")
+      When("the user clicks on change link and change yes to pay penalties page")
       TaxCalculationCheckYourAnswers.clickpenaltiesChange()
-      ArePenaltiesAndInterestIncluded.radioButton(ArePenaltiesAndInterestIncluded.no)
+      ArePenaltiesAndInterestIncluded.radioButton(ArePenaltiesAndInterestIncluded.yes)
       ArePenaltiesAndInterestIncluded.saveAndContinue()
       Then("the user is navigated to the check your answers page")
       TaxCalculationCheckYourAnswers.verifyPageTitle(TaxCalculationCheckYourAnswers.pageTitle)
 
-      When("the user clicks on save and continue button on check your answers page")
+      When("the user clicks save and continue button")
       TaxCalculationCheckYourAnswers.saveAndContinue()
       Then("the ReturnTaskList page is shown")
       ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
