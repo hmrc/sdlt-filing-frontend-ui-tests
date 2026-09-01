@@ -23,6 +23,15 @@ sm2 --start SDLT_ALL
 ## Tests
 
 Run tests as follows:
+* Run all journeys tests using Chrome browser (headless mode - No GUI) in local environment:
+```bash
+./run_tests_local.sh
+```
+
+* Run end to end tests using Chrome browser (headless mode - No GUI) in local environment:
+```bash
+./run_tests_e2e.sh
+```
 
 * Argument `<browser>` must be `chrome`, `edge`, or `firefox`.
 * Argument `<environment>` must be `local`, `dev`, `qa` or `staging`.
