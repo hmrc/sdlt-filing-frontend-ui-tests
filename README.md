@@ -2,7 +2,7 @@
 
 # sdlt-filing-frontend-ui-tests
 
-<SERVICE_NAME> UI journey tests.
+SDLT Filing UI journey tests.
 
 ## Pre-requisites
 
