@@ -23,7 +23,7 @@ object EnterTotalPremiumPayable extends BasePage {
   override def pageUrl: String = "about-the-lease/enter-total-premium-payable"
 
   override def pageTitle: String =
-    "Calculating the total premium payable including VAT - About the lease - Stamp Taxes Online - GOV.UK"
+    "Total premium payable - About the lease - Stamp Taxes Online - GOV.UK"
 
   val TotalPremiumPayable: String = "value"
 
