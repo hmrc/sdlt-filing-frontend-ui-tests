@@ -51,7 +51,11 @@ class DeclarationAndSubmissionSpec
         Organisation,
         returnId = Some("submission-complete-multiples")
       )
+      Then("the ReturnTaskList page is shown")
+      ReturnTaskList.verifyPageTitle(ReturnTaskList.pageTitle)
 
+      When("the user opens the submit your return questions")
+      ReturnTaskList.clickLinkById("task-list-link-submit-your-return")
       Then("the DeclarationAndSubmissionBeforeYouStart page is shown")
       DeclarationAndSubmissionBeforeYouStart.verifyPageTitle(DeclarationAndSubmissionBeforeYouStart.pageTitle)
 
