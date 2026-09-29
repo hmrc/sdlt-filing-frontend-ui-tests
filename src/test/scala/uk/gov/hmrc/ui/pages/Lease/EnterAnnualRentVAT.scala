@@ -27,6 +27,6 @@ object EnterAnnualRentVAT extends BasePage {
 
   val annualRentVATAmount: String = "value"
 
-  val annualRentVATAmountInput: String = "12000"
+  val annualRentVATAmountInput: String = "11000"
 
 }
