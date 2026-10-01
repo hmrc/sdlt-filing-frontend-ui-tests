@@ -27,6 +27,6 @@ object TotalConsiderationOfLinkedTransaction extends BasePage {
 
   val totalConsiderationOfLT: String = "value"
 
-  val totalConsiderationOfLTInput: String = "300000"
+  val totalConsiderationOfLTInput: String = "400000"
 
 }
